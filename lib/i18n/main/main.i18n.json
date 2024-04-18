@@ -1,0 +1,23 @@
+{
+    "@@locale": "en",
+    "@@namespace": "main",
+    "app_name": "A&E Live",
+    "tabs(map)": {
+        "home": "Home",
+        "lists": "Lists",
+        "settings": "Settings"
+    },
+    "clusters": {
+        "hke": "Hong Kong East Cluster",
+        "hkw": "Hong Kong West Cluster",
+        "klc": "Kowloon Central Cluster",
+        "kle": "Kowloon East Cluster",
+        "klw": "Kowloon West Cluster",
+        "nte": "New Territories East Cluster",
+        "ntw": "New Territories West Cluster"
+    },
+    "dataRemarks": {
+        "title": "Remarks",
+        "content(rich)": "The above data is collated from the waiting time in the past few hours. This is for reference only but not the current estimated waiting time.\n\nA&E Departments need to manage sudden arrival of accident victims and severely-ill patients. We apologise for not being able to provide an accurate estimate of waiting time for patients in general. Please be patient while waiting for consultation.\n\nWaiting time display is capped at 8 hours amid a large number of patients waiting for a long time are being treated in the A&E Department. Patients with minor illnesses can consider seeking alternative medical services from private clinics (as listed in {{tapPCD(Primary Care Directory)}} or {{tapHKD(Hong Kong Doctors Homepage)}})."
+    }
+}

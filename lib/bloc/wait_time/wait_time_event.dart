@@ -1,0 +1,18 @@
+part of 'wait_time_bloc.dart';
+
+@immutable
+sealed class WaitTimeEvent {}
+
+final class WaitTimeFetchRequested extends WaitTimeEvent {}
+
+final class WaitTimeDataFilter extends WaitTimeEvent {
+  WaitTimeDataFilter({
+    this.name,
+    this.clusters,
+    this.sortType = WaitTimeSortType.timeInAsd,
+  });
+
+  final String? name;
+  final List<int>? clusters;
+  final WaitTimeSortType sortType;
+}

@@ -1,0 +1,29 @@
+{
+    "@@locale": "en",
+    "@@namespace": "home",
+    "title": "A&E Waiting Time",
+    "actions": {
+        "filter": "Filter",
+        "refresh": "Refresh Data",
+        "search": "Search Hospital"
+    },
+    "refreshIndicator": {
+        "pullToRefresh": "Pull to Refresh",
+        "releaseToRefresh": "Release to Refresh",
+        "refreshing": "Refreshing...",
+        "dataUpdated": "Data Updated",
+        "failedToRefresh": "Failed to Refresh",
+        "lastUpdateAt": "Last Update At: %T"
+    },
+    "filter": {
+        "cluster": "Hospital Cluster",
+        "sorting": {
+            "title": "Sorting",
+            "nameInAsd": "Hospital Name (A-Z)",
+            "nameInDesc": "Hospital Name (Z-A)",
+            "timeInAsd": "Waiting Time (ASD.)",
+            "timeInDesc": "Waiting Time (DESC.)"
+        },
+        "submit": "Submit"
+    }
+}

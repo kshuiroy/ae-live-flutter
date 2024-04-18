@@ -1,0 +1,29 @@
+{
+    "@@locale": "zh-HK",
+    "@@namespace": "home",
+    "title": "急症室等候時間",
+    "actions": {
+        "filter": "篩選醫院",
+        "refresh": "重新整理",
+        "search": "搜尋醫院"
+    },
+    "refreshIndicator": {
+        "pullToRefresh": "下拉更新資料",
+        "releaseToRefresh": "放開即可更新",
+        "refreshing": "正在更新⋯⋯",
+        "dataUpdated": "資料已更新",
+        "failedToRefresh": "資料更新失敗",
+        "lastUpdateAt": "最後更新：%T"
+    },
+    "filter": {
+        "cluster": "醫院聯網",
+        "sorting": {
+            "title": "排序",
+            "nameInAsd": "醫院名稱（順序）",
+            "nameInDesc": "醫院名稱（倒序）",
+            "timeInAsd": "等候時間（由短至長）",
+            "timeInDesc": "等候時間（由長至短）"
+        },
+        "submit": "提交"
+    }
+}

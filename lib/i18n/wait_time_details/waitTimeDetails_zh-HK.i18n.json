@@ -1,0 +1,19 @@
+{
+    "@@locale": "zh-HK",
+    "@@namespace": "waitTimeDetails",
+    "expectedWaitTime": "預計等候時間（非緊急病人）",
+    "actions": {
+        "call": "致電醫院",
+        "maps": "開啟地圖"
+    },
+    "chartTitle": "過去 6 小時的等候時間",
+    "hours": "{value} 小時",
+    "info": {
+        "title": "醫院資料",
+        "address": "地址",
+        "contactNo": "電話號碼",
+        "faxNo": "傳真號碼",
+        "emailAddress": "電郵地址",
+        "website": "網址"
+    }
+}

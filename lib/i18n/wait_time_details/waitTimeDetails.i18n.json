@@ -1,0 +1,19 @@
+{
+    "@@locale": "en",
+    "@@namespace": "waitTimeDetails",
+    "expectedWaitTime": "Expected Waiting Time (Non-Emergency)",
+    "actions": {
+        "call": "Call Hospital",
+        "maps": "Open Maps"
+    },
+    "chartTitle": "Waiting Time of the Past 6 Hours",
+    "hours": "{value}H",
+    "info": {
+        "title": "Hospital Info",
+        "address": "Address",
+        "contactNo": "Contact No.",
+        "faxNo": "Fax No.",
+        "emailAddress": "Email Address",
+        "website": "Website"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "@@locale": "zh-CN",
+    "@@namespace": "home",
+    "title": "急症室等候时间",
+    "actions": {
+        "filter": "筛选医院",
+        "refresh": "重新整理",
+        "search": "搜寻医院"
+    },
+    "refreshIndicator": {
+        "pullToRefresh": "下拉更新资料",
+        "releaseToRefresh": "放开即可更新",
+        "refreshing": "正在更新⋯⋯",
+        "dataUpdated": "资料已更新",
+        "failedToRefresh": "资料更新失败",
+        "lastUpdateAt": "最后更新：%T"
+    },
+    "filter": {
+        "cluster": "医院联网",
+        "sorting": {
+            "title": "排序",
+            "nameInAsd": "医院名称（顺序）",
+            "nameInDesc": "医院名称（倒序）",
+            "timeInAsd": "等候时间（由短至长）",
+            "timeInDesc": "等候时间（由长至短）"
+        },
+        "submit": "提交"
+    }
+}
