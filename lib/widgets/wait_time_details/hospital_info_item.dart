@@ -29,7 +29,7 @@ class HospitalInfoItem extends StatelessWidget {
   }
 
   Widget _getHospitalInfoWidget(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    // final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Padding(
@@ -40,25 +40,13 @@ class HospitalInfoItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: colorScheme.outline,
-              ),
-              borderRadius: BorderRadius.circular(40.0),
-            ),
-            width: 48.0,
-            height: 48.0,
-            child: Center(
-              child: Icon(
-                icon,
-                color: colorScheme.primary,
-                size: 24.0,
-                fill: 0.0,
-                weight: 200.0,
-                opticalSize: 24.0,
-              ),
-            ),
+          Icon(
+            icon,
+            // color: colorScheme.primary,
+            size: 24.0,
+            fill: 0.0,
+            weight: 200.0,
+            opticalSize: 24.0,
           ),
           const SizedBox(
             width: 16.0,

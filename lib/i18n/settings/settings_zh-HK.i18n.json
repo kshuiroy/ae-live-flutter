@@ -1,0 +1,45 @@
+{
+    "@@locale": "zh-HK",
+    "@@namespace": "settings",
+    "title": "設定",
+    "save": "儲存設定",
+    "sections": {
+        "appearance": "外觀",
+        "data": "數據管理",
+        "more": "更多"
+    },
+    "appearance": {
+        "theme": {
+            "title": "顯示主題",
+            "options": {
+                "light": "淺色主題",
+                "dark": "深色主題",
+                "system": "跟隨系統設定"
+            }
+        },
+        "language": {
+            "title": "顯示語言",
+            "options": {
+                "zhHK": "繁體中文",
+                "zhCN": "簡體中文 (简体中文)",
+                "en": "英文 (English)"
+            }
+        },
+        "sorting": {
+            "title": "預設排序方式",
+            "options": {
+                "timeASC": "等候時間（由短至長）",
+                "timeDESC": "等候時間（由長至短）",
+                "nameASC": "醫院名稱（順序）",
+                "nameDESC": "醫院名稱（倒序）"
+            }
+        }
+    },
+    "data": {
+        "reset": "重設所有設定"
+    },
+    "more": {
+        "license": "開放源代碼授權",
+        "version": "應用程式版本"
+    }
+}

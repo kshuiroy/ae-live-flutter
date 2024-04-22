@@ -12,6 +12,27 @@ part of 'translations.g.dart';
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'settings.title': return 'Settings';
+			case 'settings.save': return 'Save Settings';
+			case 'settings.sections.appearance': return 'Appearance';
+			case 'settings.sections.data': return 'Data Management';
+			case 'settings.sections.more': return 'More';
+			case 'settings.appearance.theme.title': return 'Display Theme';
+			case 'settings.appearance.theme.options.light': return 'Light Theme';
+			case 'settings.appearance.theme.options.dark': return 'Dark Theme';
+			case 'settings.appearance.theme.options.system': return 'Follow System';
+			case 'settings.appearance.language.title': return 'Display Language';
+			case 'settings.appearance.language.options.zhHK': return 'Traidtional Chinese (繁體中文)';
+			case 'settings.appearance.language.options.zhCN': return 'Simplified Chinese (简体中文)';
+			case 'settings.appearance.language.options.en': return 'English';
+			case 'settings.appearance.sorting.title': return 'Default Sorting';
+			case 'settings.appearance.sorting.options.timeASC': return 'Waiting Time (ASC.)';
+			case 'settings.appearance.sorting.options.timeDESC': return 'Waiting Time (DESC.)';
+			case 'settings.appearance.sorting.options.nameASC': return 'Hospital Name (A-Z)';
+			case 'settings.appearance.sorting.options.nameDESC': return 'Hospital Name (Z-A)';
+			case 'settings.data.reset': return 'Reset All Settings';
+			case 'settings.more.license': return 'Open Source License';
+			case 'settings.more.version': return 'App Version';
 			case 'home.title': return 'A&E Waiting Time';
 			case 'home.actions.filter': return 'Filter';
 			case 'home.actions.refresh': return 'Refresh Data';
@@ -67,6 +88,27 @@ extension on Translations {
 extension on _TranslationsZhCn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'settings.title': return '设定';
+			case 'settings.save': return '储存设定';
+			case 'settings.sections.appearance': return '外观';
+			case 'settings.sections.data': return '数据管理';
+			case 'settings.sections.more': return '更多';
+			case 'settings.appearance.theme.title': return '显示主题';
+			case 'settings.appearance.theme.options.light': return '浅色主题';
+			case 'settings.appearance.theme.options.dark': return '深色主题';
+			case 'settings.appearance.theme.options.system': return '跟随系统设定';
+			case 'settings.appearance.language.title': return '显示语言';
+			case 'settings.appearance.language.options.zhHK': return '繁体中文 (繁體中文)';
+			case 'settings.appearance.language.options.zhCN': return '简体中文';
+			case 'settings.appearance.language.options.en': return '英文 (English)';
+			case 'settings.appearance.sorting.title': return '默认排序方式';
+			case 'settings.appearance.sorting.options.timeASC': return '等候时间（由短至长）';
+			case 'settings.appearance.sorting.options.timeDESC': return '等候时间（由长至短）';
+			case 'settings.appearance.sorting.options.nameASC': return '医院名称（顺序）';
+			case 'settings.appearance.sorting.options.nameDESC': return '医院名称（倒序）';
+			case 'settings.data.reset': return '重设所有设定';
+			case 'settings.more.license': return '开放源代码授权';
+			case 'settings.more.version': return '应用程序版本';
 			case 'home.title': return '急症室等候时间';
 			case 'home.actions.filter': return '筛选医院';
 			case 'home.actions.refresh': return '重新整理';
@@ -122,6 +164,27 @@ extension on _TranslationsZhCn {
 extension on _TranslationsZhHk {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'settings.title': return '設定';
+			case 'settings.save': return '儲存設定';
+			case 'settings.sections.appearance': return '外觀';
+			case 'settings.sections.data': return '數據管理';
+			case 'settings.sections.more': return '更多';
+			case 'settings.appearance.theme.title': return '顯示主題';
+			case 'settings.appearance.theme.options.light': return '淺色主題';
+			case 'settings.appearance.theme.options.dark': return '深色主題';
+			case 'settings.appearance.theme.options.system': return '跟隨系統設定';
+			case 'settings.appearance.language.title': return '顯示語言';
+			case 'settings.appearance.language.options.zhHK': return '繁體中文';
+			case 'settings.appearance.language.options.zhCN': return '簡體中文 (简体中文)';
+			case 'settings.appearance.language.options.en': return '英文 (English)';
+			case 'settings.appearance.sorting.title': return '預設排序方式';
+			case 'settings.appearance.sorting.options.timeASC': return '等候時間（由短至長）';
+			case 'settings.appearance.sorting.options.timeDESC': return '等候時間（由長至短）';
+			case 'settings.appearance.sorting.options.nameASC': return '醫院名稱（順序）';
+			case 'settings.appearance.sorting.options.nameDESC': return '醫院名稱（倒序）';
+			case 'settings.data.reset': return '重設所有設定';
+			case 'settings.more.license': return '開放源代碼授權';
+			case 'settings.more.version': return '應用程式版本';
 			case 'home.title': return '急症室等候時間';
 			case 'home.actions.filter': return '篩選醫院';
 			case 'home.actions.refresh': return '重新整理';

@@ -1,0 +1,45 @@
+{
+    "@@locale": "en",
+    "@@namespace": "settings",
+    "title": "Settings",
+    "save": "Save Settings",
+    "sections": {
+        "appearance": "Appearance",
+        "data": "Data Management",
+        "more": "More"
+    },
+    "appearance": {
+        "theme": {
+            "title": "Display Theme",
+            "options": {
+                "light": "Light Theme",
+                "dark": "Dark Theme",
+                "system": "Follow System"
+            }
+        },
+        "language": {
+            "title": "Display Language",
+            "options": {
+                "zhHK": "Traidtional Chinese (繁體中文)",
+                "zhCN": "Simplified Chinese (简体中文)",
+                "en": "English"
+            }
+        },
+        "sorting": {
+            "title": "Default Sorting",
+            "options": {
+                "timeASC": "Waiting Time (ASC.)",
+                "timeDESC": "Waiting Time (DESC.)",
+                "nameASC": "Hospital Name (A-Z)",
+                "nameDESC": "Hospital Name (Z-A)"
+            }
+        }
+    },
+    "data": {
+        "reset": "Reset All Settings"
+    },
+    "more": {
+        "license": "Open Source License",
+        "version": "App Version"
+    }
+}

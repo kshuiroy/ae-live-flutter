@@ -13,6 +13,7 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
   }) : super(WaitTimeInitial()) {
     on<WaitTimeFetchRequested>(_onWaitTimeFetchRequested);
     on<WaitTimeDataFilter>(_onWaitTimeDataFilter);
+    on<WaitTimeReset>(_onWaitTimeReset);
   }
 
   final WaitTimeRepository repository;
@@ -44,5 +45,9 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
     );
 
     emit(WaitTimeSuccess(waitTimeData: processedData));
+  }
+
+  void _onWaitTimeReset(WaitTimeReset event, Emitter<WaitTimeState> emit) {
+    emit(WaitTimeInitial());
   }
 }

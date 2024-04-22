@@ -50,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
             flex: 3,
             child: _getWaitTimeListPane(context),
           ),
-          const VerticalDivider(),
           Expanded(
             flex: 4,
             child: _selectedWaitTime != null

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ae_live/config/clusters.dart';
+import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/config/hospital_info.dart';
 import 'package:ae_live/data/enum/wait_time_sort_type.dart';
 import 'package:ae_live/data/providers/wait_time_provider.dart';
@@ -9,14 +10,20 @@ import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/utilities/date_time_converter.dart';
 import 'package:ae_live/utilities/locale_converter.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WaitTimeRepository {
   WaitTimeRepository({required this.provider});
 
-  final String currentLocale = LocaleConverter.getAPILocaleCode();
   final WaitTimeProvider provider;
 
+  /// Get the A&E service waiting time from the API
   Future<List<WaitTimeModel>> getWaitTimeData() async {
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+    final String currentLocale = LocaleConverter.getAPILocaleCode(
+      languageCode: preferences.getString(Constants.preferenceKeyAppLocale),
+    );
+
     try {
       late String waitTimeData;
       late List<String> waitTimeHistoryData;

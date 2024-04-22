@@ -3,6 +3,8 @@ part of 'wait_time_bloc.dart';
 @immutable
 sealed class WaitTimeEvent {}
 
+final class WaitTimeReset extends WaitTimeEvent {}
+
 final class WaitTimeFetchRequested extends WaitTimeEvent {}
 
 final class WaitTimeDataFilter extends WaitTimeEvent {

@@ -36,9 +36,25 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
+	late final _TranslationsSettingsEn settings = _TranslationsSettingsEn._(_root);
 	late final _TranslationsHomeEn home = _TranslationsHomeEn._(_root);
 	late final _TranslationsWaitTimeDetailsEn waitTimeDetails = _TranslationsWaitTimeDetailsEn._(_root);
 	late final _TranslationsMainEn main = _TranslationsMainEn._(_root);
+}
+
+// Path: settings
+class _TranslationsSettingsEn {
+	_TranslationsSettingsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Settings';
+	String get save => 'Save Settings';
+	late final _TranslationsSettingsSectionsEn sections = _TranslationsSettingsSectionsEn._(_root);
+	late final _TranslationsSettingsAppearanceEn appearance = _TranslationsSettingsAppearanceEn._(_root);
+	late final _TranslationsSettingsDataEn data = _TranslationsSettingsDataEn._(_root);
+	late final _TranslationsSettingsMoreEn more = _TranslationsSettingsMoreEn._(_root);
 }
 
 // Path: home
@@ -83,6 +99,51 @@ class _TranslationsMainEn {
 	};
 	late final _TranslationsMainClustersEn clusters = _TranslationsMainClustersEn._(_root);
 	late final _TranslationsMainDataRemarksEn dataRemarks = _TranslationsMainDataRemarksEn._(_root);
+}
+
+// Path: settings.sections
+class _TranslationsSettingsSectionsEn {
+	_TranslationsSettingsSectionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get appearance => 'Appearance';
+	String get data => 'Data Management';
+	String get more => 'More';
+}
+
+// Path: settings.appearance
+class _TranslationsSettingsAppearanceEn {
+	_TranslationsSettingsAppearanceEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsSettingsAppearanceThemeEn theme = _TranslationsSettingsAppearanceThemeEn._(_root);
+	late final _TranslationsSettingsAppearanceLanguageEn language = _TranslationsSettingsAppearanceLanguageEn._(_root);
+	late final _TranslationsSettingsAppearanceSortingEn sorting = _TranslationsSettingsAppearanceSortingEn._(_root);
+}
+
+// Path: settings.data
+class _TranslationsSettingsDataEn {
+	_TranslationsSettingsDataEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get reset => 'Reset All Settings';
+}
+
+// Path: settings.more
+class _TranslationsSettingsMoreEn {
+	_TranslationsSettingsMoreEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get license => 'Open Source License';
+	String get version => 'App Version';
 }
 
 // Path: home.actions
@@ -183,6 +244,39 @@ class _TranslationsMainDataRemarksEn {
 	]);
 }
 
+// Path: settings.appearance.theme
+class _TranslationsSettingsAppearanceThemeEn {
+	_TranslationsSettingsAppearanceThemeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Display Theme';
+	late final _TranslationsSettingsAppearanceThemeOptionsEn options = _TranslationsSettingsAppearanceThemeOptionsEn._(_root);
+}
+
+// Path: settings.appearance.language
+class _TranslationsSettingsAppearanceLanguageEn {
+	_TranslationsSettingsAppearanceLanguageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Display Language';
+	late final _TranslationsSettingsAppearanceLanguageOptionsEn options = _TranslationsSettingsAppearanceLanguageOptionsEn._(_root);
+}
+
+// Path: settings.appearance.sorting
+class _TranslationsSettingsAppearanceSortingEn {
+	_TranslationsSettingsAppearanceSortingEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Default Sorting';
+	late final _TranslationsSettingsAppearanceSortingOptionsEn options = _TranslationsSettingsAppearanceSortingOptionsEn._(_root);
+}
+
 // Path: home.filter.sorting
 class _TranslationsHomeFilterSortingEn {
 	_TranslationsHomeFilterSortingEn._(this._root);
@@ -195,4 +289,41 @@ class _TranslationsHomeFilterSortingEn {
 	String get nameInDesc => 'Hospital Name (Z-A)';
 	String get timeInAsd => 'Waiting Time (ASD.)';
 	String get timeInDesc => 'Waiting Time (DESC.)';
+}
+
+// Path: settings.appearance.theme.options
+class _TranslationsSettingsAppearanceThemeOptionsEn {
+	_TranslationsSettingsAppearanceThemeOptionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get light => 'Light Theme';
+	String get dark => 'Dark Theme';
+	String get system => 'Follow System';
+}
+
+// Path: settings.appearance.language.options
+class _TranslationsSettingsAppearanceLanguageOptionsEn {
+	_TranslationsSettingsAppearanceLanguageOptionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get zhHK => 'Traidtional Chinese (繁體中文)';
+	String get zhCN => 'Simplified Chinese (简体中文)';
+	String get en => 'English';
+}
+
+// Path: settings.appearance.sorting.options
+class _TranslationsSettingsAppearanceSortingOptionsEn {
+	_TranslationsSettingsAppearanceSortingOptionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get timeASC => 'Waiting Time (ASC.)';
+	String get timeDESC => 'Waiting Time (DESC.)';
+	String get nameASC => 'Hospital Name (A-Z)';
+	String get nameDESC => 'Hospital Name (Z-A)';
 }

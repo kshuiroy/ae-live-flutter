@@ -6,6 +6,7 @@ import 'package:ae_live/data/providers/wait_time_provider.dart';
 import 'package:ae_live/data/repositories/wait_time_repository.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/theme/color_schemes.g.dart';
+import 'package:ae_live/utilities/locale_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -24,12 +25,50 @@ class AELiveApp extends StatefulWidget {
 
 class _AELiveAppState extends State<AELiveApp> {
   ThemeMode _themeMode = ThemeMode.system;
+  bool _localeInitialized = false;
   late SharedPreferences _preferences;
 
   void _init() async {
     _preferences = await SharedPreferences.getInstance();
+
+    // Setting app locale
+    final localePreference =
+        _preferences.getString(Constants.preferenceKeyAppLocale);
+
+    if (localePreference == null) {
+      // Use the device's settings by default
+      AppLocale deviceLocale = AppLocaleUtils.findDeviceLocale();
+
+      if (deviceLocale.languageCode == 'zh') {
+        if (deviceLocale.scriptCode == 'Hans' ||
+            deviceLocale.countryCode == 'CN') {
+          LocaleSettings.setLocaleRaw('zh-CN');
+        } else {
+          LocaleSettings.setLocaleRaw('zh-HK');
+        }
+      } else {
+        LocaleSettings.setLocaleRaw('en');
+      }
+
+      // Store the locale settings to Shared Preference
+      await _preferences.setString(
+        Constants.preferenceKeyAppLocale,
+        LocaleConverter.getLanguageCode(),
+      );
+    } else {
+      debugPrint('Locale: $localePreference');
+      // Use the locale settings stored in Shared Preference
+      LocaleSettings.setLocaleRaw(localePreference);
+    }
+
+    setState(() {
+      _localeInitialized = true;
+    });
+
+    // Setting app theme
     final themePreference =
         _preferences.getString(Constants.preferenceKeyAppTheme);
+
     if (themePreference == null) {
       setState(() {
         _themeMode = ThemeMode.system;
@@ -87,7 +126,7 @@ class _AELiveAppState extends State<AELiveApp> {
           supportedLocales: AppLocaleUtils.supportedLocales,
           localizationsDelegates: GlobalMaterialLocalizations.delegates,
           builder: (context, child) => ResponsiveBreakpoints.builder(
-            child: child!,
+            child: _localeInitialized ? child! : const SizedBox(),
             breakpoints: [
               const Breakpoint(
                 start: 0.0,

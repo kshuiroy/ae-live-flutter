@@ -32,9 +32,25 @@ class _TranslationsZhHk extends Translations {
 	@override late final _TranslationsZhHk _root = this; // ignore: unused_field
 
 	// Translations
+	@override late final _TranslationsSettingsZhHk settings = _TranslationsSettingsZhHk._(_root);
 	@override late final _TranslationsHomeZhHk home = _TranslationsHomeZhHk._(_root);
 	@override late final _TranslationsWaitTimeDetailsZhHk waitTimeDetails = _TranslationsWaitTimeDetailsZhHk._(_root);
 	@override late final _TranslationsMainZhHk main = _TranslationsMainZhHk._(_root);
+}
+
+// Path: settings
+class _TranslationsSettingsZhHk extends _TranslationsSettingsEn {
+	_TranslationsSettingsZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '設定';
+	@override String get save => '儲存設定';
+	@override late final _TranslationsSettingsSectionsZhHk sections = _TranslationsSettingsSectionsZhHk._(_root);
+	@override late final _TranslationsSettingsAppearanceZhHk appearance = _TranslationsSettingsAppearanceZhHk._(_root);
+	@override late final _TranslationsSettingsDataZhHk data = _TranslationsSettingsDataZhHk._(_root);
+	@override late final _TranslationsSettingsMoreZhHk more = _TranslationsSettingsMoreZhHk._(_root);
 }
 
 // Path: home
@@ -79,6 +95,51 @@ class _TranslationsMainZhHk extends _TranslationsMainEn {
 	};
 	@override late final _TranslationsMainClustersZhHk clusters = _TranslationsMainClustersZhHk._(_root);
 	@override late final _TranslationsMainDataRemarksZhHk dataRemarks = _TranslationsMainDataRemarksZhHk._(_root);
+}
+
+// Path: settings.sections
+class _TranslationsSettingsSectionsZhHk extends _TranslationsSettingsSectionsEn {
+	_TranslationsSettingsSectionsZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get appearance => '外觀';
+	@override String get data => '數據管理';
+	@override String get more => '更多';
+}
+
+// Path: settings.appearance
+class _TranslationsSettingsAppearanceZhHk extends _TranslationsSettingsAppearanceEn {
+	_TranslationsSettingsAppearanceZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsSettingsAppearanceThemeZhHk theme = _TranslationsSettingsAppearanceThemeZhHk._(_root);
+	@override late final _TranslationsSettingsAppearanceLanguageZhHk language = _TranslationsSettingsAppearanceLanguageZhHk._(_root);
+	@override late final _TranslationsSettingsAppearanceSortingZhHk sorting = _TranslationsSettingsAppearanceSortingZhHk._(_root);
+}
+
+// Path: settings.data
+class _TranslationsSettingsDataZhHk extends _TranslationsSettingsDataEn {
+	_TranslationsSettingsDataZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get reset => '重設所有設定';
+}
+
+// Path: settings.more
+class _TranslationsSettingsMoreZhHk extends _TranslationsSettingsMoreEn {
+	_TranslationsSettingsMoreZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get license => '開放源代碼授權';
+	@override String get version => '應用程式版本';
 }
 
 // Path: home.actions
@@ -179,6 +240,39 @@ class _TranslationsMainDataRemarksZhHk extends _TranslationsMainDataRemarksEn {
 	]);
 }
 
+// Path: settings.appearance.theme
+class _TranslationsSettingsAppearanceThemeZhHk extends _TranslationsSettingsAppearanceThemeEn {
+	_TranslationsSettingsAppearanceThemeZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '顯示主題';
+	@override late final _TranslationsSettingsAppearanceThemeOptionsZhHk options = _TranslationsSettingsAppearanceThemeOptionsZhHk._(_root);
+}
+
+// Path: settings.appearance.language
+class _TranslationsSettingsAppearanceLanguageZhHk extends _TranslationsSettingsAppearanceLanguageEn {
+	_TranslationsSettingsAppearanceLanguageZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '顯示語言';
+	@override late final _TranslationsSettingsAppearanceLanguageOptionsZhHk options = _TranslationsSettingsAppearanceLanguageOptionsZhHk._(_root);
+}
+
+// Path: settings.appearance.sorting
+class _TranslationsSettingsAppearanceSortingZhHk extends _TranslationsSettingsAppearanceSortingEn {
+	_TranslationsSettingsAppearanceSortingZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '預設排序方式';
+	@override late final _TranslationsSettingsAppearanceSortingOptionsZhHk options = _TranslationsSettingsAppearanceSortingOptionsZhHk._(_root);
+}
+
 // Path: home.filter.sorting
 class _TranslationsHomeFilterSortingZhHk extends _TranslationsHomeFilterSortingEn {
 	_TranslationsHomeFilterSortingZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
@@ -191,4 +285,41 @@ class _TranslationsHomeFilterSortingZhHk extends _TranslationsHomeFilterSortingE
 	@override String get nameInDesc => '醫院名稱（倒序）';
 	@override String get timeInAsd => '等候時間（由短至長）';
 	@override String get timeInDesc => '等候時間（由長至短）';
+}
+
+// Path: settings.appearance.theme.options
+class _TranslationsSettingsAppearanceThemeOptionsZhHk extends _TranslationsSettingsAppearanceThemeOptionsEn {
+	_TranslationsSettingsAppearanceThemeOptionsZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get light => '淺色主題';
+	@override String get dark => '深色主題';
+	@override String get system => '跟隨系統設定';
+}
+
+// Path: settings.appearance.language.options
+class _TranslationsSettingsAppearanceLanguageOptionsZhHk extends _TranslationsSettingsAppearanceLanguageOptionsEn {
+	_TranslationsSettingsAppearanceLanguageOptionsZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get zhHK => '繁體中文';
+	@override String get zhCN => '簡體中文 (简体中文)';
+	@override String get en => '英文 (English)';
+}
+
+// Path: settings.appearance.sorting.options
+class _TranslationsSettingsAppearanceSortingOptionsZhHk extends _TranslationsSettingsAppearanceSortingOptionsEn {
+	_TranslationsSettingsAppearanceSortingOptionsZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get timeASC => '等候時間（由短至長）';
+	@override String get timeDESC => '等候時間（由長至短）';
+	@override String get nameASC => '醫院名稱（順序）';
+	@override String get nameDESC => '醫院名稱（倒序）';
 }

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(TranslationProvider(
-    child: const AELiveApp(),
-  ));
+  runApp(
+    TranslationProvider(
+      child: const AELiveApp(),
+    ),
+  );
 }
