@@ -27,7 +27,7 @@ class _AppScaffoldState extends State<AppScaffold> {
   int _selectedTabIndex = 0;
   late StreamSubscription<AppLocale> _localeStram;
 
-  void _onDestinationSelected(BuildContext context, int index) {
+  void _onDestinationSelected(final BuildContext context, final int index) {
     context.go(tabItems[index].path);
 
     setState(() {
@@ -38,7 +38,7 @@ class _AppScaffoldState extends State<AppScaffold> {
   @override
   void initState() {
     super.initState();
-    _localeStram = LocaleSettings.getLocaleStream().listen((AppLocale locale) {
+    _localeStram = LocaleSettings.getLocaleStream().listen((final AppLocale locale) {
       // Reset BLoC's data when the locale is changed.
       context.read<WaitTimeBloc>().add(WaitTimeReset());
     });
@@ -51,17 +51,17 @@ class _AppScaffoldState extends State<AppScaffold> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           if (ResponsiveBreakpoints.of(context)
-              .largerOrEqualTo(Constants.screenSizeKeyMedium))
+              .largerOrEqualTo(Constants.screenSizeKeyExpanded))
             TabletNavigation(
               selectedIndex: _selectedTabIndex,
-              onDestinationSelected: (int index) =>
+              onDestinationSelected: (final int index) =>
                   _onDestinationSelected(context, index),
             ),
           Expanded(
@@ -70,10 +70,10 @@ class _AppScaffoldState extends State<AppScaffold> {
         ],
       ),
       bottomNavigationBar: ResponsiveBreakpoints.of(context)
-              .equals(Constants.screenSizeKeyCompact)
+              .smallerOrEqualTo(Constants.screenSizeKeyMedium)
           ? PhoneNavigation(
               selectedIndex: _selectedTabIndex,
-              onDestinationSelected: (int index) =>
+              onDestinationSelected: (final int index) =>
                   _onDestinationSelected(context, index),
             )
           : null,

@@ -28,18 +28,44 @@
         "sorting": {
             "title": "Default Sorting",
             "options": {
-                "timeASC": "Waiting Time (ASC.)",
-                "timeDESC": "Waiting Time (DESC.)",
-                "nameASC": "Hospital Name (A-Z)",
-                "nameDESC": "Hospital Name (Z-A)"
+                "nameInAsd": "Hospital Name (A-Z)",
+                "nameInDesc": "Hospital Name (Z-A)",
+                "timeInAsd": "Waiting Time (ASD.)",
+                "timeInDesc": "Waiting Time (DESC.)"
             }
         }
     },
     "data": {
-        "reset": "Reset All Settings"
+        "reset": {
+            "title": "Reset All Settings",
+            "message": "If you've experienced any difficulties while using this app, consider resetting all settings to restore its functionality. Please note that this action will take effect once the app has been restarted.",
+            "buttons": {
+                "cancel": "Cancel",
+                "reset": "Reset"
+            }
+        }
     },
     "more": {
         "license": "Open Source License",
-        "version": "App Version"
+        "about": {
+            "title": "About This App",
+            "items": {
+                "version": "App Version",
+                "dataSource": {
+                    "title": "Data Source",
+                    "value": "DATA.GOV.HK and Hospital Authority"
+                },
+                "appIconSource": {
+                    "title": "App Icon Source",
+                    "value": "Pictogrammers",
+                    "url": "https://pictogrammers.com/"
+                },
+                "imageSource": {
+                    "title": "Image Source",
+                    "value": "unDraw",
+                    "url": "https://undraw.co/license"
+                }
+            }
+        }
     }
 }

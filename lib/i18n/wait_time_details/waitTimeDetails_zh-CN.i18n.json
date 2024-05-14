@@ -4,7 +4,7 @@
     "expectedWaitTime": "预计等候时间（非紧急病人）",
     "actions": {
         "call": "致电医院",
-        "maps": "开启地图"
+        "maps": "查看地图"
     },
     "chartTitle": "过去 6 小时的等候时间",
     "hours": "{value} 小时",
@@ -15,5 +15,6 @@
         "faxNo": "传真号码",
         "emailAddress": "电邮地址",
         "website": "网址"
-    }
+    },
+    "openMaps": "开启地图应用程序"
 }

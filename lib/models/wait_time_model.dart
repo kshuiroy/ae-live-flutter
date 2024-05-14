@@ -1,12 +1,17 @@
 import 'dart:convert';
 
+import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/wait_time_history_model.dart';
 import 'package:flutter/foundation.dart';
 
 class WaitTimeModel {
   WaitTimeModel({
-    required this.institutionName,
-    required this.address,
+    required this.institutionNameTC,
+    required this.institutionNameSC,
+    required this.institutionNameEN,
+    required this.addressTC,
+    required this.addressSC,
+    required this.addressEN,
     required this.contactNo,
     this.faxNo,
     this.emailAddress,
@@ -19,8 +24,41 @@ class WaitTimeModel {
     this.waitTimeHistory,
   });
 
-  final String institutionName;
-  final String address;
+  factory WaitTimeModel.fromMap(final Map<String, dynamic> map) {
+    return WaitTimeModel(
+      institutionNameTC: map['institutionNameTC'] ?? '',
+      institutionNameSC: map['institutionNameSC'] ?? '',
+      institutionNameEN: map['institutionNameEN'] ?? '',
+      addressTC: map['addressTC'] ?? '',
+      addressSC: map['addressSC'] ?? '',
+      addressEN: map['addressEN'] ?? '',
+      contactNo: map['contactNo'] ?? '',
+      faxNo: map['faxNo'],
+      emailAddress: map['emailAddress'],
+      website: map['website'],
+      clusterCode: map['clusterCode']?.toInt() ?? 0,
+      waitTimeText: map['waitTimeText'] ?? '',
+      waitTimeValue: map['waitTimeValue']?.toDouble() ?? 0.0,
+      latitude: map['latitude']?.toDouble() ?? 0.0,
+      longitude: map['longitude']?.toDouble() ?? 0.0,
+      waitTimeHistory: map['waitTimeHistory'] != null
+          ? List<WaitTimeHistoryModel>.from(
+              map['waitTimeHistory']?.map((final Map<String, dynamic> x) =>
+                  WaitTimeHistoryModel.fromMap(x)),
+            )
+          : null,
+    );
+  }
+
+  factory WaitTimeModel.fromJson(final String source) =>
+      WaitTimeModel.fromMap(json.decode(source));
+
+  final String institutionNameTC;
+  final String institutionNameSC;
+  final String institutionNameEN;
+  final String addressTC;
+  final String addressSC;
+  final String addressEN;
   final String contactNo;
   final String? faxNo;
   final String? emailAddress;
@@ -33,22 +71,30 @@ class WaitTimeModel {
   final List<WaitTimeHistoryModel>? waitTimeHistory;
 
   WaitTimeModel copyWith({
-    String? institutionName,
-    String? address,
-    String? contactNo,
-    ValueGetter<String?>? faxNo,
-    ValueGetter<String?>? emailAddress,
-    ValueGetter<String?>? website,
-    int? clusterCode,
-    String? waitTimeText,
-    double? waitTimeValue,
-    double? latitude,
-    double? longitude,
-    ValueGetter<List<WaitTimeHistoryModel>?>? waitTimeHistory,
+    final String? institutionNameTC,
+    final String? institutionNameSC,
+    final String? institutionNameEN,
+    final String? addressTC,
+    final String? addressSC,
+    final String? addressEN,
+    final String? contactNo,
+    final ValueGetter<String?>? faxNo,
+    final ValueGetter<String?>? emailAddress,
+    final ValueGetter<String?>? website,
+    final int? clusterCode,
+    final String? waitTimeText,
+    final double? waitTimeValue,
+    final double? latitude,
+    final double? longitude,
+    final ValueGetter<List<WaitTimeHistoryModel>?>? waitTimeHistory,
   }) {
     return WaitTimeModel(
-      institutionName: institutionName ?? this.institutionName,
-      address: address ?? this.address,
+      institutionNameTC: institutionNameTC ?? this.institutionNameTC,
+      institutionNameSC: institutionNameSC ?? this.institutionNameSC,
+      institutionNameEN: institutionNameEN ?? this.institutionNameEN,
+      addressTC: addressTC ?? this.addressTC,
+      addressSC: addressSC ?? this.addressSC,
+      addressEN: addressEN ?? this.addressEN,
       contactNo: contactNo ?? this.contactNo,
       faxNo: faxNo != null ? faxNo() : this.faxNo,
       emailAddress: emailAddress != null ? emailAddress() : this.emailAddress,
@@ -64,9 +110,13 @@ class WaitTimeModel {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'institutionName': institutionName,
-      'address': address,
+    return <String, dynamic>{
+      'institutionNameTC': institutionNameTC,
+      'institutionNameSC': institutionNameSC,
+      'institutionNameEN': institutionNameEN,
+      'addressTC': addressTC,
+      'addressSC': addressSC,
+      'addressEN': addressEN,
       'contactNo': contactNo,
       'faxNo': faxNo,
       'emailAddress': emailAddress,
@@ -76,47 +126,56 @@ class WaitTimeModel {
       'waitTimeValue': waitTimeValue,
       'latitude': latitude,
       'longitude': longitude,
-      'waitTimeHistory': waitTimeHistory?.map((x) => x.toMap()).toList(),
+      'waitTimeHistory': waitTimeHistory
+          ?.map((final WaitTimeHistoryModel x) => x.toMap())
+          .toList(),
     };
-  }
-
-  factory WaitTimeModel.fromMap(Map<String, dynamic> map) {
-    return WaitTimeModel(
-      institutionName: map['institutionName'] ?? '',
-      address: map['address'] ?? '',
-      contactNo: map['contactNo'] ?? '',
-      faxNo: map['faxNo'],
-      emailAddress: map['emailAddress'],
-      website: map['website'],
-      clusterCode: map['clusterCode']?.toInt() ?? 0,
-      waitTimeText: map['waitTimeText'] ?? '',
-      waitTimeValue: map['waitTimeValue']?.toDouble() ?? 0.0,
-      latitude: map['latitude']?.toDouble() ?? 0.0,
-      longitude: map['longitude']?.toDouble() ?? 0.0,
-      waitTimeHistory: map['waitTimeHistory'] != null
-          ? List<WaitTimeHistoryModel>.from(map['waitTimeHistory']
-              ?.map((x) => WaitTimeHistoryModel.fromMap(x)))
-          : null,
-    );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory WaitTimeModel.fromJson(String source) =>
-      WaitTimeModel.fromMap(json.decode(source));
-
   @override
   String toString() {
-    return 'WaitTimeModel(institutionName: $institutionName, address: $address, contactNo: $contactNo, faxNo: $faxNo, emailAddress: $emailAddress, website: $website, clusterCode: $clusterCode, waitTimeText: $waitTimeText, waitTimeValue: $waitTimeValue, latitude: $latitude, longitude: $longitude, waitTimeHistory: $waitTimeHistory)';
+    return 'WaitTimeModel(institutionNameTC: $institutionNameTC, institutionNameSC: $institutionNameSC, institutionNameEN: $institutionNameEN, addressTC: $addressTC, addressSC: $addressSC, addressEN: $addressEN, contactNo: $contactNo, faxNo: $faxNo, emailAddress: $emailAddress, website: $website, clusterCode: $clusterCode, waitTimeText: $waitTimeText, waitTimeValue: $waitTimeValue, latitude: $latitude, longitude: $longitude, waitTimeHistory: $waitTimeHistory)';
+  }
+
+  String toQueryString() {
+    return '$institutionNameTC $institutionNameSC $institutionNameEN $addressTC $addressSC $addressEN $contactNo $faxNo $emailAddress $website';
+  }
+
+  String get institutionName {
+    switch (LocaleSettings.currentLocale.languageTag) {
+      case 'zh-HK':
+        return institutionNameTC;
+      case 'zh-CN':
+        return institutionNameSC;
+      default:
+        return institutionNameEN;
+    }
+  }
+
+  String get address {
+    switch (LocaleSettings.currentLocale.languageTag) {
+      case 'zh-HK':
+        return addressTC;
+      case 'zh-CN':
+        return addressSC;
+      default:
+        return addressEN;
+    }
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(final Object other) {
     if (identical(this, other)) return true;
 
     return other is WaitTimeModel &&
-        other.institutionName == institutionName &&
-        other.address == address &&
+        other.institutionNameTC == institutionNameTC &&
+        other.institutionNameSC == institutionNameSC &&
+        other.institutionNameEN == institutionNameEN &&
+        other.addressTC == addressTC &&
+        other.addressSC == addressSC &&
+        other.addressEN == addressEN &&
         other.contactNo == contactNo &&
         other.faxNo == faxNo &&
         other.emailAddress == emailAddress &&
@@ -131,8 +190,12 @@ class WaitTimeModel {
 
   @override
   int get hashCode {
-    return institutionName.hashCode ^
-        address.hashCode ^
+    return institutionNameTC.hashCode ^
+        institutionNameSC.hashCode ^
+        institutionNameEN.hashCode ^
+        addressTC.hashCode ^
+        addressSC.hashCode ^
+        addressEN.hashCode ^
         contactNo.hashCode ^
         faxNo.hashCode ^
         emailAddress.hashCode ^

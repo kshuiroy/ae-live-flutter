@@ -1,6 +1,6 @@
 extension DateTimeExtension on DateTime {
-  DateTime roundDown({Duration delta = const Duration(minutes: 15)}) {
+  DateTime roundDown({final Duration delta = const Duration(minutes: 15)}) {
     return DateTime.fromMillisecondsSinceEpoch(
-        millisecondsSinceEpoch - millisecondsSinceEpoch % delta.inMilliseconds);
+        millisecondsSinceEpoch - millisecondsSinceEpoch % delta.inMilliseconds,);
   }
 }

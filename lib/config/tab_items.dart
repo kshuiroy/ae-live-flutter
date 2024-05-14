@@ -1,7 +1,7 @@
 import 'package:ae_live/models/destination_item.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
-final List<DestinationItem> tabItems = [
+final List<DestinationItem> tabItems = <DestinationItem>[
   DestinationItem(
     labelKey: 'home',
     icon: Symbols.home_rounded,

@@ -28,18 +28,44 @@
         "sorting": {
             "title": "默认排序方式",
             "options": {
-                "timeASC": "等候时间（由短至长）",
-                "timeDESC": "等候时间（由长至短）",
-                "nameASC": "医院名称（顺序）",
-                "nameDESC": "医院名称（倒序）"
+                "nameInAsd": "医院英文名称（A-Z）",
+                "nameInDesc": "医院英文名称（Z-A）",
+                "timeInAsd": "等候时间（由短至长）",
+                "timeInDesc": "等候时间（由长至短）"
             }
         }
     },
     "data": {
-        "reset": "重设所有设定"
+        "reset": {
+            "title": "重设所有设定",
+            "message": "如果您在使用此应用程序时遇到任何问题，请考虑重置所有设置以恢复功能。请注意，此操作将在应用程序重新启动后生效。",
+            "buttons": {
+                "cancel": "取消",
+                "reset": "重设"
+            }
+        }
     },
     "more": {
         "license": "开放源代码授权",
-        "version": "应用程序版本"
+        "about": {
+            "title": "关于本应用程序",
+            "items": {
+                "version": "应用程序版本",
+                "dataSource": {
+                    "title": "资料来源",
+                    "value": "资料一线通、医院管理局"
+                },
+                "appIconSource": {
+                    "title": "应用程序标志来源",
+                    "value": "Pictogrammers",
+                    "url": "https://pictogrammers.com/"
+                },
+                "imageSource": {
+                    "title": "插图来源",
+                    "value": "unDraw",
+                    "url": "https://undraw.co/license"
+                }
+            }
+        }
     }
 }

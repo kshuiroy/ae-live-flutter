@@ -17,24 +17,49 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
   }
 
   final WaitTimeRepository repository;
+
+  String? filterKeyword;
+  List<int> filterClusters = <int>[1, 2, 3, 4, 5, 6, 7];
+  WaitTimeSortType filterSortType = WaitTimeSortType.timeInAsd;
+
   late List<WaitTimeModel> _data;
 
   void _onWaitTimeFetchRequested(
-      WaitTimeFetchRequested event, Emitter<WaitTimeState> emit) async {
+      final WaitTimeFetchRequested event, final Emitter<WaitTimeState> emit,) async {
     emit(WaitTimeLoading());
 
     try {
       _data = await repository.getWaitTimeData();
-      _data.sort((a, b) => a.waitTimeValue.compareTo(b.waitTimeValue));
-      emit(WaitTimeSuccess(waitTimeData: _data));
+      // _data.sort((a, b) => a.waitTimeValue.compareTo(b.waitTimeValue));
+
+      final List<WaitTimeModel> processedData =
+          repository.filterAndSortWaitTimeData(
+        _data,
+        name: event.keyword?.trim(),
+        clusters: event.clusters,
+        sortType: event.sortType ?? WaitTimeSortType.timeInAsd,
+      );
+
+      emit(
+        WaitTimeSuccess(
+          filterKeyword: filterKeyword,
+          filterClusters: filterClusters,
+          filterSortType: filterSortType,
+          waitTimeData: processedData,
+        ),
+      );
     } catch (error) {
       emit(WaitTimeFailed(error.toString()));
     }
   }
 
   void _onWaitTimeDataFilter(
-      WaitTimeDataFilter event, Emitter<WaitTimeState> emit) {
+      final WaitTimeDataFilter event, final Emitter<WaitTimeState> emit,) {
     emit(WaitTimeLoading());
+
+    filterKeyword = event.name;
+    filterClusters = event.clusters ?? <int>[1, 2, 3, 4, 5, 6, 7];
+    filterSortType = event.sortType;
 
     final List<WaitTimeModel> processedData =
         repository.filterAndSortWaitTimeData(
@@ -44,10 +69,17 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
       sortType: event.sortType,
     );
 
-    emit(WaitTimeSuccess(waitTimeData: processedData));
+    emit(
+      WaitTimeSuccess(
+        filterKeyword: filterKeyword,
+        filterClusters: filterClusters,
+        filterSortType: filterSortType,
+        waitTimeData: processedData,
+      ),
+    );
   }
 
-  void _onWaitTimeReset(WaitTimeReset event, Emitter<WaitTimeState> emit) {
+  void _onWaitTimeReset(final WaitTimeReset event, final Emitter<WaitTimeState> emit) {
     emit(WaitTimeInitial());
   }
 }

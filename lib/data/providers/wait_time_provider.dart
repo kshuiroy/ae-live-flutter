@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class WaitTimeProvider {
-  final Map<String, String> _waitTimeAPIUrl = {
+  final Map<String, String> _waitTimeAPIUrl = <String, String>{
     'tc': 'https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json',
     'sc': 'https://www.ha.org.hk/opendata/aed/aedwtdata-sc.json',
     'en': 'https://www.ha.org.hk/opendata/aed/aedwtdata-en.json',
@@ -11,13 +11,13 @@ class WaitTimeProvider {
 
   final APIProvider _apiProvider = APIProvider();
 
-  Future<String> getWaitTimeData(String locale) async {
+  Future<String> getWaitTimeData(final String locale) async {
     if (locale != 'tc' && locale != 'sc' && locale != 'en') {
       throw '[WaitTimeProvider::class/getWaitTimeData()] Invalid `locale` value: $locale';
     }
 
     try {
-      final response = await _apiProvider.fetchAPI(
+      final String response = await _apiProvider.fetchAPI(
         url: _waitTimeAPIUrl[locale] ??
             'https://www.ha.org.hk/opendata/aed/aedwtdata-en.json',
       );
@@ -28,37 +28,37 @@ class WaitTimeProvider {
     }
   }
 
-  Future<List<String>> getWaitTimeHistoryData(String locale) async {
+  Future<List<String>> getWaitTimeHistoryData(final String locale) async {
     if (locale != 'tc' && locale != 'sc' && locale != 'en') {
       throw '[WaitTimeProvider::class/getWaitTimeHistoryData()] Invalid `locale` value: $locale';
     }
 
     try {
-      final List<String> responses = [];
+      final List<String> responses = <String>[];
       await Future.wait(
         _getHistoryJobs(locale).map(
-          (job) => job
+          (final Future<String> job) => job
               .then(
-            (value) => responses.add(value),
+            (final String value) => responses.add(value),
           )
-              .catchError((error) {
+              .catchError((final error) {
             debugPrint(error.toString());
 
-            RegExp timeRegExp = RegExp(r'time=(\d{8}-\d{4})');
-            RegExpMatch? timeMatch = timeRegExp.firstMatch(error.toString());
+            final RegExp timeRegExp = RegExp(r'time=(\d{8}-\d{4})');
+            final RegExpMatch? timeMatch = timeRegExp.firstMatch(error.toString());
 
             if (timeMatch != null) {
-              String timeValue = timeMatch.group(1)!;
+              final String timeValue = timeMatch.group(1)!;
 
               // Convert the extracted time string into a DateTime object
-              DateTime timestamp = DateTime.parse(
-                      '${timeValue.substring(0, 8)}T${timeValue.substring(9)}:00')
+              final DateTime timestamp = DateTime.parse(
+                      '${timeValue.substring(0, 8)}T${timeValue.substring(9)}:00',)
                   .subtract(
                 const Duration(minutes: 15),
               );
 
               responses.add(
-                  '{"error":"NOT FOUND","updateTime":"${DateFormat('yyyy-MM-dd HH:mm').format(timestamp)}"}');
+                  '{"error":"NOT FOUND","updateTime":"${DateFormat('yyyy-MM-dd HH:mm').format(timestamp)}"}',);
             } else {
               throw error.toString();
             }
@@ -74,7 +74,7 @@ class WaitTimeProvider {
 
   Future<String> getHospitalInfoData() async {
     try {
-      final response = await _apiProvider.fetchAPI(
+      final String response = await _apiProvider.fetchAPI(
         url: 'https://www.ha.org.hk/opendata/facility-hosp.json',
       );
 
@@ -84,22 +84,22 @@ class WaitTimeProvider {
     }
   }
 
-  List<Future<String>> _getHistoryJobs(String locale,
-      {Duration pastDuration = const Duration(hours: 5, minutes: 45)}) {
+  List<Future<String>> _getHistoryJobs(final String locale,
+      {final Duration pastDuration = const Duration(hours: 5, minutes: 45),}) {
     // if (locale != 'tc' && locale != 'sc' && locale != 'en') {
     //   throw '[WaitTimeProvider::class/_getPastQuarterDateTimeValues()] Invalid `locale` value: $locale';
     // }
 
-    List<Future<String>> requestJobs = [];
+    final List<Future<String>> requestJobs = <Future<String>>[];
 
     // Get the current time
-    DateTime currentTime = DateTime.now();
+    final DateTime currentTime = DateTime.now();
 
     // Calculate the start time, which is 6 hours ago
-    DateTime startTime = currentTime.subtract(pastDuration);
+    final DateTime startTime = currentTime.subtract(pastDuration);
 
     // Calculate the nearest quarter-hour time before the start time
-    int quarterMinutes = startTime.minute ~/ 15;
+    final int quarterMinutes = startTime.minute ~/ 15;
     DateTime nearestQuarterHour = DateTime(
       startTime.year,
       startTime.month,

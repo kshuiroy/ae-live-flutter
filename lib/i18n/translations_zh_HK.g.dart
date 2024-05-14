@@ -62,8 +62,10 @@ class _TranslationsHomeZhHk extends _TranslationsHomeEn {
 	// Translations
 	@override String get title => '急症室等候時間';
 	@override late final _TranslationsHomeActionsZhHk actions = _TranslationsHomeActionsZhHk._(_root);
+	@override String get badgeText => '急症室會優先診治被分流為危殆、危急和緊急的病人。';
 	@override late final _TranslationsHomeRefreshIndicatorZhHk refreshIndicator = _TranslationsHomeRefreshIndicatorZhHk._(_root);
 	@override late final _TranslationsHomeFilterZhHk filter = _TranslationsHomeFilterZhHk._(_root);
+	@override late final _TranslationsHomePromptZhHk prompt = _TranslationsHomePromptZhHk._(_root);
 }
 
 // Path: waitTimeDetails
@@ -78,6 +80,7 @@ class _TranslationsWaitTimeDetailsZhHk extends _TranslationsWaitTimeDetailsEn {
 	@override String get chartTitle => '過去 6 小時的等候時間';
 	@override String get hours => '{value} 小時';
 	@override late final _TranslationsWaitTimeDetailsInfoZhHk info = _TranslationsWaitTimeDetailsInfoZhHk._(_root);
+	@override String get openMaps => '開啟地圖應用程式';
 }
 
 // Path: main
@@ -128,7 +131,7 @@ class _TranslationsSettingsDataZhHk extends _TranslationsSettingsDataEn {
 	@override final _TranslationsZhHk _root; // ignore: unused_field
 
 	// Translations
-	@override String get reset => '重設所有設定';
+	@override late final _TranslationsSettingsDataResetZhHk reset = _TranslationsSettingsDataResetZhHk._(_root);
 }
 
 // Path: settings.more
@@ -139,7 +142,7 @@ class _TranslationsSettingsMoreZhHk extends _TranslationsSettingsMoreEn {
 
 	// Translations
 	@override String get license => '開放源代碼授權';
-	@override String get version => '應用程式版本';
+	@override late final _TranslationsSettingsMoreAboutZhHk about = _TranslationsSettingsMoreAboutZhHk._(_root);
 }
 
 // Path: home.actions
@@ -181,6 +184,19 @@ class _TranslationsHomeFilterZhHk extends _TranslationsHomeFilterEn {
 	@override String get submit => '提交';
 }
 
+// Path: home.prompt
+class _TranslationsHomePromptZhHk extends _TranslationsHomePromptEn {
+	_TranslationsHomePromptZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get noConnection => '沒有網絡連線。';
+	@override String get serverError => '伺服器發生錯誤，請稍後再試。';
+	@override String get noSearchResult => '沒有符合搜尋條件的醫院。';
+	@override String get selectItem => '請在列表中選取一張醫院卡片，以查看醫院的詳情。';
+}
+
 // Path: waitTimeDetails.actions
 class _TranslationsWaitTimeDetailsActionsZhHk extends _TranslationsWaitTimeDetailsActionsEn {
 	_TranslationsWaitTimeDetailsActionsZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
@@ -189,7 +205,7 @@ class _TranslationsWaitTimeDetailsActionsZhHk extends _TranslationsWaitTimeDetai
 
 	// Translations
 	@override String get call => '致電醫院';
-	@override String get maps => '開啟地圖';
+	@override String get maps => '查看地圖';
 }
 
 // Path: waitTimeDetails.info
@@ -238,6 +254,8 @@ class _TranslationsMainDataRemarksZhHk extends _TranslationsMainDataRemarksEn {
 		tapHKD('香港醫生網'),
 		const TextSpan(text: '）。'),
 	]);
+	@override String get pcdUrl => 'https://apps.pcdirectory.gov.hk/mobile/tc';
+	@override String get hkdUrl => 'http://www.thkma.org/our_works/hong_kong_doctors/';
 }
 
 // Path: settings.appearance.theme
@@ -273,6 +291,29 @@ class _TranslationsSettingsAppearanceSortingZhHk extends _TranslationsSettingsAp
 	@override late final _TranslationsSettingsAppearanceSortingOptionsZhHk options = _TranslationsSettingsAppearanceSortingOptionsZhHk._(_root);
 }
 
+// Path: settings.data.reset
+class _TranslationsSettingsDataResetZhHk extends _TranslationsSettingsDataResetEn {
+	_TranslationsSettingsDataResetZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '重設所有設定';
+	@override String get message => '如果您在使用此應用程式時遇到任何問題，請考慮重置所有設置以恢復功能。請注意，此操作將在應用程式重新啟動後生效。';
+	@override late final _TranslationsSettingsDataResetButtonsZhHk buttons = _TranslationsSettingsDataResetButtonsZhHk._(_root);
+}
+
+// Path: settings.more.about
+class _TranslationsSettingsMoreAboutZhHk extends _TranslationsSettingsMoreAboutEn {
+	_TranslationsSettingsMoreAboutZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '關於本應用程式';
+	@override late final _TranslationsSettingsMoreAboutItemsZhHk items = _TranslationsSettingsMoreAboutItemsZhHk._(_root);
+}
+
 // Path: home.filter.sorting
 class _TranslationsHomeFilterSortingZhHk extends _TranslationsHomeFilterSortingEn {
 	_TranslationsHomeFilterSortingZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
@@ -281,8 +322,8 @@ class _TranslationsHomeFilterSortingZhHk extends _TranslationsHomeFilterSortingE
 
 	// Translations
 	@override String get title => '排序';
-	@override String get nameInAsd => '醫院名稱（順序）';
-	@override String get nameInDesc => '醫院名稱（倒序）';
+	@override String get nameInAsd => '醫院英文名稱（A-Z）';
+	@override String get nameInDesc => '醫院英文名稱（Z-A）';
 	@override String get timeInAsd => '等候時間（由短至長）';
 	@override String get timeInDesc => '等候時間（由長至短）';
 }
@@ -318,8 +359,67 @@ class _TranslationsSettingsAppearanceSortingOptionsZhHk extends _TranslationsSet
 	@override final _TranslationsZhHk _root; // ignore: unused_field
 
 	// Translations
-	@override String get timeASC => '等候時間（由短至長）';
-	@override String get timeDESC => '等候時間（由長至短）';
-	@override String get nameASC => '醫院名稱（順序）';
-	@override String get nameDESC => '醫院名稱（倒序）';
+	@override String get nameInAsd => '醫院英文名稱（A-Z）';
+	@override String get nameInDesc => '醫院英文名稱（Z-A）';
+	@override String get timeInAsd => '等候時間（由短至長）';
+	@override String get timeInDesc => '等候時間（由長至短）';
+}
+
+// Path: settings.data.reset.buttons
+class _TranslationsSettingsDataResetButtonsZhHk extends _TranslationsSettingsDataResetButtonsEn {
+	_TranslationsSettingsDataResetButtonsZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get cancel => '取消';
+	@override String get reset => '重設';
+}
+
+// Path: settings.more.about.items
+class _TranslationsSettingsMoreAboutItemsZhHk extends _TranslationsSettingsMoreAboutItemsEn {
+	_TranslationsSettingsMoreAboutItemsZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get version => '應用程式版本';
+	@override late final _TranslationsSettingsMoreAboutItemsDataSourceZhHk dataSource = _TranslationsSettingsMoreAboutItemsDataSourceZhHk._(_root);
+	@override late final _TranslationsSettingsMoreAboutItemsAppIconSourceZhHk appIconSource = _TranslationsSettingsMoreAboutItemsAppIconSourceZhHk._(_root);
+	@override late final _TranslationsSettingsMoreAboutItemsImageSourceZhHk imageSource = _TranslationsSettingsMoreAboutItemsImageSourceZhHk._(_root);
+}
+
+// Path: settings.more.about.items.dataSource
+class _TranslationsSettingsMoreAboutItemsDataSourceZhHk extends _TranslationsSettingsMoreAboutItemsDataSourceEn {
+	_TranslationsSettingsMoreAboutItemsDataSourceZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '資料來源';
+	@override String get value => '資料一線通、醫院管理局';
+}
+
+// Path: settings.more.about.items.appIconSource
+class _TranslationsSettingsMoreAboutItemsAppIconSourceZhHk extends _TranslationsSettingsMoreAboutItemsAppIconSourceEn {
+	_TranslationsSettingsMoreAboutItemsAppIconSourceZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '應用程式標誌來源';
+	@override String get value => 'Pictogrammers';
+	@override String get url => 'https://pictogrammers.com/';
+}
+
+// Path: settings.more.about.items.imageSource
+class _TranslationsSettingsMoreAboutItemsImageSourceZhHk extends _TranslationsSettingsMoreAboutItemsImageSourceEn {
+	_TranslationsSettingsMoreAboutItemsImageSourceZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '插圖來源';
+	@override String get value => 'unDraw';
+	@override String get url => 'https://undraw.co/license';
 }

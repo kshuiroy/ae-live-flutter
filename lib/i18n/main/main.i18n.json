@@ -18,6 +18,8 @@
     },
     "dataRemarks": {
         "title": "Remarks",
-        "content(rich)": "The above data is collated from the waiting time in the past few hours. This is for reference only but not the current estimated waiting time.\n\nA&E Departments need to manage sudden arrival of accident victims and severely-ill patients. We apologise for not being able to provide an accurate estimate of waiting time for patients in general. Please be patient while waiting for consultation.\n\nWaiting time display is capped at 8 hours amid a large number of patients waiting for a long time are being treated in the A&E Department. Patients with minor illnesses can consider seeking alternative medical services from private clinics (as listed in {{tapPCD(Primary Care Directory)}} or {{tapHKD(Hong Kong Doctors Homepage)}})."
+        "content(rich)": "The above data is collated from the waiting time in the past few hours. This is for reference only but not the current estimated waiting time.\n\nA&E Departments need to manage sudden arrival of accident victims and severely-ill patients. We apologise for not being able to provide an accurate estimate of waiting time for patients in general. Please be patient while waiting for consultation.\n\nWaiting time display is capped at 8 hours amid a large number of patients waiting for a long time are being treated in the A&E Department. Patients with minor illnesses can consider seeking alternative medical services from private clinics (as listed in {{tapPCD(Primary Care Directory)}} or {{tapHKD(Hong Kong Doctors Homepage)}}).",
+        "pcdUrl": "https://apps.pcdirectory.gov.hk/mobile/en",
+        "hkdUrl": "http://www.thkma.org/our_works/hong_kong_doctors/"
     }
 }

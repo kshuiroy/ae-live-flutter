@@ -11,6 +11,19 @@ class ClusterModel {
     required this.clusterCode,
   });
 
+  factory ClusterModel.fromMap(final Map<String, dynamic> map) {
+    return ClusterModel(
+      id: map['id'] ?? '',
+      nameTC: map['nameTC'] ?? '',
+      nameSC: map['nameSC'] ?? '',
+      nameEN: map['nameEN'] ?? '',
+      clusterCode: map['clusterCode']?.toInt() ?? -1,
+    );
+  }
+
+  factory ClusterModel.fromJson(final String source) =>
+      ClusterModel.fromMap(json.decode(source));
+
   final String id;
   final String nameTC;
   final String nameSC;
@@ -18,11 +31,11 @@ class ClusterModel {
   final int clusterCode;
 
   ClusterModel copyWith({
-    String? id,
-    String? nameTC,
-    String? nameSC,
-    String? nameEN,
-    int? clusterCode,
+    final String? id,
+    final String? nameTC,
+    final String? nameSC,
+    final String? nameEN,
+    final int? clusterCode,
   }) {
     return ClusterModel(
       id: id ?? this.id,
@@ -34,7 +47,7 @@ class ClusterModel {
   }
 
   Map<String, dynamic> toMap() {
-    return {
+    return <String, dynamic>{
       'id': id,
       'nameTC': nameTC,
       'nameSC': nameSC,
@@ -43,20 +56,7 @@ class ClusterModel {
     };
   }
 
-  factory ClusterModel.fromMap(Map<String, dynamic> map) {
-    return ClusterModel(
-      id: map['id'] ?? '',
-      nameTC: map['nameTC'] ?? '',
-      nameSC: map['nameSC'] ?? '',
-      nameEN: map['nameEN'] ?? '',
-      clusterCode: map['clusterCode']?.toInt() ?? -1,
-    );
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory ClusterModel.fromJson(String source) =>
-      ClusterModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -64,7 +64,7 @@ class ClusterModel {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(final Object other) {
     if (identical(this, other)) return true;
 
     return other is ClusterModel &&

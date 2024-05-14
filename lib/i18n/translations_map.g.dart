@@ -26,17 +26,30 @@ extension on Translations {
 			case 'settings.appearance.language.options.zhCN': return 'Simplified Chinese (简体中文)';
 			case 'settings.appearance.language.options.en': return 'English';
 			case 'settings.appearance.sorting.title': return 'Default Sorting';
-			case 'settings.appearance.sorting.options.timeASC': return 'Waiting Time (ASC.)';
-			case 'settings.appearance.sorting.options.timeDESC': return 'Waiting Time (DESC.)';
-			case 'settings.appearance.sorting.options.nameASC': return 'Hospital Name (A-Z)';
-			case 'settings.appearance.sorting.options.nameDESC': return 'Hospital Name (Z-A)';
-			case 'settings.data.reset': return 'Reset All Settings';
+			case 'settings.appearance.sorting.options.nameInAsd': return 'Hospital Name (A-Z)';
+			case 'settings.appearance.sorting.options.nameInDesc': return 'Hospital Name (Z-A)';
+			case 'settings.appearance.sorting.options.timeInAsd': return 'Waiting Time (ASD.)';
+			case 'settings.appearance.sorting.options.timeInDesc': return 'Waiting Time (DESC.)';
+			case 'settings.data.reset.title': return 'Reset All Settings';
+			case 'settings.data.reset.message': return 'If you\'ve experienced any difficulties while using this app, consider resetting all settings to restore its functionality. Please note that this action will take effect once the app has been restarted.';
+			case 'settings.data.reset.buttons.cancel': return 'Cancel';
+			case 'settings.data.reset.buttons.reset': return 'Reset';
 			case 'settings.more.license': return 'Open Source License';
-			case 'settings.more.version': return 'App Version';
+			case 'settings.more.about.title': return 'About This App';
+			case 'settings.more.about.items.version': return 'App Version';
+			case 'settings.more.about.items.dataSource.title': return 'Data Source';
+			case 'settings.more.about.items.dataSource.value': return 'DATA.GOV.HK and Hospital Authority';
+			case 'settings.more.about.items.appIconSource.title': return 'App Icon Source';
+			case 'settings.more.about.items.appIconSource.value': return 'Pictogrammers';
+			case 'settings.more.about.items.appIconSource.url': return 'https://pictogrammers.com/';
+			case 'settings.more.about.items.imageSource.title': return 'Image Source';
+			case 'settings.more.about.items.imageSource.value': return 'unDraw';
+			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
 			case 'home.title': return 'A&E Waiting Time';
 			case 'home.actions.filter': return 'Filter';
 			case 'home.actions.refresh': return 'Refresh Data';
 			case 'home.actions.search': return 'Search Hospital';
+			case 'home.badgeText': return 'Priority will be accorded to patients triaged as critical, emergency and urgent.';
 			case 'home.refreshIndicator.pullToRefresh': return 'Pull to Refresh';
 			case 'home.refreshIndicator.releaseToRefresh': return 'Release to Refresh';
 			case 'home.refreshIndicator.refreshing': return 'Refreshing...';
@@ -50,9 +63,13 @@ extension on Translations {
 			case 'home.filter.sorting.timeInAsd': return 'Waiting Time (ASD.)';
 			case 'home.filter.sorting.timeInDesc': return 'Waiting Time (DESC.)';
 			case 'home.filter.submit': return 'Submit';
+			case 'home.prompt.noConnection': return 'No internet connection.';
+			case 'home.prompt.serverError': return 'Something went wrong with the server, please try again later.';
+			case 'home.prompt.noSearchResult': return 'There is no hospital matches your search criteria.';
+			case 'home.prompt.selectItem': return 'Please select a hospital card from the list to see the details of the hospital.';
 			case 'waitTimeDetails.expectedWaitTime': return 'Expected Waiting Time (Non-Emergency)';
 			case 'waitTimeDetails.actions.call': return 'Call Hospital';
-			case 'waitTimeDetails.actions.maps': return 'Open Maps';
+			case 'waitTimeDetails.actions.maps': return 'View Maps';
 			case 'waitTimeDetails.chartTitle': return 'Waiting Time of the Past 6 Hours';
 			case 'waitTimeDetails.hours': return '{value}H';
 			case 'waitTimeDetails.info.title': return 'Hospital Info';
@@ -61,6 +78,7 @@ extension on Translations {
 			case 'waitTimeDetails.info.faxNo': return 'Fax No.';
 			case 'waitTimeDetails.info.emailAddress': return 'Email Address';
 			case 'waitTimeDetails.info.website': return 'Website';
+			case 'waitTimeDetails.openMaps': return 'Open Maps Application';
 			case 'main.app_name': return 'A&E Live';
 			case 'main.tabs.home': return 'Home';
 			case 'main.tabs.lists': return 'Lists';
@@ -80,6 +98,8 @@ extension on Translations {
 				tapHKD('Hong Kong Doctors Homepage'),
 				const TextSpan(text: ').'),
 			]);
+			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/en';
+			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
 			default: return null;
 		}
 	}
@@ -102,17 +122,30 @@ extension on _TranslationsZhCn {
 			case 'settings.appearance.language.options.zhCN': return '简体中文';
 			case 'settings.appearance.language.options.en': return '英文 (English)';
 			case 'settings.appearance.sorting.title': return '默认排序方式';
-			case 'settings.appearance.sorting.options.timeASC': return '等候时间（由短至长）';
-			case 'settings.appearance.sorting.options.timeDESC': return '等候时间（由长至短）';
-			case 'settings.appearance.sorting.options.nameASC': return '医院名称（顺序）';
-			case 'settings.appearance.sorting.options.nameDESC': return '医院名称（倒序）';
-			case 'settings.data.reset': return '重设所有设定';
+			case 'settings.appearance.sorting.options.nameInAsd': return '医院英文名称（A-Z）';
+			case 'settings.appearance.sorting.options.nameInDesc': return '医院英文名称（Z-A）';
+			case 'settings.appearance.sorting.options.timeInAsd': return '等候时间（由短至长）';
+			case 'settings.appearance.sorting.options.timeInDesc': return '等候时间（由长至短）';
+			case 'settings.data.reset.title': return '重设所有设定';
+			case 'settings.data.reset.message': return '如果您在使用此应用程序时遇到任何问题，请考虑重置所有设置以恢复功能。请注意，此操作将在应用程序重新启动后生效。';
+			case 'settings.data.reset.buttons.cancel': return '取消';
+			case 'settings.data.reset.buttons.reset': return '重设';
 			case 'settings.more.license': return '开放源代码授权';
-			case 'settings.more.version': return '应用程序版本';
+			case 'settings.more.about.title': return '关于本应用程序';
+			case 'settings.more.about.items.version': return '应用程序版本';
+			case 'settings.more.about.items.dataSource.title': return '资料来源';
+			case 'settings.more.about.items.dataSource.value': return '资料一线通、医院管理局';
+			case 'settings.more.about.items.appIconSource.title': return '应用程序标志来源';
+			case 'settings.more.about.items.appIconSource.value': return 'Pictogrammers';
+			case 'settings.more.about.items.appIconSource.url': return 'https://pictogrammers.com/';
+			case 'settings.more.about.items.imageSource.title': return '插图来源';
+			case 'settings.more.about.items.imageSource.value': return 'unDraw';
+			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
 			case 'home.title': return '急症室等候时间';
 			case 'home.actions.filter': return '筛选医院';
 			case 'home.actions.refresh': return '重新整理';
 			case 'home.actions.search': return '搜寻医院';
+			case 'home.badgeText': return '急症室会优先诊治被分流為危殆、危急和紧急的病人。';
 			case 'home.refreshIndicator.pullToRefresh': return '下拉更新资料';
 			case 'home.refreshIndicator.releaseToRefresh': return '放开即可更新';
 			case 'home.refreshIndicator.refreshing': return '正在更新⋯⋯';
@@ -121,14 +154,18 @@ extension on _TranslationsZhCn {
 			case 'home.refreshIndicator.lastUpdateAt': return '最后更新：%T';
 			case 'home.filter.cluster': return '医院联网';
 			case 'home.filter.sorting.title': return '排序';
-			case 'home.filter.sorting.nameInAsd': return '医院名称（顺序）';
-			case 'home.filter.sorting.nameInDesc': return '医院名称（倒序）';
+			case 'home.filter.sorting.nameInAsd': return '医院英文名称（A-Z）';
+			case 'home.filter.sorting.nameInDesc': return '医院英文名称（Z-A）';
 			case 'home.filter.sorting.timeInAsd': return '等候时间（由短至长）';
 			case 'home.filter.sorting.timeInDesc': return '等候时间（由长至短）';
 			case 'home.filter.submit': return '提交';
+			case 'home.prompt.noConnection': return '没有网络连线。';
+			case 'home.prompt.serverError': return '服务器发生错误，请稍后再试。';
+			case 'home.prompt.noSearchResult': return '没有符合搜寻条件的医院。';
+			case 'home.prompt.selectItem': return '请在列表中选取一张医院卡片，以查看医院的详情。';
 			case 'waitTimeDetails.expectedWaitTime': return '预计等候时间（非紧急病人）';
 			case 'waitTimeDetails.actions.call': return '致电医院';
-			case 'waitTimeDetails.actions.maps': return '开启地图';
+			case 'waitTimeDetails.actions.maps': return '查看地图';
 			case 'waitTimeDetails.chartTitle': return '过去 6 小时的等候时间';
 			case 'waitTimeDetails.hours': return '{value} 小时';
 			case 'waitTimeDetails.info.title': return '医院资料';
@@ -137,6 +174,7 @@ extension on _TranslationsZhCn {
 			case 'waitTimeDetails.info.faxNo': return '传真号码';
 			case 'waitTimeDetails.info.emailAddress': return '电邮地址';
 			case 'waitTimeDetails.info.website': return '网址';
+			case 'waitTimeDetails.openMaps': return '开启地图应用程序';
 			case 'main.app_name': return '急症室现场';
 			case 'main.tabs.home': return '主页';
 			case 'main.tabs.lists': return '目录';
@@ -156,6 +194,8 @@ extension on _TranslationsZhCn {
 				tapHKD('香港医生网'),
 				const TextSpan(text: '）。'),
 			]);
+			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/sc';
+			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
 			default: return null;
 		}
 	}
@@ -178,17 +218,30 @@ extension on _TranslationsZhHk {
 			case 'settings.appearance.language.options.zhCN': return '簡體中文 (简体中文)';
 			case 'settings.appearance.language.options.en': return '英文 (English)';
 			case 'settings.appearance.sorting.title': return '預設排序方式';
-			case 'settings.appearance.sorting.options.timeASC': return '等候時間（由短至長）';
-			case 'settings.appearance.sorting.options.timeDESC': return '等候時間（由長至短）';
-			case 'settings.appearance.sorting.options.nameASC': return '醫院名稱（順序）';
-			case 'settings.appearance.sorting.options.nameDESC': return '醫院名稱（倒序）';
-			case 'settings.data.reset': return '重設所有設定';
+			case 'settings.appearance.sorting.options.nameInAsd': return '醫院英文名稱（A-Z）';
+			case 'settings.appearance.sorting.options.nameInDesc': return '醫院英文名稱（Z-A）';
+			case 'settings.appearance.sorting.options.timeInAsd': return '等候時間（由短至長）';
+			case 'settings.appearance.sorting.options.timeInDesc': return '等候時間（由長至短）';
+			case 'settings.data.reset.title': return '重設所有設定';
+			case 'settings.data.reset.message': return '如果您在使用此應用程式時遇到任何問題，請考慮重置所有設置以恢復功能。請注意，此操作將在應用程式重新啟動後生效。';
+			case 'settings.data.reset.buttons.cancel': return '取消';
+			case 'settings.data.reset.buttons.reset': return '重設';
 			case 'settings.more.license': return '開放源代碼授權';
-			case 'settings.more.version': return '應用程式版本';
+			case 'settings.more.about.title': return '關於本應用程式';
+			case 'settings.more.about.items.version': return '應用程式版本';
+			case 'settings.more.about.items.dataSource.title': return '資料來源';
+			case 'settings.more.about.items.dataSource.value': return '資料一線通、醫院管理局';
+			case 'settings.more.about.items.appIconSource.title': return '應用程式標誌來源';
+			case 'settings.more.about.items.appIconSource.value': return 'Pictogrammers';
+			case 'settings.more.about.items.appIconSource.url': return 'https://pictogrammers.com/';
+			case 'settings.more.about.items.imageSource.title': return '插圖來源';
+			case 'settings.more.about.items.imageSource.value': return 'unDraw';
+			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
 			case 'home.title': return '急症室等候時間';
 			case 'home.actions.filter': return '篩選醫院';
 			case 'home.actions.refresh': return '重新整理';
 			case 'home.actions.search': return '搜尋醫院';
+			case 'home.badgeText': return '急症室會優先診治被分流為危殆、危急和緊急的病人。';
 			case 'home.refreshIndicator.pullToRefresh': return '下拉更新資料';
 			case 'home.refreshIndicator.releaseToRefresh': return '放開即可更新';
 			case 'home.refreshIndicator.refreshing': return '正在更新⋯⋯';
@@ -197,14 +250,18 @@ extension on _TranslationsZhHk {
 			case 'home.refreshIndicator.lastUpdateAt': return '最後更新：%T';
 			case 'home.filter.cluster': return '醫院聯網';
 			case 'home.filter.sorting.title': return '排序';
-			case 'home.filter.sorting.nameInAsd': return '醫院名稱（順序）';
-			case 'home.filter.sorting.nameInDesc': return '醫院名稱（倒序）';
+			case 'home.filter.sorting.nameInAsd': return '醫院英文名稱（A-Z）';
+			case 'home.filter.sorting.nameInDesc': return '醫院英文名稱（Z-A）';
 			case 'home.filter.sorting.timeInAsd': return '等候時間（由短至長）';
 			case 'home.filter.sorting.timeInDesc': return '等候時間（由長至短）';
 			case 'home.filter.submit': return '提交';
+			case 'home.prompt.noConnection': return '沒有網絡連線。';
+			case 'home.prompt.serverError': return '伺服器發生錯誤，請稍後再試。';
+			case 'home.prompt.noSearchResult': return '沒有符合搜尋條件的醫院。';
+			case 'home.prompt.selectItem': return '請在列表中選取一張醫院卡片，以查看醫院的詳情。';
 			case 'waitTimeDetails.expectedWaitTime': return '預計等候時間（非緊急病人）';
 			case 'waitTimeDetails.actions.call': return '致電醫院';
-			case 'waitTimeDetails.actions.maps': return '開啟地圖';
+			case 'waitTimeDetails.actions.maps': return '查看地圖';
 			case 'waitTimeDetails.chartTitle': return '過去 6 小時的等候時間';
 			case 'waitTimeDetails.hours': return '{value} 小時';
 			case 'waitTimeDetails.info.title': return '醫院資料';
@@ -213,6 +270,7 @@ extension on _TranslationsZhHk {
 			case 'waitTimeDetails.info.faxNo': return '傳真號碼';
 			case 'waitTimeDetails.info.emailAddress': return '電郵地址';
 			case 'waitTimeDetails.info.website': return '網址';
+			case 'waitTimeDetails.openMaps': return '開啟地圖應用程式';
 			case 'main.app_name': return '急症室現場';
 			case 'main.tabs.home': return '主頁';
 			case 'main.tabs.lists': return '目錄';
@@ -232,6 +290,8 @@ extension on _TranslationsZhHk {
 				tapHKD('香港醫生網'),
 				const TextSpan(text: '）。'),
 			]);
+			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/tc';
+			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
 			default: return null;
 		}
 	}

@@ -28,18 +28,44 @@
         "sorting": {
             "title": "預設排序方式",
             "options": {
-                "timeASC": "等候時間（由短至長）",
-                "timeDESC": "等候時間（由長至短）",
-                "nameASC": "醫院名稱（順序）",
-                "nameDESC": "醫院名稱（倒序）"
+                "nameInAsd": "醫院英文名稱（A-Z）",
+                "nameInDesc": "醫院英文名稱（Z-A）",
+                "timeInAsd": "等候時間（由短至長）",
+                "timeInDesc": "等候時間（由長至短）"
             }
         }
     },
     "data": {
-        "reset": "重設所有設定"
+        "reset": {
+            "title": "重設所有設定",
+            "message": "如果您在使用此應用程式時遇到任何問題，請考慮重置所有設置以恢復功能。請注意，此操作將在應用程式重新啟動後生效。",
+            "buttons": {
+                "cancel": "取消",
+                "reset": "重設"
+            }
+        }
     },
     "more": {
         "license": "開放源代碼授權",
-        "version": "應用程式版本"
+        "about": {
+            "title": "關於本應用程式",
+            "items": {
+                "version": "應用程式版本",
+                "dataSource": {
+                    "title": "資料來源",
+                    "value": "資料一線通、醫院管理局"
+                },
+                "appIconSource": {
+                    "title": "應用程式標誌來源",
+                    "value": "Pictogrammers",
+                    "url": "https://pictogrammers.com/"
+                },
+                "imageSource": {
+                    "title": "插圖來源",
+                    "value": "unDraw",
+                    "url": "https://undraw.co/license"
+                }
+            }
+        }
     }
 }

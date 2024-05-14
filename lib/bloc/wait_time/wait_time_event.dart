@@ -5,7 +5,17 @@ sealed class WaitTimeEvent {}
 
 final class WaitTimeReset extends WaitTimeEvent {}
 
-final class WaitTimeFetchRequested extends WaitTimeEvent {}
+final class WaitTimeFetchRequested extends WaitTimeEvent {
+  WaitTimeFetchRequested({
+    this.keyword,
+    this.clusters,
+    this.sortType,
+  });
+
+  final String? keyword;
+  final List<int>? clusters;
+  final WaitTimeSortType? sortType;
+}
 
 final class WaitTimeDataFilter extends WaitTimeEvent {
   WaitTimeDataFilter({

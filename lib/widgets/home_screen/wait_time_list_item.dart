@@ -1,5 +1,6 @@
 import 'package:ae_live/config/clusters.dart';
 import 'package:ae_live/config/constants.dart';
+import 'package:ae_live/models/cluster_model.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
@@ -19,16 +20,17 @@ class WaitTimeListItem extends StatelessWidget {
 
   String _getClusterText() {
     return clusters
-        .firstWhere((element) => element.clusterCode == data.clusterCode)
+        .firstWhere((final ClusterModel element) =>
+            element.clusterCode == data.clusterCode)
         .clusterText;
   }
 
-  Map<String, dynamic> _getCardConfig(BuildContext context) {
+  Map<String, dynamic> _getCardConfig(final BuildContext context) {
     final CustomColors colorScheme =
         Theme.of(context).extension<CustomColors>()!;
 
     if (data.waitTimeValue > 0.0 && data.waitTimeValue < 3.0) {
-      return {
+      return <String, dynamic>{
         'containerColor': colorScheme.waitQuickContainer,
         'iconColor': colorScheme.waitQuick,
         'icon': Symbols.keyboard_double_arrow_down_rounded,
@@ -36,7 +38,7 @@ class WaitTimeListItem extends StatelessWidget {
     }
 
     if (data.waitTimeValue >= 3.0 && data.waitTimeValue < 5.0) {
-      return {
+      return <String, dynamic>{
         'containerColor': colorScheme.waitNormalContainer,
         'iconColor': colorScheme.waitNormal,
         'icon': Symbols.keyboard_arrow_down_rounded,
@@ -44,14 +46,14 @@ class WaitTimeListItem extends StatelessWidget {
     }
 
     if (data.waitTimeValue >= 5.0 && data.waitTimeValue < 7.0) {
-      return {
+      return <String, dynamic>{
         'containerColor': colorScheme.waitSlowContainer,
         'iconColor': colorScheme.waitSlow,
         'icon': Symbols.keyboard_arrow_up_rounded,
       };
     }
 
-    return {
+    return <String, dynamic>{
       'containerColor': colorScheme.waitSlowestContainer,
       'iconColor': colorScheme.waitSlowest,
       'icon': Symbols.keyboard_double_arrow_up_rounded,
@@ -59,22 +61,25 @@ class WaitTimeListItem extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     final Map<String, dynamic> cardConfig = _getCardConfig(context);
 
-    return Card(
+    return Card.filled(
       color: cardConfig['containerColor'],
-      elevation: 0.0,
       margin: EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: () {
           if (ResponsiveBreakpoints.of(context)
-                  .largerOrEqualTo(Constants.screenSizeKeyExpanded) &&
+                  .largerOrEqualTo(Constants.screenSizeKeyMedium) &&
               onTapExpanded != null) {
             onTapExpanded!(data);
           } else {
+            if (onTapExpanded != null) {
+              onTapExpanded!(data);
+            }
+
             context.push(
               '/wait-time/details',
               extra: data,
@@ -84,9 +89,7 @@ class WaitTimeListItem extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: <Widget>[
               Icon(
                 cardConfig['icon'],
                 size: 24.0,
@@ -100,10 +103,9 @@ class WaitTimeListItem extends StatelessWidget {
               ),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
-                  children: [
+                  children: <Widget>[
                     Text(
                       _getClusterText(),
                       style: textTheme.bodyMedium?.copyWith(
@@ -116,50 +118,6 @@ class WaitTimeListItem extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   crossAxisAlignment: CrossAxisAlignment.center,
-                    //   children: [
-                    //     const Icon(
-                    //       Symbols.location_on_rounded,
-                    //       size: 20.0,
-                    //       fill: 0.0,
-                    //       weight: 200.0,
-                    //       opticalSize: 20.0,
-                    //     ),
-                    //     const SizedBox(
-                    //       width: 8.0,
-                    //     ),
-                    //     Expanded(
-                    //       child: Text(
-                    //         data.address,
-                    //         style: textTheme.bodyMedium,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   crossAxisAlignment: CrossAxisAlignment.center,
-                    //   children: [
-                    //     const Icon(
-                    //       Symbols.call_rounded,
-                    //       size: 20.0,
-                    //       fill: 0.0,
-                    //       weight: 200.0,
-                    //       opticalSize: 20.0,
-                    //     ),
-                    //     const SizedBox(
-                    //       width: 8.0,
-                    //     ),
-                    //     Expanded(
-                    //       child: Text(
-                    //         data.contactNo,
-                    //         style: textTheme.bodyMedium,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                     Text(
                       data.waitTimeText,
                       style: textTheme.bodyLarge,
@@ -174,7 +132,7 @@ class WaitTimeListItem extends StatelessWidget {
                 Symbols.chevron_right_rounded,
                 size: 24.0,
                 fill: 0.0,
-                weight: 200.0,
+                weight: 400.0,
                 opticalSize: 24.0,
               ),
             ],

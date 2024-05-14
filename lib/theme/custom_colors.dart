@@ -52,33 +52,33 @@ class CustomColors extends ThemeExtension<CustomColors> {
 
   @override
   CustomColors copyWith({
-    Color? sourceWaitquick,
-    Color? waitquick,
-    Color? onWaitquick,
-    Color? waitquickContainer,
-    Color? onWaitquickContainer,
-    Color? sourceWaitSlowest,
-    Color? waitSlowest,
-    Color? onWaitSlowest,
-    Color? waitSlowestContainer,
-    Color? onWaitSlowestContainer,
-    Color? sourceWaitNormal,
-    Color? waitNormal,
-    Color? onWaitNormal,
-    Color? waitNormalContainer,
-    Color? onWaitNormalContainer,
-    Color? sourceWaitSlow,
-    Color? waitSlow,
-    Color? onWaitSlow,
-    Color? waitSlowContainer,
-    Color? onWaitSlowContainer,
+    final Color? sourceWaitquick,
+    final Color? waitQuick,
+    final Color? onWaitQuick,
+    final Color? waitQuickContainer,
+    final Color? onWaitQuickContainer,
+    final Color? sourceWaitSlowest,
+    final Color? waitSlowest,
+    final Color? onWaitSlowest,
+    final Color? waitSlowestContainer,
+    final Color? onWaitSlowestContainer,
+    final Color? sourceWaitNormal,
+    final Color? waitNormal,
+    final Color? onWaitNormal,
+    final Color? waitNormalContainer,
+    final Color? onWaitNormalContainer,
+    final Color? sourceWaitSlow,
+    final Color? waitSlow,
+    final Color? onWaitSlow,
+    final Color? waitSlowContainer,
+    final Color? onWaitSlowContainer,
   }) {
     return CustomColors(
       sourceWaitquick: sourceWaitquick ?? this.sourceWaitquick,
-      waitQuick: waitquick ?? this.waitQuick,
-      onWaitQuick: onWaitquick ?? this.onWaitQuick,
-      waitQuickContainer: waitquickContainer ?? this.waitQuickContainer,
-      onWaitQuickContainer: onWaitquickContainer ?? this.onWaitQuickContainer,
+      waitQuick: waitQuick ?? this.waitQuick,
+      onWaitQuick: onWaitQuick ?? this.onWaitQuick,
+      waitQuickContainer: waitQuickContainer ?? this.waitQuickContainer,
+      onWaitQuickContainer: onWaitQuickContainer ?? this.onWaitQuickContainer,
       sourceWaitSlowest: sourceWaitSlowest ?? this.sourceWaitSlowest,
       waitSlowest: waitSlowest ?? this.waitSlowest,
       onWaitSlowest: onWaitSlowest ?? this.onWaitSlowest,
@@ -100,7 +100,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   }
 
   @override
-  CustomColors lerp(ThemeExtension<CustomColors>? other, double t) {
+  CustomColors lerp(final ThemeExtension<CustomColors>? other, final double t) {
     if (other is! CustomColors) {
       return this;
     }

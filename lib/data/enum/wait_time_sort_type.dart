@@ -4,3 +4,14 @@ enum WaitTimeSortType {
   nameInAsd,
   nameInDesc,
 }
+
+WaitTimeSortType toWaitTimeSortType(final String? typeString) {
+  if (typeString == null || typeString.isEmpty) {
+    return WaitTimeSortType.timeInAsd;
+  }
+
+  return WaitTimeSortType.values.firstWhere(
+    (final WaitTimeSortType element) => element.toString().split('.').last == typeString,
+    orElse: () => WaitTimeSortType.timeInAsd,
+  );
+}

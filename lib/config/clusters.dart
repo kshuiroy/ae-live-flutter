@@ -1,6 +1,6 @@
 import 'package:ae_live/models/cluster_model.dart';
 
-final List<ClusterModel> clusters = [
+final List<ClusterModel> clusters = <ClusterModel>[
   ClusterModel(
     id: '3d306206-aaf3-47a7-a10f-7d75fbf26ba8',
     nameTC: '港島東醫院聯網',

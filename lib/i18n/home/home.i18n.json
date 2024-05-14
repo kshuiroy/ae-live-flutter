@@ -7,6 +7,7 @@
         "refresh": "Refresh Data",
         "search": "Search Hospital"
     },
+    "badgeText": "Priority will be accorded to patients triaged as critical, emergency and urgent.",
     "refreshIndicator": {
         "pullToRefresh": "Pull to Refresh",
         "releaseToRefresh": "Release to Refresh",
@@ -25,5 +26,11 @@
             "timeInDesc": "Waiting Time (DESC.)"
         },
         "submit": "Submit"
+    },
+    "prompt": {
+        "noConnection": "No internet connection.",
+        "serverError": "Something went wrong with the server, please try again later.",
+        "noSearchResult": "There is no hospital matches your search criteria.",
+        "selectItem": "Please select a hospital card from the list to see the details of the hospital."
     }
 }

@@ -1,4 +1,4 @@
-package com.kshrsoftware.ae_live
+package com.kshrsoftware.aelive
 
 import io.flutter.embedding.android.FlutterActivity
 

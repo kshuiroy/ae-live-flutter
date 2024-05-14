@@ -7,6 +7,7 @@
         "refresh": "重新整理",
         "search": "搜尋醫院"
     },
+    "badgeText": "急症室會優先診治被分流為危殆、危急和緊急的病人。",
     "refreshIndicator": {
         "pullToRefresh": "下拉更新資料",
         "releaseToRefresh": "放開即可更新",
@@ -19,11 +20,17 @@
         "cluster": "醫院聯網",
         "sorting": {
             "title": "排序",
-            "nameInAsd": "醫院名稱（順序）",
-            "nameInDesc": "醫院名稱（倒序）",
+            "nameInAsd": "醫院英文名稱（A-Z）",
+            "nameInDesc": "醫院英文名稱（Z-A）",
             "timeInAsd": "等候時間（由短至長）",
             "timeInDesc": "等候時間（由長至短）"
         },
         "submit": "提交"
+    },
+    "prompt": {
+        "noConnection": "沒有網絡連線。",
+        "serverError": "伺服器發生錯誤，請稍後再試。",
+        "noSearchResult": "沒有符合搜尋條件的醫院。",
+        "selectItem": "請在列表中選取一張醫院卡片，以查看醫院的詳情。"
     }
 }

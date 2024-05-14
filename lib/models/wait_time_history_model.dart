@@ -9,31 +9,7 @@ class WaitTimeHistoryModel {
     this.waitTimeValue,
   });
 
-  final DateTime timestamp;
-  final String? waitTimeText;
-  final double? waitTimeValue;
-
-  WaitTimeHistoryModel copyWith({
-    DateTime? timestamp,
-    String? waitTimeText,
-    double? waitTimeValue,
-  }) {
-    return WaitTimeHistoryModel(
-      timestamp: timestamp ?? this.timestamp,
-      waitTimeText: waitTimeText,
-      waitTimeValue: waitTimeValue,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'timestamp': timestamp.millisecondsSinceEpoch,
-      'waitTimeText': waitTimeText,
-      'waitTimeValue': waitTimeValue,
-    };
-  }
-
-  factory WaitTimeHistoryModel.fromMap(Map<String, dynamic> map) {
+  factory WaitTimeHistoryModel.fromMap(final Map<String, dynamic> map) {
     final bool waitTimeIsOverType =
         (map['topWait'] as String).startsWith('超過') ||
             (map['topWait'] as String).startsWith('超过') ||
@@ -43,22 +19,47 @@ class WaitTimeHistoryModel {
       timestamp: DateTimeConverter.convertWaitTime(map['updateTime'] ?? ''),
       waitTimeText: map['topWait'] ?? '',
       waitTimeValue: double.parse(
-              (map['topWait'] as String).replaceAll(RegExp(r'[^0-9]'), '')) +
+            (map['topWait'] as String).replaceAll(RegExp(r'[^0-9]'), ''),
+          ) +
           (waitTimeIsOverType ? 0.5 : 0.0),
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory WaitTimeHistoryModel.fromJson(String source) =>
+  factory WaitTimeHistoryModel.fromJson(final String source) =>
       WaitTimeHistoryModel.fromMap(json.decode(source));
+
+  final DateTime timestamp;
+  final String? waitTimeText;
+  final double? waitTimeValue;
+
+  WaitTimeHistoryModel copyWith({
+    final DateTime? timestamp,
+    final String? waitTimeText,
+    final double? waitTimeValue,
+  }) {
+    return WaitTimeHistoryModel(
+      timestamp: timestamp ?? this.timestamp,
+      waitTimeText: waitTimeText,
+      waitTimeValue: waitTimeValue,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'timestamp': timestamp.millisecondsSinceEpoch,
+      'waitTimeText': waitTimeText,
+      'waitTimeValue': waitTimeValue,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 
   @override
   String toString() =>
       'WaitTimeHistoryModel(timestamp: $timestamp, waitTimeText: $waitTimeText, waitTimeValue: $waitTimeValue)';
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(final Object other) {
     if (identical(this, other)) return true;
 
     return other is WaitTimeHistoryModel &&

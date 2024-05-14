@@ -13,6 +13,21 @@ class HospitalInfoModel {
     this.website,
   });
 
+  factory HospitalInfoModel.fromMap(final Map<String, dynamic> map) {
+    return HospitalInfoModel(
+      nameTC: map['nameTC'] ?? '',
+      nameSC: map['nameSC'] ?? '',
+      nameEN: map['nameEN'] ?? '',
+      contactNo: map['contactNo'] ?? '',
+      faxNo: map['faxNo'],
+      emailAddress: map['emailAddress'],
+      website: map['website'],
+    );
+  }
+
+  factory HospitalInfoModel.fromJson(final String source) =>
+      HospitalInfoModel.fromMap(json.decode(source));
+
   final String nameTC;
   final String nameSC;
   final String nameEN;
@@ -22,13 +37,13 @@ class HospitalInfoModel {
   final String? website;
 
   HospitalInfoModel copyWith({
-    String? nameTC,
-    String? nameSC,
-    String? nameEN,
-    String? contactNo,
-    ValueGetter<String?>? faxNo,
-    ValueGetter<String?>? emailAddress,
-    ValueGetter<String?>? website,
+    final String? nameTC,
+    final String? nameSC,
+    final String? nameEN,
+    final String? contactNo,
+    final ValueGetter<String?>? faxNo,
+    final ValueGetter<String?>? emailAddress,
+    final ValueGetter<String?>? website,
   }) {
     return HospitalInfoModel(
       nameTC: nameTC ?? this.nameTC,
@@ -42,7 +57,7 @@ class HospitalInfoModel {
   }
 
   Map<String, dynamic> toMap() {
-    return {
+    return <String, dynamic>{
       'nameTC': nameTC,
       'nameSC': nameSC,
       'nameEN': nameEN,
@@ -53,22 +68,7 @@ class HospitalInfoModel {
     };
   }
 
-  factory HospitalInfoModel.fromMap(Map<String, dynamic> map) {
-    return HospitalInfoModel(
-      nameTC: map['nameTC'] ?? '',
-      nameSC: map['nameSC'] ?? '',
-      nameEN: map['nameEN'] ?? '',
-      contactNo: map['contactNo'] ?? '',
-      faxNo: map['faxNo'],
-      emailAddress: map['emailAddress'],
-      website: map['website'],
-    );
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory HospitalInfoModel.fromJson(String source) =>
-      HospitalInfoModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -76,7 +76,7 @@ class HospitalInfoModel {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(final Object other) {
     if (identical(this, other)) return true;
 
     return other is HospitalInfoModel &&

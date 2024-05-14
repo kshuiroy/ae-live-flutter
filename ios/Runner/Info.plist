@@ -14,12 +14,12 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-    <key>CFBundleLocalizations</key>
-    <array>
-        <string>en</string>
-        <string>zh-HK</string>
-        <string>zh-Hans-CN</string>
-    </array>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>zh-HK</string>
+		<string>zh-Hans-CN</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>ae_live</string>
 	<key>CFBundlePackageType</key>
@@ -33,6 +33,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>tel</string>
+		<string>mailto</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

@@ -1,15 +1,30 @@
+import 'dart:math';
+
+import 'package:ae_live/artworks/no_search_result.dart';
+import 'package:ae_live/artworks/select_item_from_list.dart';
+import 'package:ae_live/artworks/server_error.dart';
 import 'package:ae_live/bloc/wait_time/wait_time_bloc.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/data/enum/wait_time_sort_type.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/screens/wait_time_details_screen.dart';
-import 'package:ae_live/widgets/wait_time/wait_time_list_item.dart';
+import 'package:ae_live/widgets/core/responsive_dialog.dart';
+import 'package:ae_live/widgets/home_screen/cluster_options_modal.dart';
+import 'package:ae_live/widgets/home_screen/filter_sort_button.dart';
+import 'package:ae_live/widgets/home_screen/frosted_glass_search_header.dart';
+import 'package:ae_live/widgets/home_screen/search_text_field.dart';
+import 'package:ae_live/widgets/home_screen/sorting_options_modal.dart';
+import 'package:ae_live/widgets/home_screen/wait_time_list_item.dart';
+import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,17 +34,84 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late SharedPreferences _preferences;
   late EasyRefreshController _refreshController;
   WaitTimeModel? _selectedWaitTime;
+  bool _isLoading = false;
+
+  final TextEditingController _searchTextController = TextEditingController();
+  String? _searchKeyword;
+  late WaitTimeSortType _dataSortType;
+  List<int> _dataClusters = <int>[1, 2, 3, 4, 5, 6, 7];
+
+  void _init() async {
+    _preferences = await SharedPreferences.getInstance();
+    setState(() {
+      _dataSortType = toWaitTimeSortType(
+        _preferences.getString(Constants.preferenceKeyDefaultSorting),
+      );
+    });
+  }
+
+  void _onUpdateSearchResult(final BuildContext context) {
+    context.read<WaitTimeBloc>().add(
+          WaitTimeDataFilter(
+            name: _searchKeyword,
+            sortType: _dataSortType,
+            clusters: _dataClusters,
+          ),
+        );
+  }
+
+  void _showDataFilterSortModal(final BuildContext context,
+      {required final Widget child}) {
+    if (ResponsiveBreakpoints.of(context)
+        .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
+      showDialog(
+        context: context,
+        useRootNavigator: true,
+        builder: (final BuildContext context) {
+          return ResponsiveDialog(
+            child: child,
+          );
+        },
+      );
+    } else {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        useRootNavigator: true,
+        builder: (final BuildContext context) {
+          return child;
+        },
+      );
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    // context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
+    _init();
+
     _refreshController = EasyRefreshController(
       controlFinishLoad: true,
       controlFinishRefresh: true,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((final _) {
+      final WaitTimeState blocState = context.read<WaitTimeBloc>().state;
+
+      if (blocState is WaitTimeInitial) {
+        // Fetch wait time data if there is no data stored befored.
+        context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
+      } else if (blocState is WaitTimeSuccess) {
+        // Reset all filters and sorting to default after user go back from
+        // other screens.
+        context.read<WaitTimeBloc>().add(
+              WaitTimeDataFilter(),
+            );
+      }
+    });
   }
 
   @override
@@ -39,203 +121,316 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     if (ResponsiveBreakpoints.of(context)
-        .largerOrEqualTo(Constants.screenSizeKeyExpanded)) {
+        .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
+      final bool isMediumSize = ResponsiveBreakpoints.of(context)
+          .smallerOrEqualTo(Constants.screenSizeKeyMedium);
+
       return Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           Expanded(
-            flex: 3,
-            child: _getWaitTimeListPane(context),
+            flex: isMediumSize ? 1 : 3,
+            child: _buildWaitTimeListPane(context),
+          ),
+          const VerticalDivider(
+            width: 1.0,
+            thickness: 1.0,
           ),
           Expanded(
-            flex: 4,
+            flex: isMediumSize ? 1 : 4,
             child: _selectedWaitTime != null
                 ? WaitTimeDetailsScreen(
                     data: _selectedWaitTime!,
                   )
-                : const SizedBox(),
+                : PromptWithArtwork(
+                    artwork: SelectItemFromList(
+                      height: isMediumSize ? 320.0 : 400.0,
+                      width: isMediumSize ? 320.0 : 400.0,
+                    ),
+                    promptText: t.home.prompt.selectItem,
+                  ),
           ),
         ],
       );
     }
 
-    return _getWaitTimeListPane(context);
+    return LayoutBuilder(
+      builder: (final BuildContext context, final BoxConstraints constraints) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: min(constraints.maxWidth, 560.0),
+              ),
+              child: _buildWaitTimeListPane(context),
+            ),
+          ],
+        );
+      },
+    );
   }
 
-  Widget _getWaitTimeListPane(BuildContext context) {
-    final t = Translations.of(context);
+  Widget _buildWaitTimeListPane(final BuildContext context) {
+    final Translations t = Translations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    final bool isNarrow = ResponsiveBreakpoints.of(context)
+        .smallerOrEqualTo(Constants.screenSizeKeyMedium);
 
-    return BlocBuilder<WaitTimeBloc, WaitTimeState>(
-      builder: (context, state) {
-        if (state is WaitTimeInitial) {
-          context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
-        }
-
-        if (state is WaitTimeFailed) {
-          return Center(
-            child: Text(
-              state.errorMessage,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          );
-        }
-
-        if (state is! WaitTimeSuccess) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
-        }
-
-        return SafeArea(
+    return NestedScrollView(
+      floatHeaderSlivers: true,
+      headerSliverBuilder:
+          (final BuildContext context, final bool innerBoxIsScrolled) =>
+              <Widget>[
+        FrostedGlassSearchHeader(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.symmetric(
-                  horizontal: ResponsiveBreakpoints.of(context)
-                          .largerOrEqualTo(Constants.screenSizeKeyMedium)
-                      ? 24.0
-                      : 16.0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<WaitTimeBloc>().add(
-                              WaitTimeDataFilter(name: 'ch'),
-                            );
-                      },
-                      child: const Text('Name'),
-                    ),
-                    const SizedBox(
-                      width: 8.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<WaitTimeBloc>().add(
-                              WaitTimeDataFilter(clusters: const [1, 2, 7]),
-                            );
-                      },
-                      child: const Text('Clusters'),
-                    ),
-                    const SizedBox(
-                      width: 8.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<WaitTimeBloc>().add(
-                              WaitTimeDataFilter(
-                                  sortType: WaitTimeSortType.nameInDesc),
-                            );
-                      },
-                      child: const Text('Sort'),
-                    ),
-                    const SizedBox(
-                      width: 8.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        context
-                            .read<WaitTimeBloc>()
-                            .add(WaitTimeFetchRequested());
-                      },
-                      child: const Text('Refresh'),
-                    ),
-                    const SizedBox(
-                      width: 8.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<WaitTimeBloc>().add(
-                              WaitTimeDataFilter(),
-                            );
-                      },
-                      child: const Text('Reset'),
-                    ),
-                  ],
-                ),
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              SearchTextField(
+                controller: _searchTextController,
+                enabled: !_isLoading,
+                onChange: (final String value) {
+                  setState(() {
+                    _searchKeyword = value;
+                  });
+
+                  _onUpdateSearchResult(context);
+                },
               ),
-              Expanded(
-                child: EasyRefresh(
-                  clipBehavior: Clip.none,
-                  controller: _refreshController,
-                  header: ClassicHeader(
-                    dragText: t.home.refreshIndicator.pullToRefresh,
-                    armedText: t.home.refreshIndicator.releaseToRefresh,
-                    readyText: t.home.refreshIndicator.refreshing,
-                    processingText: t.home.refreshIndicator.refreshing,
-                    processedText: t.home.refreshIndicator.dataUpdated,
-                    failedText: t.home.refreshIndicator.failedToRefresh,
-                    messageText: t.home.refreshIndicator.lastUpdateAt,
-                  ),
-                  onRefresh: () {
-                    context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
-                    _refreshController.finishRefresh();
-                  },
-                  child: ListView.separated(
-                    padding: const EdgeInsets.all(16.0),
-                    itemBuilder: (context, index) {
-                      if (index == state.waitTimeData.length) {
-                        return Text.rich(
-                          t.main.dataRemarks.content(
-                            tapPCD: (text) => TextSpan(
-                                text: text,
-                                style: const TextStyle(
-                                  color: Colors.blue,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    debugPrint('Tapped "$text"');
-                                  }),
-                            tapHKD: (text) => TextSpan(
-                                text: text,
-                                style: const TextStyle(
-                                  color: Colors.blue,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    debugPrint('Tapped "$text"');
-                                  }),
-                          ),
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium
-                                        ?.color
-                                        ?.withAlpha(160),
-                                  ),
-                        );
-                      }
-                      return WaitTimeListItem(
-                        data: state.waitTimeData[index],
-                        onTapExpanded: (data) {
-                          setState(() {
-                            _selectedWaitTime = data;
-                          });
-                        },
+              const SizedBox(
+                height: 8.0,
+              ),
+              Row(
+                children: <Widget>[
+                  FilterSortButton(
+                    icon: Symbols.sort_rounded,
+                    label: t.home.filter.sorting.title,
+                    enabled: !_isLoading,
+                    onPressed: () {
+                      _showDataFilterSortModal(
+                        context,
+                        child: SortingOptionsModal(
+                          defaultOption: _dataSortType,
+                          onUpdate: (final WaitTimeSortType sortType) {
+                            setState(() {
+                              _dataSortType = sortType;
+                            });
+
+                            _onUpdateSearchResult(context);
+                          },
+                        ),
                       );
                     },
-                    separatorBuilder: (_, __) {
-                      return const SizedBox(
-                        height: 16.0,
+                  ),
+                  FilterSortButton(
+                    icon: Symbols.filter_list_rounded,
+                    label: t.home.filter.cluster,
+                    enabled: !_isLoading,
+                    onPressed: () {
+                      _showDataFilterSortModal(
+                        context,
+                        child: ClusterOptionsModal(
+                          defaultOptions: _dataClusters,
+                          onUpdate: (final List<int> clusters) {
+                            setState(() {
+                              _dataClusters = clusters;
+                            });
+
+                            _onUpdateSearchResult(context);
+                          },
+                        ),
                       );
                     },
-                    itemCount: state.waitTimeData.length + 1,
                   ),
-                ),
+                ],
               ),
             ],
           ),
-        );
-      },
+        ),
+      ],
+      body: BlocConsumer<WaitTimeBloc, WaitTimeState>(
+        listener: (final BuildContext context, final WaitTimeState state) {
+          setState(() {
+            _isLoading = state is WaitTimeLoading;
+          });
+
+          if (state is WaitTimeLoading) {
+            setState(() {
+              _selectedWaitTime = null;
+            });
+          }
+        },
+        builder: (final BuildContext context, final WaitTimeState state) {
+          // if (state is WaitTimeInitial) {
+          //   context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
+          // }
+
+          if (state is WaitTimeFailed) {
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).padding.bottom,
+              ),
+              child: PromptWithArtwork(
+                artwork: ServerError(
+                  height: isNarrow ? 320.0 : 400.0,
+                  width: isNarrow ? 320.0 : 400.0,
+                ),
+                promptText: t.home.prompt.serverError,
+              ),
+            );
+          }
+
+          if (state is! WaitTimeSuccess) {
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
+
+          if (state.waitTimeData.isEmpty) {
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).padding.bottom,
+              ),
+              child: PromptWithArtwork(
+                artwork: NoSearchResult(
+                  height: isNarrow ? 320.0 : 400.0,
+                  width: isNarrow ? 320.0 : 400.0,
+                ),
+                promptText: t.home.prompt.noSearchResult,
+              ),
+            );
+          }
+
+          final double scrollViewPaddingX = ResponsiveBreakpoints.of(context)
+                  .largerOrEqualTo(Constants.screenSizeKeyMedium)
+              ? 24.0
+              : 16.0;
+
+          return EasyRefresh(
+            clipBehavior: Clip.none,
+            controller: _refreshController,
+            header: ClassicHeader(
+              dragText: t.home.refreshIndicator.pullToRefresh,
+              armedText: t.home.refreshIndicator.releaseToRefresh,
+              readyText: t.home.refreshIndicator.refreshing,
+              processingText: t.home.refreshIndicator.refreshing,
+              processedText: t.home.refreshIndicator.dataUpdated,
+              failedText: t.home.refreshIndicator.failedToRefresh,
+              messageText: t.home.refreshIndicator.lastUpdateAt,
+            ),
+            onRefresh: () {
+              context.read<WaitTimeBloc>().add(
+                    WaitTimeFetchRequested(
+                      keyword: _searchKeyword,
+                      clusters: _dataClusters,
+                      sortType: _dataSortType,
+                    ),
+                  );
+              _refreshController.finishRefresh();
+            },
+            child: ListView.separated(
+              padding: EdgeInsets.only(
+                // top: 16.0,
+                right: scrollViewPaddingX,
+                bottom: MediaQuery.of(context).padding.bottom + 16.0,
+                left: scrollViewPaddingX,
+              ),
+              itemBuilder: (final BuildContext context, final int index) {
+                if (index == 0) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 8.0,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Symbols.info_rounded,
+                          color: colorScheme.error,
+                          size: 24.0,
+                          fill: 0.0,
+                          weight: 200.0,
+                          opticalSize: 24.0,
+                        ),
+                        const SizedBox(
+                          width: 16.0,
+                        ),
+                        Expanded(
+                          child: Text(
+                            t.home.badgeText,
+                            style: textTheme.bodyLarge?.copyWith(
+                              color: colorScheme.error,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                if (index == state.waitTimeData.length + 1) {
+                  return Text.rich(
+                    t.main.dataRemarks.content(
+                      tapPCD: (final String text) => TextSpan(
+                        text: text,
+                        style: const TextStyle(
+                          color: Colors.blue,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () async {
+                            await launchUrl(
+                              Uri.parse(t.main.dataRemarks.pcdUrl),
+                              mode: LaunchMode.inAppBrowserView,
+                            );
+                          },
+                      ),
+                      tapHKD: (final String text) => TextSpan(
+                        text: text,
+                        style: const TextStyle(
+                          color: Colors.blue,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () async {
+                            await launchUrl(
+                              Uri.parse(t.main.dataRemarks.hkdUrl),
+                              mode: LaunchMode.inAppBrowserView,
+                            );
+                          },
+                      ),
+                    ),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.color
+                              ?.withAlpha(160),
+                        ),
+                  );
+                }
+                return WaitTimeListItem(
+                  data: state.waitTimeData[index - 1],
+                  onTapExpanded: (final WaitTimeModel data) {
+                    setState(() {
+                      _selectedWaitTime = data;
+                    });
+                  },
+                );
+              },
+              separatorBuilder: (final _, final __) {
+                return const SizedBox(
+                  height: 16.0,
+                );
+              },
+              itemCount: state.waitTimeData.length + 2,
+            ),
+          );
+        },
+      ),
     );
   }
 }

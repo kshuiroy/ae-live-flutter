@@ -9,8 +9,8 @@ class ListsScreen extends StatefulWidget {
 
 class _ListsScreenState extends State<ListsScreen> {
   @override
-  Widget build(BuildContext context) {
-    return Center(
+  Widget build(final BuildContext context) {
+    return const Center(
       child: Text('Lists'),
     );
   }

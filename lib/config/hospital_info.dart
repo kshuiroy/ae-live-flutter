@@ -1,6 +1,6 @@
 import 'package:ae_live/models/hospital_info_model.dart';
 
-final List<HospitalInfoModel> hospitalInfo = [
+final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
   HospitalInfoModel(
     nameTC: '雅麗氏何妙齡那打素醫院',
     nameSC: '雅丽氏何妙龄那打素医院',
@@ -17,7 +17,6 @@ final List<HospitalInfoModel> hospitalInfo = [
     contactNo: '3408 5678',
     faxNo: '2785 5755',
     emailAddress: 'cmc.enq@ha.org.hk',
-    website: null,
   ),
   HospitalInfoModel(
     nameTC: '廣華醫院',
@@ -44,7 +43,6 @@ final List<HospitalInfoModel> hospitalInfo = [
     contactNo: '3467 7000',
     faxNo: '3467 7004',
     emailAddress: 'nlth.enquiry@ha.org.hk',
-    website: null,
   ),
   HospitalInfoModel(
     nameTC: '瑪嘉烈醫院',
@@ -53,7 +51,6 @@ final List<HospitalInfoModel> hospitalInfo = [
     contactNo: '2990 1111',
     faxNo: '2786 3629',
     emailAddress: 'pmh.enquiry@ha.org.hk',
-    website: null,
   ),
   HospitalInfoModel(
     nameTC: '博愛醫院',
@@ -116,7 +113,6 @@ final List<HospitalInfoModel> hospitalInfo = [
     contactNo: '2986 2100',
     faxNo: '2981 9050',
     emailAddress: 'sjh_enquiry@ha.org.hk',
-    website: null,
   ),
   HospitalInfoModel(
     nameTC: '將軍澳醫院',
@@ -125,7 +121,6 @@ final List<HospitalInfoModel> hospitalInfo = [
     contactNo: '2208 0111',
     faxNo: '2177 0161',
     emailAddress: 'tkoh.enquiry@ha.org.hk',
-    website: null,
   ),
   HospitalInfoModel(
     nameTC: '屯門醫院',
@@ -161,6 +156,5 @@ final List<HospitalInfoModel> hospitalInfo = [
     contactNo: '2417 8383',
     faxNo: '2414 8562',
     emailAddress: 'ych.enquiry@ha.org.hk',
-    website: null,
   ),
 ];

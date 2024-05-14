@@ -8,8 +8,8 @@ class SettingsOptionModel<T> {
   final T value;
 
   SettingsOptionModel<T> copyWith({
-    String? title,
-    T? value,
+    final String? title,
+    final T? value,
   }) {
     return SettingsOptionModel<T>(
       title: title ?? this.title,
@@ -21,7 +21,7 @@ class SettingsOptionModel<T> {
   String toString() => 'SettingsOptionModel(title: $title, value: $value)';
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(final Object other) {
     if (identical(this, other)) return true;
 
     return other is SettingsOptionModel<T> &&

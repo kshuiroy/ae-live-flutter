@@ -3,25 +3,36 @@ import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/config/theme_map.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/settings_option_model.dart';
-import 'package:ae_live/widgets/settings/responsive_settings_pane.dart';
+import 'package:ae_live/widgets/settings_screen/settings_option_screen_base.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DisplayThemeSettings extends StatefulWidget {
-  const DisplayThemeSettings({super.key});
+class DisplayThemeSettingsScreen extends StatefulWidget {
+  const DisplayThemeSettingsScreen({
+    super.key,
+    this.disableAutoGoBack = false,
+  });
+
+  final bool disableAutoGoBack;
 
   @override
-  State<DisplayThemeSettings> createState() => _DisplayThemeSettingsState();
+  State<DisplayThemeSettingsScreen> createState() =>
+      _DisplayThemeSettingsScreenState();
 }
 
-class _DisplayThemeSettingsState extends State<DisplayThemeSettings> {
+class _DisplayThemeSettingsScreenState
+    extends State<DisplayThemeSettingsScreen> {
   ThemeMode? _defaultTheme;
   late SharedPreferences _preferences;
 
   void _init() async {
     _preferences = await SharedPreferences.getInstance();
-    final themePreference =
+
+    // Get the theme preference from [SharedPreferences].
+    final String? themePreference =
         _preferences.getString(Constants.preferenceKeyAppTheme);
+
+    // Initialize the default selected option.
     if (themePreference == null) {
       setState(() {
         _defaultTheme = ThemeMode.system;
@@ -34,12 +45,14 @@ class _DisplayThemeSettingsState extends State<DisplayThemeSettings> {
     }
   }
 
-  void _onSaveTheme(ThemeMode mode) {
+  void _onSaveTheme(final ThemeMode mode) {
     // Update the app theme
     AELiveApp.of(context).updateTheme(mode);
 
-    // Dismiss the bottom sheet
-    Navigator.of(context).pop();
+    if (!widget.disableAutoGoBack) {
+      // Go back to the previous screen after the setting is saved.
+      Navigator.of(context).pop();
+    }
   }
 
   @override
@@ -49,10 +62,10 @@ class _DisplayThemeSettingsState extends State<DisplayThemeSettings> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final t = Translations.of(context);
+  Widget build(final BuildContext context) {
+    final Translations t = Translations.of(context);
 
-    final List<SettingsOptionModel<ThemeMode>> themeOptions = [
+    final List<SettingsOptionModel<ThemeMode>> themeOptions = <SettingsOptionModel<ThemeMode>>[
       SettingsOptionModel(
         title: t.settings.appearance.theme.options.light,
         value: ThemeMode.light,
@@ -71,8 +84,7 @@ class _DisplayThemeSettingsState extends State<DisplayThemeSettings> {
       return const SizedBox();
     }
 
-    // Render the settings pane when the [_defaultTheme] is initialized.
-    return ResponsiveSettingsPane<ThemeMode>(
+    return SettingsOptionScreenBase<ThemeMode>(
       title: t.settings.appearance.theme.title,
       options: themeOptions,
       defaultOption: _defaultTheme!,

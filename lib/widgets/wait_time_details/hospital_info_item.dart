@@ -17,7 +17,7 @@ class HospitalInfoItem extends StatelessWidget {
   final void Function()? onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     if (onTap != null) {
       return InkWell(
         onTap: onTap,
@@ -28,7 +28,7 @@ class HospitalInfoItem extends StatelessWidget {
     return _getHospitalInfoWidget(context);
   }
 
-  Widget _getHospitalInfoWidget(BuildContext context) {
+  Widget _getHospitalInfoWidget(final BuildContext context) {
     // final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
 
@@ -37,9 +37,7 @@ class HospitalInfoItem extends StatelessWidget {
         vertical: 8.0,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        children: <Widget>[
           Icon(
             icon,
             // color: colorScheme.primary,
@@ -53,9 +51,8 @@ class HospitalInfoItem extends StatelessWidget {
           ),
           Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Text(
                   title,
                   style: textTheme.bodyLarge?.copyWith(

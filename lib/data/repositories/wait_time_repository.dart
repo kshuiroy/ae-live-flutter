@@ -5,6 +5,8 @@ import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/config/hospital_info.dart';
 import 'package:ae_live/data/enum/wait_time_sort_type.dart';
 import 'package:ae_live/data/providers/wait_time_provider.dart';
+import 'package:ae_live/models/cluster_model.dart';
+import 'package:ae_live/models/hospital_info_model.dart';
 import 'package:ae_live/models/wait_time_history_model.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/utilities/date_time_converter.dart';
@@ -21,24 +23,23 @@ class WaitTimeRepository {
   Future<List<WaitTimeModel>> getWaitTimeData() async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
     final String currentLocale = LocaleConverter.getAPILocaleCode(
-      languageCode: preferences.getString(Constants.preferenceKeyAppLocale),
-    );
+        // languageCode: LocaleSettings.currentLocale.languageTag,
+        );
 
     try {
       late String waitTimeData;
       late List<String> waitTimeHistoryData;
       late String hospitalInfoData;
 
-      await Future.wait([
+      await Future.wait(<Future<Object>>[
         provider
             .getWaitTimeData(currentLocale)
-            .then((response) => waitTimeData = response),
-        provider
-            .getWaitTimeHistoryData(currentLocale)
-            .then((responses) => waitTimeHistoryData = responses),
+            .then((final String response) => waitTimeData = response),
+        provider.getWaitTimeHistoryData(currentLocale).then(
+            (final List<String> responses) => waitTimeHistoryData = responses),
         provider
             .getHospitalInfoData()
-            .then((response) => hospitalInfoData = response),
+            .then((final String response) => hospitalInfoData = response),
       ]);
 
       final waitTimeDataJson = json.decode(waitTimeData);
@@ -47,21 +48,24 @@ class WaitTimeRepository {
       final Map<String, List<WaitTimeHistoryModel>> waitTimeHistoryMap =
           _processHistoryData(waitTimeHistoryData);
 
-      final List<WaitTimeModel> results = [];
+      final List<WaitTimeModel> results = <WaitTimeModel>[];
 
-      for (var item in waitTimeDataJson['waitTime']) {
+      for (final item in waitTimeDataJson['waitTime']) {
         final String infoLocaleKey =
             currentLocale == 'en' ? 'eng' : currentLocale;
 
         // Special handling for St. John Hospital due to the inconsistent name
         // between different API.
-        final hospitalInfoItem = hospitalInfoDataJson.firstWhere((element) =>
-            item['hospName'] == 'St John Hospital' &&
-                element['institution_eng'] == 'St. John Hospital' ||
-            element['institution_$infoLocaleKey'] == item['hospName']);
+        final hospitalInfoItem = hospitalInfoDataJson.firstWhere(
+          (final element) =>
+              item['hospName'] == 'St John Hospital' &&
+                  element['institution_eng'] == 'St. John Hospital' ||
+              element['institution_$infoLocaleKey'] == item['hospName'],
+        );
 
-        final hospitalContactInfoItem = hospitalInfo.firstWhere(
-          (element) =>
+        final HospitalInfoModel hospitalContactInfoItem =
+            hospitalInfo.firstWhere(
+          (final HospitalInfoModel element) =>
               element.nameEN == item['hospName'] ||
               element.nameSC == item['hospName'] ||
               element.nameTC == item['hospName'],
@@ -74,19 +78,26 @@ class WaitTimeRepository {
 
         results.add(
           WaitTimeModel(
-            institutionName: hospitalInfoItem['institution_$infoLocaleKey'],
-            address: hospitalInfoItem['address_$infoLocaleKey'],
+            institutionNameTC: hospitalInfoItem['institution_tc'],
+            institutionNameSC: hospitalInfoItem['institution_sc'],
+            institutionNameEN: hospitalInfoItem['institution_eng'],
+            addressTC: hospitalInfoItem['address_tc'],
+            addressSC: hospitalInfoItem['address_sc'],
+            addressEN: hospitalInfoItem['address_eng'],
             contactNo: hospitalContactInfoItem.contactNo,
             faxNo: hospitalContactInfoItem.faxNo,
             emailAddress: hospitalContactInfoItem.emailAddress,
             website: hospitalContactInfoItem.website,
             clusterCode: clusters
-                .firstWhere((element) =>
-                    element.nameEN == hospitalInfoItem['cluster_eng'])
+                .firstWhere(
+                  (final ClusterModel element) =>
+                      element.nameEN == hospitalInfoItem['cluster_eng'],
+                )
                 .clusterCode,
             waitTimeText: item['topWait'],
-            waitTimeValue: double.parse((item['topWait'] as String)
-                    .replaceAll(RegExp(r'[^0-9]'), '')) +
+            waitTimeValue: double.parse(
+                  (item['topWait'] as String).replaceAll(RegExp(r'[^0-9]'), ''),
+                ) +
                 (waitTimeIsOverType ? 0.5 : 0.0),
             latitude: hospitalInfoItem['latitude'],
             longitude: hospitalInfoItem['longitude'],
@@ -95,19 +106,25 @@ class WaitTimeRepository {
         );
       }
 
-      return filterAndSortWaitTimeData(results);
+      return filterAndSortWaitTimeData(
+        results,
+        sortType: toWaitTimeSortType(
+          preferences.getString(Constants.preferenceKeyDefaultSorting),
+        ),
+      );
     } catch (error) {
       throw error.toString();
     }
   }
 
   Map<String, List<WaitTimeHistoryModel>> _processHistoryData(
-      List<String> data) {
+    final List<String> data,
+  ) {
     // Convert List<String> to List<Map<String, dynamic>>
-    List<Map<String, dynamic>> dataMapList = [];
+    final List<Map<String, dynamic>> dataMapList = <Map<String, dynamic>>[];
 
-    for (String jsonString in data) {
-      Map<String, dynamic> jsonMap = json.decode(jsonString);
+    for (final String jsonString in data) {
+      final Map<String, dynamic> jsonMap = json.decode(jsonString);
       dataMapList.add(jsonMap);
     }
 
@@ -115,36 +132,39 @@ class WaitTimeRepository {
     // not sorted in the [WaitTimeProvider] because we need to inject a custom
     // object when the request is failed.
     dataMapList.sort(
-        (a, b) => DateTimeConverter.convertWaitTime(a['updateTime']).compareTo(
-              DateTimeConverter.convertWaitTime(b['updateTime']),
-            ));
+      (final Map<String, dynamic> a, final Map<String, dynamic> b) =>
+          DateTimeConverter.convertWaitTime(a['updateTime']).compareTo(
+        DateTimeConverter.convertWaitTime(b['updateTime']),
+      ),
+    );
 
-    Map<String, List<WaitTimeHistoryModel>> groupedData = {};
+    final Map<String, List<WaitTimeHistoryModel>> groupedData =
+        <String, List<WaitTimeHistoryModel>>{};
 
-    for (var entry in dataMapList) {
+    for (final Map<String, dynamic> entry in dataMapList) {
       if (entry['error'] != null) {
-        groupedData.forEach((key, value) {
+        groupedData.forEach(
+            (final String key, final List<WaitTimeHistoryModel> value) {
           value.add(
             WaitTimeHistoryModel(
               timestamp:
                   DateFormat('yyyy-MM-dd HH:mm').parse(entry['updateTime']),
               waitTimeText: '',
-              waitTimeValue: null,
             ),
           );
         });
       } else {
-        List<dynamic> waitTimes = entry['waitTime'];
-        String updateTime = entry['updateTime'];
+        final List<dynamic> waitTimes = entry['waitTime'];
+        final String updateTime = entry['updateTime'];
 
-        for (var waitTime in waitTimes) {
-          String hospName = waitTime['hospName'];
-          String topWait = waitTime['topWait'];
+        for (final waitTime in waitTimes) {
+          final String hospName = waitTime['hospName'];
+          final String topWait = waitTime['topWait'];
 
-          groupedData.putIfAbsent(hospName, () => []);
+          groupedData.putIfAbsent(hospName, () => <WaitTimeHistoryModel>[]);
           groupedData[hospName]?.add(
             WaitTimeHistoryModel.fromMap(
-              {
+              <String, String>{
                 'topWait': topWait,
                 'updateTime': updateTime,
               },
@@ -158,57 +178,71 @@ class WaitTimeRepository {
   }
 
   List<WaitTimeModel> filterAndSortWaitTimeData(
-    List<WaitTimeModel> data, {
-    String? name,
-    List<int>? clusters,
-    WaitTimeSortType sortType = WaitTimeSortType.timeInAsd,
+    final List<WaitTimeModel> data, {
+    final String? name,
+    final List<int>? clusters,
+    final WaitTimeSortType sortType = WaitTimeSortType.timeInAsd,
   }) {
-    List<WaitTimeModel> results = data
-        .where((element) =>
-            element.institutionName
-                .toLowerCase()
-                .contains((name ?? '').toLowerCase()) &&
-            ((clusters ?? []).isNotEmpty
-                ? clusters!.contains(element.clusterCode)
-                : true))
+    final List<WaitTimeModel> results = data
+        .where(
+          (final WaitTimeModel element) =>
+              element
+                  .toQueryString()
+                  .toLowerCase()
+                  .contains((name ?? '').toLowerCase()) &&
+              ((clusters ?? <int>[]).isNotEmpty
+                  ? clusters!.contains(element.clusterCode)
+                  : true),
+        )
         .toList();
 
     results.sort(
-      (a, b) => sortType == WaitTimeSortType.nameInAsd
-          ? _sortByNameInAsd(a, b)
-          : sortType == WaitTimeSortType.nameInDesc
-              ? _sortByNameInDesc(a, b)
-              : sortType == WaitTimeSortType.timeInDesc
-                  ? _sortByTimeInDesc(a, b)
-                  : _sortByTimeInAsd(a, b),
+      (final WaitTimeModel a, final WaitTimeModel b) =>
+          sortType == WaitTimeSortType.nameInAsd
+              ? _sortByNameInAsd(a, b)
+              : sortType == WaitTimeSortType.nameInDesc
+                  ? _sortByNameInDesc(a, b)
+                  : sortType == WaitTimeSortType.timeInDesc
+                      ? _sortByTimeInDesc(a, b)
+                      : _sortByTimeInAsd(a, b),
     );
 
     return results;
   }
 
-  int _sortByNameInAsd(WaitTimeModel a, WaitTimeModel b) {
-    return a.institutionName.compareTo(b.institutionName);
+  /// Sort data by hospital name (A-Z)
+  int _sortByNameInAsd(final WaitTimeModel a, final WaitTimeModel b) {
+    return a.institutionNameEN.compareTo(b.institutionNameEN);
   }
 
-  int _sortByNameInDesc(WaitTimeModel a, WaitTimeModel b) {
-    return b.institutionName.compareTo(a.institutionName);
+  /// Sort data by hospital name (Z-A)
+  int _sortByNameInDesc(final WaitTimeModel a, final WaitTimeModel b) {
+    return b.institutionNameEN.compareTo(a.institutionNameEN);
   }
 
-  int _sortByTimeInAsd(WaitTimeModel a, WaitTimeModel b) {
-    int compareTime = a.waitTimeValue.compareTo(b.waitTimeValue);
+  /// Sort data by the waiting time in ascending order.
+  ///
+  /// If the waiting time of two hospitals are the same, then sort them by
+  /// hospital name (A-Z).
+  int _sortByTimeInAsd(final WaitTimeModel a, final WaitTimeModel b) {
+    final int compareTime = a.waitTimeValue.compareTo(b.waitTimeValue);
     if (compareTime != 0) {
       return compareTime;
     }
 
-    return a.institutionName.compareTo(b.institutionName);
+    return a.institutionNameEN.compareTo(b.institutionNameEN);
   }
 
-  int _sortByTimeInDesc(WaitTimeModel a, WaitTimeModel b) {
-    int compareTime = b.waitTimeValue.compareTo(a.waitTimeValue);
+  /// Sort data by the waiting time in descending order.
+  ///
+  /// If the waiting time of two hospitals are the same, then sort them by
+  /// hospital name (A-Z).
+  int _sortByTimeInDesc(final WaitTimeModel a, final WaitTimeModel b) {
+    final int compareTime = b.waitTimeValue.compareTo(a.waitTimeValue);
     if (compareTime != 0) {
       return compareTime;
     }
 
-    return a.institutionName.compareTo(b.institutionName);
+    return a.institutionNameEN.compareTo(b.institutionNameEN);
   }
 }

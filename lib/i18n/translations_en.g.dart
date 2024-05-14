@@ -66,8 +66,10 @@ class _TranslationsHomeEn {
 	// Translations
 	String get title => 'A&E Waiting Time';
 	late final _TranslationsHomeActionsEn actions = _TranslationsHomeActionsEn._(_root);
+	String get badgeText => 'Priority will be accorded to patients triaged as critical, emergency and urgent.';
 	late final _TranslationsHomeRefreshIndicatorEn refreshIndicator = _TranslationsHomeRefreshIndicatorEn._(_root);
 	late final _TranslationsHomeFilterEn filter = _TranslationsHomeFilterEn._(_root);
+	late final _TranslationsHomePromptEn prompt = _TranslationsHomePromptEn._(_root);
 }
 
 // Path: waitTimeDetails
@@ -82,6 +84,7 @@ class _TranslationsWaitTimeDetailsEn {
 	String get chartTitle => 'Waiting Time of the Past 6 Hours';
 	String get hours => '{value}H';
 	late final _TranslationsWaitTimeDetailsInfoEn info = _TranslationsWaitTimeDetailsInfoEn._(_root);
+	String get openMaps => 'Open Maps Application';
 }
 
 // Path: main
@@ -132,7 +135,7 @@ class _TranslationsSettingsDataEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get reset => 'Reset All Settings';
+	late final _TranslationsSettingsDataResetEn reset = _TranslationsSettingsDataResetEn._(_root);
 }
 
 // Path: settings.more
@@ -143,7 +146,7 @@ class _TranslationsSettingsMoreEn {
 
 	// Translations
 	String get license => 'Open Source License';
-	String get version => 'App Version';
+	late final _TranslationsSettingsMoreAboutEn about = _TranslationsSettingsMoreAboutEn._(_root);
 }
 
 // Path: home.actions
@@ -185,6 +188,19 @@ class _TranslationsHomeFilterEn {
 	String get submit => 'Submit';
 }
 
+// Path: home.prompt
+class _TranslationsHomePromptEn {
+	_TranslationsHomePromptEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get noConnection => 'No internet connection.';
+	String get serverError => 'Something went wrong with the server, please try again later.';
+	String get noSearchResult => 'There is no hospital matches your search criteria.';
+	String get selectItem => 'Please select a hospital card from the list to see the details of the hospital.';
+}
+
 // Path: waitTimeDetails.actions
 class _TranslationsWaitTimeDetailsActionsEn {
 	_TranslationsWaitTimeDetailsActionsEn._(this._root);
@@ -193,7 +209,7 @@ class _TranslationsWaitTimeDetailsActionsEn {
 
 	// Translations
 	String get call => 'Call Hospital';
-	String get maps => 'Open Maps';
+	String get maps => 'View Maps';
 }
 
 // Path: waitTimeDetails.info
@@ -242,6 +258,8 @@ class _TranslationsMainDataRemarksEn {
 		tapHKD('Hong Kong Doctors Homepage'),
 		const TextSpan(text: ').'),
 	]);
+	String get pcdUrl => 'https://apps.pcdirectory.gov.hk/mobile/en';
+	String get hkdUrl => 'http://www.thkma.org/our_works/hong_kong_doctors/';
 }
 
 // Path: settings.appearance.theme
@@ -275,6 +293,29 @@ class _TranslationsSettingsAppearanceSortingEn {
 	// Translations
 	String get title => 'Default Sorting';
 	late final _TranslationsSettingsAppearanceSortingOptionsEn options = _TranslationsSettingsAppearanceSortingOptionsEn._(_root);
+}
+
+// Path: settings.data.reset
+class _TranslationsSettingsDataResetEn {
+	_TranslationsSettingsDataResetEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Reset All Settings';
+	String get message => 'If you\'ve experienced any difficulties while using this app, consider resetting all settings to restore its functionality. Please note that this action will take effect once the app has been restarted.';
+	late final _TranslationsSettingsDataResetButtonsEn buttons = _TranslationsSettingsDataResetButtonsEn._(_root);
+}
+
+// Path: settings.more.about
+class _TranslationsSettingsMoreAboutEn {
+	_TranslationsSettingsMoreAboutEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'About This App';
+	late final _TranslationsSettingsMoreAboutItemsEn items = _TranslationsSettingsMoreAboutItemsEn._(_root);
 }
 
 // Path: home.filter.sorting
@@ -322,8 +363,67 @@ class _TranslationsSettingsAppearanceSortingOptionsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get timeASC => 'Waiting Time (ASC.)';
-	String get timeDESC => 'Waiting Time (DESC.)';
-	String get nameASC => 'Hospital Name (A-Z)';
-	String get nameDESC => 'Hospital Name (Z-A)';
+	String get nameInAsd => 'Hospital Name (A-Z)';
+	String get nameInDesc => 'Hospital Name (Z-A)';
+	String get timeInAsd => 'Waiting Time (ASD.)';
+	String get timeInDesc => 'Waiting Time (DESC.)';
+}
+
+// Path: settings.data.reset.buttons
+class _TranslationsSettingsDataResetButtonsEn {
+	_TranslationsSettingsDataResetButtonsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get cancel => 'Cancel';
+	String get reset => 'Reset';
+}
+
+// Path: settings.more.about.items
+class _TranslationsSettingsMoreAboutItemsEn {
+	_TranslationsSettingsMoreAboutItemsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get version => 'App Version';
+	late final _TranslationsSettingsMoreAboutItemsDataSourceEn dataSource = _TranslationsSettingsMoreAboutItemsDataSourceEn._(_root);
+	late final _TranslationsSettingsMoreAboutItemsAppIconSourceEn appIconSource = _TranslationsSettingsMoreAboutItemsAppIconSourceEn._(_root);
+	late final _TranslationsSettingsMoreAboutItemsImageSourceEn imageSource = _TranslationsSettingsMoreAboutItemsImageSourceEn._(_root);
+}
+
+// Path: settings.more.about.items.dataSource
+class _TranslationsSettingsMoreAboutItemsDataSourceEn {
+	_TranslationsSettingsMoreAboutItemsDataSourceEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Data Source';
+	String get value => 'DATA.GOV.HK and Hospital Authority';
+}
+
+// Path: settings.more.about.items.appIconSource
+class _TranslationsSettingsMoreAboutItemsAppIconSourceEn {
+	_TranslationsSettingsMoreAboutItemsAppIconSourceEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'App Icon Source';
+	String get value => 'Pictogrammers';
+	String get url => 'https://pictogrammers.com/';
+}
+
+// Path: settings.more.about.items.imageSource
+class _TranslationsSettingsMoreAboutItemsImageSourceEn {
+	_TranslationsSettingsMoreAboutItemsImageSourceEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Image Source';
+	String get value => 'unDraw';
+	String get url => 'https://undraw.co/license';
 }

@@ -4,7 +4,7 @@
     "expectedWaitTime": "Expected Waiting Time (Non-Emergency)",
     "actions": {
         "call": "Call Hospital",
-        "maps": "Open Maps"
+        "maps": "View Maps"
     },
     "chartTitle": "Waiting Time of the Past 6 Hours",
     "hours": "{value}H",
@@ -15,5 +15,6 @@
         "faxNo": "Fax No.",
         "emailAddress": "Email Address",
         "website": "Website"
-    }
+    },
+    "openMaps": "Open Maps Application"
 }

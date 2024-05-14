@@ -8,13 +8,21 @@ final class WaitTimeInitial extends WaitTimeState {}
 final class WaitTimeLoading extends WaitTimeState {}
 
 final class WaitTimeSuccess extends WaitTimeState {
-  final List<WaitTimeModel> waitTimeData;
+  WaitTimeSuccess({
+    this.filterKeyword,
+    required this.filterClusters,
+    required this.filterSortType,
+    required this.waitTimeData,
+  });
 
-  WaitTimeSuccess({required this.waitTimeData});
+  final String? filterKeyword;
+  final List<int> filterClusters;
+  final WaitTimeSortType filterSortType;
+  final List<WaitTimeModel> waitTimeData;
 }
 
 final class WaitTimeFailed extends WaitTimeState {
-  final String errorMessage;
 
   WaitTimeFailed(this.errorMessage);
+  final String errorMessage;
 }

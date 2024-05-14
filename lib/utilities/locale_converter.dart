@@ -3,7 +3,7 @@ import 'package:ae_live/i18n/translations.g.dart';
 class LocaleConverter {
   LocaleConverter._();
 
-  static String getAPILocaleCode({String? languageCode}) {
+  static String getAPILocaleCode({final String? languageCode}) {
     if (languageCode != null &&
         (languageCode == 'zh-HK' ||
             languageCode == 'zh-CN' ||
@@ -28,7 +28,7 @@ class LocaleConverter {
     }
   }
 
-  static String getLanguageCode({AppLocale? locale}) {
+  static String getLanguageCode({final AppLocale? locale}) {
     switch (locale ?? LocaleSettings.currentLocale) {
       case AppLocale.zhHk:
         return 'zh-HK';
@@ -39,7 +39,7 @@ class LocaleConverter {
     }
   }
 
-  static AppLocale toAppLocale({required String languageCode}) {
+  static AppLocale toAppLocale({required final String languageCode}) {
     switch (languageCode.toLowerCase()) {
       case 'zh-hk':
         return AppLocale.zhHk;
