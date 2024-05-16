@@ -116,10 +116,10 @@ class _ListsScreenState extends State<ListsScreen> {
           }
         },
       ),
-      _CategoryListItem(
-        title: t.lists.categories.cmc,
-        icon: Symbols.local_hospital_rounded,
-      ),
+      // _CategoryListItem(
+      //   title: t.lists.categories.cmc,
+      //   icon: Symbols.local_hospital_rounded,
+      // ),
     ];
 
     return Scaffold(
