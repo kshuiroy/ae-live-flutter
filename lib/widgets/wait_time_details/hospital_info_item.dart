@@ -1,4 +1,6 @@
+import 'package:ae_live/config/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class HospitalInfoItem extends StatelessWidget {
   const HospitalInfoItem({
@@ -31,9 +33,14 @@ class HospitalInfoItem extends StatelessWidget {
   Widget _getHospitalInfoWidget(final BuildContext context) {
     // final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
+    final double screenPaddingX = ResponsiveBreakpoints.of(context)
+            .largerOrEqualTo(Constants.screenSizeKeyMedium)
+        ? 24.0
+        : 16.0;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
+        horizontal: screenPaddingX,
         vertical: 8.0,
       ),
       child: Row(
