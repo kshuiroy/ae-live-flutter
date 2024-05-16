@@ -35,6 +35,9 @@ class _ListsScreenState extends State<ListsScreen> {
       _CategoryListItem(
         title: t.lists.categories.soc,
         icon: Symbols.local_hospital_rounded,
+        onTap: () {
+          context.push('/facility/soc');
+        },
       ),
       _CategoryListItem(
         title: t.lists.categories.goc,

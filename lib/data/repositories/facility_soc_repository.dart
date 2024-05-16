@@ -1,25 +1,25 @@
 import 'dart:convert';
 
-import 'package:ae_live/data/providers/facility_goc_provider.dart';
-import 'package:ae_live/models/facility_goc_model.dart';
+import 'package:ae_live/data/providers/facility_soc_provider.dart';
+import 'package:ae_live/models/facility_soc_model.dart';
 
-class FacilityGocRepository {
-  FacilityGocRepository({
+class FacilitySocRepository {
+  FacilitySocRepository({
     required this.provider,
   });
 
-  final FacilityGocProvider provider;
+  final FacilitySocProvider provider;
 
-  Future<List<FacilityGocModel>> getFacilityGocData() async {
+  Future<List<FacilitySocModel>> getFacilitySocData() async {
     try {
-      final String gocDataString = await provider.getFacilityGocData();
-      final List<dynamic> gocDataJson = json.decode(gocDataString);
+      final String socDataString = await provider.getFacilitySocData();
+      final List<dynamic> socDataJson = json.decode(socDataString);
 
-      final List<FacilityGocModel> results = <FacilityGocModel>[];
+      final List<FacilitySocModel> results = <FacilitySocModel>[];
 
-      for (final item in gocDataJson) {
+      for (final item in socDataJson) {
         results.add(
-          FacilityGocModel.fromMap(item),
+          FacilitySocModel.fromMap(item),
         );
       }
 
@@ -29,15 +29,15 @@ class FacilityGocRepository {
     }
   }
 
-  List<FacilityGocModel> filterAndSortFacilityGocData(
-    final List<FacilityGocModel> data, {
+  List<FacilitySocModel> filterAndSortFacilitySocData(
+    final List<FacilitySocModel> data, {
     final String? keyword,
     final List<int>? clusters,
   }) {
     final String searchKeyword = (keyword ?? '').toLowerCase();
-    final List<FacilityGocModel> results = data
+    final List<FacilitySocModel> results = data
         .where(
-          (final FacilityGocModel element) =>
+          (final FacilitySocModel element) =>
               (element.addressEN.toLowerCase().contains(searchKeyword) ||
                   element.addressSC.toLowerCase().contains(searchKeyword) ||
                   element.addressTC.toLowerCase().contains(searchKeyword) ||
