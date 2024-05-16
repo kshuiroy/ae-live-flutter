@@ -47,6 +47,14 @@
     },
     "more": {
         "license": "開放源代碼授權",
+        "privacyPolicy": {
+            "title": "私隱政策",
+            "subtitle": "只提供英文版本"
+        },
+        "termsConditions": {
+            "title": "條款及細則",
+            "subtitle": "只提供英文版本"
+        },
         "about": {
             "title": "關於本應用程式",
             "items": {

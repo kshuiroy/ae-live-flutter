@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -162,6 +163,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ),
           _SettingsItemModel(
+            icon: Symbols.security_rounded,
+            title: t.settings.more.privacyPolicy.title,
+            subtitle: LocaleSettings.currentLocale != AppLocale.en
+                ? t.settings.more.privacyPolicy.subtitle
+                : null,
+            onTap: () async {
+              await launchUrl(
+                Uri.parse(Constants.pagePrivacyPolicy),
+                mode: LaunchMode.inAppBrowserView,
+              );
+            },
+          ),
+          _SettingsItemModel(
+            icon: Symbols.rule_rounded,
+            title: t.settings.more.termsConditions.title,
+            subtitle: LocaleSettings.currentLocale != AppLocale.en
+                ? t.settings.more.termsConditions.subtitle
+                : null,
+            onTap: () async {
+              await launchUrl(
+                Uri.parse(Constants.pageTermsAndConditions),
+                mode: LaunchMode.inAppBrowserView,
+              );
+            },
+          ),
+          _SettingsItemModel(
             icon: Symbols.smartphone_rounded,
             title: t.settings.more.about.title,
             onTap: () {
@@ -186,7 +213,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
-          bottom: 16.0,
+          bottom: MediaQuery.of(context).padding.bottom + 16.0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,6 +249,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         title: Text(
                           item.title,
                         ),
+                        subtitle: item.subtitle != null
+                            ? Text(
+                                item.subtitle!,
+                              )
+                            : null,
                         onTap: item.onTap,
                       );
                     },
@@ -266,10 +298,12 @@ class _SettingsItemModel {
   _SettingsItemModel({
     required this.icon,
     required this.title,
+    this.subtitle,
     this.onTap,
   });
 
   final IconData icon;
   final String title;
+  final String? subtitle;
   final void Function()? onTap;
 }

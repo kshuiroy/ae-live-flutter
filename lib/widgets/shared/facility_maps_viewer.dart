@@ -95,6 +95,8 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
       extendBodyBehindAppBar: true,
       body: FlutterMap(
         options: MapOptions(
+          // Move the camera a little bit downward to avoid the marker might be
+          // placed below the bottom sheet at some situations.
           initialCenter: LatLng(widget.latitude - 0.001, widget.longitude),
           initialZoom: 17.0,
         ),

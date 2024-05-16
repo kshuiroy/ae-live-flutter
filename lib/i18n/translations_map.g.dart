@@ -35,6 +35,10 @@ extension on Translations {
 			case 'settings.data.reset.buttons.cancel': return 'Cancel';
 			case 'settings.data.reset.buttons.reset': return 'Reset';
 			case 'settings.more.license': return 'Open Source License';
+			case 'settings.more.privacyPolicy.title': return 'Privacy Policy';
+			case 'settings.more.privacyPolicy.subtitle': return '';
+			case 'settings.more.termsConditions.title': return 'Terms and Conditions';
+			case 'settings.more.termsConditions.subtitle': return '';
 			case 'settings.more.about.title': return 'About This App';
 			case 'settings.more.about.items.version': return 'App Version';
 			case 'settings.more.about.items.dataSource.title': return 'Data Source';
@@ -153,6 +157,10 @@ extension on _TranslationsZhCn {
 			case 'settings.data.reset.buttons.cancel': return '取消';
 			case 'settings.data.reset.buttons.reset': return '重设';
 			case 'settings.more.license': return '开放源代码授权';
+			case 'settings.more.privacyPolicy.title': return '隐私政策';
+			case 'settings.more.privacyPolicy.subtitle': return '只提供英文版本';
+			case 'settings.more.termsConditions.title': return '条款及细则';
+			case 'settings.more.termsConditions.subtitle': return '只提供英文版本';
 			case 'settings.more.about.title': return '关于本应用程序';
 			case 'settings.more.about.items.version': return '应用程序版本';
 			case 'settings.more.about.items.dataSource.title': return '资料来源';
@@ -271,6 +279,10 @@ extension on _TranslationsZhHk {
 			case 'settings.data.reset.buttons.cancel': return '取消';
 			case 'settings.data.reset.buttons.reset': return '重設';
 			case 'settings.more.license': return '開放源代碼授權';
+			case 'settings.more.privacyPolicy.title': return '私隱政策';
+			case 'settings.more.privacyPolicy.subtitle': return '只提供英文版本';
+			case 'settings.more.termsConditions.title': return '條款及細則';
+			case 'settings.more.termsConditions.subtitle': return '只提供英文版本';
 			case 'settings.more.about.title': return '關於本應用程式';
 			case 'settings.more.about.items.version': return '應用程式版本';
 			case 'settings.more.about.items.dataSource.title': return '資料來源';

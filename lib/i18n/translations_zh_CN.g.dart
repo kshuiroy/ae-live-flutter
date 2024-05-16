@@ -170,6 +170,8 @@ class _TranslationsSettingsMoreZhCn extends _TranslationsSettingsMoreEn {
 
 	// Translations
 	@override String get license => '开放源代码授权';
+	@override late final _TranslationsSettingsMorePrivacyPolicyZhCn privacyPolicy = _TranslationsSettingsMorePrivacyPolicyZhCn._(_root);
+	@override late final _TranslationsSettingsMoreTermsConditionsZhCn termsConditions = _TranslationsSettingsMoreTermsConditionsZhCn._(_root);
 	@override late final _TranslationsSettingsMoreAboutZhCn about = _TranslationsSettingsMoreAboutZhCn._(_root);
 }
 
@@ -413,6 +415,28 @@ class _TranslationsSettingsDataResetZhCn extends _TranslationsSettingsDataResetE
 	@override String get title => '重设所有设定';
 	@override String get message => '如果您在使用此应用程序时遇到任何问题，请考虑重置所有设置以恢复功能。请注意，此操作将在应用程序重新启动后生效。';
 	@override late final _TranslationsSettingsDataResetButtonsZhCn buttons = _TranslationsSettingsDataResetButtonsZhCn._(_root);
+}
+
+// Path: settings.more.privacyPolicy
+class _TranslationsSettingsMorePrivacyPolicyZhCn extends _TranslationsSettingsMorePrivacyPolicyEn {
+	_TranslationsSettingsMorePrivacyPolicyZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '隐私政策';
+	@override String get subtitle => '只提供英文版本';
+}
+
+// Path: settings.more.termsConditions
+class _TranslationsSettingsMoreTermsConditionsZhCn extends _TranslationsSettingsMoreTermsConditionsEn {
+	_TranslationsSettingsMoreTermsConditionsZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '条款及细则';
+	@override String get subtitle => '只提供英文版本';
 }
 
 // Path: settings.more.about

@@ -47,6 +47,14 @@
     },
     "more": {
         "license": "开放源代码授权",
+        "privacyPolicy": {
+            "title": "隐私政策",
+            "subtitle": "只提供英文版本"
+        },
+        "termsConditions": {
+            "title": "条款及细则",
+            "subtitle": "只提供英文版本"
+        },
         "about": {
             "title": "关于本应用程序",
             "items": {

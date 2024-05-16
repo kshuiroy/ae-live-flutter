@@ -23,4 +23,9 @@ class Constants {
       'https://www.ha.org.hk/opendata/facility-gop.json';
   static const String apiFacilityCmc =
       'https://www.ha.org.hk/opendata/cmctr/facility-cmctr.json';
+
+  static const String pagePrivacyPolicy =
+      'https://sites.google.com/view/ae-live-privacy-policy/home';
+  static const String pageTermsAndConditions =
+      'https://sites.google.com/view/ae-live-terms-conditions/home';
 }

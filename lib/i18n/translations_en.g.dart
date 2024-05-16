@@ -174,6 +174,8 @@ class _TranslationsSettingsMoreEn {
 
 	// Translations
 	String get license => 'Open Source License';
+	late final _TranslationsSettingsMorePrivacyPolicyEn privacyPolicy = _TranslationsSettingsMorePrivacyPolicyEn._(_root);
+	late final _TranslationsSettingsMoreTermsConditionsEn termsConditions = _TranslationsSettingsMoreTermsConditionsEn._(_root);
 	late final _TranslationsSettingsMoreAboutEn about = _TranslationsSettingsMoreAboutEn._(_root);
 }
 
@@ -417,6 +419,28 @@ class _TranslationsSettingsDataResetEn {
 	String get title => 'Reset All Settings';
 	String get message => 'If you\'ve experienced any difficulties while using this app, consider resetting all settings to restore its functionality. Please note that this action will take effect once the app has been restarted.';
 	late final _TranslationsSettingsDataResetButtonsEn buttons = _TranslationsSettingsDataResetButtonsEn._(_root);
+}
+
+// Path: settings.more.privacyPolicy
+class _TranslationsSettingsMorePrivacyPolicyEn {
+	_TranslationsSettingsMorePrivacyPolicyEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Privacy Policy';
+	String get subtitle => '';
+}
+
+// Path: settings.more.termsConditions
+class _TranslationsSettingsMoreTermsConditionsEn {
+	_TranslationsSettingsMoreTermsConditionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Terms and Conditions';
+	String get subtitle => '';
 }
 
 // Path: settings.more.about

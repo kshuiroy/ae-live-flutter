@@ -47,6 +47,14 @@
     },
     "more": {
         "license": "Open Source License",
+        "privacyPolicy": {
+            "title": "Privacy Policy",
+            "subtitle": ""
+        },
+        "termsConditions": {
+            "title": "Terms and Conditions",
+            "subtitle": ""
+        },
         "about": {
             "title": "About This App",
             "items": {
