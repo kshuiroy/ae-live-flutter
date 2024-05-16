@@ -82,6 +82,7 @@ class _TranslationsListsZhHk extends _TranslationsListsEn {
 	@override late final _TranslationsListsSocZhHk soc = _TranslationsListsSocZhHk._(_root);
 	@override late final _TranslationsListsGocZhHk goc = _TranslationsListsGocZhHk._(_root);
 	@override late final _TranslationsListsCmcZhHk cmc = _TranslationsListsCmcZhHk._(_root);
+	@override late final _TranslationsListsPromptZhHk prompt = _TranslationsListsPromptZhHk._(_root);
 }
 
 // Path: waitTimeDetails
@@ -237,6 +238,7 @@ class _TranslationsListsHospitalZhHk extends _TranslationsListsHospitalEn {
 	@override String get cluster => '醫院聯網';
 	@override String get withAEService => '提供急症室服務';
 	@override String get withoutAEService => '沒有急症室服務';
+	@override String get noSearchResult => '沒有符合搜尋條件的醫院/機構。';
 }
 
 // Path: lists.soc
@@ -248,6 +250,7 @@ class _TranslationsListsSocZhHk extends _TranslationsListsSocEn {
 	// Translations
 	@override String get search => '搜尋專科門診診所';
 	@override String get cluster => '診所聯網';
+	@override String get noSearchResult => '沒有符合搜尋條件的診所。';
 }
 
 // Path: lists.goc
@@ -259,6 +262,7 @@ class _TranslationsListsGocZhHk extends _TranslationsListsGocEn {
 	// Translations
 	@override String get search => '搜尋普通科門診診所';
 	@override String get cluster => '診所聯網';
+	@override String get noSearchResult => '沒有符合搜尋條件的診所。';
 }
 
 // Path: lists.cmc
@@ -269,7 +273,18 @@ class _TranslationsListsCmcZhHk extends _TranslationsListsCmcEn {
 
 	// Translations
 	@override String get search => '搜尋中醫診所暨教研中心';
-	@override String get cluster => '診所聯網';
+	@override String get noSearchResult => '沒有符合搜尋條件的診所。';
+}
+
+// Path: lists.prompt
+class _TranslationsListsPromptZhHk extends _TranslationsListsPromptEn {
+	_TranslationsListsPromptZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get noConnection => '沒有網絡連線。';
+	@override String get serverError => '伺服器發生錯誤，請稍後再試。';
 }
 
 // Path: waitTimeDetails.actions

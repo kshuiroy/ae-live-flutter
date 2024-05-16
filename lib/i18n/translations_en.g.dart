@@ -86,6 +86,7 @@ class _TranslationsListsEn {
 	late final _TranslationsListsSocEn soc = _TranslationsListsSocEn._(_root);
 	late final _TranslationsListsGocEn goc = _TranslationsListsGocEn._(_root);
 	late final _TranslationsListsCmcEn cmc = _TranslationsListsCmcEn._(_root);
+	late final _TranslationsListsPromptEn prompt = _TranslationsListsPromptEn._(_root);
 }
 
 // Path: waitTimeDetails
@@ -241,6 +242,7 @@ class _TranslationsListsHospitalEn {
 	String get cluster => 'Hospital Cluster';
 	String get withAEService => 'Provides A&E services';
 	String get withoutAEService => 'No A&E services provided';
+	String get noSearchResult => 'There is no hospital/institution matches your search criteria.';
 }
 
 // Path: lists.soc
@@ -252,6 +254,7 @@ class _TranslationsListsSocEn {
 	// Translations
 	String get search => 'Search Specialist Outpatient Clinic';
 	String get cluster => 'Clinic Cluster';
+	String get noSearchResult => 'There is no clinic matches your search criteria.';
 }
 
 // Path: lists.goc
@@ -263,6 +266,7 @@ class _TranslationsListsGocEn {
 	// Translations
 	String get search => 'Search General Outpatient Clinic';
 	String get cluster => 'Clinic Cluster';
+	String get noSearchResult => 'There is no clinic matches your search criteria.';
 }
 
 // Path: lists.cmc
@@ -273,7 +277,18 @@ class _TranslationsListsCmcEn {
 
 	// Translations
 	String get search => 'Search Chinese Medicine Clinics cum Training and Research Centres';
-	String get cluster => 'Clinic Cluster';
+	String get noSearchResult => 'There is no clinic matches your search criteria.';
+}
+
+// Path: lists.prompt
+class _TranslationsListsPromptEn {
+	_TranslationsListsPromptEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get noConnection => 'No internet connection.';
+	String get serverError => 'Something went wrong with the server, please try again later.';
 }
 
 // Path: waitTimeDetails.actions

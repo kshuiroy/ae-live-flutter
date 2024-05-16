@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:ae_live/artworks/no_search_result.dart';
 import 'package:ae_live/artworks/server_error.dart';
 import 'package:ae_live/bloc/facility_goc/facility_goc_bloc.dart';
 import 'package:ae_live/config/constants.dart';
@@ -18,7 +19,12 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class FacilityGocScreen extends StatefulWidget {
-  const FacilityGocScreen({super.key});
+  const FacilityGocScreen({
+    super.key,
+    this.showBackButton = true,
+  });
+
+  final bool showBackButton;
 
   @override
   State<FacilityGocScreen> createState() => _FacilityGocScreenState();
@@ -110,24 +116,30 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
                     top: 8.0,
                     right: isCompact ? 16.0 : 24.0,
                     bottom: 8.0,
-                    // left: isCompact ? 8.0 : 16.0,
+                    left: widget.showBackButton
+                        ? 0.0
+                        : isCompact
+                            ? 16.0
+                            : 24.0,
                   ),
                   child: Row(
                     children: [
-                      IconButton(
-                        onPressed: () => Navigator.of(context).pop(),
-                        icon: Icon(
-                          Platform.isIOS || Platform.isMacOS
-                              ? Symbols.arrow_back_ios_new
-                              : Symbols.arrow_back,
-                          size: 24.0,
-                          fill: 0.0,
-                          opticalSize: 24.0,
+                      if (widget.showBackButton) ...[
+                        IconButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          icon: Icon(
+                            Platform.isIOS || Platform.isMacOS
+                                ? Symbols.arrow_back_ios_new
+                                : Symbols.arrow_back,
+                            size: 24.0,
+                            fill: 0.0,
+                            opticalSize: 24.0,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 8.0,
-                      ),
+                        const SizedBox(
+                          width: 8.0,
+                        ),
+                      ],
                       Expanded(
                         child: SearchTextField(
                           controller: _searchTextController,
@@ -198,7 +210,7 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
                     height: isNarrow ? 320.0 : 400.0,
                     width: isNarrow ? 320.0 : 400.0,
                   ),
-                  promptText: t.home.prompt.serverError,
+                  promptText: t.lists.prompt.serverError,
                 ),
               );
             }
@@ -206,6 +218,21 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
             if (state is! FacilityGocSuccess) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
+              );
+            }
+
+            if (state.facilityGocData.isEmpty) {
+              return Padding(
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).padding.bottom,
+                ),
+                child: PromptWithArtwork(
+                  artwork: NoSearchResult(
+                    height: isNarrow ? 320.0 : 400.0,
+                    width: isNarrow ? 320.0 : 400.0,
+                  ),
+                  promptText: t.lists.goc.noSearchResult,
+                ),
               );
             }
 

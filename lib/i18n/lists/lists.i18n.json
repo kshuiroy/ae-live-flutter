@@ -12,18 +12,25 @@
         "search": "Search Hospital/Institution",
         "cluster": "Hospital Cluster",
         "withAEService": "Provides A&E services",
-        "withoutAEService": "No A&E services provided"
+        "withoutAEService": "No A&E services provided",
+        "noSearchResult": "There is no hospital/institution matches your search criteria."
     },
     "soc": {
         "search": "Search Specialist Outpatient Clinic",
-        "cluster": "Clinic Cluster"
+        "cluster": "Clinic Cluster",
+        "noSearchResult": "There is no clinic matches your search criteria."
     },
     "goc": {
         "search": "Search General Outpatient Clinic",
-        "cluster": "Clinic Cluster"
+        "cluster": "Clinic Cluster",
+        "noSearchResult": "There is no clinic matches your search criteria."
     },
     "cmc": {
         "search": "Search Chinese Medicine Clinics cum Training and Research Centres",
-        "cluster": "Clinic Cluster"
+        "noSearchResult": "There is no clinic matches your search criteria."
+    },
+    "prompt": {
+        "noConnection": "No internet connection.",
+        "serverError": "Something went wrong with the server, please try again later."
     }
 }

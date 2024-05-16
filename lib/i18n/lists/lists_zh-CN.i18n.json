@@ -12,18 +12,25 @@
         "search": "搜寻医院/机构",
         "cluster": "医院联网",
         "withAEService": "提供急症室服务",
-        "withoutAEService": "没有急症室服务"
+        "withoutAEService": "没有急症室服务",
+        "noSearchResult": "没有符合搜寻条件的医院/机构。"
     },
     "soc": {
         "search": "搜寻专科门诊诊所",
-        "cluster": "诊所联网"
+        "cluster": "诊所联网",
+        "noSearchResult": "没有符合搜寻条件的诊所。"
     },
     "goc": {
         "search": "搜寻普通科门诊诊所",
-        "cluster": "诊所联网"
+        "cluster": "诊所联网",
+        "noSearchResult": "没有符合搜寻条件的诊所。"
     },
     "cmc": {
         "search": "搜寻中医诊所暨教研中心",
-        "cluster": "诊所联网"
+        "noSearchResult": "没有符合搜寻条件的诊所。"
+    },
+    "prompt": {
+        "noConnection": "没有网络连线。",
+        "serverError": "服务器发生错误，请稍后再试。"
     }
 }

@@ -1,5 +1,10 @@
+import 'dart:math';
+
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
+import 'package:ae_live/screens/lists/facility_goc_screen.dart';
+import 'package:ae_live/screens/lists/facility_hospital_screen.dart';
+import 'package:ae_live/screens/lists/facility_soc_screen.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,9 +19,50 @@ class ListsScreen extends StatefulWidget {
 }
 
 class _ListsScreenState extends State<ListsScreen> {
+  Widget? _selectedPane;
+
   @override
   Widget build(final BuildContext context) {
-    return _buildListsPane(context);
+    if (ResponsiveBreakpoints.of(context)
+        .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
+      final bool isMediumSize = ResponsiveBreakpoints.of(context)
+          .smallerOrEqualTo(Constants.screenSizeKeyMedium);
+
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            flex: isMediumSize ? 1 : 3,
+            child: _buildListsPane(context),
+          ),
+          const VerticalDivider(
+            width: 1.0,
+            thickness: 1.0,
+          ),
+          Expanded(
+            flex: isMediumSize ? 1 : 4,
+            child: _selectedPane ?? const SizedBox(),
+          ),
+        ],
+      );
+    }
+
+    return LayoutBuilder(
+      builder: (final BuildContext context, final BoxConstraints constraints) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: min(constraints.maxWidth, 560.0),
+              ),
+              child: _buildListsPane(context),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Widget _buildListsPane(BuildContext context) {
@@ -29,21 +75,45 @@ class _ListsScreenState extends State<ListsScreen> {
         title: t.lists.categories.hospital,
         icon: Symbols.local_hospital_rounded,
         onTap: () {
-          context.push('/facility/hospital');
+          if (isCompact) {
+            context.push('/facility/hospital');
+          } else {
+            setState(() {
+              _selectedPane = const FacilityHospitalScreen(
+                showBackButton: false,
+              );
+            });
+          }
         },
       ),
       _CategoryListItem(
         title: t.lists.categories.soc,
         icon: Symbols.local_hospital_rounded,
         onTap: () {
-          context.push('/facility/soc');
+          if (isCompact) {
+            context.push('/facility/soc');
+          } else {
+            setState(() {
+              _selectedPane = const FacilitySocScreen(
+                showBackButton: false,
+              );
+            });
+          }
         },
       ),
       _CategoryListItem(
         title: t.lists.categories.goc,
         icon: Symbols.local_hospital_rounded,
         onTap: () {
-          context.push('/facility/goc');
+          if (isCompact) {
+            context.push('/facility/goc');
+          } else {
+            setState(() {
+              _selectedPane = const FacilityGocScreen(
+                showBackButton: false,
+              );
+            });
+          }
         },
       ),
       _CategoryListItem(
@@ -69,6 +139,7 @@ class _ListsScreenState extends State<ListsScreen> {
 
           return Card.filled(
             margin: EdgeInsets.zero,
+            clipBehavior: Clip.hardEdge,
             child: ListTile(
               contentPadding: const EdgeInsets.all(8.0),
               onTap: item.onTap,
