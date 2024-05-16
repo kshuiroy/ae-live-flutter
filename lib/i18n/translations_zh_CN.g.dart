@@ -36,6 +36,7 @@ class _TranslationsZhCn extends Translations {
 	@override late final _TranslationsHomeZhCn home = _TranslationsHomeZhCn._(_root);
 	@override late final _TranslationsListsZhCn lists = _TranslationsListsZhCn._(_root);
 	@override late final _TranslationsWaitTimeDetailsZhCn waitTimeDetails = _TranslationsWaitTimeDetailsZhCn._(_root);
+	@override late final _TranslationsSharedZhCn shared = _TranslationsSharedZhCn._(_root);
 	@override late final _TranslationsMainZhCn main = _TranslationsMainZhCn._(_root);
 }
 
@@ -98,7 +99,16 @@ class _TranslationsWaitTimeDetailsZhCn extends _TranslationsWaitTimeDetailsEn {
 	@override String get chartTitle => '过去 6 小时的等候时间';
 	@override String get hours => '{value} 小时';
 	@override late final _TranslationsWaitTimeDetailsInfoZhCn info = _TranslationsWaitTimeDetailsInfoZhCn._(_root);
-	@override String get openMaps => '开启地图应用程序';
+}
+
+// Path: shared
+class _TranslationsSharedZhCn extends _TranslationsSharedEn {
+	_TranslationsSharedZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsSharedFacilityMapsZhCn facilityMaps = _TranslationsSharedFacilityMapsZhCn._(_root);
 }
 
 // Path: main
@@ -312,6 +322,17 @@ class _TranslationsWaitTimeDetailsInfoZhCn extends _TranslationsWaitTimeDetailsI
 	@override String get faxNo => '传真号码';
 	@override String get emailAddress => '电邮地址';
 	@override String get website => '网址';
+}
+
+// Path: shared.facilityMaps
+class _TranslationsSharedFacilityMapsZhCn extends _TranslationsSharedFacilityMapsEn {
+	_TranslationsSharedFacilityMapsZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get openMapsApp => '开启地图应用程序';
+	@override String get closeMapsModal => '关闭地图检视界面';
 }
 
 // Path: main.clusters

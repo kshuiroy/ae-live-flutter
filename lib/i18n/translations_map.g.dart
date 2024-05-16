@@ -99,7 +99,8 @@ extension on Translations {
 			case 'waitTimeDetails.info.faxNo': return 'Fax No.';
 			case 'waitTimeDetails.info.emailAddress': return 'Email Address';
 			case 'waitTimeDetails.info.website': return 'Website';
-			case 'waitTimeDetails.openMaps': return 'Open Maps Application';
+			case 'shared.facilityMaps.openMapsApp': return 'Open Maps Application';
+			case 'shared.facilityMaps.closeMapsModal': return 'Close the Maps Viewer';
 			case 'main.app_name': return 'A&E Live';
 			case 'main.tabs.home': return 'Home';
 			case 'main.tabs.lists': return 'Lists';
@@ -216,7 +217,8 @@ extension on _TranslationsZhCn {
 			case 'waitTimeDetails.info.faxNo': return '传真号码';
 			case 'waitTimeDetails.info.emailAddress': return '电邮地址';
 			case 'waitTimeDetails.info.website': return '网址';
-			case 'waitTimeDetails.openMaps': return '开启地图应用程序';
+			case 'shared.facilityMaps.openMapsApp': return '开启地图应用程序';
+			case 'shared.facilityMaps.closeMapsModal': return '关闭地图检视界面';
 			case 'main.app_name': return '急症室现场';
 			case 'main.tabs.home': return '主页';
 			case 'main.tabs.lists': return '目录';
@@ -333,7 +335,8 @@ extension on _TranslationsZhHk {
 			case 'waitTimeDetails.info.faxNo': return '傳真號碼';
 			case 'waitTimeDetails.info.emailAddress': return '電郵地址';
 			case 'waitTimeDetails.info.website': return '網址';
-			case 'waitTimeDetails.openMaps': return '開啟地圖應用程式';
+			case 'shared.facilityMaps.openMapsApp': return '開啟地圖應用程式';
+			case 'shared.facilityMaps.closeMapsModal': return '關閉地圖檢視介面';
 			case 'main.app_name': return '急症室現場';
 			case 'main.tabs.home': return '主頁';
 			case 'main.tabs.lists': return '目錄';

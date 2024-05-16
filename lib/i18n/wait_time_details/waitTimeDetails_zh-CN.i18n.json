@@ -15,6 +15,5 @@
         "faxNo": "传真号码",
         "emailAddress": "电邮地址",
         "website": "网址"
-    },
-    "openMaps": "开启地图应用程序"
+    }
 }

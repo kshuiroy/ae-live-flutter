@@ -36,6 +36,7 @@ class _TranslationsZhHk extends Translations {
 	@override late final _TranslationsHomeZhHk home = _TranslationsHomeZhHk._(_root);
 	@override late final _TranslationsListsZhHk lists = _TranslationsListsZhHk._(_root);
 	@override late final _TranslationsWaitTimeDetailsZhHk waitTimeDetails = _TranslationsWaitTimeDetailsZhHk._(_root);
+	@override late final _TranslationsSharedZhHk shared = _TranslationsSharedZhHk._(_root);
 	@override late final _TranslationsMainZhHk main = _TranslationsMainZhHk._(_root);
 }
 
@@ -98,7 +99,16 @@ class _TranslationsWaitTimeDetailsZhHk extends _TranslationsWaitTimeDetailsEn {
 	@override String get chartTitle => '過去 6 小時的等候時間';
 	@override String get hours => '{value} 小時';
 	@override late final _TranslationsWaitTimeDetailsInfoZhHk info = _TranslationsWaitTimeDetailsInfoZhHk._(_root);
-	@override String get openMaps => '開啟地圖應用程式';
+}
+
+// Path: shared
+class _TranslationsSharedZhHk extends _TranslationsSharedEn {
+	_TranslationsSharedZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsSharedFacilityMapsZhHk facilityMaps = _TranslationsSharedFacilityMapsZhHk._(_root);
 }
 
 // Path: main
@@ -312,6 +322,17 @@ class _TranslationsWaitTimeDetailsInfoZhHk extends _TranslationsWaitTimeDetailsI
 	@override String get faxNo => '傳真號碼';
 	@override String get emailAddress => '電郵地址';
 	@override String get website => '網址';
+}
+
+// Path: shared.facilityMaps
+class _TranslationsSharedFacilityMapsZhHk extends _TranslationsSharedFacilityMapsEn {
+	_TranslationsSharedFacilityMapsZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get openMapsApp => '開啟地圖應用程式';
+	@override String get closeMapsModal => '關閉地圖檢視介面';
 }
 
 // Path: main.clusters

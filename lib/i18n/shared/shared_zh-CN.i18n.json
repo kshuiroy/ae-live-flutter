@@ -1,0 +1,8 @@
+{
+    "@@locale": "zh-CN",
+    "@@namespace": "shared",
+    "facilityMaps": {
+        "openMapsApp": "开启地图应用程序",
+        "closeMapsModal": "关闭地图检视界面"
+    }
+}

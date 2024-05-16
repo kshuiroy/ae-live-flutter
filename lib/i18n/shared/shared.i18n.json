@@ -1,0 +1,8 @@
+{
+    "@@locale": "en",
+    "@@namespace": "shared",
+    "facilityMaps": {
+        "openMapsApp": "Open Maps Application",
+        "closeMapsModal": "Close the Maps Viewer"
+    }
+}

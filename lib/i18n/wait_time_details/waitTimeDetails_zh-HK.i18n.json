@@ -15,6 +15,5 @@
         "faxNo": "傳真號碼",
         "emailAddress": "電郵地址",
         "website": "網址"
-    },
-    "openMaps": "開啟地圖應用程式"
+    }
 }

@@ -40,6 +40,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _TranslationsHomeEn home = _TranslationsHomeEn._(_root);
 	late final _TranslationsListsEn lists = _TranslationsListsEn._(_root);
 	late final _TranslationsWaitTimeDetailsEn waitTimeDetails = _TranslationsWaitTimeDetailsEn._(_root);
+	late final _TranslationsSharedEn shared = _TranslationsSharedEn._(_root);
 	late final _TranslationsMainEn main = _TranslationsMainEn._(_root);
 }
 
@@ -102,7 +103,16 @@ class _TranslationsWaitTimeDetailsEn {
 	String get chartTitle => 'Waiting Time of the Past 6 Hours';
 	String get hours => '{value}H';
 	late final _TranslationsWaitTimeDetailsInfoEn info = _TranslationsWaitTimeDetailsInfoEn._(_root);
-	String get openMaps => 'Open Maps Application';
+}
+
+// Path: shared
+class _TranslationsSharedEn {
+	_TranslationsSharedEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsSharedFacilityMapsEn facilityMaps = _TranslationsSharedFacilityMapsEn._(_root);
 }
 
 // Path: main
@@ -316,6 +326,17 @@ class _TranslationsWaitTimeDetailsInfoEn {
 	String get faxNo => 'Fax No.';
 	String get emailAddress => 'Email Address';
 	String get website => 'Website';
+}
+
+// Path: shared.facilityMaps
+class _TranslationsSharedFacilityMapsEn {
+	_TranslationsSharedFacilityMapsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get openMapsApp => 'Open Maps Application';
+	String get closeMapsModal => 'Close the Maps Viewer';
 }
 
 // Path: main.clusters

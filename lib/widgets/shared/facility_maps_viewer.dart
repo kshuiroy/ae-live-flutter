@@ -95,7 +95,7 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
       extendBodyBehindAppBar: true,
       body: FlutterMap(
         options: MapOptions(
-          initialCenter: LatLng(widget.latitude, widget.longitude),
+          initialCenter: LatLng(widget.latitude - 0.001, widget.longitude),
           initialZoom: 17.0,
         ),
         children: <Widget>[
@@ -187,7 +187,26 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
                             weight: 200.0,
                             opticalSize: 24.0,
                           ),
-                          label: Text(t.waitTimeDetails.openMaps),
+                          label: Text(t.shared.facilityMaps.openMapsApp),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          icon: const Icon(
+                            Symbols.close_rounded,
+                            fill: 0.0,
+                            weight: 200.0,
+                            opticalSize: 24.0,
+                          ),
+                          label: Text(t.shared.facilityMaps.closeMapsModal),
                         ),
                       ),
                     ],
