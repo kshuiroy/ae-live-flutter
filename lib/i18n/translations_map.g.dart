@@ -87,6 +87,7 @@ extension on Translations {
 			case 'lists.cmc.noSearchResult': return 'There is no clinic matches your search criteria.';
 			case 'lists.prompt.noConnection': return 'No internet connection.';
 			case 'lists.prompt.serverError': return 'Something went wrong with the server, please try again later.';
+			case 'lists.refresh': return 'Refresh';
 			case 'waitTimeDetails.expectedWaitTime': return 'Expected Waiting Time (Non-Emergency)';
 			case 'waitTimeDetails.actions.call': return 'Call Hospital';
 			case 'waitTimeDetails.actions.maps': return 'View Maps';
@@ -203,6 +204,7 @@ extension on _TranslationsZhCn {
 			case 'lists.cmc.noSearchResult': return '没有符合搜寻条件的诊所。';
 			case 'lists.prompt.noConnection': return '没有网络连线。';
 			case 'lists.prompt.serverError': return '服务器发生错误，请稍后再试。';
+			case 'lists.refresh': return '重新整理';
 			case 'waitTimeDetails.expectedWaitTime': return '预计等候时间（非紧急病人）';
 			case 'waitTimeDetails.actions.call': return '致电医院';
 			case 'waitTimeDetails.actions.maps': return '查看地图';
@@ -319,6 +321,7 @@ extension on _TranslationsZhHk {
 			case 'lists.cmc.noSearchResult': return '沒有符合搜尋條件的診所。';
 			case 'lists.prompt.noConnection': return '沒有網絡連線。';
 			case 'lists.prompt.serverError': return '伺服器發生錯誤，請稍後再試。';
+			case 'lists.refresh': return '重新整理';
 			case 'waitTimeDetails.expectedWaitTime': return '預計等候時間（非緊急病人）';
 			case 'waitTimeDetails.actions.call': return '致電醫院';
 			case 'waitTimeDetails.actions.maps': return '查看地圖';

@@ -83,6 +83,7 @@ class _TranslationsListsZhCn extends _TranslationsListsEn {
 	@override late final _TranslationsListsGocZhCn goc = _TranslationsListsGocZhCn._(_root);
 	@override late final _TranslationsListsCmcZhCn cmc = _TranslationsListsCmcZhCn._(_root);
 	@override late final _TranslationsListsPromptZhCn prompt = _TranslationsListsPromptZhCn._(_root);
+	@override String get refresh => '重新整理';
 }
 
 // Path: waitTimeDetails

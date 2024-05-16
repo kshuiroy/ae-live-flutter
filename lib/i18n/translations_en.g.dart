@@ -87,6 +87,7 @@ class _TranslationsListsEn {
 	late final _TranslationsListsGocEn goc = _TranslationsListsGocEn._(_root);
 	late final _TranslationsListsCmcEn cmc = _TranslationsListsCmcEn._(_root);
 	late final _TranslationsListsPromptEn prompt = _TranslationsListsPromptEn._(_root);
+	String get refresh => 'Refresh';
 }
 
 // Path: waitTimeDetails

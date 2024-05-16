@@ -1,5 +1,6 @@
 import 'package:ae_live/data/repositories/facility_hospital_repository.dart';
 import 'package:ae_live/models/facility_hospital_model.dart';
+import 'package:ae_live/utilities/check_internet_connection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,13 +26,21 @@ class FacilityHospitalBloc
   ) async {
     emit(FacilityHospitalLoading());
 
-    _data = await repository.getFacilityHospitalData();
+    if (await isConnectedToInternet()) {
+      try {
+        _data = await repository.getFacilityHospitalData();
 
-    emit(
-      FacilityHospitalSuccess(
-        facilityHospitalData: _data,
-      ),
-    );
+        emit(
+          FacilityHospitalSuccess(
+            facilityHospitalData: _data,
+          ),
+        );
+      } catch (error) {
+        emit(FacilityHospitalFailed(error.toString()));
+      }
+    } else {
+      emit(FacilityHospitalFailed('-1001'));
+    }
   }
 
   void _onFacilityHospitalDataFilter(

@@ -1,5 +1,6 @@
 import 'package:ae_live/data/repositories/facility_soc_repository.dart';
 import 'package:ae_live/models/facility_soc_model.dart';
+import 'package:ae_live/utilities/check_internet_connection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,13 +25,21 @@ class FacilitySocBloc extends Bloc<FacilitySocEvent, FacilitySocState> {
   ) async {
     emit(FacilitySocLoading());
 
-    _data = await repository.getFacilitySocData();
+    if (await isConnectedToInternet()) {
+      try {
+        _data = await repository.getFacilitySocData();
 
-    emit(
-      FacilitySocSuccess(
-        facilitySocData: _data,
-      ),
-    );
+        emit(
+          FacilitySocSuccess(
+            facilitySocData: _data,
+          ),
+        );
+      } catch (error) {
+        emit(FacilitySocFailed(error.toString()));
+      }
+    } else {
+      emit(FacilitySocFailed('-1001'));
+    }
   }
 
   void _onFacilitySocDataFilter(

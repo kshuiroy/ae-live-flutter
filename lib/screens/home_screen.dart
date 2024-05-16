@@ -278,12 +278,44 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).padding.bottom,
               ),
-              child: PromptWithArtwork(
-                artwork: ServerError(
-                  height: isNarrow ? 320.0 : 400.0,
-                  width: isNarrow ? 320.0 : 400.0,
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    PromptWithArtwork(
+                      artwork: ServerError(
+                        height: isNarrow ? 320.0 : 400.0,
+                        width: isNarrow ? 320.0 : 400.0,
+                      ),
+                      promptText: state.errorMessage == '-1001'
+                          ? t.home.prompt.noConnection
+                          : t.home.prompt.serverError,
+                      removeCenterContainer: true,
+                    ),
+                    const SizedBox(
+                      height: 24.0,
+                    ),
+                    FilledButton.icon(
+                      onPressed: () {
+                        context.read<WaitTimeBloc>().add(
+                              WaitTimeFetchRequested(
+                                keyword: _searchKeyword,
+                                clusters: _dataClusters,
+                                sortType: _dataSortType,
+                              ),
+                            );
+                      },
+                      icon: const Icon(
+                        Symbols.refresh_rounded,
+                        size: 24.0,
+                        fill: 0.0,
+                        weight: 200.0,
+                        opticalSize: 24.0,
+                      ),
+                      label: Text(t.home.actions.refresh),
+                    ),
+                  ],
                 ),
-                promptText: t.home.prompt.serverError,
               ),
             );
           }

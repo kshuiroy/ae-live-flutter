@@ -33,7 +33,7 @@ class FacilityHospitalScreen extends StatefulWidget {
 class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
   final TextEditingController _searchTextController = TextEditingController();
 
-  bool _isLoading = false;
+  bool _disableFilter = false;
   String? _searchKeyword;
   List<int> _searchClusters = [1, 2, 3, 4, 5, 6, 7];
 
@@ -81,7 +81,8 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
       final FacilityHospitalState blocState =
           context.read<FacilityHospitalBloc>().state;
 
-      if (blocState is FacilityHospitalInitial) {
+      if (blocState is FacilityHospitalInitial ||
+          blocState is FacilityHospitalFailed) {
         // Fetch wait time data if there is no data stored befored.
         context.read<FacilityHospitalBloc>().add(FacilityHospitalRequested());
       } else if (blocState is FacilityHospitalSuccess) {
@@ -145,7 +146,7 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                         child: SearchTextField(
                           controller: _searchTextController,
                           hintText: t.lists.hospital.search,
-                          enabled: !_isLoading,
+                          enabled: !_disableFilter,
                           onChange: (final String value) {
                             setState(() {
                               _searchKeyword = value;
@@ -169,7 +170,7 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                       FilterSortButton(
                         icon: Symbols.filter_list_rounded,
                         label: t.lists.hospital.cluster,
-                        enabled: !_isLoading,
+                        enabled: !_disableFilter,
                         onPressed: () {
                           _showDataFilterSortModal(
                             context,
@@ -197,7 +198,8 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
         body: BlocConsumer<FacilityHospitalBloc, FacilityHospitalState>(
           listener: (context, state) {
             setState(() {
-              _isLoading = state is FacilityHospitalLoading;
+              _disableFilter = state is FacilityHospitalLoading ||
+                  state is FacilityHospitalFailed;
             });
           },
           builder: (context, state) {
@@ -206,12 +208,40 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                 padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).padding.bottom,
                 ),
-                child: PromptWithArtwork(
-                  artwork: ServerError(
-                    height: isNarrow ? 320.0 : 400.0,
-                    width: isNarrow ? 320.0 : 400.0,
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      PromptWithArtwork(
+                        artwork: ServerError(
+                          height: isNarrow ? 320.0 : 400.0,
+                          width: isNarrow ? 320.0 : 400.0,
+                        ),
+                        promptText: state.errorMessage == '-1001'
+                            ? t.home.prompt.noConnection
+                            : t.home.prompt.serverError,
+                        removeCenterContainer: true,
+                      ),
+                      const SizedBox(
+                        height: 24.0,
+                      ),
+                      FilledButton.icon(
+                        onPressed: () {
+                          context
+                              .read<FacilityHospitalBloc>()
+                              .add(FacilityHospitalRequested());
+                        },
+                        icon: const Icon(
+                          Symbols.refresh_rounded,
+                          size: 24.0,
+                          fill: 0.0,
+                          weight: 200.0,
+                          opticalSize: 24.0,
+                        ),
+                        label: Text(t.lists.refresh),
+                      ),
+                    ],
                   ),
-                  promptText: t.lists.prompt.serverError,
                 ),
               );
             }

@@ -33,7 +33,7 @@ class FacilitySocScreen extends StatefulWidget {
 class _FacilitySocScreenState extends State<FacilitySocScreen> {
   final TextEditingController _searchTextController = TextEditingController();
 
-  bool _isLoading = false;
+  bool _disableFilter = false;
   String? _searchKeyword;
   List<int> _searchClusters = [1, 2, 3, 4, 5, 6, 7];
 
@@ -80,7 +80,7 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
     WidgetsBinding.instance.addPostFrameCallback((final _) {
       final FacilitySocState blocState = context.read<FacilitySocBloc>().state;
 
-      if (blocState is FacilitySocInitial) {
+      if (blocState is FacilitySocInitial || blocState is FacilitySocFailed) {
         // Fetch wait time data if there is no data stored befored.
         context.read<FacilitySocBloc>().add(FacilitySocRequested());
       } else if (blocState is FacilitySocSuccess) {
@@ -144,7 +144,7 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
                         child: SearchTextField(
                           controller: _searchTextController,
                           hintText: t.lists.soc.search,
-                          enabled: !_isLoading,
+                          enabled: !_disableFilter,
                           onChange: (final String value) {
                             setState(() {
                               _searchKeyword = value;
@@ -168,7 +168,7 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
                       FilterSortButton(
                         icon: Symbols.filter_list_rounded,
                         label: t.lists.soc.cluster,
-                        enabled: !_isLoading,
+                        enabled: !_disableFilter,
                         onPressed: () {
                           _showDataFilterSortModal(
                             context,
@@ -196,7 +196,8 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
         body: BlocConsumer<FacilitySocBloc, FacilitySocState>(
           listener: (context, state) {
             setState(() {
-              _isLoading = state is FacilitySocLoading;
+              _disableFilter =
+                  state is FacilitySocLoading || state is FacilitySocFailed;
             });
           },
           builder: (context, state) {
@@ -205,12 +206,40 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
                 padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).padding.bottom,
                 ),
-                child: PromptWithArtwork(
-                  artwork: ServerError(
-                    height: isNarrow ? 320.0 : 400.0,
-                    width: isNarrow ? 320.0 : 400.0,
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      PromptWithArtwork(
+                        artwork: ServerError(
+                          height: isNarrow ? 320.0 : 400.0,
+                          width: isNarrow ? 320.0 : 400.0,
+                        ),
+                        promptText: state.errorMessage == '-1001'
+                            ? t.home.prompt.noConnection
+                            : t.home.prompt.serverError,
+                        removeCenterContainer: true,
+                      ),
+                      const SizedBox(
+                        height: 24.0,
+                      ),
+                      FilledButton.icon(
+                        onPressed: () {
+                          context
+                              .read<FacilitySocBloc>()
+                              .add(FacilitySocRequested());
+                        },
+                        icon: const Icon(
+                          Symbols.refresh_rounded,
+                          size: 24.0,
+                          fill: 0.0,
+                          weight: 200.0,
+                          opticalSize: 24.0,
+                        ),
+                        label: Text(t.lists.refresh),
+                      ),
+                    ],
                   ),
-                  promptText: t.lists.prompt.serverError,
                 ),
               );
             }

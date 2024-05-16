@@ -32,5 +32,6 @@
     "prompt": {
         "noConnection": "沒有網絡連線。",
         "serverError": "伺服器發生錯誤，請稍後再試。"
-    }
+    },
+    "refresh": "重新整理"
 }

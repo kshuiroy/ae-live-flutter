@@ -1,5 +1,6 @@
 import 'package:ae_live/data/repositories/facility_goc_repository.dart';
 import 'package:ae_live/models/facility_goc_model.dart';
+import 'package:ae_live/utilities/check_internet_connection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,13 +25,21 @@ class FacilityGocBloc extends Bloc<FacilityGocEvent, FacilityGocState> {
   ) async {
     emit(FacilityGocLoading());
 
-    _data = await repository.getFacilityGocData();
+    if (await isConnectedToInternet()) {
+      try {
+        _data = await repository.getFacilityGocData();
 
-    emit(
-      FacilityGocSuccess(
-        facilityGocData: _data,
-      ),
-    );
+        emit(
+          FacilityGocSuccess(
+            facilityGocData: _data,
+          ),
+        );
+      } catch (error) {
+        emit(FacilityGocFailed(error.toString()));
+      }
+    } else {
+      emit(FacilityGocFailed('-1001'));
+    }
   }
 
   void _onFacilityGocDataFilter(
