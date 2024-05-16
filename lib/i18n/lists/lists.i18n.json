@@ -10,7 +10,20 @@
     },
     "hospital": {
         "search": "Search Hospital/Institution",
+        "cluster": "Hospital Cluster",
         "withAEService": "Provides A&E services",
         "withoutAEService": "No A&E services provided"
+    },
+    "soc": {
+        "search": "Search Specialist Outpatient Clinic",
+        "cluster": "Clinic Cluster"
+    },
+    "goc": {
+        "search": "Search General Outpatient Clinic",
+        "cluster": "Clinic Cluster"
+    },
+    "cmc": {
+        "search": "Search Chinese Medicine Clinics cum Training and Research Centres",
+        "cluster": "Clinic Cluster"
     }
 }

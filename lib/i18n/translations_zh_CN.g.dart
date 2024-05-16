@@ -79,6 +79,9 @@ class _TranslationsListsZhCn extends _TranslationsListsEn {
 	@override String get title => '设施目录';
 	@override late final _TranslationsListsCategoriesZhCn categories = _TranslationsListsCategoriesZhCn._(_root);
 	@override late final _TranslationsListsHospitalZhCn hospital = _TranslationsListsHospitalZhCn._(_root);
+	@override late final _TranslationsListsSocZhCn soc = _TranslationsListsSocZhCn._(_root);
+	@override late final _TranslationsListsGocZhCn goc = _TranslationsListsGocZhCn._(_root);
+	@override late final _TranslationsListsCmcZhCn cmc = _TranslationsListsCmcZhCn._(_root);
 }
 
 // Path: waitTimeDetails
@@ -231,8 +234,42 @@ class _TranslationsListsHospitalZhCn extends _TranslationsListsHospitalEn {
 
 	// Translations
 	@override String get search => '搜寻医院/机构';
+	@override String get cluster => '医院联网';
 	@override String get withAEService => '提供急症室服务';
 	@override String get withoutAEService => '没有急症室服务';
+}
+
+// Path: lists.soc
+class _TranslationsListsSocZhCn extends _TranslationsListsSocEn {
+	_TranslationsListsSocZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get search => '搜寻专科门诊诊所';
+	@override String get cluster => '诊所联网';
+}
+
+// Path: lists.goc
+class _TranslationsListsGocZhCn extends _TranslationsListsGocEn {
+	_TranslationsListsGocZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get search => '搜寻普通科门诊诊所';
+	@override String get cluster => '诊所联网';
+}
+
+// Path: lists.cmc
+class _TranslationsListsCmcZhCn extends _TranslationsListsCmcEn {
+	_TranslationsListsCmcZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get search => '搜寻中医诊所暨教研中心';
+	@override String get cluster => '诊所联网';
 }
 
 // Path: waitTimeDetails.actions

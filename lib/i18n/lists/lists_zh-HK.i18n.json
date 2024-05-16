@@ -10,7 +10,20 @@
     },
     "hospital": {
         "search": "搜尋醫院/機構",
+        "cluster": "醫院聯網",
         "withAEService": "提供急症室服務",
         "withoutAEService": "沒有急症室服務"
+    },
+    "soc": {
+        "search": "搜尋專科門診診所",
+        "cluster": "診所聯網"
+    },
+    "goc": {
+        "search": "搜尋普通科門診診所",
+        "cluster": "診所聯網"
+    },
+    "cmc": {
+        "search": "搜尋中醫診所暨教研中心",
+        "cluster": "診所聯網"
     }
 }

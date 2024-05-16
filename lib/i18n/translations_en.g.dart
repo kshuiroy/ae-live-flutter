@@ -83,6 +83,9 @@ class _TranslationsListsEn {
 	String get title => 'Lists';
 	late final _TranslationsListsCategoriesEn categories = _TranslationsListsCategoriesEn._(_root);
 	late final _TranslationsListsHospitalEn hospital = _TranslationsListsHospitalEn._(_root);
+	late final _TranslationsListsSocEn soc = _TranslationsListsSocEn._(_root);
+	late final _TranslationsListsGocEn goc = _TranslationsListsGocEn._(_root);
+	late final _TranslationsListsCmcEn cmc = _TranslationsListsCmcEn._(_root);
 }
 
 // Path: waitTimeDetails
@@ -235,8 +238,42 @@ class _TranslationsListsHospitalEn {
 
 	// Translations
 	String get search => 'Search Hospital/Institution';
+	String get cluster => 'Hospital Cluster';
 	String get withAEService => 'Provides A&E services';
 	String get withoutAEService => 'No A&E services provided';
+}
+
+// Path: lists.soc
+class _TranslationsListsSocEn {
+	_TranslationsListsSocEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get search => 'Search Specialist Outpatient Clinic';
+	String get cluster => 'Clinic Cluster';
+}
+
+// Path: lists.goc
+class _TranslationsListsGocEn {
+	_TranslationsListsGocEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get search => 'Search General Outpatient Clinic';
+	String get cluster => 'Clinic Cluster';
+}
+
+// Path: lists.cmc
+class _TranslationsListsCmcEn {
+	_TranslationsListsCmcEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get search => 'Search Chinese Medicine Clinics cum Training and Research Centres';
+	String get cluster => 'Clinic Cluster';
 }
 
 // Path: waitTimeDetails.actions

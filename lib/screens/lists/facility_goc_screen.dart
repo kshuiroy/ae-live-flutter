@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:ae_live/artworks/server_error.dart';
-import 'package:ae_live/bloc/facility_hospital/facility_hospital_bloc.dart';
+import 'package:ae_live/bloc/facility_goc/facility_goc_bloc.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
-import 'package:ae_live/models/facility_hospital_model.dart';
+import 'package:ae_live/models/facility_goc_model.dart';
 import 'package:ae_live/widgets/core/frosted_glass_search_header.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/facility_screen/facility_item_card.dart';
@@ -17,14 +17,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-class FacilityHospitalScreen extends StatefulWidget {
-  const FacilityHospitalScreen({super.key});
+class FacilityGocScreen extends StatefulWidget {
+  const FacilityGocScreen({super.key});
 
   @override
-  State<FacilityHospitalScreen> createState() => _FacilityHospitalScreenState();
+  State<FacilityGocScreen> createState() => _FacilityGocScreenState();
 }
 
-class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
+class _FacilityGocScreenState extends State<FacilityGocScreen> {
   final TextEditingController _searchTextController = TextEditingController();
 
   bool _isLoading = false;
@@ -32,8 +32,8 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
   List<int> _searchClusters = [1, 2, 3, 4, 5, 6, 7];
 
   void _onUpdateSearchResult(final BuildContext context) {
-    context.read<FacilityHospitalBloc>().add(
-          FacilityHospitalDataFilter(
+    context.read<FacilityGocBloc>().add(
+          FacilityGocDataFilter(
             keyword: _searchKeyword,
             clusters: _searchClusters,
           ),
@@ -72,17 +72,16 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((final _) {
-      final FacilityHospitalState blocState =
-          context.read<FacilityHospitalBloc>().state;
+      final FacilityGocState blocState = context.read<FacilityGocBloc>().state;
 
-      if (blocState is FacilityHospitalInitial) {
+      if (blocState is FacilityGocInitial) {
         // Fetch wait time data if there is no data stored befored.
-        context.read<FacilityHospitalBloc>().add(FacilityHospitalRequested());
-      } else if (blocState is FacilityHospitalSuccess) {
+        context.read<FacilityGocBloc>().add(FacilityGocRequested());
+      } else if (blocState is FacilityGocSuccess) {
         // Reset all filters and sorting to default after user go back from
         // other screens.
-        context.read<FacilityHospitalBloc>().add(
-              FacilityHospitalDataFilter(),
+        context.read<FacilityGocBloc>().add(
+              FacilityGocDataFilter(),
             );
       }
     });
@@ -132,7 +131,7 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                       Expanded(
                         child: SearchTextField(
                           controller: _searchTextController,
-                          hintText: t.lists.hospital.search,
+                          hintText: t.lists.goc.search,
                           enabled: !_isLoading,
                           onChange: (final String value) {
                             setState(() {
@@ -156,14 +155,14 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                     children: [
                       FilterSortButton(
                         icon: Symbols.filter_list_rounded,
-                        label: t.lists.hospital.cluster,
+                        label: t.lists.goc.cluster,
                         enabled: !_isLoading,
                         onPressed: () {
                           _showDataFilterSortModal(
                             context,
                             child: ClusterOptionsModal(
                               defaultOptions: _searchClusters,
-                              title: t.lists.hospital.cluster,
+                              title: t.lists.goc.cluster,
                               onUpdate: (final List<int> clusters) {
                                 setState(() {
                                   _searchClusters = clusters;
@@ -182,14 +181,14 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
             ),
           ),
         ],
-        body: BlocConsumer<FacilityHospitalBloc, FacilityHospitalState>(
+        body: BlocConsumer<FacilityGocBloc, FacilityGocState>(
           listener: (context, state) {
             setState(() {
-              _isLoading = state is FacilityHospitalLoading;
+              _isLoading = state is FacilityGocLoading;
             });
           },
           builder: (context, state) {
-            if (state is FacilityHospitalFailed) {
+            if (state is FacilityGocFailed) {
               return Padding(
                 padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).padding.bottom,
@@ -204,7 +203,7 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
               );
             }
 
-            if (state is! FacilityHospitalSuccess) {
+            if (state is! FacilityGocSuccess) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
               );
@@ -223,14 +222,12 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                 left: scrollViewPaddingX,
               ),
               itemBuilder: (context, index) {
-                final FacilityHospitalModel item =
-                    state.facilityHospitalData[index];
+                final FacilityGocModel item = state.facilityGocData[index];
 
                 return FacilityItemCard(
                   institutionName: item.institutionName,
                   address: item.address,
                   clusterCode: item.clusterCode,
-                  withAEService: item.withAEService,
                   latitude: item.latitude,
                   longitude: item.longitude,
                 );
@@ -238,7 +235,7 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
               separatorBuilder: (context, index) => const SizedBox(
                 height: 16.0,
               ),
-              itemCount: state.facilityHospitalData.length,
+              itemCount: state.facilityGocData.length,
             );
           },
         ),

@@ -8,10 +8,12 @@ class ClusterOptionsModal extends StatefulWidget {
   const ClusterOptionsModal({
     super.key,
     required this.defaultOptions,
+    this.title,
     this.onUpdate,
   });
 
   final List<int> defaultOptions;
+  final String? title;
   final void Function(List<int> clusters)? onUpdate;
 
   @override
@@ -50,7 +52,7 @@ class _ClusterOptionsModalState extends State<ClusterOptionsModal> {
               children: <Widget>[
                 Expanded(
                   child: Text(
-                    t.home.filter.cluster,
+                    widget.title ?? t.home.filter.cluster,
                     style: textTheme.titleLarge,
                     textAlign: TextAlign.center,
                   ),
