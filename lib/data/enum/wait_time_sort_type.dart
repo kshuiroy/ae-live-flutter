@@ -11,7 +11,12 @@ WaitTimeSortType toWaitTimeSortType(final String? typeString) {
   }
 
   return WaitTimeSortType.values.firstWhere(
-    (final WaitTimeSortType element) => element.toString().split('.').last == typeString,
+    (final WaitTimeSortType element) =>
+        element.toString().split('.').last == typeString,
     orElse: () => WaitTimeSortType.timeInAsd,
   );
+}
+
+String waitTimeSortTypeToString(final WaitTimeSortType sortType) {
+  return sortType.toString().split('.').last;
 }

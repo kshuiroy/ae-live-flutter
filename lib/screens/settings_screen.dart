@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/screens/settings/about_this_app_screen.dart';
+import 'package:ae_live/screens/settings/default_sorting_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_locale_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_theme_settings_screen.dart';
 import 'package:ae_live/screens/settings/open_source_licenses_screen.dart';
@@ -128,6 +129,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
           _SettingsItemModel(
             icon: Symbols.sort_rounded,
             title: t.settings.appearance.sorting.title,
+            onTap: () {
+              if (isCompact) {
+                context.push('/settings/sorting');
+              } else {
+                setState(() {
+                  _selectedPane = const DefaultSortingSettingsScreen(
+                    disableAutoGoBack: true,
+                  );
+                });
+              }
+            },
           ),
         ],
       ),

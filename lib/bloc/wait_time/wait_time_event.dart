@@ -21,10 +21,10 @@ final class WaitTimeDataFilter extends WaitTimeEvent {
   WaitTimeDataFilter({
     this.name,
     this.clusters,
-    this.sortType = WaitTimeSortType.timeInAsd,
+    this.sortType,
   });
 
   final String? name;
   final List<int>? clusters;
-  final WaitTimeSortType sortType;
+  final WaitTimeSortType? sortType;
 }

@@ -38,12 +38,10 @@ class _SettingsOptionScreenBaseState<T>
 
   @override
   Widget build(final BuildContext context) {
-    final Translations t = Translations.of(context);
-
     return Scaffold(
       appBar: FrostedGlassAppBar(
         title: Text(
-          t.settings.appearance.theme.title,
+          widget.title,
         ),
       ),
       extendBodyBehindAppBar: true,

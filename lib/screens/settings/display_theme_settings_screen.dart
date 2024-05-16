@@ -45,7 +45,7 @@ class _DisplayThemeSettingsScreenState
     }
   }
 
-  void _onSaveTheme(final ThemeMode mode) {
+  void _onSaveTheme(final BuildContext context, final ThemeMode mode) {
     // Update the app theme
     AELiveApp.of(context).updateTheme(mode);
 
@@ -65,7 +65,8 @@ class _DisplayThemeSettingsScreenState
   Widget build(final BuildContext context) {
     final Translations t = Translations.of(context);
 
-    final List<SettingsOptionModel<ThemeMode>> themeOptions = <SettingsOptionModel<ThemeMode>>[
+    final List<SettingsOptionModel<ThemeMode>> themeOptions =
+        <SettingsOptionModel<ThemeMode>>[
       SettingsOptionModel(
         title: t.settings.appearance.theme.options.light,
         value: ThemeMode.light,
@@ -88,7 +89,7 @@ class _DisplayThemeSettingsScreenState
       title: t.settings.appearance.theme.title,
       options: themeOptions,
       defaultOption: _defaultTheme!,
-      onSave: _onSaveTheme,
+      onSave: (theme) => _onSaveTheme(context, theme),
     );
   }
 }

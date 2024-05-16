@@ -1,9 +1,11 @@
+import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/data/enum/wait_time_sort_type.dart';
 import 'package:ae_live/data/repositories/wait_time_repository.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/utilities/check_internet_connection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'wait_time_event.dart';
 part 'wait_time_state.dart';
@@ -63,19 +65,24 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
   void _onWaitTimeDataFilter(
     final WaitTimeDataFilter event,
     final Emitter<WaitTimeState> emit,
-  ) {
+  ) async {
     emit(WaitTimeLoading());
 
     // filterKeyword = event.name;
     // filterClusters = event.clusters ?? <int>[1, 2, 3, 4, 5, 6, 7];
     // filterSortType = event.sortType;
 
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+
     final List<WaitTimeModel> processedData =
         repository.filterAndSortWaitTimeData(
       _data,
       keyword: event.name?.trim(),
       clusters: event.clusters,
-      sortType: event.sortType,
+      sortType: event.sortType ??
+          toWaitTimeSortType(
+            preferences.getString(Constants.preferenceKeyDefaultSorting),
+          ),
     );
 
     emit(

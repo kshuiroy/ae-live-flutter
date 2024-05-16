@@ -37,14 +37,17 @@ class _DisplayLocaleSettingsScreenState
     }
   }
 
-  Future<void> _onSaveLocale(final BuildContext context, final String locale) async {
+  Future<void> _onSaveLocale(
+      final BuildContext context, final String locale) async {
     // Update the display locale settings
     if (await _preferences.setString(
-        Constants.preferenceKeyAppLocale, locale,)) {
+      Constants.preferenceKeyAppLocale,
+      locale,
+    )) {
       LocaleSettings.setLocaleRaw(locale);
     }
 
-    // Dismiss the bottom sheet
+    // Go back to the last screen
     if (!widget.disableAutoGoBack && context.mounted) {
       Navigator.of(context).pop();
     }
@@ -60,7 +63,8 @@ class _DisplayLocaleSettingsScreenState
   Widget build(final BuildContext context) {
     final Translations t = Translations.of(context);
 
-    final List<SettingsOptionModel<String>> localeOptions = <SettingsOptionModel<String>>[
+    final List<SettingsOptionModel<String>> localeOptions =
+        <SettingsOptionModel<String>>[
       SettingsOptionModel(
         title: t.settings.appearance.language.options.zhHK,
         value: 'zh-HK',

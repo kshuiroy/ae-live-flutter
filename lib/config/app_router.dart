@@ -5,6 +5,7 @@ import 'package:ae_live/screens/lists/facility_hospital_screen.dart';
 import 'package:ae_live/screens/lists/facility_soc_screen.dart';
 import 'package:ae_live/screens/lists_screen.dart';
 import 'package:ae_live/screens/settings/about_this_app_screen.dart';
+import 'package:ae_live/screens/settings/default_sorting_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_locale_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_theme_settings_screen.dart';
 import 'package:ae_live/screens/settings/open_source_licenses_screen.dart';
@@ -97,6 +98,12 @@ final GoRouter appRouter = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       builder: (final BuildContext context, final GoRouterState state) =>
           const DisplayLocaleSettingsScreen(),
+    ),
+    GoRoute(
+      path: '/settings/sorting',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (final BuildContext context, final GoRouterState state) =>
+          const DefaultSortingSettingsScreen(),
     ),
     GoRoute(
       path: '/settings/licenses',
