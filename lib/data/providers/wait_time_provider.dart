@@ -1,12 +1,13 @@
+import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/utilities/api_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class WaitTimeProvider {
   final Map<String, String> _waitTimeAPIUrl = <String, String>{
-    'tc': 'https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json',
-    'sc': 'https://www.ha.org.hk/opendata/aed/aedwtdata-sc.json',
-    'en': 'https://www.ha.org.hk/opendata/aed/aedwtdata-en.json',
+    'tc': Constants.apiWaitTimeTC,
+    'sc': Constants.apiWaitTimeSC,
+    'en': Constants.apiWaitTimeEN,
   };
 
   final APIProvider _apiProvider = APIProvider();
@@ -18,8 +19,7 @@ class WaitTimeProvider {
 
     try {
       final String response = await _apiProvider.fetchAPI(
-        url: _waitTimeAPIUrl[locale] ??
-            'https://www.ha.org.hk/opendata/aed/aedwtdata-en.json',
+        url: _waitTimeAPIUrl[locale] ?? Constants.apiWaitTimeEN,
       );
 
       return response;
@@ -45,20 +45,22 @@ class WaitTimeProvider {
             debugPrint(error.toString());
 
             final RegExp timeRegExp = RegExp(r'time=(\d{8}-\d{4})');
-            final RegExpMatch? timeMatch = timeRegExp.firstMatch(error.toString());
+            final RegExpMatch? timeMatch =
+                timeRegExp.firstMatch(error.toString());
 
             if (timeMatch != null) {
               final String timeValue = timeMatch.group(1)!;
 
               // Convert the extracted time string into a DateTime object
               final DateTime timestamp = DateTime.parse(
-                      '${timeValue.substring(0, 8)}T${timeValue.substring(9)}:00',)
-                  .subtract(
+                '${timeValue.substring(0, 8)}T${timeValue.substring(9)}:00',
+              ).subtract(
                 const Duration(minutes: 15),
               );
 
               responses.add(
-                  '{"error":"NOT FOUND","updateTime":"${DateFormat('yyyy-MM-dd HH:mm').format(timestamp)}"}',);
+                '{"error":"NOT FOUND","updateTime":"${DateFormat('yyyy-MM-dd HH:mm').format(timestamp)}"}',
+              );
             } else {
               throw error.toString();
             }
@@ -75,7 +77,7 @@ class WaitTimeProvider {
   Future<String> getHospitalInfoData() async {
     try {
       final String response = await _apiProvider.fetchAPI(
-        url: 'https://www.ha.org.hk/opendata/facility-hosp.json',
+        url: Constants.apiFacilityHospital,
       );
 
       return response;
@@ -84,8 +86,10 @@ class WaitTimeProvider {
     }
   }
 
-  List<Future<String>> _getHistoryJobs(final String locale,
-      {final Duration pastDuration = const Duration(hours: 5, minutes: 45),}) {
+  List<Future<String>> _getHistoryJobs(
+    final String locale, {
+    final Duration pastDuration = const Duration(hours: 5, minutes: 45),
+  }) {
     // if (locale != 'tc' && locale != 'sc' && locale != 'en') {
     //   throw '[WaitTimeProvider::class/_getPastQuarterDateTimeValues()] Invalid `locale` value: $locale';
     // }

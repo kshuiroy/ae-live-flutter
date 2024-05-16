@@ -9,8 +9,8 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HospitalMapsViewer extends StatefulWidget {
-  const HospitalMapsViewer({
+class FacilityMapsViewer extends StatefulWidget {
+  const FacilityMapsViewer({
     super.key,
     required this.institutionName,
     required this.address,
@@ -24,10 +24,10 @@ class HospitalMapsViewer extends StatefulWidget {
   final double longitude;
 
   @override
-  State<HospitalMapsViewer> createState() => _HospitalMapsViewerState();
+  State<FacilityMapsViewer> createState() => _FacilityMapsViewerState();
 }
 
-class _HospitalMapsViewerState extends State<HospitalMapsViewer> {
+class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
   @override
   Widget build(final BuildContext context) {
     final Translations t = Translations.of(context);

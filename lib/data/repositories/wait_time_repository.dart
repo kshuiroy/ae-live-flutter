@@ -179,7 +179,7 @@ class WaitTimeRepository {
 
   List<WaitTimeModel> filterAndSortWaitTimeData(
     final List<WaitTimeModel> data, {
-    final String? name,
+    final String? keyword,
     final List<int>? clusters,
     final WaitTimeSortType sortType = WaitTimeSortType.timeInAsd,
   }) {
@@ -189,7 +189,7 @@ class WaitTimeRepository {
               element
                   .toQueryString()
                   .toLowerCase()
-                  .contains((name ?? '').toLowerCase()) &&
+                  .contains((keyword ?? '').toLowerCase()) &&
               ((clusters ?? <int>[]).isNotEmpty
                   ? clusters!.contains(element.clusterCode)
                   : true),

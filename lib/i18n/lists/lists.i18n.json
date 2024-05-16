@@ -1,0 +1,16 @@
+{
+    "@@locale": "en",
+    "@@namespace": "lists",
+    "title": "Lists",
+    "categories": {
+        "hospital": "Hospital/Institution",
+        "soc": "Specialist Outpatient Clinic",
+        "goc": "General Outpatient Clinic",
+        "cmc": "Chinese Medicine Clinics cum Training and Research Centres"
+    },
+    "hospital": {
+        "search": "Search Hospital/Institution",
+        "withAEService": "Provides A&E services",
+        "withoutAEService": "No A&E services provided"
+    }
+}

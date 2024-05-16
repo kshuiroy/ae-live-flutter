@@ -3,8 +3,8 @@ import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/wait_time_history_model.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
+import 'package:ae_live/widgets/shared/facility_maps_viewer.dart';
 import 'package:ae_live/widgets/wait_time_details/hospital_info_item.dart';
-import 'package:ae_live/widgets/wait_time_details/hospital_maps_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -28,10 +28,12 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
   bool _isPhoneCallSupported = false;
 
   void _init() async {
-    final bool checkCanMakePhoneCall = await canLaunchUrl(Uri(
-      scheme: 'tel',
-      path: widget.data.contactNo,
-    ),);
+    final bool checkCanMakePhoneCall = await canLaunchUrl(
+      Uri(
+        scheme: 'tel',
+        path: widget.data.contactNo,
+      ),
+    );
 
     setState(() {
       _isPhoneCallSupported = checkCanMakePhoneCall;
@@ -44,15 +46,20 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
     showGeneralDialog(
       context: context,
       barrierDismissible: false,
-      pageBuilder: (final BuildContext context, final Animation<double> animation, final Animation<double> secondaryAnimation) {
-        return HospitalMapsViewer(
+      pageBuilder: (final BuildContext context,
+          final Animation<double> animation,
+          final Animation<double> secondaryAnimation) {
+        return FacilityMapsViewer(
           institutionName: widget.data.institutionName,
           address: widget.data.address,
           latitude: widget.data.latitude,
           longitude: widget.data.longitude,
         );
       },
-      transitionBuilder: (final BuildContext context, final Animation<double> animation, final Animation<double> secondaryAnimation, final Widget child) {
+      transitionBuilder: (final BuildContext context,
+          final Animation<double> animation,
+          final Animation<double> secondaryAnimation,
+          final Widget child) {
         return SlideTransition(
           position: Tween<Offset>(
             begin: const Offset(0.0, 1.0),
@@ -238,7 +245,8 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                         );
                       } else {
                         debugPrint(
-                            'The device is not supported to make phone call.',);
+                          'The device is not supported to make phone call.',
+                        );
                       }
                     },
                   ),
@@ -268,7 +276,8 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                           );
                         } else {
                           debugPrint(
-                              'The device has no email application installed.',);
+                            'The device has no email application installed.',
+                          );
                         }
                       },
                     ),
@@ -333,8 +342,10 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
     return <LineSeries<WaitTimeHistoryModel, DateTime>>[
       LineSeries<WaitTimeHistoryModel, DateTime>(
         dataSource: widget.data.waitTimeHistory,
-        xValueMapper: (final WaitTimeHistoryModel item, final _) => item.timestamp,
-        yValueMapper: (final WaitTimeHistoryModel item, final _) => item.waitTimeValue,
+        xValueMapper: (final WaitTimeHistoryModel item, final _) =>
+            item.timestamp,
+        yValueMapper: (final WaitTimeHistoryModel item, final _) =>
+            item.waitTimeValue,
         width: 4.0,
         color: lineColor,
         animationDuration: 500,
@@ -358,7 +369,8 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
         arrowWidth: 8.0,
         arrowLength: 16.0,
       ),
-      builder: (final BuildContext context, final TrackballDetails trackballDetails) {
+      builder: (final BuildContext context,
+          final TrackballDetails trackballDetails) {
         final WaitTimeHistoryModel historyItem =
             widget.data.waitTimeHistory![trackballDetails.pointIndex!];
 

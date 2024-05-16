@@ -20,8 +20,10 @@ class WaitTimeListItem extends StatelessWidget {
 
   String _getClusterText() {
     return clusters
-        .firstWhere((final ClusterModel element) =>
-            element.clusterCode == data.clusterCode)
+        .firstWhere(
+          (final ClusterModel element) =>
+              element.clusterCode == data.clusterCode,
+        )
         .clusterText;
   }
 

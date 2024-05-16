@@ -6,12 +6,14 @@ import 'package:flutter/rendering.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class FrostedGlassSearchHeader extends StatefulWidget {
-
   const FrostedGlassSearchHeader({
     super.key,
     required this.child,
+    this.padding,
   });
+
   final Widget child;
+  final EdgeInsetsGeometry? padding;
 
   @override
   State<FrostedGlassSearchHeader> createState() =>
@@ -29,27 +31,32 @@ class _FrostedGlassSearchHeaderState extends State<FrostedGlassSearchHeader>
         safeAreaTopSize: MediaQuery.of(context).padding.top,
         child: widget.child,
         vsync: this,
+        padding: widget.padding,
       ),
     );
   }
 }
 
 class _FrostedGlassSearchHeaderDelegate extends SliverPersistentHeaderDelegate {
-
   _FrostedGlassSearchHeaderDelegate({
     required this.safeAreaTopSize,
     required this.child,
     required this.vsync,
+    this.padding,
   }) : super();
   final double safeAreaTopSize;
   final Widget child;
+  final EdgeInsetsGeometry? padding;
 
   @override
   final TickerProvider vsync;
 
   @override
   Widget build(
-      final BuildContext context, final double shrinkOffset, final bool overlapsContent,) {
+    final BuildContext context,
+    final double shrinkOffset,
+    final bool overlapsContent,
+  ) {
     final bool isCompact = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyCompact);
 
@@ -72,12 +79,13 @@ class _FrostedGlassSearchHeaderDelegate extends SliverPersistentHeaderDelegate {
                 bottom: 0.0,
                 left: 0.0,
                 child: Padding(
-                  padding: EdgeInsets.only(
-                    top: 8.0,
-                    right: isCompact ? 16.0 : 24.0,
-                    bottom: 8.0,
-                    left: isCompact ? 16.0 : 24.0,
-                  ),
+                  padding: padding ??
+                      EdgeInsets.only(
+                        top: 8.0,
+                        right: isCompact ? 16.0 : 24.0,
+                        bottom: 8.0,
+                        left: isCompact ? 16.0 : 24.0,
+                      ),
                   child: child,
                 ),
               ),

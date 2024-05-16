@@ -120,7 +120,7 @@ class _ClusterOptionsModalState extends State<ClusterOptionsModal> {
         final AppLocale currentLocale = LocaleSettings.currentLocale;
 
         return CheckboxListTile.adaptive(
-          key: Key(option.id),
+          // key: Key(option.id),
           title: Text(
             currentLocale == AppLocale.zhHk
                 ? option.nameTC
@@ -132,7 +132,10 @@ class _ClusterOptionsModalState extends State<ClusterOptionsModal> {
           onChanged: (final bool? isChecked) {
             if (isChecked!) {
               setState(() {
-                _selectedOptions = <int>[..._selectedOptions, option.clusterCode];
+                _selectedOptions = <int>[
+                  ..._selectedOptions,
+                  option.clusterCode
+                ];
               });
             } else {
               setState(() {

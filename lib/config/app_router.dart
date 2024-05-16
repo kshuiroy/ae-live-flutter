@@ -1,5 +1,6 @@
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/screens/home_screen.dart';
+import 'package:ae_live/screens/lists/facility_hospital_screen.dart';
 import 'package:ae_live/screens/lists_screen.dart';
 import 'package:ae_live/screens/settings/about_this_app_screen.dart';
 import 'package:ae_live/screens/settings/display_locale_settings_screen.dart';
@@ -21,8 +22,11 @@ final GoRouter appRouter = GoRouter(
   routes: <RouteBase>[
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
-      builder: (final BuildContext context, final GoRouterState state,
-              final Widget child) =>
+      builder: (
+        final BuildContext context,
+        final GoRouterState state,
+        final Widget child,
+      ) =>
           AppScaffold(child: child),
       routes: <RouteBase>[
         GoRoute(
@@ -61,6 +65,12 @@ final GoRouter appRouter = GoRouter(
           WaitTimeDetailsScreen(
         data: state.extra as WaitTimeModel,
       ),
+    ),
+    GoRoute(
+      path: '/facility/hospital',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (final BuildContext context, final GoRouterState state) =>
+          const FacilityHospitalScreen(),
     ),
     GoRoute(
       path: '/settings/theme',

@@ -1,8 +1,11 @@
+import 'package:ae_live/bloc/facility_hospital/facility_hospital_bloc.dart';
 import 'package:ae_live/bloc/wait_time/wait_time_bloc.dart';
 import 'package:ae_live/config/app_router.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/config/theme_map.dart';
+import 'package:ae_live/data/providers/facility_hospital_provider.dart';
 import 'package:ae_live/data/providers/wait_time_provider.dart';
+import 'package:ae_live/data/repositories/facility_hospital_repository.dart';
 import 'package:ae_live/data/repositories/wait_time_repository.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/theme/color_schemes.g.dart';
@@ -119,12 +122,22 @@ class _AELiveAppState extends State<AELiveApp> {
             provider: WaitTimeProvider(),
           ),
         ),
+        RepositoryProvider(
+          create: (final BuildContext context) => FacilityHospitalRepository(
+            provider: FacilityHospitalProvider(),
+          ),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider<WaitTimeBloc>(
             create: (final BuildContext context) => WaitTimeBloc(
               repository: context.read<WaitTimeRepository>(),
+            ),
+          ),
+          BlocProvider<FacilityHospitalBloc>(
+            create: (final BuildContext context) => FacilityHospitalBloc(
+              repository: context.read<FacilityHospitalRepository>(),
             ),
           ),
         ],

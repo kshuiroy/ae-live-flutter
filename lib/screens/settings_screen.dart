@@ -182,9 +182,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: FrostedGlassAppBar(
         title: Text(t.settings.title),
       ),
+      extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(
-          vertical: 16.0,
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
+          bottom: 16.0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

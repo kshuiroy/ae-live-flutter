@@ -1,0 +1,16 @@
+{
+    "@@locale": "zh-HK",
+    "@@namespace": "lists",
+    "title": "設施目錄",
+    "categories": {
+        "hospital": "醫院/機構",
+        "soc": "專科門診診所",
+        "goc": "普通科門診診所",
+        "cmc": "中醫診所暨教研中心"
+    },
+    "hospital": {
+        "search": "搜尋醫院/機構",
+        "withAEService": "提供急症室服務",
+        "withoutAEService": "沒有急症室服務"
+    }
+}

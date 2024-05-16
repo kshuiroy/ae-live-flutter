@@ -34,6 +34,7 @@ class _TranslationsZhCn extends Translations {
 	// Translations
 	@override late final _TranslationsSettingsZhCn settings = _TranslationsSettingsZhCn._(_root);
 	@override late final _TranslationsHomeZhCn home = _TranslationsHomeZhCn._(_root);
+	@override late final _TranslationsListsZhCn lists = _TranslationsListsZhCn._(_root);
 	@override late final _TranslationsWaitTimeDetailsZhCn waitTimeDetails = _TranslationsWaitTimeDetailsZhCn._(_root);
 	@override late final _TranslationsMainZhCn main = _TranslationsMainZhCn._(_root);
 }
@@ -66,6 +67,18 @@ class _TranslationsHomeZhCn extends _TranslationsHomeEn {
 	@override late final _TranslationsHomeRefreshIndicatorZhCn refreshIndicator = _TranslationsHomeRefreshIndicatorZhCn._(_root);
 	@override late final _TranslationsHomeFilterZhCn filter = _TranslationsHomeFilterZhCn._(_root);
 	@override late final _TranslationsHomePromptZhCn prompt = _TranslationsHomePromptZhCn._(_root);
+}
+
+// Path: lists
+class _TranslationsListsZhCn extends _TranslationsListsEn {
+	_TranslationsListsZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '设施目录';
+	@override late final _TranslationsListsCategoriesZhCn categories = _TranslationsListsCategoriesZhCn._(_root);
+	@override late final _TranslationsListsHospitalZhCn hospital = _TranslationsListsHospitalZhCn._(_root);
 }
 
 // Path: waitTimeDetails
@@ -195,6 +208,31 @@ class _TranslationsHomePromptZhCn extends _TranslationsHomePromptEn {
 	@override String get serverError => '服务器发生错误，请稍后再试。';
 	@override String get noSearchResult => '没有符合搜寻条件的医院。';
 	@override String get selectItem => '请在列表中选取一张医院卡片，以查看医院的详情。';
+}
+
+// Path: lists.categories
+class _TranslationsListsCategoriesZhCn extends _TranslationsListsCategoriesEn {
+	_TranslationsListsCategoriesZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get hospital => '医院/机构';
+	@override String get soc => '专科门诊诊所';
+	@override String get goc => '普通科门诊诊所';
+	@override String get cmc => '中医诊所暨教研中心';
+}
+
+// Path: lists.hospital
+class _TranslationsListsHospitalZhCn extends _TranslationsListsHospitalEn {
+	_TranslationsListsHospitalZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get search => '搜寻医院/机构';
+	@override String get withAEService => '提供急症室服务';
+	@override String get withoutAEService => '没有急症室服务';
 }
 
 // Path: waitTimeDetails.actions

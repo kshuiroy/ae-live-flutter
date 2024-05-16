@@ -25,7 +25,7 @@ class AppScaffold extends StatefulWidget {
 
 class _AppScaffoldState extends State<AppScaffold> {
   int _selectedTabIndex = 0;
-  late StreamSubscription<AppLocale> _localeStram;
+  late StreamSubscription<AppLocale> _localeStream;
 
   void _onDestinationSelected(final BuildContext context, final int index) {
     context.go(tabItems[index].path);
@@ -38,7 +38,8 @@ class _AppScaffoldState extends State<AppScaffold> {
   @override
   void initState() {
     super.initState();
-    _localeStram = LocaleSettings.getLocaleStream().listen((final AppLocale locale) {
+    _localeStream =
+        LocaleSettings.getLocaleStream().listen((final AppLocale locale) {
       // Reset BLoC's data when the locale is changed.
       context.read<WaitTimeBloc>().add(WaitTimeReset());
     });
@@ -47,7 +48,7 @@ class _AppScaffoldState extends State<AppScaffold> {
   @override
   void dispose() {
     super.dispose();
-    _localeStram.cancel();
+    _localeStream.cancel();
   }
 
   @override

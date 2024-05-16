@@ -9,14 +9,14 @@ import 'package:ae_live/data/enum/wait_time_sort_type.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/screens/wait_time_details_screen.dart';
+import 'package:ae_live/widgets/core/frosted_glass_search_header.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/home_screen/cluster_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/filter_sort_button.dart';
-import 'package:ae_live/widgets/home_screen/frosted_glass_search_header.dart';
-import 'package:ae_live/widgets/home_screen/search_text_field.dart';
 import 'package:ae_live/widgets/home_screen/sorting_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/wait_time_list_item.dart';
 import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
+import 'package:ae_live/widgets/shared/search_text_field.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -63,8 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
         );
   }
 
-  void _showDataFilterSortModal(final BuildContext context,
-      {required final Widget child}) {
+  void _showDataFilterSortModal(
+    final BuildContext context, {
+    required final Widget child,
+  }) {
     if (ResponsiveBreakpoints.of(context)
         .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
       showDialog(
@@ -193,6 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               SearchTextField(
                 controller: _searchTextController,
+                hintText: t.home.actions.search,
                 enabled: !_isLoading,
                 onChange: (final String value) {
                   setState(() {

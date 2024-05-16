@@ -1,0 +1,16 @@
+{
+    "@@locale": "zh-CN",
+    "@@namespace": "lists",
+    "title": "设施目录",
+    "categories": {
+        "hospital": "医院/机构",
+        "soc": "专科门诊诊所",
+        "goc": "普通科门诊诊所",
+        "cmc": "中医诊所暨教研中心"
+    },
+    "hospital": {
+        "search": "搜寻医院/机构",
+        "withAEService": "提供急症室服务",
+        "withoutAEService": "没有急症室服务"
+    }
+}

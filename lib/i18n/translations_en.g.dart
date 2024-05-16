@@ -38,6 +38,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	// Translations
 	late final _TranslationsSettingsEn settings = _TranslationsSettingsEn._(_root);
 	late final _TranslationsHomeEn home = _TranslationsHomeEn._(_root);
+	late final _TranslationsListsEn lists = _TranslationsListsEn._(_root);
 	late final _TranslationsWaitTimeDetailsEn waitTimeDetails = _TranslationsWaitTimeDetailsEn._(_root);
 	late final _TranslationsMainEn main = _TranslationsMainEn._(_root);
 }
@@ -70,6 +71,18 @@ class _TranslationsHomeEn {
 	late final _TranslationsHomeRefreshIndicatorEn refreshIndicator = _TranslationsHomeRefreshIndicatorEn._(_root);
 	late final _TranslationsHomeFilterEn filter = _TranslationsHomeFilterEn._(_root);
 	late final _TranslationsHomePromptEn prompt = _TranslationsHomePromptEn._(_root);
+}
+
+// Path: lists
+class _TranslationsListsEn {
+	_TranslationsListsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Lists';
+	late final _TranslationsListsCategoriesEn categories = _TranslationsListsCategoriesEn._(_root);
+	late final _TranslationsListsHospitalEn hospital = _TranslationsListsHospitalEn._(_root);
 }
 
 // Path: waitTimeDetails
@@ -199,6 +212,31 @@ class _TranslationsHomePromptEn {
 	String get serverError => 'Something went wrong with the server, please try again later.';
 	String get noSearchResult => 'There is no hospital matches your search criteria.';
 	String get selectItem => 'Please select a hospital card from the list to see the details of the hospital.';
+}
+
+// Path: lists.categories
+class _TranslationsListsCategoriesEn {
+	_TranslationsListsCategoriesEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get hospital => 'Hospital/Institution';
+	String get soc => 'Specialist Outpatient Clinic';
+	String get goc => 'General Outpatient Clinic';
+	String get cmc => 'Chinese Medicine Clinics cum Training and Research Centres';
+}
+
+// Path: lists.hospital
+class _TranslationsListsHospitalEn {
+	_TranslationsListsHospitalEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get search => 'Search Hospital/Institution';
+	String get withAEService => 'Provides A&E services';
+	String get withoutAEService => 'No A&E services provided';
 }
 
 // Path: waitTimeDetails.actions
