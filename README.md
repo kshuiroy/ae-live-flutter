@@ -26,9 +26,9 @@ Patients with minor illnesses can consider seeking alternative medical services 
 
 To start development, please make sure the development machine has the following SDK and IDE installed:
 
--   Flutter SDK: >= 3.19.5
--   Visual Studio Code
--   Android Studio: >= Iguana | 2023.2.1 Patch 1
+-   [Flutter SDK: >= 3.19.6](https://docs.flutter.dev/get-started/install)
+-   [Visual Studio Code](https://code.visualstudio.com/)
+-   [Android Studio: >= Jellyfish | 2023.3.1](https://developer.android.com/studio)
 -   Install the following SDKs and IDE also if you're using **macOS**:
     -   Xcode: >= 15.0
     -   Ruby: >= 3.3.0
@@ -44,4 +44,18 @@ dart run slang
 
 # Start debugging
 flutter run
+
+# Build Android App Bundle (Production)
+flutter build appbundle
 ```
+
+## Open data used in this app
+
+This app used the following open data:
+
+- [Accident and Emergency Waiting Time by Hospital (English)](https://www.ha.org.hk/opendata/aed/aedwtdata-en.json)
+- [Accident and Emergency Waiting Time by Hospital (Traditional Chinese)](https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json)
+- [Accident and Emergency Waiting Time by Hospital (Simplified Chinese)](https://www.ha.org.hk/opendata/aed/aedwtdata-sc.json)
+- [Hospital Authority Hospital/Institution List by Cluster](https://www.ha.org.hk/opendata/facility-hosp.json)
+- [Hospital Authority Specialist Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-sop.json)
+- [Hospital Authority General Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-gop.json)
