@@ -49,7 +49,9 @@ class _DefaultSortingSettingsScreenState
   }
 
   Future<void> _onSaveSorting(
-      final BuildContext context, final WaitTimeSortType sortType) async {
+    final BuildContext context,
+    final WaitTimeSortType sortType,
+  ) async {
     // Update the default sorting settings
     await _preferences.setString(
       Constants.preferenceKeyDefaultSorting,

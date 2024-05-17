@@ -25,8 +25,10 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   Widget? _selectedPane;
 
-  void _showResponsiveModal(final BuildContext context,
-      {required final Widget child}) {
+  void _showResponsiveModal(
+    final BuildContext context, {
+    required final Widget child,
+  }) {
     if (ResponsiveBreakpoints.of(context)
         .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
       showDialog(
@@ -280,8 +282,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _getSectionTitleWidget(final BuildContext context,
-      {required final String title}) {
+  Widget _getSectionTitleWidget(
+    final BuildContext context, {
+    required final String title,
+  }) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Padding(

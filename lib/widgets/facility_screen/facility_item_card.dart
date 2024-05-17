@@ -36,9 +36,11 @@ class FacilityItemCard extends StatelessWidget {
     showGeneralDialog(
       context: context,
       barrierDismissible: false,
-      pageBuilder: (final BuildContext context,
-          final Animation<double> animation,
-          final Animation<double> secondaryAnimation) {
+      pageBuilder: (
+        final BuildContext context,
+        final Animation<double> animation,
+        final Animation<double> secondaryAnimation,
+      ) {
         return FacilityMapsViewer(
           institutionName: institutionName,
           address: address,
@@ -46,10 +48,12 @@ class FacilityItemCard extends StatelessWidget {
           longitude: longitude,
         );
       },
-      transitionBuilder: (final BuildContext context,
-          final Animation<double> animation,
-          final Animation<double> secondaryAnimation,
-          final Widget child) {
+      transitionBuilder: (
+        final BuildContext context,
+        final Animation<double> animation,
+        final Animation<double> secondaryAnimation,
+        final Widget child,
+      ) {
         return SlideTransition(
           position: Tween<Offset>(
             begin: const Offset(0.0, 1.0),

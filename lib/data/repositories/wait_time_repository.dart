@@ -36,7 +36,8 @@ class WaitTimeRepository {
             .getWaitTimeData(currentLocale)
             .then((final String response) => waitTimeData = response),
         provider.getWaitTimeHistoryData(currentLocale).then(
-            (final List<String> responses) => waitTimeHistoryData = responses),
+              (final List<String> responses) => waitTimeHistoryData = responses,
+            ),
         provider
             .getHospitalInfoData()
             .then((final String response) => hospitalInfoData = response),

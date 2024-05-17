@@ -38,7 +38,9 @@ class _DisplayLocaleSettingsScreenState
   }
 
   Future<void> _onSaveLocale(
-      final BuildContext context, final String locale) async {
+    final BuildContext context,
+    final String locale,
+  ) async {
     // Update the display locale settings
     if (await _preferences.setString(
       Constants.preferenceKeyAppLocale,

@@ -44,7 +44,7 @@ class WaitTimeModel {
       waitTimeHistory: map['waitTimeHistory'] != null
           ? List<WaitTimeHistoryModel>.from(
               map['waitTimeHistory']?.map((final Map<String, dynamic> x) =>
-                  WaitTimeHistoryModel.fromMap(x)),
+                  WaitTimeHistoryModel.fromMap(x),),
             )
           : null,
     );

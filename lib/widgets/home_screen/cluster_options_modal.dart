@@ -136,7 +136,7 @@ class _ClusterOptionsModalState extends State<ClusterOptionsModal> {
               setState(() {
                 _selectedOptions = <int>[
                   ..._selectedOptions,
-                  option.clusterCode
+                  option.clusterCode,
                 ];
               });
             } else {

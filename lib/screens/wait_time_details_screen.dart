@@ -55,9 +55,11 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
     showGeneralDialog(
       context: context,
       barrierDismissible: false,
-      pageBuilder: (final BuildContext context,
-          final Animation<double> animation,
-          final Animation<double> secondaryAnimation) {
+      pageBuilder: (
+        final BuildContext context,
+        final Animation<double> animation,
+        final Animation<double> secondaryAnimation,
+      ) {
         return FacilityMapsViewer(
           institutionName: widget.data.institutionName,
           address: widget.data.address,
@@ -383,8 +385,10 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
         arrowWidth: 8.0,
         arrowLength: 16.0,
       ),
-      builder: (final BuildContext context,
-          final TrackballDetails trackballDetails) {
+      builder: (
+        final BuildContext context,
+        final TrackballDetails trackballDetails,
+      ) {
         final WaitTimeHistoryModel historyItem =
             widget.data.waitTimeHistory![trackballDetails.pointIndex!];
 

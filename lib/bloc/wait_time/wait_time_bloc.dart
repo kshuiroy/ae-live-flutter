@@ -96,7 +96,9 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
   }
 
   void _onWaitTimeReset(
-      final WaitTimeReset event, final Emitter<WaitTimeState> emit) {
+    final WaitTimeReset event,
+    final Emitter<WaitTimeState> emit,
+  ) {
     emit(WaitTimeInitial());
   }
 }
