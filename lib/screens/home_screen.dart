@@ -180,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final Translations t = Translations.of(context);
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final bool isNarrow = ResponsiveBreakpoints.of(context)
+    final bool isSmallerThanMediumSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyMedium);
 
     return NestedScrollView(
@@ -284,8 +284,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     PromptWithArtwork(
                       artwork: ServerError(
-                        height: isNarrow ? 320.0 : 400.0,
-                        width: isNarrow ? 320.0 : 400.0,
+                        height: isSmallerThanMediumSize ? 320.0 : 400.0,
+                        width: isSmallerThanMediumSize ? 320.0 : 400.0,
                       ),
                       promptText: state.errorMessage == '-1001'
                           ? t.home.prompt.noConnection
@@ -333,8 +333,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: PromptWithArtwork(
                 artwork: NoSearchResult(
-                  height: isNarrow ? 320.0 : 400.0,
-                  width: isNarrow ? 320.0 : 400.0,
+                  height: isSmallerThanMediumSize ? 320.0 : 400.0,
+                  width: isSmallerThanMediumSize ? 320.0 : 400.0,
                 ),
                 promptText: t.home.prompt.noSearchResult,
               ),

@@ -98,9 +98,9 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
   @override
   Widget build(BuildContext context) {
     final Translations t = Translations.of(context);
-    final bool isCompact = ResponsiveBreakpoints.of(context)
+    final bool isCompactSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyCompact);
-    final bool isNarrow = ResponsiveBreakpoints.of(context)
+    final bool isSmallerThanMediumSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyMedium);
 
     return Material(
@@ -116,11 +116,11 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                 Padding(
                   padding: EdgeInsets.only(
                     top: 8.0,
-                    right: isCompact ? 16.0 : 24.0,
+                    right: isCompactSize ? 16.0 : 24.0,
                     bottom: 8.0,
                     left: widget.showBackButton
                         ? 0.0
-                        : isCompact
+                        : isCompactSize
                             ? 16.0
                             : 24.0,
                   ),
@@ -161,9 +161,9 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                    right: isCompact ? 16.0 : 24.0,
+                    right: isCompactSize ? 16.0 : 24.0,
                     bottom: 8.0,
-                    left: isCompact ? 16.0 : 24.0,
+                    left: isCompactSize ? 16.0 : 24.0,
                   ),
                   child: Row(
                     children: [
@@ -214,8 +214,8 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                     children: [
                       PromptWithArtwork(
                         artwork: ServerError(
-                          height: isNarrow ? 320.0 : 400.0,
-                          width: isNarrow ? 320.0 : 400.0,
+                          height: isSmallerThanMediumSize ? 320.0 : 400.0,
+                          width: isSmallerThanMediumSize ? 320.0 : 400.0,
                         ),
                         promptText: state.errorMessage == '-1001'
                             ? t.home.prompt.noConnection
@@ -259,8 +259,8 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
                 ),
                 child: PromptWithArtwork(
                   artwork: NoSearchResult(
-                    height: isNarrow ? 320.0 : 400.0,
-                    width: isNarrow ? 320.0 : 400.0,
+                    height: isSmallerThanMediumSize ? 320.0 : 400.0,
+                    width: isSmallerThanMediumSize ? 320.0 : 400.0,
                   ),
                   promptText: t.lists.hospital.noSearchResult,
                 ),

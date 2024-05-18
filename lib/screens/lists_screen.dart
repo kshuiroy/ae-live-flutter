@@ -67,7 +67,7 @@ class _ListsScreenState extends State<ListsScreen> {
 
   Widget _buildListsPane(BuildContext context) {
     final Translations t = Translations.of(context);
-    final bool isCompact = ResponsiveBreakpoints.of(context)
+    final bool isCompactSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyCompact);
 
     final List<_CategoryListItem> categoryList = <_CategoryListItem>[
@@ -75,7 +75,7 @@ class _ListsScreenState extends State<ListsScreen> {
         title: t.lists.categories.hospital,
         icon: Symbols.local_hospital_rounded,
         onTap: () {
-          if (isCompact) {
+          if (isCompactSize) {
             context.push('/facility/hospital');
           } else {
             setState(() {
@@ -90,7 +90,7 @@ class _ListsScreenState extends State<ListsScreen> {
         title: t.lists.categories.soc,
         icon: Symbols.local_hospital_rounded,
         onTap: () {
-          if (isCompact) {
+          if (isCompactSize) {
             context.push('/facility/soc');
           } else {
             setState(() {
@@ -105,7 +105,7 @@ class _ListsScreenState extends State<ListsScreen> {
         title: t.lists.categories.goc,
         icon: Symbols.local_hospital_rounded,
         onTap: () {
-          if (isCompact) {
+          if (isCompactSize) {
             context.push('/facility/goc');
           } else {
             setState(() {
@@ -130,9 +130,9 @@ class _ListsScreenState extends State<ListsScreen> {
       body: ListView.separated(
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
-          right: isCompact ? 16.0 : 24.0,
+          right: isCompactSize ? 16.0 : 24.0,
           bottom: 16.0,
-          left: isCompact ? 16.0 : 24.0,
+          left: isCompactSize ? 16.0 : 24.0,
         ),
         itemBuilder: (context, index) {
           final _CategoryListItem item = categoryList[index];

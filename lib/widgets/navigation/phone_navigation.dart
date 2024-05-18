@@ -48,7 +48,7 @@ class PhoneNavigation extends StatelessWidget {
 
   Widget _buildNavigationBar(
     final BuildContext context,
-    final bool isMediumScreen,
+    final bool isMediumSize,
   ) {
     final Translations t = Translations.of(context);
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
@@ -65,7 +65,7 @@ class PhoneNavigation extends StatelessWidget {
           selectedIndex: selectedIndex,
           onDestinationSelected: onDestinationSelected,
           indicatorColor: Colors.transparent,
-          height: isMediumScreen ? 64.0 : 56.0,
+          height: isMediumSize ? 64.0 : 56.0,
           destinations: tabItems
               .map(
                 (final DestinationItem item) => NavigationDestination(

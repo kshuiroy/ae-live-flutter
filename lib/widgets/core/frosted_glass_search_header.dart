@@ -57,7 +57,7 @@ class _FrostedGlassSearchHeaderDelegate extends SliverPersistentHeaderDelegate {
     final double shrinkOffset,
     final bool overlapsContent,
   ) {
-    final bool isCompact = ResponsiveBreakpoints.of(context)
+    final bool isCompactSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyCompact);
 
     return ClipRRect(
@@ -82,9 +82,9 @@ class _FrostedGlassSearchHeaderDelegate extends SliverPersistentHeaderDelegate {
                   padding: padding ??
                       EdgeInsets.only(
                         top: 8.0,
-                        right: isCompact ? 16.0 : 24.0,
+                        right: isCompactSize ? 16.0 : 24.0,
                         bottom: 8.0,
-                        left: isCompact ? 16.0 : 24.0,
+                        left: isCompactSize ? 16.0 : 24.0,
                       ),
                   child: child,
                 ),

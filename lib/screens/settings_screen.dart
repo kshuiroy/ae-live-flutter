@@ -91,7 +91,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Widget _buildSettingsPane(final BuildContext context) {
     final Translations t = Translations.of(context);
-    final bool isCompact = ResponsiveBreakpoints.of(context)
+    final bool isCompactSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyCompact);
 
     final List<_SettingsSectionModel> settingsItems = <_SettingsSectionModel>[
@@ -102,7 +102,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Symbols.routine_rounded,
             title: t.settings.appearance.theme.title,
             onTap: () {
-              if (isCompact) {
+              if (isCompactSize) {
                 context.push('/settings/theme');
               } else {
                 setState(() {
@@ -117,7 +117,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Symbols.translate_rounded,
             title: t.settings.appearance.language.title,
             onTap: () {
-              if (isCompact) {
+              if (isCompactSize) {
                 context.push('/settings/locale');
               } else {
                 setState(() {
@@ -132,7 +132,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Symbols.sort_rounded,
             title: t.settings.appearance.sorting.title,
             onTap: () {
-              if (isCompact) {
+              if (isCompactSize) {
                 context.push('/settings/sorting');
               } else {
                 setState(() {
@@ -167,7 +167,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Symbols.code_rounded,
             title: t.settings.more.license,
             onTap: () {
-              if (isCompact) {
+              if (isCompactSize) {
                 context.push('/settings/licenses');
               } else {
                 setState(() {
@@ -206,7 +206,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Symbols.smartphone_rounded,
             title: t.settings.more.about.title,
             onTap: () {
-              if (isCompact) {
+              if (isCompactSize) {
                 context.push('/settings/about');
               } else {
                 setState(() {

@@ -32,7 +32,7 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
   Widget build(final BuildContext context) {
     final Translations t = Translations.of(context);
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final bool isCompact = ResponsiveBreakpoints.of(context)
+    final bool isCompactSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyCompact);
 
     return Scaffold(
@@ -128,9 +128,9 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
           return Padding(
             padding: EdgeInsets.only(
               top: 24.0,
-              right: isCompact ? 16.0 : 24.0,
+              right: isCompactSize ? 16.0 : 24.0,
               bottom: MediaQuery.of(context).padding.bottom + 16.0,
-              left: isCompact ? 16.0 : 24.0,
+              left: isCompactSize ? 16.0 : 24.0,
             ),
             child: SizedBox(
               width: double.infinity,
