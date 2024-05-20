@@ -31,6 +31,6 @@
         "noConnection": "No internet connection.",
         "serverError": "Something went wrong with the server, please try again later.",
         "noSearchResult": "There is no hospital matches your search criteria.",
-        "selectItem": "Please select a hospital card from the list to see the details of the hospital."
+        "selectItem": "Please select a hospital card from the list to view the details of the hospital."
     }
 }

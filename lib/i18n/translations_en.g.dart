@@ -228,7 +228,7 @@ class _TranslationsHomePromptEn {
 	String get noConnection => 'No internet connection.';
 	String get serverError => 'Something went wrong with the server, please try again later.';
 	String get noSearchResult => 'There is no hospital matches your search criteria.';
-	String get selectItem => 'Please select a hospital card from the list to see the details of the hospital.';
+	String get selectItem => 'Please select a hospital card from the list to view the details of the hospital.';
 }
 
 // Path: lists.categories

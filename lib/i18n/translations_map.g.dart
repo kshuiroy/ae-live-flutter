@@ -70,7 +70,7 @@ extension on Translations {
 			case 'home.prompt.noConnection': return 'No internet connection.';
 			case 'home.prompt.serverError': return 'Something went wrong with the server, please try again later.';
 			case 'home.prompt.noSearchResult': return 'There is no hospital matches your search criteria.';
-			case 'home.prompt.selectItem': return 'Please select a hospital card from the list to see the details of the hospital.';
+			case 'home.prompt.selectItem': return 'Please select a hospital card from the list to view the details of the hospital.';
 			case 'lists.title': return 'Lists';
 			case 'lists.categories.hospital': return 'Hospital/Institution';
 			case 'lists.categories.soc': return 'Specialist Outpatient Clinic';
