@@ -57,6 +57,7 @@ class _TranslationsSettingsEn {
 	late final _TranslationsSettingsAppearanceEn appearance = _TranslationsSettingsAppearanceEn._(_root);
 	late final _TranslationsSettingsDataEn data = _TranslationsSettingsDataEn._(_root);
 	late final _TranslationsSettingsMoreEn more = _TranslationsSettingsMoreEn._(_root);
+	late final _TranslationsSettingsPromptEn prompt = _TranslationsSettingsPromptEn._(_root);
 }
 
 // Path: home
@@ -177,6 +178,16 @@ class _TranslationsSettingsMoreEn {
 	late final _TranslationsSettingsMorePrivacyPolicyEn privacyPolicy = _TranslationsSettingsMorePrivacyPolicyEn._(_root);
 	late final _TranslationsSettingsMoreTermsConditionsEn termsConditions = _TranslationsSettingsMoreTermsConditionsEn._(_root);
 	late final _TranslationsSettingsMoreAboutEn about = _TranslationsSettingsMoreAboutEn._(_root);
+}
+
+// Path: settings.prompt
+class _TranslationsSettingsPromptEn {
+	_TranslationsSettingsPromptEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get selectItem => 'Please select an item from the list to update the settings of the app.';
 }
 
 // Path: home.actions

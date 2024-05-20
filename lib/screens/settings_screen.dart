@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:ae_live/artworks/select_item_from_list.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/screens/settings/about_this_app_screen.dart';
@@ -9,6 +10,7 @@ import 'package:ae_live/screens/settings/display_theme_settings_screen.dart';
 import 'package:ae_live/screens/settings/open_source_licenses_screen.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:ae_live/widgets/settings_screen/reset_settings_modal.dart';
+import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -65,7 +67,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           Expanded(
             flex: isMediumSize ? 1 : 4,
-            child: _selectedPane ?? const SizedBox(),
+            child: _selectedPane ??
+                PromptWithArtwork(
+                  artwork: SelectItemFromList(
+                    height: isMediumSize ? 320.0 : 400.0,
+                    width: isMediumSize ? 320.0 : 400.0,
+                  ),
+                  promptText: t.settings.prompt.selectItem,
+                ),
           ),
         ],
       );

@@ -53,6 +53,7 @@ class _TranslationsSettingsZhHk extends _TranslationsSettingsEn {
 	@override late final _TranslationsSettingsAppearanceZhHk appearance = _TranslationsSettingsAppearanceZhHk._(_root);
 	@override late final _TranslationsSettingsDataZhHk data = _TranslationsSettingsDataZhHk._(_root);
 	@override late final _TranslationsSettingsMoreZhHk more = _TranslationsSettingsMoreZhHk._(_root);
+	@override late final _TranslationsSettingsPromptZhHk prompt = _TranslationsSettingsPromptZhHk._(_root);
 }
 
 // Path: home
@@ -173,6 +174,16 @@ class _TranslationsSettingsMoreZhHk extends _TranslationsSettingsMoreEn {
 	@override late final _TranslationsSettingsMorePrivacyPolicyZhHk privacyPolicy = _TranslationsSettingsMorePrivacyPolicyZhHk._(_root);
 	@override late final _TranslationsSettingsMoreTermsConditionsZhHk termsConditions = _TranslationsSettingsMoreTermsConditionsZhHk._(_root);
 	@override late final _TranslationsSettingsMoreAboutZhHk about = _TranslationsSettingsMoreAboutZhHk._(_root);
+}
+
+// Path: settings.prompt
+class _TranslationsSettingsPromptZhHk extends _TranslationsSettingsPromptEn {
+	_TranslationsSettingsPromptZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get selectItem => '請在列表中選取一個項目來更改應用程式的設定。';
 }
 
 // Path: home.actions

@@ -53,6 +53,7 @@ class _TranslationsSettingsZhCn extends _TranslationsSettingsEn {
 	@override late final _TranslationsSettingsAppearanceZhCn appearance = _TranslationsSettingsAppearanceZhCn._(_root);
 	@override late final _TranslationsSettingsDataZhCn data = _TranslationsSettingsDataZhCn._(_root);
 	@override late final _TranslationsSettingsMoreZhCn more = _TranslationsSettingsMoreZhCn._(_root);
+	@override late final _TranslationsSettingsPromptZhCn prompt = _TranslationsSettingsPromptZhCn._(_root);
 }
 
 // Path: home
@@ -173,6 +174,16 @@ class _TranslationsSettingsMoreZhCn extends _TranslationsSettingsMoreEn {
 	@override late final _TranslationsSettingsMorePrivacyPolicyZhCn privacyPolicy = _TranslationsSettingsMorePrivacyPolicyZhCn._(_root);
 	@override late final _TranslationsSettingsMoreTermsConditionsZhCn termsConditions = _TranslationsSettingsMoreTermsConditionsZhCn._(_root);
 	@override late final _TranslationsSettingsMoreAboutZhCn about = _TranslationsSettingsMoreAboutZhCn._(_root);
+}
+
+// Path: settings.prompt
+class _TranslationsSettingsPromptZhCn extends _TranslationsSettingsPromptEn {
+	_TranslationsSettingsPromptZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get selectItem => '请在列表中选取一个项目来更改应用程序的设定。';
 }
 
 // Path: home.actions
