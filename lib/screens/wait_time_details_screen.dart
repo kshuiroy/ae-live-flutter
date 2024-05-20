@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -89,6 +90,37 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
     );
   }
 
+  void _shareHospitalInfo(final BuildContext context) {
+    final Translations t = Translations.of(context);
+
+    String content = t.waitTimeDetails.shareContent.base(
+      hospitalName: widget.data.institutionName,
+      waitingTime: widget.data.waitTimeText,
+      address: widget.data.address,
+      contactNo: widget.data.contactNo,
+    );
+
+    if (widget.data.faxNo != null) {
+      content += t.waitTimeDetails.shareContent.faxNo(
+        faxNo: widget.data.faxNo!,
+      );
+    }
+
+    if (widget.data.emailAddress != null) {
+      content += t.waitTimeDetails.shareContent.emailAddress(
+        emailAddress: widget.data.emailAddress!,
+      );
+    }
+
+    if (widget.data.website != null) {
+      content += t.waitTimeDetails.shareContent.website(
+        website: widget.data.website!,
+      );
+    }
+
+    Share.share(content);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -109,6 +141,18 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
         title: Text(
           widget.data.institutionName,
         ),
+        actions: [
+          IconButton(
+            tooltip: t.waitTimeDetails.actions.share,
+            onPressed: () => _shareHospitalInfo(context),
+            icon: const Icon(
+              Symbols.share_rounded,
+              fill: 0.0,
+              weight: 200.0,
+              opticalSize: 24.0,
+            ),
+          ),
+        ],
       ),
       extendBodyBehindAppBar: true,
       body: SingleChildScrollView(

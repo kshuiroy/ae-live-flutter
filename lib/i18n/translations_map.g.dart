@@ -96,6 +96,7 @@ extension on Translations {
 			case 'lists.prompt.selectCategory': return 'Please select a category from the list to view the facility list.';
 			case 'lists.refresh': return 'Refresh';
 			case 'waitTimeDetails.expectedWaitTime': return 'Expected Waiting Time (Non-Emergency)';
+			case 'waitTimeDetails.actions.share': return 'Share Hospital Info';
 			case 'waitTimeDetails.actions.call': return 'Call Hospital';
 			case 'waitTimeDetails.actions.maps': return 'View Maps';
 			case 'waitTimeDetails.chartTitle': return 'Waiting Time of the Past 6 Hours';
@@ -106,6 +107,10 @@ extension on Translations {
 			case 'waitTimeDetails.info.faxNo': return 'Fax No.';
 			case 'waitTimeDetails.info.emailAddress': return 'Email Address';
 			case 'waitTimeDetails.info.website': return 'Website';
+			case 'waitTimeDetails.shareContent.base': return ({required Object hospitalName, required Object waitingTime, required Object address, required Object contactNo}) => '${hospitalName}\nA&E Waiting Time: ${waitingTime}\n--------\nAddress: ${address}\nContact No.: ${contactNo}';
+			case 'waitTimeDetails.shareContent.faxNo': return ({required Object faxNo}) => '\nFax No.: ${faxNo}';
+			case 'waitTimeDetails.shareContent.emailAddress': return ({required Object emailAddress}) => '\nEmail Address: ${emailAddress}';
+			case 'waitTimeDetails.shareContent.website': return ({required Object website}) => '\nWebsite: ${website}';
 			case 'shared.facilityMaps.openMapsApp': return 'Open Maps Application';
 			case 'shared.facilityMaps.closeMapsModal': return 'Close the Maps Viewer';
 			case 'main.app_name': return 'A&E Live';
@@ -221,6 +226,7 @@ extension on _TranslationsZhCn {
 			case 'lists.prompt.selectCategory': return '请在列表中选取一个分类以查看设施目录。';
 			case 'lists.refresh': return '重新整理';
 			case 'waitTimeDetails.expectedWaitTime': return '预计等候时间（非紧急病人）';
+			case 'waitTimeDetails.actions.share': return '分享医院资讯';
 			case 'waitTimeDetails.actions.call': return '致电医院';
 			case 'waitTimeDetails.actions.maps': return '查看地图';
 			case 'waitTimeDetails.chartTitle': return '过去 6 小时的等候时间';
@@ -231,6 +237,10 @@ extension on _TranslationsZhCn {
 			case 'waitTimeDetails.info.faxNo': return '传真号码';
 			case 'waitTimeDetails.info.emailAddress': return '电邮地址';
 			case 'waitTimeDetails.info.website': return '网址';
+			case 'waitTimeDetails.shareContent.base': return ({required Object hospitalName, required Object waitingTime, required Object address, required Object contactNo}) => '${hospitalName}\n急症室等候时间：${waitingTime}\n--------\n地址：${address}\n电话号码：${contactNo}';
+			case 'waitTimeDetails.shareContent.faxNo': return ({required Object faxNo}) => '\n传真号码：${faxNo}';
+			case 'waitTimeDetails.shareContent.emailAddress': return ({required Object emailAddress}) => '\n电邮地址：${emailAddress}';
+			case 'waitTimeDetails.shareContent.website': return ({required Object website}) => '\n网址：${website}';
 			case 'shared.facilityMaps.openMapsApp': return '开启地图应用程序';
 			case 'shared.facilityMaps.closeMapsModal': return '关闭地图检视界面';
 			case 'main.app_name': return '急症室现场';
@@ -346,6 +356,7 @@ extension on _TranslationsZhHk {
 			case 'lists.prompt.selectCategory': return '請在列表中選取一個分類以查看設施目錄。';
 			case 'lists.refresh': return '重新整理';
 			case 'waitTimeDetails.expectedWaitTime': return '預計等候時間（非緊急病人）';
+			case 'waitTimeDetails.actions.share': return '分享醫院資訊';
 			case 'waitTimeDetails.actions.call': return '致電醫院';
 			case 'waitTimeDetails.actions.maps': return '查看地圖';
 			case 'waitTimeDetails.chartTitle': return '過去 6 小時的等候時間';
@@ -356,6 +367,10 @@ extension on _TranslationsZhHk {
 			case 'waitTimeDetails.info.faxNo': return '傳真號碼';
 			case 'waitTimeDetails.info.emailAddress': return '電郵地址';
 			case 'waitTimeDetails.info.website': return '網址';
+			case 'waitTimeDetails.shareContent.base': return ({required Object hospitalName, required Object waitingTime, required Object address, required Object contactNo}) => '${hospitalName}\n急症室等候時間：${waitingTime}\n--------\n地址：${address}\n電話號碼：${contactNo}';
+			case 'waitTimeDetails.shareContent.faxNo': return ({required Object faxNo}) => '\n傳真號碼：${faxNo}';
+			case 'waitTimeDetails.shareContent.emailAddress': return ({required Object emailAddress}) => '\n電郵地址：${emailAddress}';
+			case 'waitTimeDetails.shareContent.website': return ({required Object website}) => '\n網址：${website}';
 			case 'shared.facilityMaps.openMapsApp': return '開啟地圖應用程式';
 			case 'shared.facilityMaps.closeMapsModal': return '關閉地圖檢視介面';
 			case 'main.app_name': return '急症室現場';

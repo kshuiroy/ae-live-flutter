@@ -104,6 +104,7 @@ class _TranslationsWaitTimeDetailsEn {
 	String get chartTitle => 'Waiting Time of the Past 6 Hours';
 	String get hours => '{value}H';
 	late final _TranslationsWaitTimeDetailsInfoEn info = _TranslationsWaitTimeDetailsInfoEn._(_root);
+	late final _TranslationsWaitTimeDetailsShareContentEn shareContent = _TranslationsWaitTimeDetailsShareContentEn._(_root);
 }
 
 // Path: shared
@@ -324,6 +325,7 @@ class _TranslationsWaitTimeDetailsActionsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	String get share => 'Share Hospital Info';
 	String get call => 'Call Hospital';
 	String get maps => 'View Maps';
 }
@@ -341,6 +343,19 @@ class _TranslationsWaitTimeDetailsInfoEn {
 	String get faxNo => 'Fax No.';
 	String get emailAddress => 'Email Address';
 	String get website => 'Website';
+}
+
+// Path: waitTimeDetails.shareContent
+class _TranslationsWaitTimeDetailsShareContentEn {
+	_TranslationsWaitTimeDetailsShareContentEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String base({required Object hospitalName, required Object waitingTime, required Object address, required Object contactNo}) => '${hospitalName}\nA&E Waiting Time: ${waitingTime}\n--------\nAddress: ${address}\nContact No.: ${contactNo}';
+	String faxNo({required Object faxNo}) => '\nFax No.: ${faxNo}';
+	String emailAddress({required Object emailAddress}) => '\nEmail Address: ${emailAddress}';
+	String website({required Object website}) => '\nWebsite: ${website}';
 }
 
 // Path: shared.facilityMaps

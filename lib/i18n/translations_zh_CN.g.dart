@@ -100,6 +100,7 @@ class _TranslationsWaitTimeDetailsZhCn extends _TranslationsWaitTimeDetailsEn {
 	@override String get chartTitle => '过去 6 小时的等候时间';
 	@override String get hours => '{value} 小时';
 	@override late final _TranslationsWaitTimeDetailsInfoZhCn info = _TranslationsWaitTimeDetailsInfoZhCn._(_root);
+	@override late final _TranslationsWaitTimeDetailsShareContentZhCn shareContent = _TranslationsWaitTimeDetailsShareContentZhCn._(_root);
 }
 
 // Path: shared
@@ -320,6 +321,7 @@ class _TranslationsWaitTimeDetailsActionsZhCn extends _TranslationsWaitTimeDetai
 	@override final _TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
+	@override String get share => '分享医院资讯';
 	@override String get call => '致电医院';
 	@override String get maps => '查看地图';
 }
@@ -337,6 +339,19 @@ class _TranslationsWaitTimeDetailsInfoZhCn extends _TranslationsWaitTimeDetailsI
 	@override String get faxNo => '传真号码';
 	@override String get emailAddress => '电邮地址';
 	@override String get website => '网址';
+}
+
+// Path: waitTimeDetails.shareContent
+class _TranslationsWaitTimeDetailsShareContentZhCn extends _TranslationsWaitTimeDetailsShareContentEn {
+	_TranslationsWaitTimeDetailsShareContentZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String base({required Object hospitalName, required Object waitingTime, required Object address, required Object contactNo}) => '${hospitalName}\n急症室等候时间：${waitingTime}\n--------\n地址：${address}\n电话号码：${contactNo}';
+	@override String faxNo({required Object faxNo}) => '\n传真号码：${faxNo}';
+	@override String emailAddress({required Object emailAddress}) => '\n电邮地址：${emailAddress}';
+	@override String website({required Object website}) => '\n网址：${website}';
 }
 
 // Path: shared.facilityMaps

@@ -3,6 +3,7 @@
     "@@namespace": "waitTimeDetails",
     "expectedWaitTime": "預計等候時間（非緊急病人）",
     "actions": {
+        "share": "分享醫院資訊",
         "call": "致電醫院",
         "maps": "查看地圖"
     },
@@ -15,5 +16,11 @@
         "faxNo": "傳真號碼",
         "emailAddress": "電郵地址",
         "website": "網址"
+    },
+    "shareContent": {
+        "base": "{{hospitalName}}\n急症室等候時間：{{waitingTime}}\n--------\n地址：{{address}}\n電話號碼：{{contactNo}}",
+        "faxNo": "\n傳真號碼：{{faxNo}}",
+        "emailAddress": "\n電郵地址：{{emailAddress}}",
+        "website": "\n網址：{{website}}"
     }
 }

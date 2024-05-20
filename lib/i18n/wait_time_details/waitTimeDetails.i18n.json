@@ -3,6 +3,7 @@
     "@@namespace": "waitTimeDetails",
     "expectedWaitTime": "Expected Waiting Time (Non-Emergency)",
     "actions": {
+        "share": "Share Hospital Info",
         "call": "Call Hospital",
         "maps": "View Maps"
     },
@@ -15,5 +16,11 @@
         "faxNo": "Fax No.",
         "emailAddress": "Email Address",
         "website": "Website"
+    },
+    "shareContent": {
+        "base": "{{hospitalName}}\nA&E Waiting Time: {{waitingTime}}\n--------\nAddress: {{address}}\nContact No.: {{contactNo}}",
+        "faxNo": "\nFax No.: {{faxNo}}",
+        "emailAddress": "\nEmail Address: {{emailAddress}}",
+        "website": "\nWebsite: {{website}}"
     }
 }
