@@ -31,7 +31,8 @@
     },
     "prompt": {
         "noConnection": "没有网络连线。",
-        "serverError": "服务器发生错误，请稍后再试。"
+        "serverError": "服务器发生错误，请稍后再试。",
+        "selectCategory": "请在列表中选取一个分类以查看设施目录。"
     },
     "refresh": "重新整理"
 }

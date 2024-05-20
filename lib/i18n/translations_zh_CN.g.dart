@@ -298,6 +298,7 @@ class _TranslationsListsPromptZhCn extends _TranslationsListsPromptEn {
 	// Translations
 	@override String get noConnection => '没有网络连线。';
 	@override String get serverError => '服务器发生错误，请稍后再试。';
+	@override String get selectCategory => '请在列表中选取一个分类以查看设施目录。';
 }
 
 // Path: waitTimeDetails.actions

@@ -31,7 +31,8 @@
     },
     "prompt": {
         "noConnection": "沒有網絡連線。",
-        "serverError": "伺服器發生錯誤，請稍後再試。"
+        "serverError": "伺服器發生錯誤，請稍後再試。",
+        "selectCategory": "請在列表中選取一個分類以查看設施目錄。"
     },
     "refresh": "重新整理"
 }

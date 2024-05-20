@@ -302,6 +302,7 @@ class _TranslationsListsPromptEn {
 	// Translations
 	String get noConnection => 'No internet connection.';
 	String get serverError => 'Something went wrong with the server, please try again later.';
+	String get selectCategory => 'Please select a category from the list to view the facility list.';
 }
 
 // Path: waitTimeDetails.actions

@@ -31,7 +31,8 @@
     },
     "prompt": {
         "noConnection": "No internet connection.",
-        "serverError": "Something went wrong with the server, please try again later."
+        "serverError": "Something went wrong with the server, please try again later.",
+        "selectCategory": "Please select a category from the list to view the facility list."
     },
     "refresh": "Refresh"
 }
