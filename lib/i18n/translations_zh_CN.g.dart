@@ -184,6 +184,7 @@ class _TranslationsSettingsPromptZhCn extends _TranslationsSettingsPromptEn {
 
 	// Translations
 	@override String get selectItem => '请在列表中选取一个项目来更改应用程序的设定。';
+	@override String get settingsReset => '所有设定已重设。请重新启动应用程序以使重设生效。';
 }
 
 // Path: home.actions

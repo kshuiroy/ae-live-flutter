@@ -188,6 +188,7 @@ class _TranslationsSettingsPromptEn {
 
 	// Translations
 	String get selectItem => 'Please select an item from the list to update the settings of the app.';
+	String get settingsReset => 'All settings have been reset. Please restart the app for the changes to take effect.';
 }
 
 // Path: home.actions

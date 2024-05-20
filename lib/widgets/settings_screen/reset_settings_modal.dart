@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/widgets/core/responsive_alert_dialog.dart';
@@ -9,12 +11,37 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ResetSettingsModal extends StatelessWidget {
   const ResetSettingsModal({super.key});
 
-  void _onResetSettings(final BuildContext context) async {
+  void _onResetSettings(
+    final BuildContext context,
+    final String successMessage,
+  ) async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
     await preferences.clear();
 
     if (context.mounted) {
+      // Dismiss the bottom sheet/dialog.
       Navigator.of(context).pop();
+
+      // Show a message after the [SharedPreferences] is cleared.
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          elevation: 0.0,
+          duration: const Duration(
+            seconds: 10,
+          ),
+          content: Text(successMessage),
+          behavior: SnackBarBehavior.floating,
+          showCloseIcon: true,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0),
+          ),
+          margin: EdgeInsets.only(
+            left: max((MediaQuery.of(context).size.width - 616.0) / 2.0, 16.0),
+            bottom: 64.0,
+            right: max((MediaQuery.of(context).size.width - 616.0) / 2.0, 16.0),
+          ),
+        ),
+      );
     }
   }
 
@@ -41,7 +68,10 @@ class ResetSettingsModal extends StatelessWidget {
             child: Text(t.settings.data.reset.buttons.cancel),
           ),
           TextButton(
-            onPressed: () => _onResetSettings(context),
+            onPressed: () => _onResetSettings(
+              context,
+              t.settings.prompt.settingsReset,
+            ),
             child: Text(t.settings.data.reset.buttons.reset),
           ),
         ],
@@ -106,7 +136,10 @@ class ResetSettingsModal extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: FilledButton(
-                  onPressed: () => _onResetSettings(context),
+                  onPressed: () => _onResetSettings(
+                    context,
+                    t.settings.prompt.settingsReset,
+                  ),
                   child: Text(t.settings.data.reset.buttons.reset),
                 ),
               ),

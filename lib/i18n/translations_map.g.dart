@@ -50,6 +50,7 @@ extension on Translations {
 			case 'settings.more.about.items.imageSource.value': return 'unDraw';
 			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
 			case 'settings.prompt.selectItem': return 'Please select an item from the list to update the settings of the app.';
+			case 'settings.prompt.settingsReset': return 'All settings have been reset. Please restart the app for the changes to take effect.';
 			case 'home.title': return 'A&E Waiting Time';
 			case 'home.actions.filter': return 'Filter';
 			case 'home.actions.refresh': return 'Refresh Data';
@@ -174,6 +175,7 @@ extension on _TranslationsZhCn {
 			case 'settings.more.about.items.imageSource.value': return 'unDraw';
 			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
 			case 'settings.prompt.selectItem': return '请在列表中选取一个项目来更改应用程序的设定。';
+			case 'settings.prompt.settingsReset': return '所有设定已重设。请重新启动应用程序以使重设生效。';
 			case 'home.title': return '急症室等候时间';
 			case 'home.actions.filter': return '筛选医院';
 			case 'home.actions.refresh': return '重新整理';
@@ -298,6 +300,7 @@ extension on _TranslationsZhHk {
 			case 'settings.more.about.items.imageSource.value': return 'unDraw';
 			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
 			case 'settings.prompt.selectItem': return '請在列表中選取一個項目來更改應用程式的設定。';
+			case 'settings.prompt.settingsReset': return '所有設定已重設。請重新啟動應用程式以使重設生效。';
 			case 'home.title': return '急症室等候時間';
 			case 'home.actions.filter': return '篩選醫院';
 			case 'home.actions.refresh': return '重新整理';
