@@ -413,8 +413,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     t.main.dataRemarks.content(
                       tapPCD: (final String text) => TextSpan(
                         text: text,
-                        style: const TextStyle(
-                          color: Colors.blue,
+                        style: TextStyle(
+                          color: colorScheme.primary,
+                          decoration: TextDecoration.underline,
+                          decorationColor: colorScheme.primary,
+                          decorationThickness: 2.0,
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async {
@@ -426,8 +429,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       tapHKD: (final String text) => TextSpan(
                         text: text,
-                        style: const TextStyle(
-                          color: Colors.blue,
+                        style: TextStyle(
+                          color: colorScheme.primary,
+                          decoration: TextDecoration.underline,
+                          decorationColor: colorScheme.primary,
+                          decorationThickness: 2.0,
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async {
