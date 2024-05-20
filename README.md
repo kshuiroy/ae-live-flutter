@@ -45,6 +45,9 @@ dart run slang
 # Start debugging
 flutter run
 
+# Update app icon
+dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
+
 # Build Android App Bundle (Production)
 flutter build appbundle
 ```

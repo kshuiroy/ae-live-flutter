@@ -44,19 +44,19 @@ class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
         value: t.settings.more.about.items.dataSource.value,
         icon: Symbols.database_rounded,
       ),
-      _AboutThisAppTileItem(
-        title: t.settings.more.about.items.appIconSource.title,
-        value: t.settings.more.about.items.appIconSource.value,
-        icon: Symbols.widgets_rounded,
-        onTap: () async {
-          await launchUrl(
-            Uri.parse(
-              t.settings.more.about.items.appIconSource.url,
-            ),
-            mode: LaunchMode.inAppBrowserView,
-          );
-        },
-      ),
+      // _AboutThisAppTileItem(
+      //   title: t.settings.more.about.items.appIconSource.title,
+      //   value: t.settings.more.about.items.appIconSource.value,
+      //   icon: Symbols.widgets_rounded,
+      //   onTap: () async {
+      //     await launchUrl(
+      //       Uri.parse(
+      //         t.settings.more.about.items.appIconSource.url,
+      //       ),
+      //       mode: LaunchMode.inAppBrowserView,
+      //     );
+      //   },
+      // ),
       _AboutThisAppTileItem(
         title: t.settings.more.about.items.imageSource.title,
         value: t.settings.more.about.items.imageSource.value,
