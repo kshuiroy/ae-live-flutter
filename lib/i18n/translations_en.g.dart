@@ -418,7 +418,7 @@ class _TranslationsSettingsAppearanceSortingEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Default Sorting';
+	String get title => 'Default Sorting of A&E Waiting Time';
 	late final _TranslationsSettingsAppearanceSortingOptionsEn options = _TranslationsSettingsAppearanceSortingOptionsEn._(_root);
 }
 

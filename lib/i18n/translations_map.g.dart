@@ -25,7 +25,7 @@ extension on Translations {
 			case 'settings.appearance.language.options.zhHK': return 'Traidtional Chinese (繁體中文)';
 			case 'settings.appearance.language.options.zhCN': return 'Simplified Chinese (简体中文)';
 			case 'settings.appearance.language.options.en': return 'English';
-			case 'settings.appearance.sorting.title': return 'Default Sorting';
+			case 'settings.appearance.sorting.title': return 'Default Sorting of A&E Waiting Time';
 			case 'settings.appearance.sorting.options.nameInAsd': return 'Hospital Name (A-Z)';
 			case 'settings.appearance.sorting.options.nameInDesc': return 'Hospital Name (Z-A)';
 			case 'settings.appearance.sorting.options.timeInAsd': return 'Waiting Time (ASD.)';
@@ -150,7 +150,7 @@ extension on _TranslationsZhCn {
 			case 'settings.appearance.language.options.zhHK': return '繁体中文 (繁體中文)';
 			case 'settings.appearance.language.options.zhCN': return '简体中文';
 			case 'settings.appearance.language.options.en': return '英文 (English)';
-			case 'settings.appearance.sorting.title': return '默认排序方式';
+			case 'settings.appearance.sorting.title': return '急症室等候时间默认排序方式';
 			case 'settings.appearance.sorting.options.nameInAsd': return '医院英文名称（A-Z）';
 			case 'settings.appearance.sorting.options.nameInDesc': return '医院英文名称（Z-A）';
 			case 'settings.appearance.sorting.options.timeInAsd': return '等候时间（由短至长）';
@@ -275,7 +275,7 @@ extension on _TranslationsZhHk {
 			case 'settings.appearance.language.options.zhHK': return '繁體中文';
 			case 'settings.appearance.language.options.zhCN': return '簡體中文 (简体中文)';
 			case 'settings.appearance.language.options.en': return '英文 (English)';
-			case 'settings.appearance.sorting.title': return '預設排序方式';
+			case 'settings.appearance.sorting.title': return '急症室等候時間預設排序方式';
 			case 'settings.appearance.sorting.options.nameInAsd': return '醫院英文名稱（A-Z）';
 			case 'settings.appearance.sorting.options.nameInDesc': return '醫院英文名稱（Z-A）';
 			case 'settings.appearance.sorting.options.timeInAsd': return '等候時間（由短至長）';

@@ -26,7 +26,7 @@
             }
         },
         "sorting": {
-            "title": "預設排序方式",
+            "title": "急症室等候時間預設排序方式",
             "options": {
                 "nameInAsd": "醫院英文名稱（A-Z）",
                 "nameInDesc": "醫院英文名稱（Z-A）",

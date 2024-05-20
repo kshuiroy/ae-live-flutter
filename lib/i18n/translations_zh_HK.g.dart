@@ -414,7 +414,7 @@ class _TranslationsSettingsAppearanceSortingZhHk extends _TranslationsSettingsAp
 	@override final _TranslationsZhHk _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '預設排序方式';
+	@override String get title => '急症室等候時間預設排序方式';
 	@override late final _TranslationsSettingsAppearanceSortingOptionsZhHk options = _TranslationsSettingsAppearanceSortingOptionsZhHk._(_root);
 }
 

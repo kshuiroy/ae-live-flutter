@@ -26,7 +26,7 @@
             }
         },
         "sorting": {
-            "title": "Default Sorting",
+            "title": "Default Sorting of A&E Waiting Time",
             "options": {
                 "nameInAsd": "Hospital Name (A-Z)",
                 "nameInDesc": "Hospital Name (Z-A)",
