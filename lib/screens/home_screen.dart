@@ -9,6 +9,7 @@ import 'package:ae_live/data/enum/wait_time_sort_type.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/screens/wait_time_details_screen.dart';
+import 'package:ae_live/widgets/core/controlled_system_ui_container.dart';
 import 'package:ae_live/widgets/core/frosted_glass_search_header.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/home_screen/cluster_options_modal.dart';
@@ -129,50 +130,55 @@ class _HomeScreenState extends State<HomeScreen> {
       final bool isMediumSize = ResponsiveBreakpoints.of(context)
           .smallerOrEqualTo(Constants.screenSizeKeyMedium);
 
-      return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            flex: isMediumSize ? 1 : 3,
-            child: _buildWaitTimeListPane(context),
-          ),
-          const VerticalDivider(
-            width: 1.0,
-            thickness: 1.0,
-          ),
-          Expanded(
-            flex: isMediumSize ? 1 : 4,
-            child: _selectedWaitTime != null
-                ? WaitTimeDetailsScreen(
-                    data: _selectedWaitTime!,
-                  )
-                : PromptWithArtwork(
-                    artwork: SelectItemFromList(
-                      height: isMediumSize ? 320.0 : 400.0,
-                      width: isMediumSize ? 320.0 : 400.0,
+      return ControlledSystemUIContainer(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              flex: isMediumSize ? 1 : 3,
+              child: _buildWaitTimeListPane(context),
+            ),
+            const VerticalDivider(
+              width: 1.0,
+              thickness: 1.0,
+            ),
+            Expanded(
+              flex: isMediumSize ? 1 : 4,
+              child: _selectedWaitTime != null
+                  ? WaitTimeDetailsScreen(
+                      data: _selectedWaitTime!,
+                    )
+                  : PromptWithArtwork(
+                      artwork: SelectItemFromList(
+                        height: isMediumSize ? 320.0 : 400.0,
+                        width: isMediumSize ? 320.0 : 400.0,
+                      ),
+                      promptText: t.home.prompt.selectItem,
                     ),
-                    promptText: t.home.prompt.selectItem,
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       );
     }
 
-    return LayoutBuilder(
-      builder: (final BuildContext context, final BoxConstraints constraints) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: min(constraints.maxWidth, 560.0),
+    return ControlledSystemUIContainer(
+      child: LayoutBuilder(
+        builder:
+            (final BuildContext context, final BoxConstraints constraints) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: min(constraints.maxWidth, 560.0),
+                ),
+                child: _buildWaitTimeListPane(context),
               ),
-              child: _buildWaitTimeListPane(context),
-            ),
-          ],
-        );
-      },
+            ],
+          );
+        },
+      ),
     );
   }
 
