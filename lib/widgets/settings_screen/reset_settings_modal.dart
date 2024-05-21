@@ -25,16 +25,12 @@ class ResetSettingsModal extends StatelessWidget {
       // Show a message after the [SharedPreferences] is cleared.
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          elevation: 0.0,
           duration: const Duration(
             seconds: 10,
           ),
           content: Text(successMessage),
           behavior: SnackBarBehavior.floating,
           showCloseIcon: true,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
-          ),
           margin: EdgeInsets.only(
             left: max((MediaQuery.of(context).size.width - 616.0) / 2.0, 16.0),
             bottom: 64.0,

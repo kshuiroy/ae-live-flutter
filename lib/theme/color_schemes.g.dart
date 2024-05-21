@@ -1,4 +1,5 @@
 import 'package:ae_live/theme/custom_colors_schemes.g.dart';
+import 'package:ae_live/theme/custom_snack_bar_theme.dart';
 import 'package:ae_live/theme/custom_text_theme.g.dart';
 import 'package:flutter/material.dart';
 
@@ -75,6 +76,7 @@ final lightTheme = ThemeData(
   colorScheme: lightColorScheme,
   scaffoldBackgroundColor: lightColorScheme.background,
   textTheme: customTextTheme,
+  snackBarTheme: customSnackBarTheme,
   extensions: [
     lightCustomColors,
   ],
@@ -156,6 +158,7 @@ final darkTheme = ThemeData(
   colorScheme: darkColorScheme,
   scaffoldBackgroundColor: darkColorScheme.background,
   textTheme: customTextTheme,
+  snackBarTheme: customSnackBarTheme,
   extensions: [
     darkCustomColors,
   ],
