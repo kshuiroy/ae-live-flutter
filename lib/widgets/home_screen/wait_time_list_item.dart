@@ -27,48 +27,48 @@ class WaitTimeListItem extends StatelessWidget {
         .clusterText;
   }
 
-  Map<String, dynamic> _getCardConfig(final BuildContext context) {
+  _CardConfig _getCardConfig(final BuildContext context) {
     final CustomColors colorScheme =
         Theme.of(context).extension<CustomColors>()!;
 
     if (data.waitTimeValue > 0.0 && data.waitTimeValue < 3.0) {
-      return <String, dynamic>{
-        'containerColor': colorScheme.waitQuickContainer,
-        'iconColor': colorScheme.waitQuick,
-        'icon': Symbols.keyboard_double_arrow_down_rounded,
-      };
+      return _CardConfig(
+        containerColor: colorScheme.waitQuickContainer,
+        iconColor: colorScheme.waitQuick,
+        icon: Symbols.keyboard_double_arrow_down_rounded,
+      );
     }
 
     if (data.waitTimeValue >= 3.0 && data.waitTimeValue < 5.0) {
-      return <String, dynamic>{
-        'containerColor': colorScheme.waitNormalContainer,
-        'iconColor': colorScheme.waitNormal,
-        'icon': Symbols.keyboard_arrow_down_rounded,
-      };
+      return _CardConfig(
+        containerColor: colorScheme.waitNormalContainer,
+        iconColor: colorScheme.waitNormal,
+        icon: Symbols.keyboard_arrow_down_rounded,
+      );
     }
 
     if (data.waitTimeValue >= 5.0 && data.waitTimeValue < 7.0) {
-      return <String, dynamic>{
-        'containerColor': colorScheme.waitSlowContainer,
-        'iconColor': colorScheme.waitSlow,
-        'icon': Symbols.keyboard_arrow_up_rounded,
-      };
+      return _CardConfig(
+        containerColor: colorScheme.waitSlowContainer,
+        iconColor: colorScheme.waitSlow,
+        icon: Symbols.keyboard_arrow_up_rounded,
+      );
     }
 
-    return <String, dynamic>{
-      'containerColor': colorScheme.waitSlowestContainer,
-      'iconColor': colorScheme.waitSlowest,
-      'icon': Symbols.keyboard_double_arrow_up_rounded,
-    };
+    return _CardConfig(
+      containerColor: colorScheme.waitSlowestContainer,
+      iconColor: colorScheme.waitSlowest,
+      icon: Symbols.keyboard_double_arrow_up_rounded,
+    );
   }
 
   @override
   Widget build(final BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final Map<String, dynamic> cardConfig = _getCardConfig(context);
+    final _CardConfig cardConfig = _getCardConfig(context);
 
     return Card.filled(
-      color: cardConfig['containerColor'],
+      color: cardConfig.containerColor,
       margin: EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
       child: InkWell(
@@ -82,7 +82,7 @@ class WaitTimeListItem extends StatelessWidget {
               onTapExpanded!(data);
             }
 
-            context.go(
+            context.push(
               '/wait-time/details',
               extra: data,
             );
@@ -93,9 +93,9 @@ class WaitTimeListItem extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Icon(
-                cardConfig['icon'],
+                cardConfig.icon,
                 size: 24.0,
-                color: cardConfig['iconColor'],
+                color: cardConfig.iconColor,
                 fill: 0.0,
                 weight: 400.0,
                 opticalSize: 24.0,
@@ -143,4 +143,16 @@ class WaitTimeListItem extends StatelessWidget {
       ),
     );
   }
+}
+
+class _CardConfig {
+  _CardConfig({
+    required this.containerColor,
+    required this.iconColor,
+    required this.icon,
+  });
+
+  final Color containerColor;
+  final Color iconColor;
+  final IconData icon;
 }
