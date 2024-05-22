@@ -82,7 +82,7 @@ class WaitTimeListItem extends StatelessWidget {
               onTapExpanded!(data);
             }
 
-            context.push(
+            context.go(
               '/wait-time/details',
               extra: data,
             );

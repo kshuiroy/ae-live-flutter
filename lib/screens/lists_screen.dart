@@ -85,7 +85,7 @@ class _ListsScreenState extends State<ListsScreen> {
         icon: Symbols.local_hospital_rounded,
         onTap: () {
           if (isCompactSize) {
-            context.push('/facility/hospital');
+            context.go('/lists/hospital');
           } else {
             setState(() {
               _selectedPane = const FacilityHospitalScreen(
@@ -100,7 +100,7 @@ class _ListsScreenState extends State<ListsScreen> {
         icon: Symbols.local_hospital_rounded,
         onTap: () {
           if (isCompactSize) {
-            context.push('/facility/soc');
+            context.go('/lists/soc');
           } else {
             setState(() {
               _selectedPane = const FacilitySocScreen(
@@ -115,7 +115,7 @@ class _ListsScreenState extends State<ListsScreen> {
         icon: Symbols.local_hospital_rounded,
         onTap: () {
           if (isCompactSize) {
-            context.push('/facility/goc');
+            context.go('/lists/goc');
           } else {
             setState(() {
               _selectedPane = const FacilityGocScreen(

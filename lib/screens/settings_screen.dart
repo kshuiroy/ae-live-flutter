@@ -112,7 +112,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: t.settings.appearance.theme.title,
             onTap: () {
               if (isCompactSize) {
-                context.push('/settings/theme');
+                context.go('/settings/theme');
               } else {
                 setState(() {
                   _selectedPane = const DisplayThemeSettingsScreen(
@@ -127,7 +127,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: t.settings.appearance.language.title,
             onTap: () {
               if (isCompactSize) {
-                context.push('/settings/locale');
+                context.go('/settings/locale');
               } else {
                 setState(() {
                   _selectedPane = const DisplayLocaleSettingsScreen(
@@ -142,7 +142,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: t.settings.appearance.sorting.title,
             onTap: () {
               if (isCompactSize) {
-                context.push('/settings/sorting');
+                context.go('/settings/sorting');
               } else {
                 setState(() {
                   _selectedPane = const DefaultSortingSettingsScreen(
@@ -177,7 +177,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: t.settings.more.license,
             onTap: () {
               if (isCompactSize) {
-                context.push('/settings/licenses');
+                context.go('/settings/licenses');
               } else {
                 setState(() {
                   _selectedPane = const OpenSourceLicensesScreen();
@@ -216,7 +216,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: t.settings.more.about.title,
             onTap: () {
               if (isCompactSize) {
-                context.push('/settings/about');
+                context.go('/settings/about');
               } else {
                 setState(() {
                   _selectedPane = const AboutThisAppScreen();

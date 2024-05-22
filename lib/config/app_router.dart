@@ -22,6 +22,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
 final GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: '/',
+  debugLogDiagnostics: true,
   routes: <RouteBase>[
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
@@ -49,6 +50,29 @@ final GoRouter appRouter = GoRouter(
                   const NoTransitionPage(
             child: ListsScreen(),
           ),
+          routes: <RouteBase>[
+            GoRoute(
+              path: 'hospital',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const FacilityHospitalScreen(),
+            ),
+            GoRoute(
+              path: 'soc',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const FacilitySocScreen(),
+            ),
+            GoRoute(
+              path: 'goc',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const FacilityGocScreen(),
+            ),
+          ],
         ),
         GoRoute(
           path: '/settings',
@@ -58,6 +82,43 @@ final GoRouter appRouter = GoRouter(
                   const NoTransitionPage(
             child: SettingsScreen(),
           ),
+          routes: <RouteBase>[
+            GoRoute(
+              path: 'theme',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const DisplayThemeSettingsScreen(),
+            ),
+            GoRoute(
+              path: 'locale',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const DisplayLocaleSettingsScreen(),
+            ),
+            GoRoute(
+              path: 'sorting',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const DefaultSortingSettingsScreen(),
+            ),
+            GoRoute(
+              path: 'licenses',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const OpenSourceLicensesScreen(),
+            ),
+            GoRoute(
+              path: 'about',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const AboutThisAppScreen(),
+            ),
+          ],
         ),
       ],
     ),
@@ -69,53 +130,53 @@ final GoRouter appRouter = GoRouter(
         data: state.extra as WaitTimeModel,
       ),
     ),
-    GoRoute(
-      path: '/facility/hospital',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (final BuildContext context, final GoRouterState state) =>
-          const FacilityHospitalScreen(),
-    ),
-    GoRoute(
-      path: '/facility/soc',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (final BuildContext context, final GoRouterState state) =>
-          const FacilitySocScreen(),
-    ),
-    GoRoute(
-      path: '/facility/goc',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (final BuildContext context, final GoRouterState state) =>
-          const FacilityGocScreen(),
-    ),
-    GoRoute(
-      path: '/settings/theme',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (final BuildContext context, final GoRouterState state) =>
-          const DisplayThemeSettingsScreen(),
-    ),
-    GoRoute(
-      path: '/settings/locale',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (final BuildContext context, final GoRouterState state) =>
-          const DisplayLocaleSettingsScreen(),
-    ),
-    GoRoute(
-      path: '/settings/sorting',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (final BuildContext context, final GoRouterState state) =>
-          const DefaultSortingSettingsScreen(),
-    ),
-    GoRoute(
-      path: '/settings/licenses',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (final BuildContext context, final GoRouterState state) =>
-          const OpenSourceLicensesScreen(),
-    ),
-    GoRoute(
-      path: '/settings/about',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (final BuildContext context, final GoRouterState state) =>
-          const AboutThisAppScreen(),
-    ),
+    // GoRoute(
+    //   path: '/lists/hospital',
+    //   parentNavigatorKey: _rootNavigatorKey,
+    //   builder: (final BuildContext context, final GoRouterState state) =>
+    //       const FacilityHospitalScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/lists/soc',
+    //   parentNavigatorKey: _rootNavigatorKey,
+    //   builder: (final BuildContext context, final GoRouterState state) =>
+    //       const FacilitySocScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/lists/goc',
+    //   parentNavigatorKey: _rootNavigatorKey,
+    //   builder: (final BuildContext context, final GoRouterState state) =>
+    //       const FacilityGocScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/settings/theme',
+    //   parentNavigatorKey: _rootNavigatorKey,
+    //   builder: (final BuildContext context, final GoRouterState state) =>
+    //       const DisplayThemeSettingsScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/settings/locale',
+    //   parentNavigatorKey: _rootNavigatorKey,
+    //   builder: (final BuildContext context, final GoRouterState state) =>
+    //       const DisplayLocaleSettingsScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/settings/sorting',
+    //   parentNavigatorKey: _rootNavigatorKey,
+    //   builder: (final BuildContext context, final GoRouterState state) =>
+    //       const DefaultSortingSettingsScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/settings/licenses',
+    //   parentNavigatorKey: _rootNavigatorKey,
+    //   builder: (final BuildContext context, final GoRouterState state) =>
+    //       const OpenSourceLicensesScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/settings/about',
+    //   parentNavigatorKey: _rootNavigatorKey,
+    //   builder: (final BuildContext context, final GoRouterState state) =>
+    //       const AboutThisAppScreen(),
+    // ),
   ],
 );
