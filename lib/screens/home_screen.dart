@@ -214,7 +214,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 8.0,
               ),
-              Row(
+              Wrap(
                 children: <Widget>[
                   FilterSortButton(
                     icon: Symbols.sort_rounded,

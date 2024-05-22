@@ -1,10 +1,15 @@
+import 'dart:math';
+
 import 'package:ae_live/config/clusters.dart';
+import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/cluster_model.dart';
 import 'package:ae_live/theme/custom_colors.dart';
+import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/shared/facility_maps_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class FacilityItemCard extends StatelessWidget {
   const FacilityItemCard({
@@ -35,12 +40,41 @@ class FacilityItemCard extends StatelessWidget {
   void _showFacilityMap(final BuildContext context) {
     showGeneralDialog(
       context: context,
-      barrierDismissible: false,
+      barrierDismissible: true,
+      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       pageBuilder: (
-        final BuildContext context,
+        final BuildContext innerContext,
         final Animation<double> animation,
         final Animation<double> secondaryAnimation,
       ) {
+        if (ResponsiveBreakpoints.of(context)
+            .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
+          return ResponsiveDialog(
+            child: LayoutBuilder(
+              builder: (
+                final BuildContext context,
+                final BoxConstraints constrains,
+              ) {
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      24.0,
+                    ),
+                  ),
+                  height: min(constrains.maxHeight - 48.0, 800.0),
+                  clipBehavior: Clip.hardEdge,
+                  child: FacilityMapsViewer(
+                    institutionName: institutionName,
+                    address: address,
+                    latitude: latitude,
+                    longitude: longitude,
+                  ),
+                );
+              },
+            ),
+          );
+        }
+
         return FacilityMapsViewer(
           institutionName: institutionName,
           address: address,

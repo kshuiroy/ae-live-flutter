@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/wait_time_history_model.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
+import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/shared/facility_maps_viewer.dart';
 import 'package:ae_live/widgets/wait_time_details/hospital_info_item.dart';
 import 'package:flutter/material.dart';
@@ -55,12 +58,41 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
   void _showHospitalMap(final BuildContext context) {
     showGeneralDialog(
       context: context,
-      barrierDismissible: false,
+      barrierDismissible: true,
+      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       pageBuilder: (
-        final BuildContext context,
+        final BuildContext innerContext,
         final Animation<double> animation,
         final Animation<double> secondaryAnimation,
       ) {
+        if (ResponsiveBreakpoints.of(context)
+            .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
+          return ResponsiveDialog(
+            child: LayoutBuilder(
+              builder: (
+                final BuildContext context,
+                final BoxConstraints constrains,
+              ) {
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      24.0,
+                    ),
+                  ),
+                  height: min(constrains.maxHeight - 48.0, 800.0),
+                  clipBehavior: Clip.hardEdge,
+                  child: FacilityMapsViewer(
+                    institutionName: widget.data.institutionName,
+                    address: widget.data.address,
+                    latitude: widget.data.latitude,
+                    longitude: widget.data.longitude,
+                  ),
+                );
+              },
+            ),
+          );
+        }
+
         return FacilityMapsViewer(
           institutionName: widget.data.institutionName,
           address: widget.data.address,
