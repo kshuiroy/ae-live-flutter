@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 
 class WaitTimeModel {
   WaitTimeModel({
+    required this.id,
     required this.institutionNameTC,
     required this.institutionNameSC,
     required this.institutionNameEN,
@@ -26,6 +27,7 @@ class WaitTimeModel {
 
   factory WaitTimeModel.fromMap(final Map<String, dynamic> map) {
     return WaitTimeModel(
+      id: map['id'] ?? '',
       institutionNameTC: map['institutionNameTC'] ?? '',
       institutionNameSC: map['institutionNameSC'] ?? '',
       institutionNameEN: map['institutionNameEN'] ?? '',
@@ -43,8 +45,10 @@ class WaitTimeModel {
       longitude: map['longitude']?.toDouble() ?? 0.0,
       waitTimeHistory: map['waitTimeHistory'] != null
           ? List<WaitTimeHistoryModel>.from(
-              map['waitTimeHistory']?.map((final Map<String, dynamic> x) =>
-                  WaitTimeHistoryModel.fromMap(x),),
+              map['waitTimeHistory']?.map(
+                (final Map<String, dynamic> x) =>
+                    WaitTimeHistoryModel.fromMap(x),
+              ),
             )
           : null,
     );
@@ -53,6 +57,7 @@ class WaitTimeModel {
   factory WaitTimeModel.fromJson(final String source) =>
       WaitTimeModel.fromMap(json.decode(source));
 
+  final String id;
   final String institutionNameTC;
   final String institutionNameSC;
   final String institutionNameEN;
@@ -71,6 +76,7 @@ class WaitTimeModel {
   final List<WaitTimeHistoryModel>? waitTimeHistory;
 
   WaitTimeModel copyWith({
+    final String? id,
     final String? institutionNameTC,
     final String? institutionNameSC,
     final String? institutionNameEN,
@@ -89,6 +95,7 @@ class WaitTimeModel {
     final ValueGetter<List<WaitTimeHistoryModel>?>? waitTimeHistory,
   }) {
     return WaitTimeModel(
+      id: id ?? this.id,
       institutionNameTC: institutionNameTC ?? this.institutionNameTC,
       institutionNameSC: institutionNameSC ?? this.institutionNameSC,
       institutionNameEN: institutionNameEN ?? this.institutionNameEN,
@@ -111,6 +118,7 @@ class WaitTimeModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'institutionNameTC': institutionNameTC,
       'institutionNameSC': institutionNameSC,
       'institutionNameEN': institutionNameEN,
@@ -136,12 +144,12 @@ class WaitTimeModel {
 
   @override
   String toString() {
-    return 'WaitTimeModel(institutionNameTC: $institutionNameTC, institutionNameSC: $institutionNameSC, institutionNameEN: $institutionNameEN, addressTC: $addressTC, addressSC: $addressSC, addressEN: $addressEN, contactNo: $contactNo, faxNo: $faxNo, emailAddress: $emailAddress, website: $website, clusterCode: $clusterCode, waitTimeText: $waitTimeText, waitTimeValue: $waitTimeValue, latitude: $latitude, longitude: $longitude, waitTimeHistory: $waitTimeHistory)';
+    return 'WaitTimeModel(id: $id, institutionNameTC: $institutionNameTC, institutionNameSC: $institutionNameSC, institutionNameEN: $institutionNameEN, addressTC: $addressTC, addressSC: $addressSC, addressEN: $addressEN, contactNo: $contactNo, faxNo: $faxNo, emailAddress: $emailAddress, website: $website, clusterCode: $clusterCode, waitTimeText: $waitTimeText, waitTimeValue: $waitTimeValue, latitude: $latitude, longitude: $longitude, waitTimeHistory: $waitTimeHistory)';
   }
 
-  String toQueryString() {
-    return '$institutionNameTC $institutionNameSC $institutionNameEN $addressTC $addressSC $addressEN $contactNo $faxNo $emailAddress $website';
-  }
+  // String toQueryString() {
+  //   return '$institutionNameTC $institutionNameSC $institutionNameEN $addressTC $addressSC $addressEN $contactNo $faxNo $emailAddress $website';
+  // }
 
   String get institutionName {
     switch (LocaleSettings.currentLocale.languageTag) {
@@ -170,6 +178,7 @@ class WaitTimeModel {
     if (identical(this, other)) return true;
 
     return other is WaitTimeModel &&
+        other.id == id &&
         other.institutionNameTC == institutionNameTC &&
         other.institutionNameSC == institutionNameSC &&
         other.institutionNameEN == institutionNameEN &&
@@ -190,7 +199,8 @@ class WaitTimeModel {
 
   @override
   int get hashCode {
-    return institutionNameTC.hashCode ^
+    return id.hashCode ^
+        institutionNameTC.hashCode ^
         institutionNameSC.hashCode ^
         institutionNameEN.hashCode ^
         addressTC.hashCode ^

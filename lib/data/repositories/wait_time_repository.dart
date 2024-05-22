@@ -79,6 +79,7 @@ class WaitTimeRepository {
 
         results.add(
           WaitTimeModel(
+            id: hospitalContactInfoItem.id,
             institutionNameTC: hospitalInfoItem['institution_tc'],
             institutionNameSC: hospitalInfoItem['institution_sc'],
             institutionNameEN: hospitalInfoItem['institution_eng'],
@@ -184,13 +185,34 @@ class WaitTimeRepository {
     final List<int>? clusters,
     final WaitTimeSortType sortType = WaitTimeSortType.timeInAsd,
   }) {
+    final String searchKeyword = (keyword ?? '').toLowerCase();
     final List<WaitTimeModel> results = data
         .where(
           (final WaitTimeModel element) =>
-              element
-                  .toQueryString()
-                  .toLowerCase()
-                  .contains((keyword ?? '').toLowerCase()) &&
+              (element.addressEN.toLowerCase().contains(searchKeyword) ||
+                  element.addressSC.toLowerCase().contains(searchKeyword) ||
+                  element.addressTC.toLowerCase().contains(searchKeyword) ||
+                  element.institutionNameEN
+                      .toLowerCase()
+                      .contains(searchKeyword) ||
+                  element.institutionNameSC
+                      .toLowerCase()
+                      .contains(searchKeyword) ||
+                  element.institutionNameTC
+                      .toLowerCase()
+                      .contains(searchKeyword) ||
+                  element.contactNo.toLowerCase().contains(searchKeyword) ||
+                  (element.faxNo != null
+                      ? element.faxNo!.toLowerCase().contains(searchKeyword)
+                      : false) ||
+                  (element.emailAddress != null
+                      ? element.emailAddress!
+                          .toLowerCase()
+                          .contains(searchKeyword)
+                      : false) ||
+                  (element.website != null
+                      ? element.website!.toLowerCase().contains(searchKeyword)
+                      : false)) &&
               ((clusters ?? <int>[]).isNotEmpty
                   ? clusters!.contains(element.clusterCode)
                   : true),

@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 class HospitalInfoModel {
   HospitalInfoModel({
+    required this.id,
     required this.nameTC,
     required this.nameSC,
     required this.nameEN,
@@ -15,6 +17,7 @@ class HospitalInfoModel {
 
   factory HospitalInfoModel.fromMap(final Map<String, dynamic> map) {
     return HospitalInfoModel(
+      id: map['id'] ?? '',
       nameTC: map['nameTC'] ?? '',
       nameSC: map['nameSC'] ?? '',
       nameEN: map['nameEN'] ?? '',
@@ -28,6 +31,7 @@ class HospitalInfoModel {
   factory HospitalInfoModel.fromJson(final String source) =>
       HospitalInfoModel.fromMap(json.decode(source));
 
+  final String id;
   final String nameTC;
   final String nameSC;
   final String nameEN;
@@ -37,6 +41,7 @@ class HospitalInfoModel {
   final String? website;
 
   HospitalInfoModel copyWith({
+    final String? id,
     final String? nameTC,
     final String? nameSC,
     final String? nameEN,
@@ -46,6 +51,7 @@ class HospitalInfoModel {
     final ValueGetter<String?>? website,
   }) {
     return HospitalInfoModel(
+      id: id ?? this.id,
       nameTC: nameTC ?? this.nameTC,
       nameSC: nameSC ?? this.nameSC,
       nameEN: nameEN ?? this.nameEN,
@@ -57,7 +63,8 @@ class HospitalInfoModel {
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return {
+      'id': id,
       'nameTC': nameTC,
       'nameSC': nameSC,
       'nameEN': nameEN,
@@ -72,7 +79,7 @@ class HospitalInfoModel {
 
   @override
   String toString() {
-    return 'HospitalInfoModel(nameTC: $nameTC, nameSC: $nameSC, nameEN: $nameEN, contactNo: $contactNo, faxNo: $faxNo, emailAddress: $emailAddress, website: $website)';
+    return 'HospitalInfoModel(id: $id, nameTC: $nameTC, nameSC: $nameSC, nameEN: $nameEN, contactNo: $contactNo, faxNo: $faxNo, emailAddress: $emailAddress, website: $website)';
   }
 
   @override
@@ -80,6 +87,7 @@ class HospitalInfoModel {
     if (identical(this, other)) return true;
 
     return other is HospitalInfoModel &&
+        other.id == id &&
         other.nameTC == nameTC &&
         other.nameSC == nameSC &&
         other.nameEN == nameEN &&
@@ -91,7 +99,8 @@ class HospitalInfoModel {
 
   @override
   int get hashCode {
-    return nameTC.hashCode ^
+    return id.hashCode ^
+        nameTC.hashCode ^
         nameSC.hashCode ^
         nameEN.hashCode ^
         contactNo.hashCode ^

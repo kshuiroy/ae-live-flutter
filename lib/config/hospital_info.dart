@@ -2,6 +2,7 @@ import 'package:ae_live/models/hospital_info_model.dart';
 
 final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
   HospitalInfoModel(
+    id: 'd38f821d-e908-4ca2-8d29-70791abd037a',
     nameTC: '雅麗氏何妙齡那打素醫院',
     nameSC: '雅丽氏何妙龄那打素医院',
     nameEN: 'Alice Ho Miu Ling Nethersole Hospital',
@@ -11,6 +12,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www3.ha.org.hk/ahnh/',
   ),
   HospitalInfoModel(
+    id: 'bad6c40b-7b3f-47ed-90ef-14728a893730',
     nameTC: '明愛醫院',
     nameSC: '明爱医院',
     nameEN: 'Caritas Medical Centre',
@@ -19,6 +21,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     emailAddress: 'cmc.enq@ha.org.hk',
   ),
   HospitalInfoModel(
+    id: 'ab21e60c-181b-41c0-b02f-5936c9c3822a',
     nameTC: '廣華醫院',
     nameSC: '广华医院',
     nameEN: 'Kwong Wah Hospital',
@@ -28,6 +31,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www.ha.org.hk/kwh/default.htm',
   ),
   HospitalInfoModel(
+    id: '72ce6f9c-62f5-4048-a03d-93b96b04d055',
     nameTC: '北區醫院',
     nameSC: '北区医院',
     nameEN: 'North District Hospital',
@@ -37,6 +41,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www3.ha.org.hk/ndh/index.htm',
   ),
   HospitalInfoModel(
+    id: '2c026aa5-c657-458b-84a6-e5c888d603ef',
     nameTC: '北大嶼山醫院',
     nameSC: '北大屿山医院',
     nameEN: 'North Lantau Hospital',
@@ -45,6 +50,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     emailAddress: 'nlth.enquiry@ha.org.hk',
   ),
   HospitalInfoModel(
+    id: 'db311f5a-26d3-4efc-8467-dd484e88d70b',
     nameTC: '瑪嘉烈醫院',
     nameSC: '玛嘉烈医院',
     nameEN: 'Princess Margaret Hospital',
@@ -53,6 +59,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     emailAddress: 'pmh.enquiry@ha.org.hk',
   ),
   HospitalInfoModel(
+    id: 'f6ea92e5-1a38-4b06-a68c-f4bd6d6e7e2e',
     nameTC: '博愛醫院',
     nameSC: '博爱医院',
     nameEN: 'Pok Oi Hospital',
@@ -62,6 +69,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'https://www.ha.org.hk/poh/',
   ),
   HospitalInfoModel(
+    id: '08238659-a01b-4785-bbdd-8d0a65dc13c4',
     nameTC: '威爾斯親王醫院',
     nameSC: '威尔斯亲王医院',
     nameEN: 'Prince of Wales Hospital',
@@ -71,6 +79,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www3.ha.org.hk/pwh/index.htm',
   ),
   HospitalInfoModel(
+    id: 'b42b5ac2-c304-4500-8889-40d0381f96e2',
     nameTC: '東區尤德夫人那打素醫院',
     nameSC: '东区尤德夫人那打素医院',
     nameEN: 'Pamela Youde Nethersole Eastern Hospital',
@@ -80,6 +89,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www.ha.org.hk/pyneh',
   ),
   HospitalInfoModel(
+    id: 'c70a99a5-de41-4417-a2be-dffb5fa68222',
     nameTC: '伊利沙伯醫院',
     nameSC: '伊利沙伯医院',
     nameEN: 'Queen Elizabeth Hospital',
@@ -89,6 +99,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www.ha.org.hk/qeh',
   ),
   HospitalInfoModel(
+    id: '7349ef49-c05c-47c0-96c4-0c79111ebde8',
     nameTC: '瑪麗醫院',
     nameSC: '玛丽医院',
     nameEN: 'Queen Mary Hospital',
@@ -98,6 +109,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www.ha.org.hk/qmh',
   ),
   HospitalInfoModel(
+    id: 'c60b4b57-c702-4e3d-82ff-6f03f42bd890',
     nameTC: '律敦治醫院',
     nameSC: '律敦治医院',
     nameEN: 'Ruttonjee Hospital',
@@ -107,6 +119,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www.ha.org.hk/rtskh',
   ),
   HospitalInfoModel(
+    id: 'f7ab6df4-65ff-421c-af2e-2419a0214ba7',
     nameTC: '長洲醫院',
     nameSC: '长洲医院',
     nameEN: 'St John Hospital',
@@ -115,6 +128,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     emailAddress: 'sjh_enquiry@ha.org.hk',
   ),
   HospitalInfoModel(
+    id: '718635e7-dd81-4b1a-91fc-9eb2dd011b43',
     nameTC: '將軍澳醫院',
     nameSC: '将军澳医院',
     nameEN: 'Tseung Kwan O Hospital',
@@ -123,6 +137,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     emailAddress: 'tkoh.enquiry@ha.org.hk',
   ),
   HospitalInfoModel(
+    id: '91c0170f-a906-42c5-864c-c8c0a2297d32',
     nameTC: '屯門醫院',
     nameSC: '屯门医院',
     nameEN: 'Tuen Mun Hospital',
@@ -132,6 +147,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www.ha.org.hk/tmh',
   ),
   HospitalInfoModel(
+    id: '0f10fd96-9d7b-4800-bc08-1342ecfefe57',
     nameTC: '天水圍醫院',
     nameSC: '天水围医院',
     nameEN: 'Tin Shui Wai Hospital',
@@ -141,6 +157,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'http://www.ha.org.hk/tswh',
   ),
   HospitalInfoModel(
+    id: 'a1fd089f-6941-4f1f-bc40-49c055b9cd16',
     nameTC: '基督教聯合醫院',
     nameSC: '基督教联合医院',
     nameEN: 'United Christian Hospital',
@@ -150,6 +167,7 @@ final List<HospitalInfoModel> hospitalInfo = <HospitalInfoModel>[
     website: 'https://www.ha.org.hk/uch/',
   ),
   HospitalInfoModel(
+    id: 'f3cc38ce-ef58-4b55-8ed2-45cf9a782aea',
     nameTC: '仁濟醫院',
     nameSC: '仁济医院',
     nameEN: 'Yan Chai Hospital',
