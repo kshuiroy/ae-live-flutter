@@ -42,10 +42,12 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
       appBar: isCompactSize
           ? AppBar(
               backgroundColor: Colors.transparent,
-              systemOverlayStyle:
-                  Theme.of(context).brightness == Brightness.dark
-                      ? SystemUiOverlayStyle.light
-                      : SystemUiOverlayStyle.dark,
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarIconBrightness:
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Brightness.light
+                        : Brightness.dark,
+              ),
               leading: _buildCloseButton(context),
               actions: <Widget>[
                 _buildOSMCredit(context, textTheme),
@@ -100,8 +102,7 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).padding.top,
-                    color:
-                        Theme.of(context).colorScheme.background.withAlpha(128),
+                    color: Theme.of(context).colorScheme.surface.withAlpha(128),
                   ),
                 ),
               ),

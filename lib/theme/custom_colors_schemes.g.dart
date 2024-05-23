@@ -7,7 +7,7 @@ const waitNormal = Color(0xFF0C7BB3);
 const waitSlow = Color(0xFFBAAE0B);
 
 CustomColors lightCustomColors = const CustomColors(
-  sourceWaitquick: Color(0xFF21B838),
+  sourceWaitQuick: Color(0xFF21B838),
   waitQuick: Color(0xFF006E27),
   onWaitQuick: Color(0xFFFFFFFF),
   waitQuickContainer: Color(0xFF8AFB95),
@@ -30,7 +30,7 @@ CustomColors lightCustomColors = const CustomColors(
 );
 
 CustomColors darkCustomColors = const CustomColors(
-  sourceWaitquick: Color(0xFF21B838),
+  sourceWaitQuick: Color(0xFF21B838),
   waitQuick: Color(0xFF6EDD7B),
   onWaitQuick: Color(0xFF003910),
   waitQuickContainer: Color(0xFF00531B),

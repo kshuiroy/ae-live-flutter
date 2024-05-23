@@ -14,7 +14,8 @@ import 'package:ae_live/data/repositories/facility_hospital_repository.dart';
 import 'package:ae_live/data/repositories/facility_soc_repository.dart';
 import 'package:ae_live/data/repositories/wait_time_repository.dart';
 import 'package:ae_live/i18n/translations.g.dart';
-import 'package:ae_live/theme/color_schemes.g.dart';
+import 'package:ae_live/theme/custom_text_theme.g.dart';
+import 'package:ae_live/theme/new_color_scheme/material_theme.dart';
 import 'package:ae_live/utilities/locale_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -169,8 +170,12 @@ class _AELiveAppState extends State<AELiveApp> {
         ],
         child: MaterialApp.router(
           title: t.main.app_name,
-          theme: lightTheme,
-          darkTheme: darkTheme,
+          theme: const MaterialTheme(customTextTheme).light(),
+          darkTheme: const MaterialTheme(customTextTheme).dark(),
+          highContrastTheme:
+              const MaterialTheme(customTextTheme).lightHighContrast(),
+          highContrastDarkTheme:
+              const MaterialTheme(customTextTheme).darkHighContrast(),
           themeMode: _themeMode,
           routerConfig: appRouter,
           locale: TranslationProvider.of(context).flutterLocale,

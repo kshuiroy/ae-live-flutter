@@ -90,7 +90,7 @@ class FrostedGlassAppBar extends StatelessWidget
           surfaceTintColor: surfaceTintColor,
           shape: shape,
           backgroundColor: backgroundColor ??
-              Theme.of(context).colorScheme.background.withAlpha(160),
+              Theme.of(context).colorScheme.surface.withAlpha(160),
           foregroundColor: foregroundColor,
           iconTheme: iconTheme,
           actionsIconTheme: actionsIconTheme,

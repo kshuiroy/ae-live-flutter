@@ -60,8 +60,8 @@ class PhoneNavigation extends StatelessWidget {
           sigmaY: 16.0,
         ),
         child: NavigationBar(
-          backgroundColor: colorScheme.background.withAlpha(160),
-          surfaceTintColor: Colors.transparent,
+          backgroundColor: colorScheme.surface.withAlpha(160),
+          // surfaceTintColor: Colors.transparent,
           selectedIndex: selectedIndex,
           onDestinationSelected: onDestinationSelected,
           indicatorColor: Colors.transparent,
@@ -77,6 +77,7 @@ class PhoneNavigation extends StatelessWidget {
                   ),
                   selectedIcon: Icon(
                     item.icon,
+                    color: colorScheme.onSurface,
                     fill: 1.0,
                     weight: 200.0,
                     grade: 0.0,

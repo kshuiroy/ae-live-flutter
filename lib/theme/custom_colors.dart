@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 @immutable
 class CustomColors extends ThemeExtension<CustomColors> {
   const CustomColors({
-    required this.sourceWaitquick,
+    required this.sourceWaitQuick,
     required this.waitQuick,
     required this.onWaitQuick,
     required this.waitQuickContainer,
@@ -29,7 +29,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     required this.onWaitSlowContainer,
   });
 
-  final Color sourceWaitquick;
+  final Color sourceWaitQuick;
   final Color waitQuick;
   final Color onWaitQuick;
   final Color waitQuickContainer;
@@ -52,7 +52,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
 
   @override
   CustomColors copyWith({
-    final Color? sourceWaitquick,
+    final Color? sourceWaitQuick,
     final Color? waitQuick,
     final Color? onWaitQuick,
     final Color? waitQuickContainer,
@@ -74,7 +74,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
     final Color? onWaitSlowContainer,
   }) {
     return CustomColors(
-      sourceWaitquick: sourceWaitquick ?? this.sourceWaitquick,
+      sourceWaitQuick: sourceWaitQuick ?? this.sourceWaitQuick,
       waitQuick: waitQuick ?? this.waitQuick,
       onWaitQuick: onWaitQuick ?? this.onWaitQuick,
       waitQuickContainer: waitQuickContainer ?? this.waitQuickContainer,
@@ -105,7 +105,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
       return this;
     }
     return CustomColors(
-      sourceWaitquick: Color.lerp(sourceWaitquick, other.sourceWaitquick, t)!,
+      sourceWaitQuick: Color.lerp(sourceWaitQuick, other.sourceWaitQuick, t)!,
       waitQuick: Color.lerp(waitQuick, other.waitQuick, t)!,
       onWaitQuick: Color.lerp(onWaitQuick, other.onWaitQuick, t)!,
       waitQuickContainer:

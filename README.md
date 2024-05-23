@@ -26,7 +26,7 @@ Patients with minor illnesses can consider seeking alternative medical services 
 
 To start development, please make sure the development machine has the following SDK and IDE installed:
 
--   [Flutter SDK: >= 3.19.6](https://docs.flutter.dev/get-started/install)
+-   [Flutter SDK: >= 3.22.1](https://docs.flutter.dev/get-started/install)
 -   [Visual Studio Code](https://code.visualstudio.com/)
 -   [Android Studio: >= Jellyfish | 2023.3.1](https://developer.android.com/studio)
 -   Install the following SDKs and IDE also if you're using **macOS**:
