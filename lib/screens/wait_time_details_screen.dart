@@ -246,7 +246,7 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Expanded(
-                          child: FilledButton.tonalIcon(
+                          child: FilledButton.icon(
                             onPressed: _isPhoneCallSupported
                                 ? () async {
                                     if (_isPhoneCallSupported) {
@@ -274,7 +274,7 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                           width: 8.0,
                         ),
                         Expanded(
-                          child: FilledButton.tonalIcon(
+                          child: FilledButton.icon(
                             onPressed: () {
                               _showHospitalMap(context);
                             },
