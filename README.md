@@ -1,3 +1,5 @@
+<img src="assets/external/readme_app_icon.png" alt="Logo of A&E Live" style="width: 200px; display: block; margin: 0 auto 16px;" />
+
 # A&E Live (急症室現場)
 
 This application provides the waiting time of Accident & Emergency service in all public hospitals in Hong Kong.
@@ -42,11 +44,11 @@ The followings are some useful commands that can help you, or required to use du
 # Generate/Update i18n resources
 dart run slang
 
-# Start debugging
-flutter run
-
 # Update app icon
 dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
+
+# Start debugging
+flutter run
 
 # Build Android App Bundle (Production)
 flutter build appbundle
@@ -56,9 +58,9 @@ flutter build appbundle
 
 This app used the following open data:
 
-- [Accident and Emergency Waiting Time by Hospital (English)](https://www.ha.org.hk/opendata/aed/aedwtdata-en.json)
-- [Accident and Emergency Waiting Time by Hospital (Traditional Chinese)](https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json)
-- [Accident and Emergency Waiting Time by Hospital (Simplified Chinese)](https://www.ha.org.hk/opendata/aed/aedwtdata-sc.json)
-- [Hospital Authority Hospital/Institution List by Cluster](https://www.ha.org.hk/opendata/facility-hosp.json)
-- [Hospital Authority Specialist Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-sop.json)
-- [Hospital Authority General Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-gop.json)
+-   [Accident and Emergency Waiting Time by Hospital (English)](https://www.ha.org.hk/opendata/aed/aedwtdata-en.json)
+-   [Accident and Emergency Waiting Time by Hospital (Traditional Chinese)](https://www.ha.org.hk/opendata/aed/aedwtdata-tc.json)
+-   [Accident and Emergency Waiting Time by Hospital (Simplified Chinese)](https://www.ha.org.hk/opendata/aed/aedwtdata-sc.json)
+-   [Hospital Authority Hospital/Institution List by Cluster](https://www.ha.org.hk/opendata/facility-hosp.json)
+-   [Hospital Authority Specialist Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-sop.json)
+-   [Hospital Authority General Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-gop.json)

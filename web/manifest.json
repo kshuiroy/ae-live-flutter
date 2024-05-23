@@ -1,11 +1,11 @@
 {
-    "name": "ae_live",
-    "short_name": "ae_live",
+    "name": "A&E Live",
+    "short_name": "A&E Live",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Provide the waiting time of the A&E service in all public hospitals in Hong Kong.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
