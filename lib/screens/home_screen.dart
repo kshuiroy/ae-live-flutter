@@ -326,8 +326,13 @@ class _HomeScreenState extends State<HomeScreen> {
           }
 
           if (state is! WaitTimeSuccess) {
-            return const Center(
-              child: CircularProgressIndicator.adaptive(),
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).padding.bottom,
+              ),
+              child: const Center(
+                child: CircularProgressIndicator.adaptive(),
+              ),
             );
           }
 
