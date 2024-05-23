@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/config/osm_tile_provider.dart';
 import 'package:ae_live/i18n/translations.g.dart';
@@ -40,7 +42,10 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
       appBar: isCompactSize
           ? AppBar(
               backgroundColor: Colors.transparent,
-              systemOverlayStyle: SystemUiOverlayStyle.dark,
+              systemOverlayStyle:
+                  Theme.of(context).brightness == Brightness.dark
+                      ? SystemUiOverlayStyle.light
+                      : SystemUiOverlayStyle.dark,
               leading: _buildCloseButton(context),
               actions: <Widget>[
                 _buildOSMCredit(context, textTheme),
@@ -80,6 +85,30 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
               ),
             ],
           ),
+
+          // Add a blurred background to the status bar on phone devices for
+          // better visibility of the status bar contents.
+          if (isCompactSize)
+            Align(
+              alignment: Alignment.topLeft,
+              child: ClipRRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 16.0,
+                    sigmaY: 16.0,
+                  ),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).padding.top,
+                    color:
+                        Theme.of(context).colorScheme.background.withAlpha(128),
+                  ),
+                ),
+              ),
+            ),
+
+          // Build the close button and the OpenStreetMap credit on large-screen
+          // devices since there is no [AppBar] on the large-screen devices.
           if (!isCompactSize)
             Align(
               alignment: Alignment.topLeft,
