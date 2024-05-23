@@ -26,6 +26,7 @@ class TabletNavigation extends StatelessWidget {
     final Translations t = Translations.of(context);
 
     return NavigationRail(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       selectedIndex: selectedIndex,
       groupAlignment: 0.0,
       labelType: NavigationRailLabelType.all,

@@ -177,7 +177,7 @@ class _PackagesViewState extends State<_PackagesView> {
                   builder: (BuildContext context, int? selectedId, Widget? _) {
                     return Center(
                       child: Material(
-                        // color: Theme.of(context).cardColor,
+                        color: Theme.of(context).scaffoldBackgroundColor,
                         // elevation: 4.0,
                         child: Container(
                           // constraints:
@@ -196,9 +196,9 @@ class _PackagesViewState extends State<_PackagesView> {
               case ConnectionState.none:
               case ConnectionState.active:
               case ConnectionState.waiting:
-                return const Material(
-                  // color: Theme.of(context).cardColor,
-                  child: Column(
+                return Material(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  child: const Column(
                     children: <Widget>[
                       // widget.about,
                       Center(
@@ -283,9 +283,7 @@ class _PackageListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ink(
-      color: isSelected
-          ? Theme.of(context).highlightColor
-          : Theme.of(context).cardColor,
+      color: isSelected ? Theme.of(context).highlightColor : Colors.transparent,
       child: ListTile(
         title: Text(packageName),
         subtitle: Text(
@@ -515,7 +513,7 @@ class _PackageLicensePageState extends State<_PackageLicensePage> {
         extendBodyBehindAppBar: true,
         body: Center(
           child: Material(
-            // color: theme.cardColor,
+            color: theme.scaffoldBackgroundColor,
             // elevation: 4.0,
             child: Container(
               constraints: BoxConstraints.loose(const Size.fromWidth(600.0)),

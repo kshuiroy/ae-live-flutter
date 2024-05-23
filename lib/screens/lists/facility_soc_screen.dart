@@ -104,6 +104,7 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
 
     return ControlledSystemUIContainer(
       child: Material(
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBoxIsScrolled) => <Widget>[

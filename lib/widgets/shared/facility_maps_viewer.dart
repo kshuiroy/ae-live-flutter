@@ -34,6 +34,7 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
   @override
   Widget build(final BuildContext context) {
     final Translations t = Translations.of(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
     final bool isCompactSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyCompact);
@@ -135,7 +136,7 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
         enableDrag: false,
         showDragHandle: false,
         elevation: 0.0,
-        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+        backgroundColor: colorScheme.secondaryContainer,
         builder: (final _) {
           return Padding(
             padding: EdgeInsets.only(
@@ -223,6 +224,11 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
                             opticalSize: 24.0,
                           ),
                           label: Text(t.shared.facilityMaps.closeMapsModal),
+                          style: ButtonStyle(
+                            foregroundColor: WidgetStatePropertyAll(
+                              colorScheme.onSecondaryContainer,
+                            ),
+                          ),
                         ),
                       ),
                     ],

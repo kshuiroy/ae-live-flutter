@@ -106,6 +106,7 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
 
     return ControlledSystemUIContainer(
       child: Material(
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBoxIsScrolled) => <Widget>[

@@ -1,4 +1,5 @@
 import 'package:ae_live/theme/custom_colors_schemes.g.dart';
+import 'package:ae_live/theme/custom_snack_bar_theme.dart';
 import 'package:ae_live/theme/new_color_scheme/color_family.dart';
 import 'package:ae_live/theme/new_color_scheme/extended_color.dart';
 import 'package:ae_live/theme/new_color_scheme/material_scheme.dart';
@@ -30,10 +31,10 @@ class MaterialTheme {
       onError: Color(0xffffffff),
       errorContainer: Color(0xffffdad6),
       onErrorContainer: Color(0xff410002),
-      background: Color(0xfff7f9ff),
+      background: Color(0xffffffff),
       onBackground: Color(0xff181c20),
-      // surface: Color(0xfff7f9ff),
-      surface: Color(0xffffffff),
+      surface: Color(0xfff7f9ff),
+      // surface: Color(0xffffffff),
       onSurface: Color(0xff181c20),
       surfaceVariant: Color(0xffdee3eb),
       onSurfaceVariant: Color(0xff42474e),
@@ -67,7 +68,10 @@ class MaterialTheme {
   }
 
   ThemeData light() {
-    return theme(lightScheme().toColorScheme()).copyWith(
+    return theme(
+      lightScheme().toColorScheme(),
+      lightScheme().background,
+    ).copyWith(
       extensions: [
         lightCustomColors,
       ],
@@ -130,7 +134,10 @@ class MaterialTheme {
   }
 
   ThemeData lightMediumContrast() {
-    return theme(lightMediumContrastScheme().toColorScheme()).copyWith(
+    return theme(
+      lightMediumContrastScheme().toColorScheme(),
+      lightMediumContrastScheme().background,
+    ).copyWith(
       extensions: [
         lightCustomColors,
       ],
@@ -193,7 +200,14 @@ class MaterialTheme {
   }
 
   ThemeData lightHighContrast() {
-    return theme(lightHighContrastScheme().toColorScheme());
+    return theme(
+      lightHighContrastScheme().toColorScheme(),
+      lightHighContrastScheme().background,
+    ).copyWith(
+      extensions: [
+        lightCustomColors,
+      ],
+    );
   }
 
   static MaterialScheme darkScheme() {
@@ -216,10 +230,10 @@ class MaterialTheme {
       onError: Color(0xff690005),
       errorContainer: Color(0xff93000a),
       onErrorContainer: Color(0xffffdad6),
-      background: Color(0xff101418),
+      background: Color(0xff000000),
       onBackground: Color(0xffe0e2e8),
-      // surface: Color(0xff101418),
-      surface: Color(0xff000000),
+      surface: Color(0xff101418),
+      // surface: Color(0xff000000),
       onSurface: Color(0xffe0e2e8),
       surfaceVariant: Color(0xff42474e),
       onSurfaceVariant: Color(0xffc2c7cf),
@@ -253,7 +267,10 @@ class MaterialTheme {
   }
 
   ThemeData dark() {
-    return theme(darkScheme().toColorScheme()).copyWith(
+    return theme(
+      darkScheme().toColorScheme(),
+      darkScheme().background,
+    ).copyWith(
       extensions: [
         darkCustomColors,
       ],
@@ -316,7 +333,10 @@ class MaterialTheme {
   }
 
   ThemeData darkMediumContrast() {
-    return theme(darkMediumContrastScheme().toColorScheme()).copyWith(
+    return theme(
+      darkMediumContrastScheme().toColorScheme(),
+      darkMediumContrastScheme().background,
+    ).copyWith(
       extensions: [
         darkCustomColors,
       ],
@@ -379,10 +399,21 @@ class MaterialTheme {
   }
 
   ThemeData darkHighContrast() {
-    return theme(darkHighContrastScheme().toColorScheme());
+    return theme(
+      darkHighContrastScheme().toColorScheme(),
+      darkHighContrastScheme().background,
+    ).copyWith(
+      extensions: [
+        darkCustomColors,
+      ],
+    );
   }
 
-  ThemeData theme(ColorScheme colorScheme) => ThemeData(
+  ThemeData theme(
+    final ColorScheme colorScheme,
+    final Color backgroundColor,
+  ) =>
+      ThemeData(
         useMaterial3: true,
         brightness: colorScheme.brightness,
         colorScheme: colorScheme,
@@ -390,7 +421,8 @@ class MaterialTheme {
           bodyColor: colorScheme.onSurface,
           displayColor: colorScheme.onSurface,
         ),
-        scaffoldBackgroundColor: colorScheme.surface,
+        snackBarTheme: customSnackBarTheme,
+        scaffoldBackgroundColor: backgroundColor,
         canvasColor: colorScheme.surface,
       );
 

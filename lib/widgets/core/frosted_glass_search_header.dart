@@ -71,7 +71,7 @@ class _FrostedGlassSearchHeaderDelegate extends SliverPersistentHeaderDelegate {
             top: safeAreaTopSize,
           ),
           height: maxExtent,
-          color: Theme.of(context).colorScheme.surface.withAlpha(160),
+          color: Theme.of(context).scaffoldBackgroundColor.withAlpha(160),
           child: Stack(
             children: <Widget>[
               Positioned(

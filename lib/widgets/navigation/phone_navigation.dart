@@ -60,8 +60,9 @@ class PhoneNavigation extends StatelessWidget {
           sigmaY: 16.0,
         ),
         child: NavigationBar(
-          backgroundColor: colorScheme.surface.withAlpha(160),
-          // surfaceTintColor: Colors.transparent,
+          backgroundColor:
+              Theme.of(context).scaffoldBackgroundColor.withAlpha(160),
+          surfaceTintColor: Colors.transparent,
           selectedIndex: selectedIndex,
           onDestinationSelected: onDestinationSelected,
           indicatorColor: Colors.transparent,
