@@ -63,11 +63,6 @@
                     "title": "资料来源",
                     "value": "资料一线通、医院管理局"
                 },
-                "appIconSource": {
-                    "title": "应用程序标志来源",
-                    "value": "Pictogrammers",
-                    "url": "https://pictogrammers.com/"
-                },
                 "imageSource": {
                     "title": "插图来源",
                     "value": "unDraw",

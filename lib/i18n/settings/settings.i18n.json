@@ -46,7 +46,7 @@
         }
     },
     "more": {
-        "license": "Open Source License",
+        "license": "Open Source Licenses",
         "privacyPolicy": {
             "title": "Privacy Policy",
             "subtitle": ""
@@ -62,11 +62,6 @@
                 "dataSource": {
                     "title": "Data Source",
                     "value": "DATA.GOV.HK and Hospital Authority"
-                },
-                "appIconSource": {
-                    "title": "App Icon Source",
-                    "value": "Pictogrammers",
-                    "url": "https://pictogrammers.com/"
                 },
                 "imageSource": {
                     "title": "Image Source",

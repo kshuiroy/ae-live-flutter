@@ -63,11 +63,6 @@
                     "title": "資料來源",
                     "value": "資料一線通、醫院管理局"
                 },
-                "appIconSource": {
-                    "title": "應用程式標誌來源",
-                    "value": "Pictogrammers",
-                    "url": "https://pictogrammers.com/"
-                },
                 "imageSource": {
                     "title": "插圖來源",
                     "value": "unDraw",

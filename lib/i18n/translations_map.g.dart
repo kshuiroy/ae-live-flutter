@@ -34,7 +34,7 @@ extension on Translations {
 			case 'settings.data.reset.message': return 'If you\'ve experienced any difficulties while using this app, consider resetting all settings to restore its functionality. Please note that this action will take effect once the app has been restarted.';
 			case 'settings.data.reset.buttons.cancel': return 'Cancel';
 			case 'settings.data.reset.buttons.reset': return 'Reset';
-			case 'settings.more.license': return 'Open Source License';
+			case 'settings.more.license': return 'Open Source Licenses';
 			case 'settings.more.privacyPolicy.title': return 'Privacy Policy';
 			case 'settings.more.privacyPolicy.subtitle': return '';
 			case 'settings.more.termsConditions.title': return 'Terms and Conditions';
@@ -43,9 +43,6 @@ extension on Translations {
 			case 'settings.more.about.items.version': return 'App Version';
 			case 'settings.more.about.items.dataSource.title': return 'Data Source';
 			case 'settings.more.about.items.dataSource.value': return 'DATA.GOV.HK and Hospital Authority';
-			case 'settings.more.about.items.appIconSource.title': return 'App Icon Source';
-			case 'settings.more.about.items.appIconSource.value': return 'Pictogrammers';
-			case 'settings.more.about.items.appIconSource.url': return 'https://pictogrammers.com/';
 			case 'settings.more.about.items.imageSource.title': return 'Image Source';
 			case 'settings.more.about.items.imageSource.value': return 'unDraw';
 			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
@@ -173,9 +170,6 @@ extension on _TranslationsZhCn {
 			case 'settings.more.about.items.version': return '应用程序版本';
 			case 'settings.more.about.items.dataSource.title': return '资料来源';
 			case 'settings.more.about.items.dataSource.value': return '资料一线通、医院管理局';
-			case 'settings.more.about.items.appIconSource.title': return '应用程序标志来源';
-			case 'settings.more.about.items.appIconSource.value': return 'Pictogrammers';
-			case 'settings.more.about.items.appIconSource.url': return 'https://pictogrammers.com/';
 			case 'settings.more.about.items.imageSource.title': return '插图来源';
 			case 'settings.more.about.items.imageSource.value': return 'unDraw';
 			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
@@ -303,9 +297,6 @@ extension on _TranslationsZhHk {
 			case 'settings.more.about.items.version': return '應用程式版本';
 			case 'settings.more.about.items.dataSource.title': return '資料來源';
 			case 'settings.more.about.items.dataSource.value': return '資料一線通、醫院管理局';
-			case 'settings.more.about.items.appIconSource.title': return '應用程式標誌來源';
-			case 'settings.more.about.items.appIconSource.value': return 'Pictogrammers';
-			case 'settings.more.about.items.appIconSource.url': return 'https://pictogrammers.com/';
 			case 'settings.more.about.items.imageSource.title': return '插圖來源';
 			case 'settings.more.about.items.imageSource.value': return 'unDraw';
 			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';

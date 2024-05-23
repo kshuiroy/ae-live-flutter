@@ -175,7 +175,7 @@ class _TranslationsSettingsMoreEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get license => 'Open Source License';
+	String get license => 'Open Source Licenses';
 	late final _TranslationsSettingsMorePrivacyPolicyEn privacyPolicy = _TranslationsSettingsMorePrivacyPolicyEn._(_root);
 	late final _TranslationsSettingsMoreTermsConditionsEn termsConditions = _TranslationsSettingsMoreTermsConditionsEn._(_root);
 	late final _TranslationsSettingsMoreAboutEn about = _TranslationsSettingsMoreAboutEn._(_root);
@@ -553,7 +553,6 @@ class _TranslationsSettingsMoreAboutItemsEn {
 	// Translations
 	String get version => 'App Version';
 	late final _TranslationsSettingsMoreAboutItemsDataSourceEn dataSource = _TranslationsSettingsMoreAboutItemsDataSourceEn._(_root);
-	late final _TranslationsSettingsMoreAboutItemsAppIconSourceEn appIconSource = _TranslationsSettingsMoreAboutItemsAppIconSourceEn._(_root);
 	late final _TranslationsSettingsMoreAboutItemsImageSourceEn imageSource = _TranslationsSettingsMoreAboutItemsImageSourceEn._(_root);
 }
 
@@ -566,18 +565,6 @@ class _TranslationsSettingsMoreAboutItemsDataSourceEn {
 	// Translations
 	String get title => 'Data Source';
 	String get value => 'DATA.GOV.HK and Hospital Authority';
-}
-
-// Path: settings.more.about.items.appIconSource
-class _TranslationsSettingsMoreAboutItemsAppIconSourceEn {
-	_TranslationsSettingsMoreAboutItemsAppIconSourceEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get title => 'App Icon Source';
-	String get value => 'Pictogrammers';
-	String get url => 'https://pictogrammers.com/';
 }
 
 // Path: settings.more.about.items.imageSource

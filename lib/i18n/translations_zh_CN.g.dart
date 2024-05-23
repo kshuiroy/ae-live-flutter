@@ -549,7 +549,6 @@ class _TranslationsSettingsMoreAboutItemsZhCn extends _TranslationsSettingsMoreA
 	// Translations
 	@override String get version => '应用程序版本';
 	@override late final _TranslationsSettingsMoreAboutItemsDataSourceZhCn dataSource = _TranslationsSettingsMoreAboutItemsDataSourceZhCn._(_root);
-	@override late final _TranslationsSettingsMoreAboutItemsAppIconSourceZhCn appIconSource = _TranslationsSettingsMoreAboutItemsAppIconSourceZhCn._(_root);
 	@override late final _TranslationsSettingsMoreAboutItemsImageSourceZhCn imageSource = _TranslationsSettingsMoreAboutItemsImageSourceZhCn._(_root);
 }
 
@@ -562,18 +561,6 @@ class _TranslationsSettingsMoreAboutItemsDataSourceZhCn extends _TranslationsSet
 	// Translations
 	@override String get title => '资料来源';
 	@override String get value => '资料一线通、医院管理局';
-}
-
-// Path: settings.more.about.items.appIconSource
-class _TranslationsSettingsMoreAboutItemsAppIconSourceZhCn extends _TranslationsSettingsMoreAboutItemsAppIconSourceEn {
-	_TranslationsSettingsMoreAboutItemsAppIconSourceZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
-
-	@override final _TranslationsZhCn _root; // ignore: unused_field
-
-	// Translations
-	@override String get title => '应用程序标志来源';
-	@override String get value => 'Pictogrammers';
-	@override String get url => 'https://pictogrammers.com/';
 }
 
 // Path: settings.more.about.items.imageSource
