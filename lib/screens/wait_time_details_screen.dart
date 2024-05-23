@@ -303,11 +303,12 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                           height: 16.0,
                         ),
                         SizedBox(
-                          height: ResponsiveBreakpoints.of(context)
-                                  .largerOrEqualTo(
-                                      Constants.screenSizeKeyMedium)
-                              ? 320.0
-                              : 280.0,
+                          height:
+                              ResponsiveBreakpoints.of(context).largerOrEqualTo(
+                            Constants.screenSizeKeyMedium,
+                          )
+                                  ? 320.0
+                                  : 280.0,
                           child: _buildHistoryChart(context),
                         ),
                         const SizedBox(

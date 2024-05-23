@@ -18,8 +18,8 @@ class FilterSortButton extends StatelessWidget {
   Widget build(final BuildContext context) {
     return TextButton.icon(
       style: ButtonStyle(
-        foregroundColor: MaterialStatePropertyAll(
-          Theme.of(context).colorScheme.onBackground,
+        foregroundColor: WidgetStatePropertyAll(
+          Theme.of(context).colorScheme.onSurface,
         ),
       ),
       onPressed: enabled ? onPressed : null,

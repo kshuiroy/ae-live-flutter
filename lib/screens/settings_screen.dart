@@ -35,7 +35,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
       showDialog(
         context: context,
-        useRootNavigator: true,
         builder: (final _) => child,
       );
     } else {

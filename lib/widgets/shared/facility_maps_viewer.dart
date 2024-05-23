@@ -246,7 +246,7 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
     return IconButton.filled(
       color: Colors.black,
       style: const ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(
+        backgroundColor: WidgetStatePropertyAll(
           Colors.white,
         ),
       ),

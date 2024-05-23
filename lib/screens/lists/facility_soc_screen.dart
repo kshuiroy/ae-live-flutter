@@ -55,7 +55,6 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
         .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
       showDialog(
         context: context,
-        useRootNavigator: true,
         builder: (final BuildContext context) {
           return ResponsiveDialog(
             child: child,
