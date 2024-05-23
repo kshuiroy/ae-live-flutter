@@ -177,11 +177,11 @@ class _PackagesViewState extends State<_PackagesView> {
                   builder: (BuildContext context, int? selectedId, Widget? _) {
                     return Center(
                       child: Material(
-                        color: Theme.of(context).cardColor,
-                        elevation: 4.0,
+                        // color: Theme.of(context).cardColor,
+                        // elevation: 4.0,
                         child: Container(
-                          constraints:
-                              BoxConstraints.loose(const Size.fromWidth(600.0)),
+                          // constraints:
+                          //     BoxConstraints.loose(const Size.fromWidth(600.0)),
                           child: _packagesList(
                             context,
                             selectedId,
@@ -196,12 +196,14 @@ class _PackagesViewState extends State<_PackagesView> {
               case ConnectionState.none:
               case ConnectionState.active:
               case ConnectionState.waiting:
-                return Material(
-                  color: Theme.of(context).cardColor,
-                  child: const Column(
+                return const Material(
+                  // color: Theme.of(context).cardColor,
+                  child: Column(
                     children: <Widget>[
                       // widget.about,
-                      Center(child: CircularProgressIndicator()),
+                      Center(
+                        child: CircularProgressIndicator.adaptive(),
+                      ),
                     ],
                   ),
                 );
@@ -513,8 +515,8 @@ class _PackageLicensePageState extends State<_PackageLicensePage> {
         extendBodyBehindAppBar: true,
         body: Center(
           child: Material(
-            color: theme.cardColor,
-            elevation: 4.0,
+            // color: theme.cardColor,
+            // elevation: 4.0,
             child: Container(
               constraints: BoxConstraints.loose(const Size.fromWidth(600.0)),
               padding: EdgeInsets.only(
