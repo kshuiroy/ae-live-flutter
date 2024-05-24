@@ -65,6 +65,8 @@ class PhoneNavigation extends StatelessWidget {
           surfaceTintColor: Colors.transparent,
           selectedIndex: selectedIndex,
           onDestinationSelected: onDestinationSelected,
+          elevation: 0.0,
+          indicatorShape: const CircleBorder(),
           indicatorColor: Colors.transparent,
           height: isMediumSize ? 64.0 : 56.0,
           destinations: tabItems
@@ -72,17 +74,19 @@ class PhoneNavigation extends StatelessWidget {
                 (final DestinationItem item) => NavigationDestination(
                   icon: Icon(
                     item.icon,
+                    size: 28.0,
                     weight: 200.0,
                     grade: 0.0,
-                    opticalSize: 24.0,
+                    opticalSize: 28.0,
                   ),
                   selectedIcon: Icon(
                     item.icon,
                     color: colorScheme.onSurface,
+                    size: 28.0,
                     fill: 1.0,
                     weight: 200.0,
                     grade: 0.0,
-                    opticalSize: 24.0,
+                    opticalSize: 28.0,
                   ),
                   label: t.main.tabs[item.labelKey]!,
                 ),

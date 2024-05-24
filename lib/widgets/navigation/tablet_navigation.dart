@@ -30,6 +30,7 @@ class TabletNavigation extends StatelessWidget {
       selectedIndex: selectedIndex,
       groupAlignment: 0.0,
       labelType: NavigationRailLabelType.all,
+      indicatorShape: const CircleBorder(),
       indicatorColor: Colors.transparent,
       useIndicator: true,
       onDestinationSelected: onDestinationSelected,
