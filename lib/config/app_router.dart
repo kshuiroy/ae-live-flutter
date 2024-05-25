@@ -11,6 +11,7 @@ import 'package:ae_live/screens/settings/display_theme_settings_screen.dart';
 import 'package:ae_live/screens/settings/open_source_licenses_screen.dart';
 import 'package:ae_live/screens/settings_screen.dart';
 import 'package:ae_live/screens/wait_time_details_screen.dart';
+import 'package:ae_live/widgets/animations/fade_through_transition_page_wrapper.dart';
 import 'package:ae_live/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -38,8 +39,9 @@ final GoRouter appRouter = GoRouter(
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder:
               (final BuildContext context, final GoRouterState state) =>
-                  const NoTransitionPage(
-            child: HomeScreen(),
+                  const FadeThroughTransitionPageWrapper(
+            transitionKey: ValueKey('home'),
+            screen: HomeScreen(),
           ),
         ),
         GoRoute(
@@ -47,8 +49,9 @@ final GoRouter appRouter = GoRouter(
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder:
               (final BuildContext context, final GoRouterState state) =>
-                  const NoTransitionPage(
-            child: ListsScreen(),
+                  const FadeThroughTransitionPageWrapper(
+            transitionKey: ValueKey('lists'),
+            screen: ListsScreen(),
           ),
           routes: <RouteBase>[
             GoRoute(
@@ -79,8 +82,9 @@ final GoRouter appRouter = GoRouter(
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder:
               (final BuildContext context, final GoRouterState state) =>
-                  const NoTransitionPage(
-            child: SettingsScreen(),
+                  const FadeThroughTransitionPageWrapper(
+            transitionKey: ValueKey('settings'),
+            screen: SettingsScreen(),
           ),
           routes: <RouteBase>[
             GoRoute(
