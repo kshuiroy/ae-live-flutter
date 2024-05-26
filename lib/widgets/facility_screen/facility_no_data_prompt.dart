@@ -17,16 +17,19 @@ class FacilityNoDataPrompt extends StatelessWidget {
     final bool isSmallerThanMediumSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyMedium);
 
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).padding.bottom,
-      ),
-      child: PromptWithArtwork(
-        artwork: NoSearchResult(
-          height: isSmallerThanMediumSize ? 320.0 : 400.0,
-          width: isSmallerThanMediumSize ? 320.0 : 400.0,
+    return SliverFillRemaining(
+      hasScrollBody: false,
+      child: Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).padding.bottom,
         ),
-        promptText: promptText,
+        child: PromptWithArtwork(
+          artwork: NoSearchResult(
+            height: isSmallerThanMediumSize ? 320.0 : 400.0,
+            width: isSmallerThanMediumSize ? 320.0 : 400.0,
+          ),
+          promptText: promptText,
+        ),
       ),
     );
   }

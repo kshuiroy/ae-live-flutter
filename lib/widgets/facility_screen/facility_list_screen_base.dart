@@ -19,14 +19,12 @@ class _FacilityListScreenBaseState extends State<FacilityListScreenBase> {
   @override
   Widget build(BuildContext context) {
     return ControlledSystemUIContainer(
-      child: Material(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        child: NestedScrollView(
-          floatHeaderSlivers: true,
-          headerSliverBuilder: (context, innerBoxIsScrolled) => <Widget>[
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
             widget.searchFilterHeader,
+            widget.body,
           ],
-          body: widget.body,
         ),
       ),
     );

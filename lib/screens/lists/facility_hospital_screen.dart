@@ -120,30 +120,32 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
               ? 24.0
               : 16.0;
 
-          return ListView.separated(
+          return SliverPadding(
             padding: EdgeInsets.only(
               // top: 16.0,
               right: scrollViewPaddingX,
               bottom: MediaQuery.of(context).padding.bottom + 16.0,
               left: scrollViewPaddingX,
             ),
-            itemBuilder: (context, index) {
-              final FacilityHospitalModel item =
-                  state.facilityHospitalData[index];
+            sliver: SliverList.separated(
+              itemBuilder: (context, index) {
+                final FacilityHospitalModel item =
+                    state.facilityHospitalData[index];
 
-              return FacilityItemCard(
-                institutionName: item.institutionName,
-                address: item.address,
-                clusterCode: item.clusterCode,
-                withAEService: item.withAEService,
-                latitude: item.latitude,
-                longitude: item.longitude,
-              );
-            },
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 16.0,
+                return FacilityItemCard(
+                  institutionName: item.institutionName,
+                  address: item.address,
+                  clusterCode: item.clusterCode,
+                  withAEService: item.withAEService,
+                  latitude: item.latitude,
+                  longitude: item.longitude,
+                );
+              },
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 16.0,
+              ),
+              itemCount: state.facilityHospitalData.length,
             ),
-            itemCount: state.facilityHospitalData.length,
           );
         },
       ),

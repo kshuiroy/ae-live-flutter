@@ -5,12 +5,15 @@ class FacilityLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).padding.bottom,
-      ),
-      child: const Center(
-        child: CircularProgressIndicator.adaptive(),
+    return SliverFillRemaining(
+      hasScrollBody: false,
+      child: Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).padding.bottom,
+        ),
+        child: const Center(
+          child: CircularProgressIndicator.adaptive(),
+        ),
       ),
     );
   }

@@ -22,39 +22,42 @@ class FacilityErrorPrompt extends StatelessWidget {
     final bool isSmallerThanMediumSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyMedium);
 
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).padding.bottom,
-      ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            PromptWithArtwork(
-              artwork: ServerError(
-                height: isSmallerThanMediumSize ? 320.0 : 400.0,
-                width: isSmallerThanMediumSize ? 320.0 : 400.0,
+    return SliverFillRemaining(
+      hasScrollBody: false,
+      child: Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).padding.bottom,
+        ),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              PromptWithArtwork(
+                artwork: ServerError(
+                  height: isSmallerThanMediumSize ? 320.0 : 400.0,
+                  width: isSmallerThanMediumSize ? 320.0 : 400.0,
+                ),
+                promptText: errorMessage == '-1001'
+                    ? t.lists.prompt.noConnection
+                    : t.lists.prompt.serverError,
+                removeCenterContainer: true,
               ),
-              promptText: errorMessage == '-1001'
-                  ? t.lists.prompt.noConnection
-                  : t.lists.prompt.serverError,
-              removeCenterContainer: true,
-            ),
-            const SizedBox(
-              height: 24.0,
-            ),
-            FilledButton.icon(
-              onPressed: onPressRefresh,
-              icon: const Icon(
-                Symbols.refresh_rounded,
-                size: 24.0,
-                fill: 0.0,
-                weight: 200.0,
-                opticalSize: 24.0,
+              const SizedBox(
+                height: 24.0,
               ),
-              label: Text(t.lists.refresh),
-            ),
-          ],
+              FilledButton.icon(
+                onPressed: onPressRefresh,
+                icon: const Icon(
+                  Symbols.refresh_rounded,
+                  size: 24.0,
+                  fill: 0.0,
+                  weight: 200.0,
+                  opticalSize: 24.0,
+                ),
+                label: Text(t.lists.refresh),
+              ),
+            ],
+          ),
         ),
       ),
     );

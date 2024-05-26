@@ -116,28 +116,30 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
               ? 24.0
               : 16.0;
 
-          return ListView.separated(
+          return SliverPadding(
             padding: EdgeInsets.only(
               // top: 16.0,
               right: scrollViewPaddingX,
               bottom: MediaQuery.of(context).padding.bottom + 16.0,
               left: scrollViewPaddingX,
             ),
-            itemBuilder: (context, index) {
-              final FacilitySocModel item = state.facilitySocData[index];
+            sliver: SliverList.separated(
+              itemBuilder: (context, index) {
+                final FacilitySocModel item = state.facilitySocData[index];
 
-              return FacilityItemCard(
-                institutionName: item.institutionName,
-                address: item.address,
-                clusterCode: item.clusterCode,
-                latitude: item.latitude,
-                longitude: item.longitude,
-              );
-            },
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 16.0,
+                return FacilityItemCard(
+                  institutionName: item.institutionName,
+                  address: item.address,
+                  clusterCode: item.clusterCode,
+                  latitude: item.latitude,
+                  longitude: item.longitude,
+                );
+              },
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 16.0,
+              ),
+              itemCount: state.facilitySocData.length,
             ),
-            itemCount: state.facilitySocData.length,
           );
         },
       ),
