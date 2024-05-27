@@ -1,8 +1,10 @@
+import 'package:ae_live/config/constants.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
-class FadeThroughTransitionPageWrapper extends Page {
-  const FadeThroughTransitionPageWrapper({
+class SharedAxisTransitionPageWrapper extends Page {
+  const SharedAxisTransitionPageWrapper({
     required this.screen,
     required this.transitionKey,
   }) : super(key: transitionKey);
@@ -15,10 +17,14 @@ class FadeThroughTransitionPageWrapper extends Page {
     return PageRouteBuilder(
       settings: this,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        return FadeThroughTransition(
+        return SharedAxisTransition(
           fillColor: Theme.of(context).scaffoldBackgroundColor,
           animation: animation,
           secondaryAnimation: secondaryAnimation,
+          transitionType: ResponsiveBreakpoints.of(context)
+                  .largerOrEqualTo(Constants.screenSizeKeyExpanded)
+              ? SharedAxisTransitionType.vertical
+              : SharedAxisTransitionType.horizontal,
           child: child,
         );
       },
