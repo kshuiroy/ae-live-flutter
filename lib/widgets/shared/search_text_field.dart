@@ -22,6 +22,7 @@ class SearchTextField extends StatefulWidget {
 }
 
 class _SearchTextFieldState extends State<SearchTextField> {
+  final FocusNode _focusNode = FocusNode();
   @override
   void initState() {
     super.initState();
@@ -35,11 +36,12 @@ class _SearchTextFieldState extends State<SearchTextField> {
   Widget build(final BuildContext context) {
     // final Translations t = Translations.of(context);
 
-    return TextField(
+    return TextFormField(
+      focusNode: _focusNode,
       controller: widget.controller,
       enabled: widget.enabled,
       decoration: InputDecoration(
-        isDense: true,
+        // isDense: true,
         prefixIcon: const Icon(
           Symbols.search_rounded,
           size: 24.0,
