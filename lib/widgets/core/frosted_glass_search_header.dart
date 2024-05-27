@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:ae_live/config/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class FrostedGlassSearchHeader extends StatefulWidget {
@@ -110,9 +109,12 @@ class _FrostedGlassSearchHeaderDelegate extends SliverPersistentHeaderDelegate {
         child != oldDelegate.child;
   }
 
-  @override
-  FloatingHeaderSnapConfiguration get snapConfiguration =>
-      FloatingHeaderSnapConfiguration(
-        duration: const Duration(milliseconds: 150),
-      );
+  /// There is a bug when scrolling up with the sliver header widget with
+  /// snap = [true].
+  /// Please see https://github.com/flutter/flutter/issues/42588
+  // @override
+  // FloatingHeaderSnapConfiguration get snapConfiguration =>
+  //     FloatingHeaderSnapConfiguration(
+  //       duration: const Duration(milliseconds: 150),
+  //     );
 }
