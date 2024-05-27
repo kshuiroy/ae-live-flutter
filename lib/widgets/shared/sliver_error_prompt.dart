@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-class FacilityErrorPrompt extends StatelessWidget {
-  const FacilityErrorPrompt({
+class SliverErrorPrompt extends StatelessWidget {
+  const SliverErrorPrompt({
     super.key,
-    required this.errorMessage,
+    required this.promptText,
     required this.onPressRefresh,
   });
 
-  final String errorMessage;
+  final String promptText;
   final void Function() onPressRefresh;
 
   @override
@@ -37,9 +37,7 @@ class FacilityErrorPrompt extends StatelessWidget {
                   height: isSmallerThanMediumSize ? 320.0 : 400.0,
                   width: isSmallerThanMediumSize ? 320.0 : 400.0,
                 ),
-                promptText: errorMessage == '-1001'
-                    ? t.lists.prompt.noConnection
-                    : t.lists.prompt.serverError,
+                promptText: promptText,
                 removeCenterContainer: true,
               ),
               const SizedBox(

@@ -10,11 +10,13 @@ final class WaitTimeFetchRequested extends WaitTimeEvent {
     this.keyword,
     this.clusters,
     this.sortType,
+    required this.refreshController,
   });
 
   final String? keyword;
   final List<int>? clusters;
   final WaitTimeSortType? sortType;
+  final EasyRefreshController refreshController;
 }
 
 final class WaitTimeDataFilter extends WaitTimeEvent {

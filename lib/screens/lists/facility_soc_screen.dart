@@ -2,12 +2,12 @@ import 'package:ae_live/bloc/facility_soc/facility_soc_bloc.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/facility_soc_model.dart';
-import 'package:ae_live/widgets/facility_screen/facility_error_prompt.dart';
 import 'package:ae_live/widgets/facility_screen/facility_item_card.dart';
+import 'package:ae_live/widgets/facility_screen/facility_list_error_prompt.dart';
 import 'package:ae_live/widgets/facility_screen/facility_list_screen_base.dart';
-import 'package:ae_live/widgets/facility_screen/facility_loading_indicator.dart';
-import 'package:ae_live/widgets/facility_screen/facility_no_data_prompt.dart';
 import 'package:ae_live/widgets/facility_screen/facility_search_header.dart';
+import 'package:ae_live/widgets/shared/sliver_loading_indicator.dart';
+import 'package:ae_live/widgets/shared/sliver_no_data_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -93,7 +93,7 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
         },
         builder: (context, state) {
           if (state is FacilitySocFailed) {
-            return FacilityErrorPrompt(
+            return FacilityListErrorPrompt(
               errorMessage: state.errorMessage,
               onPressRefresh: () {
                 context.read<FacilitySocBloc>().add(FacilitySocRequested());
@@ -102,11 +102,11 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
           }
 
           if (state is! FacilitySocSuccess) {
-            return const FacilityLoadingIndicator();
+            return const SliverLoadingIndicator();
           }
 
           if (state.facilitySocData.isEmpty) {
-            return FacilityNoDataPrompt(
+            return SliverNoDataPrompt(
               promptText: t.lists.soc.noSearchResult,
             );
           }

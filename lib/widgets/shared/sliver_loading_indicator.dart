@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FacilityLoadingIndicator extends StatelessWidget {
-  const FacilityLoadingIndicator({super.key});
+class SliverLoadingIndicator extends StatelessWidget {
+  const SliverLoadingIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {

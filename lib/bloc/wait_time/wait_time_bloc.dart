@@ -3,6 +3,7 @@ import 'package:ae_live/data/enum/wait_time_sort_type.dart';
 import 'package:ae_live/data/repositories/wait_time_repository.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/utilities/check_internet_connection.dart';
+import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,7 +37,6 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
     if (await isConnectedToInternet()) {
       try {
         _data = await repository.getWaitTimeData();
-        // _data.sort((a, b) => a.waitTimeValue.compareTo(b.waitTimeValue));
 
         final List<WaitTimeModel> processedData =
             repository.filterAndSortWaitTimeData(
@@ -48,9 +48,6 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
 
         emit(
           WaitTimeSuccess(
-            // filterKeyword: filterKeyword,
-            // filterClusters: filterClusters,
-            // filterSortType: filterSortType,
             waitTimeData: processedData,
           ),
         );
@@ -60,6 +57,8 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
     } else {
       emit(WaitTimeFailed('-1001'));
     }
+
+    event.refreshController.finishRefresh();
   }
 
   void _onWaitTimeDataFilter(

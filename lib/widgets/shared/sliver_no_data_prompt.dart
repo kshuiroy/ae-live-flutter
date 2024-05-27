@@ -4,8 +4,8 @@ import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-class FacilityNoDataPrompt extends StatelessWidget {
-  const FacilityNoDataPrompt({
+class SliverNoDataPrompt extends StatelessWidget {
+  const SliverNoDataPrompt({
     super.key,
     required this.promptText,
   });
