@@ -67,6 +67,17 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
               // placed below the bottom sheet at some situations.
               initialCenter: LatLng(widget.latitude - 0.001, widget.longitude),
               initialZoom: 17.0,
+              interactionOptions: const InteractionOptions(
+                enableMultiFingerGestureRace: true,
+                flags: InteractiveFlag.doubleTapDragZoom |
+                    InteractiveFlag.doubleTapZoom |
+                    InteractiveFlag.drag |
+                    InteractiveFlag.flingAnimation |
+                    InteractiveFlag.pinchZoom |
+                    InteractiveFlag.rotate |
+                    InteractiveFlag.scrollWheelZoom,
+                // rotationThreshold: 45.0,
+              ),
             ),
             children: <Widget>[
               osmTileProvider,
