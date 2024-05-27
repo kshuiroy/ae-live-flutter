@@ -69,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onFinished: () {
               setState(() {
                 _isLoading = false;
+                _selectedWaitTime = null;
               });
             },
           ),
