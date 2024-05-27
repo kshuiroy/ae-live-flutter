@@ -55,6 +55,26 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _onRefreshWaitTimeData(final BuildContext context) {
+    setState(() {
+      _isLoading = true;
+    });
+
+    context.read<WaitTimeBloc>().add(
+          WaitTimeFetchRequested(
+            keyword: _searchKeyword,
+            clusters: _dataClusters,
+            sortType: _dataSortType,
+            refreshController: _refreshController,
+            onFinished: () {
+              setState(() {
+                _isLoading = false;
+              });
+            },
+          ),
+        );
+  }
+
   void _onUpdateSearchResult(final BuildContext context) {
     context.read<WaitTimeBloc>().add(
           WaitTimeDataFilter(
@@ -190,12 +210,10 @@ class _HomeScreenState extends State<HomeScreen> {
     final Translations t = Translations.of(context);
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
-    // final bool isSmallerThanMediumSize = ResponsiveBreakpoints.of(context)
-    //     .smallerOrEqualTo(Constants.screenSizeKeyMedium);
 
-    return EasyRefresh(
-      clipBehavior: Clip.none,
+    return EasyRefresh.builder(
       controller: _refreshController,
+      triggerAxis: Axis.vertical,
       header: ClassicHeader(
         position: IndicatorPosition.locator,
         safeArea: false,
@@ -208,606 +226,240 @@ class _HomeScreenState extends State<HomeScreen> {
         failedText: t.home.refreshIndicator.failedToRefresh,
         messageText: t.home.refreshIndicator.lastUpdateAt,
       ),
-      onRefresh: () {
-        context.read<WaitTimeBloc>().add(
-              WaitTimeFetchRequested(
-                keyword: _searchKeyword,
-                clusters: _dataClusters,
-                sortType: _dataSortType,
-                refreshController: _refreshController,
+      onRefresh: () => _onRefreshWaitTimeData(context),
+      childBuilder: (final BuildContext context, final ScrollPhysics physics) {
+        return CustomScrollView(
+          physics: physics,
+          slivers: <Widget>[
+            FrostedGlassSearchHeader(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SearchTextField(
+                    controller: _searchTextController,
+                    hintText: t.home.actions.search,
+                    enabled: !_isLoading,
+                    onChange: (final String value) {
+                      setState(() {
+                        _searchKeyword = value;
+                      });
+
+                      _onUpdateSearchResult(context);
+                    },
+                  ),
+                  const SizedBox(
+                    height: 8.0,
+                  ),
+                  Wrap(
+                    children: <Widget>[
+                      FilterSortButton(
+                        icon: Symbols.sort_rounded,
+                        label: t.home.filter.sorting.title,
+                        enabled: !_isLoading,
+                        onPressed: () {
+                          _showDataFilterSortModal(
+                            context,
+                            child: SortingOptionsModal(
+                              defaultOption: _dataSortType,
+                              onUpdate: (final WaitTimeSortType sortType) {
+                                setState(() {
+                                  _dataSortType = sortType;
+                                });
+
+                                _onUpdateSearchResult(context);
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                      FilterSortButton(
+                        icon: Symbols.filter_list_rounded,
+                        label: t.home.filter.cluster,
+                        enabled: !_isLoading,
+                        onPressed: () {
+                          _showDataFilterSortModal(
+                            context,
+                            child: ClusterOptionsModal(
+                              defaultOptions: _dataClusters,
+                              onUpdate: (final List<int> clusters) {
+                                setState(() {
+                                  _dataClusters = clusters;
+                                });
+
+                                _onUpdateSearchResult(context);
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            );
-        // _refreshController.finishRefresh();
-      },
-      // onLoad: () => IndicatorResult.noMore,
-      child: CustomScrollView(
-        slivers: <Widget>[
-          FrostedGlassSearchHeader(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                SearchTextField(
-                  controller: _searchTextController,
-                  hintText: t.home.actions.search,
-                  enabled: !_isLoading,
-                  onChange: (final String value) {
-                    setState(() {
-                      _searchKeyword = value;
-                    });
-
-                    _onUpdateSearchResult(context);
-                  },
-                ),
-                const SizedBox(
-                  height: 8.0,
-                ),
-                Wrap(
-                  children: <Widget>[
-                    FilterSortButton(
-                      icon: Symbols.sort_rounded,
-                      label: t.home.filter.sorting.title,
-                      enabled: !_isLoading,
-                      onPressed: () {
-                        _showDataFilterSortModal(
-                          context,
-                          child: SortingOptionsModal(
-                            defaultOption: _dataSortType,
-                            onUpdate: (final WaitTimeSortType sortType) {
-                              setState(() {
-                                _dataSortType = sortType;
-                              });
-
-                              _onUpdateSearchResult(context);
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                    FilterSortButton(
-                      icon: Symbols.filter_list_rounded,
-                      label: t.home.filter.cluster,
-                      enabled: !_isLoading,
-                      onPressed: () {
-                        _showDataFilterSortModal(
-                          context,
-                          child: ClusterOptionsModal(
-                            defaultOptions: _dataClusters,
-                            onUpdate: (final List<int> clusters) {
-                              setState(() {
-                                _dataClusters = clusters;
-                              });
-
-                              _onUpdateSearchResult(context);
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ],
             ),
-          ),
-          const HeaderLocator.sliver(),
-          BlocConsumer<WaitTimeBloc, WaitTimeState>(
-            listener: (final BuildContext context, final WaitTimeState state) {
-              setState(() {
-                _isLoading = state is WaitTimeLoading;
-              });
-
-              if (state is WaitTimeLoading) {
+            const HeaderLocator.sliver(),
+            BlocConsumer<WaitTimeBloc, WaitTimeState>(
+              listener:
+                  (final BuildContext context, final WaitTimeState state) {
                 setState(() {
-                  _selectedWaitTime = null;
+                  _isLoading = state is WaitTimeLoading;
                 });
-              }
-            },
-            builder: (final BuildContext context, final WaitTimeState state) {
-              // if (state is WaitTimeInitial) {
-              //   context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
-              // }
 
-              if (state is WaitTimeFailed) {
-                return SliverErrorPrompt(
-                  promptText: state.errorMessage == '-1001'
-                      ? t.home.prompt.noConnection
-                      : t.home.prompt.serverError,
-                  onPressRefresh: () {
-                    context.read<WaitTimeBloc>().add(
-                          WaitTimeFetchRequested(
-                            keyword: _searchKeyword,
-                            clusters: _dataClusters,
-                            sortType: _dataSortType,
-                            refreshController: _refreshController,
+                if (state is WaitTimeLoading) {
+                  setState(() {
+                    _selectedWaitTime = null;
+                  });
+                }
+              },
+              builder: (final BuildContext context, final WaitTimeState state) {
+                // if (state is WaitTimeInitial) {
+                //   context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
+                // }
+
+                if (state is WaitTimeFailed) {
+                  return SliverErrorPrompt(
+                    promptText: state.errorMessage == '-1001'
+                        ? t.home.prompt.noConnection
+                        : t.home.prompt.serverError,
+                    onPressRefresh: () {
+                      context.read<WaitTimeBloc>().add(
+                            WaitTimeFetchRequested(
+                              keyword: _searchKeyword,
+                              clusters: _dataClusters,
+                              sortType: _dataSortType,
+                              refreshController: _refreshController,
+                            ),
+                          );
+                    },
+                  );
+                }
+
+                if (state is! WaitTimeSuccess) {
+                  return const SliverLoadingIndicator();
+                }
+
+                if (state.waitTimeData.isEmpty) {
+                  return SliverNoDataPrompt(
+                    promptText: t.home.prompt.noSearchResult,
+                  );
+                }
+
+                final double scrollViewPaddingX =
+                    ResponsiveBreakpoints.of(context)
+                            .largerOrEqualTo(Constants.screenSizeKeyMedium)
+                        ? 24.0
+                        : 16.0;
+
+                return SliverPadding(
+                  padding: EdgeInsets.only(
+                    // top: 16.0,
+                    right: scrollViewPaddingX,
+                    bottom: MediaQuery.of(context).padding.bottom + 16.0,
+                    left: scrollViewPaddingX,
+                  ),
+                  sliver: SliverList.separated(
+                    itemBuilder: (final BuildContext context, final int index) {
+                      if (index == 0) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0,
+                            vertical: 8.0,
                           ),
-                        );
-                  },
-                );
-                // return Padding(
-                //   padding: EdgeInsets.only(
-                //     bottom: MediaQuery.of(context).padding.bottom,
-                //   ),
-                //   child: Center(
-                //     child: Column(
-                //       mainAxisSize: MainAxisSize.min,
-                //       children: [
-                //         PromptWithArtwork(
-                //           artwork: ServerError(
-                //             height: isSmallerThanMediumSize ? 320.0 : 400.0,
-                //             width: isSmallerThanMediumSize ? 320.0 : 400.0,
-                //           ),
-                //           promptText: state.errorMessage == '-1001'
-                //               ? t.home.prompt.noConnection
-                //               : t.home.prompt.serverError,
-                //           removeCenterContainer: true,
-                //         ),
-                //         const SizedBox(
-                //           height: 24.0,
-                //         ),
-                //         FilledButton.icon(
-                //           onPressed: () {
-                //             context.read<WaitTimeBloc>().add(
-                //                   WaitTimeFetchRequested(
-                //                     keyword: _searchKeyword,
-                //                     clusters: _dataClusters,
-                //                     sortType: _dataSortType,
-                //                   ),
-                //                 );
-                //           },
-                //           icon: const Icon(
-                //             Symbols.refresh_rounded,
-                //             size: 24.0,
-                //             fill: 0.0,
-                //             weight: 200.0,
-                //             opticalSize: 24.0,
-                //           ),
-                //           label: Text(t.home.actions.refresh),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // );
-              }
-
-              if (state is! WaitTimeSuccess) {
-                return const SliverLoadingIndicator();
-                // return Padding(
-                //   padding: EdgeInsets.only(
-                //     bottom: MediaQuery.of(context).padding.bottom,
-                //   ),
-                //   child: const Center(
-                //     child: CircularProgressIndicator.adaptive(),
-                //   ),
-                // );
-              }
-
-              if (state.waitTimeData.isEmpty) {
-                return SliverNoDataPrompt(
-                  promptText: t.home.prompt.noSearchResult,
-                );
-                // return Padding(
-                //   padding: EdgeInsets.only(
-                //     bottom: MediaQuery.of(context).padding.bottom,
-                //   ),
-                //   child: PromptWithArtwork(
-                //     artwork: NoSearchResult(
-                //       height: isSmallerThanMediumSize ? 320.0 : 400.0,
-                //       width: isSmallerThanMediumSize ? 320.0 : 400.0,
-                //     ),
-                //     promptText: t.home.prompt.noSearchResult,
-                //   ),
-                // );
-              }
-
-              final double scrollViewPaddingX =
-                  ResponsiveBreakpoints.of(context)
-                          .largerOrEqualTo(Constants.screenSizeKeyMedium)
-                      ? 24.0
-                      : 16.0;
-
-              return SliverPadding(
-                padding: EdgeInsets.only(
-                  // top: 16.0,
-                  right: scrollViewPaddingX,
-                  bottom: MediaQuery.of(context).padding.bottom + 16.0,
-                  left: scrollViewPaddingX,
-                ),
-                sliver: SliverList.separated(
-                  itemBuilder: (final BuildContext context, final int index) {
-                    if (index == 0) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                          vertical: 8.0,
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Symbols.info_rounded,
-                              color: colorScheme.error,
-                              size: 24.0,
-                              fill: 0.0,
-                              weight: 200.0,
-                              opticalSize: 24.0,
-                            ),
-                            const SizedBox(
-                              width: 16.0,
-                            ),
-                            Expanded(
-                              child: Text(
-                                t.home.badgeText,
-                                style: textTheme.bodyLarge?.copyWith(
-                                  color: colorScheme.error,
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Symbols.info_rounded,
+                                color: colorScheme.error,
+                                size: 24.0,
+                                fill: 0.0,
+                                weight: 200.0,
+                                opticalSize: 24.0,
+                              ),
+                              const SizedBox(
+                                width: 16.0,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  t.home.badgeText,
+                                  style: textTheme.bodyLarge?.copyWith(
+                                    color: colorScheme.error,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
+                            ],
+                          ),
+                        );
+                      }
 
-                    if (index == state.waitTimeData.length + 1) {
-                      return Text.rich(
-                        t.main.dataRemarks.content(
-                          tapPCD: (final String text) => TextSpan(
-                            text: text,
-                            style: TextStyle(
-                              color: colorScheme.primary,
-                              decoration: TextDecoration.underline,
-                              decorationColor: colorScheme.primary,
-                              decorationThickness: 2.0,
+                      if (index == state.waitTimeData.length + 1) {
+                        return Text.rich(
+                          t.main.dataRemarks.content(
+                            tapPCD: (final String text) => TextSpan(
+                              text: text,
+                              style: TextStyle(
+                                color: colorScheme.primary,
+                                decoration: TextDecoration.underline,
+                                decorationColor: colorScheme.primary,
+                                decorationThickness: 2.0,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () async {
+                                  await launchUrl(
+                                    Uri.parse(t.main.dataRemarks.pcdUrl),
+                                    mode: LaunchMode.inAppBrowserView,
+                                  );
+                                },
                             ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () async {
-                                await launchUrl(
-                                  Uri.parse(t.main.dataRemarks.pcdUrl),
-                                  mode: LaunchMode.inAppBrowserView,
-                                );
-                              },
+                            tapHKD: (final String text) => TextSpan(
+                              text: text,
+                              style: TextStyle(
+                                color: colorScheme.primary,
+                                decoration: TextDecoration.underline,
+                                decorationColor: colorScheme.primary,
+                                decorationThickness: 2.0,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () async {
+                                  await launchUrl(
+                                    Uri.parse(t.main.dataRemarks.hkdUrl),
+                                    mode: LaunchMode.inAppBrowserView,
+                                  );
+                                },
+                            ),
                           ),
-                          tapHKD: (final String text) => TextSpan(
-                            text: text,
-                            style: TextStyle(
-                              color: colorScheme.primary,
-                              decoration: TextDecoration.underline,
-                              decorationColor: colorScheme.primary,
-                              decorationThickness: 2.0,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () async {
-                                await launchUrl(
-                                  Uri.parse(t.main.dataRemarks.hkdUrl),
-                                  mode: LaunchMode.inAppBrowserView,
-                                );
-                              },
-                          ),
-                        ),
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.color
-                                  ?.withAlpha(160),
-                            ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.color
+                                        ?.withAlpha(160),
+                                  ),
+                        );
+                      }
+                      return WaitTimeListItem(
+                        data: state.waitTimeData[index - 1],
+                        onTapExpanded: (final WaitTimeModel data) {
+                          setState(() {
+                            _selectedWaitTime = data;
+                          });
+                        },
                       );
-                    }
-                    return WaitTimeListItem(
-                      data: state.waitTimeData[index - 1],
-                      onTapExpanded: (final WaitTimeModel data) {
-                        setState(() {
-                          _selectedWaitTime = data;
-                        });
-                      },
-                    );
-                  },
-                  separatorBuilder: (final _, final __) {
-                    return const SizedBox(
-                      height: 16.0,
-                    );
-                  },
-                  itemCount: state.waitTimeData.length + 2,
-                ),
-              );
-            },
-          ),
-        ],
-      ),
+                    },
+                    separatorBuilder: (final _, final __) {
+                      return const SizedBox(
+                        height: 16.0,
+                      );
+                    },
+                    itemCount: state.waitTimeData.length + 2,
+                  ),
+                );
+              },
+            ),
+          ],
+        );
+      },
     );
-
-    // return NestedScrollView(
-    //   floatHeaderSlivers: true,
-    //   headerSliverBuilder:
-    //       (final BuildContext context, final bool innerBoxIsScrolled) =>
-    //           <Widget>[
-    //     FrostedGlassSearchHeader(
-    //       child: Column(
-    //         crossAxisAlignment: CrossAxisAlignment.start,
-    //         mainAxisSize: MainAxisSize.min,
-    //         children: <Widget>[
-    //           SearchTextField(
-    //             controller: _searchTextController,
-    //             hintText: t.home.actions.search,
-    //             enabled: !_isLoading,
-    //             onChange: (final String value) {
-    //               setState(() {
-    //                 _searchKeyword = value;
-    //               });
-
-    //               _onUpdateSearchResult(context);
-    //             },
-    //           ),
-    //           const SizedBox(
-    //             height: 8.0,
-    //           ),
-    //           Wrap(
-    //             children: <Widget>[
-    //               FilterSortButton(
-    //                 icon: Symbols.sort_rounded,
-    //                 label: t.home.filter.sorting.title,
-    //                 enabled: !_isLoading,
-    //                 onPressed: () {
-    //                   _showDataFilterSortModal(
-    //                     context,
-    //                     child: SortingOptionsModal(
-    //                       defaultOption: _dataSortType,
-    //                       onUpdate: (final WaitTimeSortType sortType) {
-    //                         setState(() {
-    //                           _dataSortType = sortType;
-    //                         });
-
-    //                         _onUpdateSearchResult(context);
-    //                       },
-    //                     ),
-    //                   );
-    //                 },
-    //               ),
-    //               FilterSortButton(
-    //                 icon: Symbols.filter_list_rounded,
-    //                 label: t.home.filter.cluster,
-    //                 enabled: !_isLoading,
-    //                 onPressed: () {
-    //                   _showDataFilterSortModal(
-    //                     context,
-    //                     child: ClusterOptionsModal(
-    //                       defaultOptions: _dataClusters,
-    //                       onUpdate: (final List<int> clusters) {
-    //                         setState(() {
-    //                           _dataClusters = clusters;
-    //                         });
-
-    //                         _onUpdateSearchResult(context);
-    //                       },
-    //                     ),
-    //                   );
-    //                 },
-    //               ),
-    //             ],
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ],
-    //   body: BlocConsumer<WaitTimeBloc, WaitTimeState>(
-    //     listener: (final BuildContext context, final WaitTimeState state) {
-    //       setState(() {
-    //         _isLoading = state is WaitTimeLoading;
-    //       });
-
-    //       if (state is WaitTimeLoading) {
-    //         setState(() {
-    //           _selectedWaitTime = null;
-    //         });
-    //       }
-    //     },
-    //     builder: (final BuildContext context, final WaitTimeState state) {
-    //       // if (state is WaitTimeInitial) {
-    //       //   context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
-    //       // }
-
-    //       if (state is WaitTimeFailed) {
-    //         return Padding(
-    //           padding: EdgeInsets.only(
-    //             bottom: MediaQuery.of(context).padding.bottom,
-    //           ),
-    //           child: Center(
-    //             child: Column(
-    //               mainAxisSize: MainAxisSize.min,
-    //               children: [
-    //                 PromptWithArtwork(
-    //                   artwork: ServerError(
-    //                     height: isSmallerThanMediumSize ? 320.0 : 400.0,
-    //                     width: isSmallerThanMediumSize ? 320.0 : 400.0,
-    //                   ),
-    //                   promptText: state.errorMessage == '-1001'
-    //                       ? t.home.prompt.noConnection
-    //                       : t.home.prompt.serverError,
-    //                   removeCenterContainer: true,
-    //                 ),
-    //                 const SizedBox(
-    //                   height: 24.0,
-    //                 ),
-    //                 FilledButton.icon(
-    //                   onPressed: () {
-    //                     context.read<WaitTimeBloc>().add(
-    //                           WaitTimeFetchRequested(
-    //                             keyword: _searchKeyword,
-    //                             clusters: _dataClusters,
-    //                             sortType: _dataSortType,
-    //                           ),
-    //                         );
-    //                   },
-    //                   icon: const Icon(
-    //                     Symbols.refresh_rounded,
-    //                     size: 24.0,
-    //                     fill: 0.0,
-    //                     weight: 200.0,
-    //                     opticalSize: 24.0,
-    //                   ),
-    //                   label: Text(t.home.actions.refresh),
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //         );
-    //       }
-
-    //       if (state is! WaitTimeSuccess) {
-    //         return Padding(
-    //           padding: EdgeInsets.only(
-    //             bottom: MediaQuery.of(context).padding.bottom,
-    //           ),
-    //           child: const Center(
-    //             child: CircularProgressIndicator.adaptive(),
-    //           ),
-    //         );
-    //       }
-
-    //       if (state.waitTimeData.isEmpty) {
-    //         return Padding(
-    //           padding: EdgeInsets.only(
-    //             bottom: MediaQuery.of(context).padding.bottom,
-    //           ),
-    //           child: PromptWithArtwork(
-    //             artwork: NoSearchResult(
-    //               height: isSmallerThanMediumSize ? 320.0 : 400.0,
-    //               width: isSmallerThanMediumSize ? 320.0 : 400.0,
-    //             ),
-    //             promptText: t.home.prompt.noSearchResult,
-    //           ),
-    //         );
-    //       }
-
-    //       final double scrollViewPaddingX = ResponsiveBreakpoints.of(context)
-    //               .largerOrEqualTo(Constants.screenSizeKeyMedium)
-    //           ? 24.0
-    //           : 16.0;
-
-    //       return EasyRefresh(
-    //         clipBehavior: Clip.none,
-    //         controller: _refreshController,
-    //         header: ClassicHeader(
-    //           dragText: t.home.refreshIndicator.pullToRefresh,
-    //           armedText: t.home.refreshIndicator.releaseToRefresh,
-    //           readyText: t.home.refreshIndicator.refreshing,
-    //           processingText: t.home.refreshIndicator.refreshing,
-    //           processedText: t.home.refreshIndicator.dataUpdated,
-    //           failedText: t.home.refreshIndicator.failedToRefresh,
-    //           messageText: t.home.refreshIndicator.lastUpdateAt,
-    //         ),
-    //         onRefresh: () {
-    //           context.read<WaitTimeBloc>().add(
-    //                 WaitTimeFetchRequested(
-    //                   keyword: _searchKeyword,
-    //                   clusters: _dataClusters,
-    //                   sortType: _dataSortType,
-    //                 ),
-    //               );
-    //           _refreshController.finishRefresh();
-    //         },
-    //         child: ListView.separated(
-    //           padding: EdgeInsets.only(
-    //             // top: 16.0,
-    //             right: scrollViewPaddingX,
-    //             bottom: MediaQuery.of(context).padding.bottom + 16.0,
-    //             left: scrollViewPaddingX,
-    //           ),
-    //           itemBuilder: (final BuildContext context, final int index) {
-    //             if (index == 0) {
-    //               return Padding(
-    //                 padding: const EdgeInsets.symmetric(
-    //                   horizontal: 16.0,
-    //                   vertical: 8.0,
-    //                 ),
-    //                 child: Row(
-    //                   children: <Widget>[
-    //                     Icon(
-    //                       Symbols.info_rounded,
-    //                       color: colorScheme.error,
-    //                       size: 24.0,
-    //                       fill: 0.0,
-    //                       weight: 200.0,
-    //                       opticalSize: 24.0,
-    //                     ),
-    //                     const SizedBox(
-    //                       width: 16.0,
-    //                     ),
-    //                     Expanded(
-    //                       child: Text(
-    //                         t.home.badgeText,
-    //                         style: textTheme.bodyLarge?.copyWith(
-    //                           color: colorScheme.error,
-    //                         ),
-    //                       ),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               );
-    //             }
-
-    //             if (index == state.waitTimeData.length + 1) {
-    //               return Text.rich(
-    //                 t.main.dataRemarks.content(
-    //                   tapPCD: (final String text) => TextSpan(
-    //                     text: text,
-    //                     style: TextStyle(
-    //                       color: colorScheme.primary,
-    //                       decoration: TextDecoration.underline,
-    //                       decorationColor: colorScheme.primary,
-    //                       decorationThickness: 2.0,
-    //                     ),
-    //                     recognizer: TapGestureRecognizer()
-    //                       ..onTap = () async {
-    //                         await launchUrl(
-    //                           Uri.parse(t.main.dataRemarks.pcdUrl),
-    //                           mode: LaunchMode.inAppBrowserView,
-    //                         );
-    //                       },
-    //                   ),
-    //                   tapHKD: (final String text) => TextSpan(
-    //                     text: text,
-    //                     style: TextStyle(
-    //                       color: colorScheme.primary,
-    //                       decoration: TextDecoration.underline,
-    //                       decorationColor: colorScheme.primary,
-    //                       decorationThickness: 2.0,
-    //                     ),
-    //                     recognizer: TapGestureRecognizer()
-    //                       ..onTap = () async {
-    //                         await launchUrl(
-    //                           Uri.parse(t.main.dataRemarks.hkdUrl),
-    //                           mode: LaunchMode.inAppBrowserView,
-    //                         );
-    //                       },
-    //                   ),
-    //                 ),
-    //                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-    //                       color: Theme.of(context)
-    //                           .textTheme
-    //                           .bodyMedium
-    //                           ?.color
-    //                           ?.withAlpha(160),
-    //                     ),
-    //               );
-    //             }
-    //             return WaitTimeListItem(
-    //               data: state.waitTimeData[index - 1],
-    //               onTapExpanded: (final WaitTimeModel data) {
-    //                 setState(() {
-    //                   _selectedWaitTime = data;
-    //                 });
-    //               },
-    //             );
-    //           },
-    //           separatorBuilder: (final _, final __) {
-    //             return const SizedBox(
-    //               height: 16.0,
-    //             );
-    //           },
-    //           itemCount: state.waitTimeData.length + 2,
-    //         ),
-    //       );
-    //     },
-    //   ),
-    // );
   }
 }

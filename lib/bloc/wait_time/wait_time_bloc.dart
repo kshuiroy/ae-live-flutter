@@ -26,13 +26,15 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
   // List<int> filterClusters = <int>[1, 2, 3, 4, 5, 6, 7];
   // WaitTimeSortType filterSortType = WaitTimeSortType.timeInAsd;
 
-  late List<WaitTimeModel> _data;
+  List<WaitTimeModel>? _data;
 
   void _onWaitTimeFetchRequested(
     final WaitTimeFetchRequested event,
     final Emitter<WaitTimeState> emit,
   ) async {
-    emit(WaitTimeLoading());
+    if (_data == null) {
+      emit(WaitTimeLoading());
+    }
 
     if (await isConnectedToInternet()) {
       try {
@@ -40,7 +42,7 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
 
         final List<WaitTimeModel> processedData =
             repository.filterAndSortWaitTimeData(
-          _data,
+          _data!,
           keyword: event.keyword?.trim(),
           clusters: event.clusters,
           sortType: event.sortType ?? WaitTimeSortType.timeInAsd,
@@ -59,39 +61,47 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
     }
 
     event.refreshController.finishRefresh();
+    if (event.onFinished != null) {
+      event.onFinished!();
+    }
   }
 
   void _onWaitTimeDataFilter(
     final WaitTimeDataFilter event,
     final Emitter<WaitTimeState> emit,
   ) async {
-    emit(WaitTimeLoading());
+    // emit(WaitTimeLoading());
 
-    // filterKeyword = event.name;
-    // filterClusters = event.clusters ?? <int>[1, 2, 3, 4, 5, 6, 7];
-    // filterSortType = event.sortType;
+    try {
+      final SharedPreferences preferences =
+          await SharedPreferences.getInstance();
 
-    final SharedPreferences preferences = await SharedPreferences.getInstance();
+      final List<WaitTimeModel> processedData =
+          repository.filterAndSortWaitTimeData(
+        _data!,
+        keyword: event.name?.trim(),
+        clusters: event.clusters,
+        sortType: event.sortType ??
+            toWaitTimeSortType(
+              preferences.getString(Constants.preferenceKeyDefaultSorting),
+            ),
+      );
 
-    final List<WaitTimeModel> processedData =
-        repository.filterAndSortWaitTimeData(
-      _data,
-      keyword: event.name?.trim(),
-      clusters: event.clusters,
-      sortType: event.sortType ??
-          toWaitTimeSortType(
-            preferences.getString(Constants.preferenceKeyDefaultSorting),
-          ),
-    );
-
-    emit(
-      WaitTimeSuccess(
-        // filterKeyword: filterKeyword,
-        // filterClusters: filterClusters,
-        // filterSortType: filterSortType,
-        waitTimeData: processedData,
-      ),
-    );
+      emit(
+        WaitTimeSuccess(
+          // filterKeyword: filterKeyword,
+          // filterClusters: filterClusters,
+          // filterSortType: filterSortType,
+          waitTimeData: processedData,
+        ),
+      );
+    } catch (error) {
+      emit(
+        WaitTimeFailed(
+          error.toString(),
+        ),
+      );
+    }
   }
 
   void _onWaitTimeReset(
