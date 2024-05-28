@@ -14,19 +14,19 @@ import 'package:ae_live/widgets/home_screen/cluster_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/filter_sort_button.dart';
 import 'package:ae_live/widgets/home_screen/sorting_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/wait_time_list_item.dart';
+import 'package:ae_live/widgets/home_screen/wait_time_notice_item.dart';
 import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
 import 'package:ae_live/widgets/shared/search_text_field.dart';
 import 'package:ae_live/widgets/shared/sliver_error_prompt.dart';
 import 'package:ae_live/widgets/shared/sliver_loading_indicator.dart';
 import 'package:ae_live/widgets/shared/sliver_no_data_prompt.dart';
+import 'package:ae_live/widgets/shared/wait_time_data_remarks.dart';
 import 'package:easy_refresh/easy_refresh.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -219,6 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
         position: IndicatorPosition.locator,
         safeArea: false,
         triggerOffset: 80.0,
+        processedDuration: const Duration(milliseconds: 300),
         dragText: t.home.refreshIndicator.pullToRefresh,
         armedText: t.home.refreshIndicator.releaseToRefresh,
         readyText: t.home.refreshIndicator.refreshing,
@@ -252,49 +253,52 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 8.0,
                   ),
-                  Wrap(
-                    children: <Widget>[
-                      FilterSortButton(
-                        icon: Symbols.sort_rounded,
-                        label: t.home.filter.sorting.title,
-                        enabled: !_isLoading,
-                        onPressed: () {
-                          _showDataFilterSortModal(
-                            context,
-                            child: SortingOptionsModal(
-                              defaultOption: _dataSortType,
-                              onUpdate: (final WaitTimeSortType sortType) {
-                                setState(() {
-                                  _dataSortType = sortType;
-                                });
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: <Widget>[
+                        FilterSortButton(
+                          icon: Symbols.sort_rounded,
+                          label: t.home.filter.sorting.title,
+                          enabled: !_isLoading,
+                          onPressed: () {
+                            _showDataFilterSortModal(
+                              context,
+                              child: SortingOptionsModal(
+                                defaultOption: _dataSortType,
+                                onUpdate: (final WaitTimeSortType sortType) {
+                                  setState(() {
+                                    _dataSortType = sortType;
+                                  });
 
-                                _onUpdateSearchResult(context);
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                      FilterSortButton(
-                        icon: Symbols.filter_list_rounded,
-                        label: t.home.filter.cluster,
-                        enabled: !_isLoading,
-                        onPressed: () {
-                          _showDataFilterSortModal(
-                            context,
-                            child: ClusterOptionsModal(
-                              defaultOptions: _dataClusters,
-                              onUpdate: (final List<int> clusters) {
-                                setState(() {
-                                  _dataClusters = clusters;
-                                });
+                                  _onUpdateSearchResult(context);
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        FilterSortButton(
+                          icon: Symbols.filter_list_rounded,
+                          label: t.home.filter.cluster,
+                          enabled: !_isLoading,
+                          onPressed: () {
+                            _showDataFilterSortModal(
+                              context,
+                              child: ClusterOptionsModal(
+                                defaultOptions: _dataClusters,
+                                onUpdate: (final List<int> clusters) {
+                                  setState(() {
+                                    _dataClusters = clusters;
+                                  });
 
-                                _onUpdateSearchResult(context);
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                    ],
+                                  _onUpdateSearchResult(context);
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -362,83 +366,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   sliver: SliverList.separated(
                     itemBuilder: (final BuildContext context, final int index) {
                       if (index == 0) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 8.0,
-                          ),
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Symbols.info_rounded,
-                                color: colorScheme.error,
-                                size: 24.0,
-                                fill: 0.0,
-                                weight: 200.0,
-                                opticalSize: 24.0,
-                              ),
-                              const SizedBox(
-                                width: 16.0,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  t.home.badgeText,
-                                  style: textTheme.bodyLarge?.copyWith(
-                                    color: colorScheme.error,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
+                        return const WaitTimeNoticeItem();
                       }
 
                       if (index == state.waitTimeData.length + 1) {
-                        return Text.rich(
-                          t.main.dataRemarks.content(
-                            tapPCD: (final String text) => TextSpan(
-                              text: text,
-                              style: TextStyle(
-                                color: colorScheme.primary,
-                                decoration: TextDecoration.underline,
-                                decorationColor: colorScheme.primary,
-                                decorationThickness: 2.0,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () async {
-                                  await launchUrl(
-                                    Uri.parse(t.main.dataRemarks.pcdUrl),
-                                    mode: LaunchMode.inAppBrowserView,
-                                  );
-                                },
-                            ),
-                            tapHKD: (final String text) => TextSpan(
-                              text: text,
-                              style: TextStyle(
-                                color: colorScheme.primary,
-                                decoration: TextDecoration.underline,
-                                decorationColor: colorScheme.primary,
-                                decorationThickness: 2.0,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () async {
-                                  await launchUrl(
-                                    Uri.parse(t.main.dataRemarks.hkdUrl),
-                                    mode: LaunchMode.inAppBrowserView,
-                                  );
-                                },
-                            ),
-                          ),
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium
-                                        ?.color
-                                        ?.withAlpha(160),
-                                  ),
-                        );
+                        return const WaitTimeDataRemarks();
                       }
+
                       return WaitTimeListItem(
                         data: state.waitTimeData[index - 1],
                         onTapExpanded: (final WaitTimeModel data) {

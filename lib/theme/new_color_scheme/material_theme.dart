@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ae_live/theme/custom_colors_schemes.g.dart';
 import 'package:ae_live/theme/custom_snack_bar_theme.dart';
 import 'package:ae_live/theme/new_color_scheme/color_family.dart';
@@ -424,6 +426,10 @@ class MaterialTheme {
         snackBarTheme: customSnackBarTheme,
         scaffoldBackgroundColor: backgroundColor,
         canvasColor: colorScheme.surface,
+
+        // Remove the ripple effect on Apple platforms.
+        splashFactory:
+            Platform.isIOS || Platform.isMacOS ? NoSplash.splashFactory : null,
       );
 
   /// Wait Quick
