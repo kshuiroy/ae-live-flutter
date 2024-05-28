@@ -209,8 +209,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildWaitTimeListPane(final BuildContext context) {
     final Translations t = Translations.of(context);
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    final TextTheme textTheme = Theme.of(context).textTheme;
 
     return EasyRefresh.builder(
       controller: _refreshController,
