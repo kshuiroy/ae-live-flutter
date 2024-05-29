@@ -247,10 +247,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_map
-      sha256: "14fee31fdd1de6fbfacb1adb0850a971a38654e74a5b5641d85b2ee0c7786f40"
+      sha256: "87cc8349b8fa5dccda5af50018c7374b6645334a0d680931c1fe11bce88fa5bb"
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.0"
+    version: "6.2.1"
   flutter_map_cancellable_tile_provider:
     dependency: "direct main"
     description:
@@ -289,10 +289,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "6ad5662b014c06c20fa46ab78715c96b2222a7fe4f87bf77e0289592c2539e86"
+      sha256: abec47eb8c8c36ebf41d0a4c64dbbe7f956e39a012b3aafc530e951bdc12fe3f
       url: "https://pub.dev"
     source: hosted
-    version: "14.1.3"
+    version: "14.1.4"
   html:
     dependency: transitive
     description:
@@ -766,18 +766,18 @@ packages:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_charts
-      sha256: "150f09ec4588a5405f0b5d1a711b282bee770ea523ecddf30ebf7321aac7830f"
+      sha256: b3c06000b4fe9f5fcb44a7ce9e2f776fdaf87d6abff7b032b13d0245c5ba431a
       url: "https://pub.dev"
     source: hosted
-    version: "25.2.5"
+    version: "25.2.6"
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "63108a33f9b0d89f7b6b56cce908b8e519fe433dbbe0efcf41ad3e8bb2081bd9"
+      sha256: "75683ee7356d240243e491526a669069ea9280275299bb79760f1aaf6d4e07d1"
       url: "https://pub.dev"
     source: hosted
-    version: "25.2.5"
+    version: "25.2.6"
   term_glyph:
     dependency: transitive
     description:

@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:ae_live/config/constants.dart';
+import 'package:ae_live/utilities/platform_helper.dart';
 import 'package:ae_live/widgets/core/frosted_glass_search_header.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/home_screen/cluster_options_modal.dart';
@@ -89,15 +88,18 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
               children: [
                 if (widget.showBackButton) ...[
                   IconButton(
+                    padding: const EdgeInsets.all(16.0),
                     onPressed: () => Navigator.of(context).pop(),
                     icon: Icon(
-                      Platform.isIOS || Platform.isMacOS
+                      PlatformHelper.isApplePlatform
                           ? Symbols.arrow_back_ios_new
                           : Symbols.arrow_back,
                       size: 24.0,
                       fill: 0.0,
                       opticalSize: 24.0,
                     ),
+                    tooltip:
+                        MaterialLocalizations.of(context).backButtonTooltip,
                   ),
                   const SizedBox(
                     width: 8.0,

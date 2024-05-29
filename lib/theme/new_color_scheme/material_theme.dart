@@ -1,11 +1,10 @@
-import 'dart:io';
-
 import 'package:ae_live/theme/custom_colors_schemes.g.dart';
 import 'package:ae_live/theme/custom_snack_bar_theme.dart';
 import 'package:ae_live/theme/new_color_scheme/color_family.dart';
 import 'package:ae_live/theme/new_color_scheme/extended_color.dart';
 import 'package:ae_live/theme/new_color_scheme/material_scheme.dart';
 import 'package:ae_live/theme/new_color_scheme/material_scheme_util.dart';
+import 'package:ae_live/utilities/platform_helper.dart';
 import 'package:flutter/material.dart';
 
 class MaterialTheme {
@@ -429,7 +428,7 @@ class MaterialTheme {
 
         // Remove the ripple effect on Apple platforms.
         splashFactory:
-            Platform.isIOS || Platform.isMacOS ? NoSplash.splashFactory : null,
+            PlatformHelper.isApplePlatform ? NoSplash.splashFactory : null,
       );
 
   /// Wait Quick
