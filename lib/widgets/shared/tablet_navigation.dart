@@ -35,8 +35,8 @@ class TabletNavigation extends StatelessWidget {
       useIndicator: true,
       onDestinationSelected: onDestinationSelected,
       leading: const AppIcon(
-        width: 40.0,
-        height: 40.0,
+        width: 32.0,
+        height: 32.0,
       ),
       destinations: tabItems
           .map(
