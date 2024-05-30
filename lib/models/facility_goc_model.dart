@@ -95,10 +95,10 @@ class FacilityGocModel {
   }
 
   String get institutionName {
-    switch (LocaleSettings.currentLocale.languageTag) {
-      case 'zh-HK':
+    switch (LocaleSettings.currentLocale) {
+      case AppLocale.zhHk:
         return institutionNameTC;
-      case 'zh-CN':
+      case AppLocale.zhCn:
         return institutionNameSC;
       default:
         return institutionNameEN;
@@ -106,10 +106,10 @@ class FacilityGocModel {
   }
 
   String get address {
-    switch (LocaleSettings.currentLocale.languageTag) {
-      case 'zh-HK':
+    switch (LocaleSettings.currentLocale) {
+      case AppLocale.zhHk:
         return addressTC;
-      case 'zh-CN':
+      case AppLocale.zhCn:
         return addressSC;
       default:
         return addressEN;
