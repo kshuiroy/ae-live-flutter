@@ -45,6 +45,7 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
           _data!,
           keyword: event.keyword?.trim(),
           clusters: event.clusters,
+          regions: event.regions,
           sortType: event.sortType ?? WaitTimeSortType.timeInAsd,
         );
 
@@ -85,6 +86,7 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
             toWaitTimeSortType(
               preferences.getString(Constants.preferenceKeyDefaultSorting),
             ),
+        regions: event.regions,
       );
 
       emit(

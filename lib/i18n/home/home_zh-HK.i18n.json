@@ -25,6 +25,14 @@
             "timeInAsd": "等候時間（由短至長）",
             "timeInDesc": "等候時間（由長至短）"
         },
+        "region": {
+            "title": "區域",
+            "hki": "香港島",
+            "kln": "九龍",
+            "nte": "新界東",
+            "ntw": "新界西",
+            "isl": "離島"
+        },
         "submit": "提交"
     },
     "prompt": {

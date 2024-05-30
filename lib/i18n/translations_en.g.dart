@@ -36,28 +36,12 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsSettingsEn settings = _TranslationsSettingsEn._(_root);
 	late final _TranslationsHomeEn home = _TranslationsHomeEn._(_root);
 	late final _TranslationsListsEn lists = _TranslationsListsEn._(_root);
-	late final _TranslationsWaitTimeDetailsEn waitTimeDetails = _TranslationsWaitTimeDetailsEn._(_root);
-	late final _TranslationsSharedEn shared = _TranslationsSharedEn._(_root);
 	late final _TranslationsMainEn main = _TranslationsMainEn._(_root);
-}
-
-// Path: settings
-class _TranslationsSettingsEn {
-	_TranslationsSettingsEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get title => 'Settings';
-	String get save => 'Save Settings';
-	late final _TranslationsSettingsSectionsEn sections = _TranslationsSettingsSectionsEn._(_root);
-	late final _TranslationsSettingsAppearanceEn appearance = _TranslationsSettingsAppearanceEn._(_root);
-	late final _TranslationsSettingsDataEn data = _TranslationsSettingsDataEn._(_root);
-	late final _TranslationsSettingsMoreEn more = _TranslationsSettingsMoreEn._(_root);
-	late final _TranslationsSettingsPromptEn prompt = _TranslationsSettingsPromptEn._(_root);
+	late final _TranslationsSettingsEn settings = _TranslationsSettingsEn._(_root);
+	late final _TranslationsSharedEn shared = _TranslationsSharedEn._(_root);
+	late final _TranslationsWaitTimeDetailsEn waitTimeDetails = _TranslationsWaitTimeDetailsEn._(_root);
 }
 
 // Path: home
@@ -92,31 +76,6 @@ class _TranslationsListsEn {
 	String get refresh => 'Refresh';
 }
 
-// Path: waitTimeDetails
-class _TranslationsWaitTimeDetailsEn {
-	_TranslationsWaitTimeDetailsEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get expectedWaitTime => 'Expected Waiting Time (Non-Emergency)';
-	late final _TranslationsWaitTimeDetailsActionsEn actions = _TranslationsWaitTimeDetailsActionsEn._(_root);
-	String get chartTitle => 'Waiting Time of the Past 6 Hours';
-	String get hours => '{value}H';
-	late final _TranslationsWaitTimeDetailsInfoEn info = _TranslationsWaitTimeDetailsInfoEn._(_root);
-	late final _TranslationsWaitTimeDetailsShareContentEn shareContent = _TranslationsWaitTimeDetailsShareContentEn._(_root);
-}
-
-// Path: shared
-class _TranslationsSharedEn {
-	_TranslationsSharedEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	late final _TranslationsSharedFacilityMapsEn facilityMaps = _TranslationsSharedFacilityMapsEn._(_root);
-}
-
 // Path: main
 class _TranslationsMainEn {
 	_TranslationsMainEn._(this._root);
@@ -134,62 +93,45 @@ class _TranslationsMainEn {
 	late final _TranslationsMainDataRemarksEn dataRemarks = _TranslationsMainDataRemarksEn._(_root);
 }
 
-// Path: settings.sections
-class _TranslationsSettingsSectionsEn {
-	_TranslationsSettingsSectionsEn._(this._root);
+// Path: settings
+class _TranslationsSettingsEn {
+	_TranslationsSettingsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get appearance => 'Appearance';
-	String get data => 'Data Management';
-	String get more => 'More';
+	String get title => 'Settings';
+	String get save => 'Save Settings';
+	late final _TranslationsSettingsSectionsEn sections = _TranslationsSettingsSectionsEn._(_root);
+	late final _TranslationsSettingsAppearanceEn appearance = _TranslationsSettingsAppearanceEn._(_root);
+	late final _TranslationsSettingsDataEn data = _TranslationsSettingsDataEn._(_root);
+	late final _TranslationsSettingsMoreEn more = _TranslationsSettingsMoreEn._(_root);
+	late final _TranslationsSettingsPromptEn prompt = _TranslationsSettingsPromptEn._(_root);
 }
 
-// Path: settings.appearance
-class _TranslationsSettingsAppearanceEn {
-	_TranslationsSettingsAppearanceEn._(this._root);
+// Path: shared
+class _TranslationsSharedEn {
+	_TranslationsSharedEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsSettingsAppearanceThemeEn theme = _TranslationsSettingsAppearanceThemeEn._(_root);
-	late final _TranslationsSettingsAppearanceLanguageEn language = _TranslationsSettingsAppearanceLanguageEn._(_root);
-	late final _TranslationsSettingsAppearanceSortingEn sorting = _TranslationsSettingsAppearanceSortingEn._(_root);
+	late final _TranslationsSharedFacilityMapsEn facilityMaps = _TranslationsSharedFacilityMapsEn._(_root);
 }
 
-// Path: settings.data
-class _TranslationsSettingsDataEn {
-	_TranslationsSettingsDataEn._(this._root);
+// Path: waitTimeDetails
+class _TranslationsWaitTimeDetailsEn {
+	_TranslationsWaitTimeDetailsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsSettingsDataResetEn reset = _TranslationsSettingsDataResetEn._(_root);
-}
-
-// Path: settings.more
-class _TranslationsSettingsMoreEn {
-	_TranslationsSettingsMoreEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get license => 'Open Source Licenses';
-	late final _TranslationsSettingsMorePrivacyPolicyEn privacyPolicy = _TranslationsSettingsMorePrivacyPolicyEn._(_root);
-	late final _TranslationsSettingsMoreTermsConditionsEn termsConditions = _TranslationsSettingsMoreTermsConditionsEn._(_root);
-	late final _TranslationsSettingsMoreAboutEn about = _TranslationsSettingsMoreAboutEn._(_root);
-}
-
-// Path: settings.prompt
-class _TranslationsSettingsPromptEn {
-	_TranslationsSettingsPromptEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get selectItem => 'Please select an item from the list to update the settings of the app.';
-	String get settingsReset => 'All settings have been reset. Please restart the app for the changes to take effect.';
+	String get expectedWaitTime => 'Expected Waiting Time (Non-Emergency)';
+	late final _TranslationsWaitTimeDetailsActionsEn actions = _TranslationsWaitTimeDetailsActionsEn._(_root);
+	String get chartTitle => 'Waiting Time of the Past 6 Hours';
+	String get hours => '{value}H';
+	late final _TranslationsWaitTimeDetailsInfoEn info = _TranslationsWaitTimeDetailsInfoEn._(_root);
+	late final _TranslationsWaitTimeDetailsShareContentEn shareContent = _TranslationsWaitTimeDetailsShareContentEn._(_root);
 }
 
 // Path: home.actions
@@ -228,6 +170,7 @@ class _TranslationsHomeFilterEn {
 	// Translations
 	String get cluster => 'Hospital Cluster';
 	late final _TranslationsHomeFilterSortingEn sorting = _TranslationsHomeFilterSortingEn._(_root);
+	late final _TranslationsHomeFilterRegionEn region = _TranslationsHomeFilterRegionEn._(_root);
 	String get submit => 'Submit';
 }
 
@@ -318,6 +261,110 @@ class _TranslationsListsPromptEn {
 	String get selectCategory => 'Please select a category from the list to view the facility list.';
 }
 
+// Path: main.clusters
+class _TranslationsMainClustersEn {
+	_TranslationsMainClustersEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get hke => 'Hong Kong East Cluster';
+	String get hkw => 'Hong Kong West Cluster';
+	String get klc => 'Kowloon Central Cluster';
+	String get kle => 'Kowloon East Cluster';
+	String get klw => 'Kowloon West Cluster';
+	String get nte => 'New Territories East Cluster';
+	String get ntw => 'New Territories West Cluster';
+}
+
+// Path: main.dataRemarks
+class _TranslationsMainDataRemarksEn {
+	_TranslationsMainDataRemarksEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Remarks';
+	TextSpan content({required InlineSpanBuilder tapPCD, required InlineSpanBuilder tapHKD}) => TextSpan(children: [
+		const TextSpan(text: 'The above data is collated from the waiting time in the past few hours. This is for reference only but not the current estimated waiting time.\n\nA&E Departments need to manage sudden arrival of accident victims and severely-ill patients. We apologise for not being able to provide an accurate estimate of waiting time for patients in general. Please be patient while waiting for consultation.\n\nWaiting time display is capped at 8 hours amid a large number of patients waiting for a long time are being treated in the A&E Department. Patients with minor illnesses can consider seeking alternative medical services from private clinics (as listed in '),
+		tapPCD('Primary Care Directory'),
+		const TextSpan(text: ' or '),
+		tapHKD('Hong Kong Doctors Homepage'),
+		const TextSpan(text: ').'),
+	]);
+	String get pcdUrl => 'https://apps.pcdirectory.gov.hk/mobile/en';
+	String get hkdUrl => 'http://www.thkma.org/our_works/hong_kong_doctors/';
+}
+
+// Path: settings.sections
+class _TranslationsSettingsSectionsEn {
+	_TranslationsSettingsSectionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get appearance => 'Appearance';
+	String get data => 'Data Management';
+	String get more => 'More';
+}
+
+// Path: settings.appearance
+class _TranslationsSettingsAppearanceEn {
+	_TranslationsSettingsAppearanceEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsSettingsAppearanceThemeEn theme = _TranslationsSettingsAppearanceThemeEn._(_root);
+	late final _TranslationsSettingsAppearanceLanguageEn language = _TranslationsSettingsAppearanceLanguageEn._(_root);
+	late final _TranslationsSettingsAppearanceSortingEn sorting = _TranslationsSettingsAppearanceSortingEn._(_root);
+}
+
+// Path: settings.data
+class _TranslationsSettingsDataEn {
+	_TranslationsSettingsDataEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsSettingsDataResetEn reset = _TranslationsSettingsDataResetEn._(_root);
+}
+
+// Path: settings.more
+class _TranslationsSettingsMoreEn {
+	_TranslationsSettingsMoreEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get license => 'Open Source Licenses';
+	late final _TranslationsSettingsMorePrivacyPolicyEn privacyPolicy = _TranslationsSettingsMorePrivacyPolicyEn._(_root);
+	late final _TranslationsSettingsMoreTermsConditionsEn termsConditions = _TranslationsSettingsMoreTermsConditionsEn._(_root);
+	late final _TranslationsSettingsMoreAboutEn about = _TranslationsSettingsMoreAboutEn._(_root);
+}
+
+// Path: settings.prompt
+class _TranslationsSettingsPromptEn {
+	_TranslationsSettingsPromptEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get selectItem => 'Please select an item from the list to update the settings of the app.';
+	String get settingsReset => 'All settings have been reset. Please restart the app for the changes to take effect.';
+}
+
+// Path: shared.facilityMaps
+class _TranslationsSharedFacilityMapsEn {
+	_TranslationsSharedFacilityMapsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get openMapsApp => 'Open Maps Application';
+	String get closeMapsModal => 'Close the Maps Viewer';
+}
+
 // Path: waitTimeDetails.actions
 class _TranslationsWaitTimeDetailsActionsEn {
 	_TranslationsWaitTimeDetailsActionsEn._(this._root);
@@ -358,50 +405,33 @@ class _TranslationsWaitTimeDetailsShareContentEn {
 	String website({required Object website}) => '\nWebsite: ${website}';
 }
 
-// Path: shared.facilityMaps
-class _TranslationsSharedFacilityMapsEn {
-	_TranslationsSharedFacilityMapsEn._(this._root);
+// Path: home.filter.sorting
+class _TranslationsHomeFilterSortingEn {
+	_TranslationsHomeFilterSortingEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get openMapsApp => 'Open Maps Application';
-	String get closeMapsModal => 'Close the Maps Viewer';
+	String get title => 'Sorting';
+	String get nameInAsd => 'Hospital Name (A-Z)';
+	String get nameInDesc => 'Hospital Name (Z-A)';
+	String get timeInAsd => 'Waiting Time (ASD.)';
+	String get timeInDesc => 'Waiting Time (DESC.)';
 }
 
-// Path: main.clusters
-class _TranslationsMainClustersEn {
-	_TranslationsMainClustersEn._(this._root);
+// Path: home.filter.region
+class _TranslationsHomeFilterRegionEn {
+	_TranslationsHomeFilterRegionEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get hke => 'Hong Kong East Cluster';
-	String get hkw => 'Hong Kong West Cluster';
-	String get klc => 'Kowloon Central Cluster';
-	String get kle => 'Kowloon East Cluster';
-	String get klw => 'Kowloon West Cluster';
-	String get nte => 'New Territories East Cluster';
-	String get ntw => 'New Territories West Cluster';
-}
-
-// Path: main.dataRemarks
-class _TranslationsMainDataRemarksEn {
-	_TranslationsMainDataRemarksEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get title => 'Remarks';
-	TextSpan content({required InlineSpanBuilder tapPCD, required InlineSpanBuilder tapHKD}) => TextSpan(children: [
-		const TextSpan(text: 'The above data is collated from the waiting time in the past few hours. This is for reference only but not the current estimated waiting time.\n\nA&E Departments need to manage sudden arrival of accident victims and severely-ill patients. We apologise for not being able to provide an accurate estimate of waiting time for patients in general. Please be patient while waiting for consultation.\n\nWaiting time display is capped at 8 hours amid a large number of patients waiting for a long time are being treated in the A&E Department. Patients with minor illnesses can consider seeking alternative medical services from private clinics (as listed in '),
-		tapPCD('Primary Care Directory'),
-		const TextSpan(text: ' or '),
-		tapHKD('Hong Kong Doctors Homepage'),
-		const TextSpan(text: ').'),
-	]);
-	String get pcdUrl => 'https://apps.pcdirectory.gov.hk/mobile/en';
-	String get hkdUrl => 'http://www.thkma.org/our_works/hong_kong_doctors/';
+	String get title => 'Region';
+	String get hki => 'Hong Kong Island';
+	String get kln => 'Kowloon';
+	String get nte => 'New Territories East';
+	String get ntw => 'New Territories West';
+	String get isl => 'Islands';
 }
 
 // Path: settings.appearance.theme
@@ -480,20 +510,6 @@ class _TranslationsSettingsMoreAboutEn {
 	// Translations
 	String get title => 'About This App';
 	late final _TranslationsSettingsMoreAboutItemsEn items = _TranslationsSettingsMoreAboutItemsEn._(_root);
-}
-
-// Path: home.filter.sorting
-class _TranslationsHomeFilterSortingEn {
-	_TranslationsHomeFilterSortingEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get title => 'Sorting';
-	String get nameInAsd => 'Hospital Name (A-Z)';
-	String get nameInDesc => 'Hospital Name (Z-A)';
-	String get timeInAsd => 'Waiting Time (ASD.)';
-	String get timeInDesc => 'Waiting Time (DESC.)';
 }
 
 // Path: settings.appearance.theme.options

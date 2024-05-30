@@ -25,6 +25,14 @@
             "timeInAsd": "Waiting Time (ASD.)",
             "timeInDesc": "Waiting Time (DESC.)"
         },
+        "region": {
+            "title": "Region",
+            "hki": "Hong Kong Island",
+            "kln": "Kowloon",
+            "nte": "New Territories East",
+            "ntw": "New Territories West",
+            "isl": "Islands"
+        },
         "submit": "Submit"
     },
     "prompt": {

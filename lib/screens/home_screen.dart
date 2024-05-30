@@ -12,6 +12,7 @@ import 'package:ae_live/widgets/core/frosted_glass_search_header.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/home_screen/cluster_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/filter_sort_button.dart';
+import 'package:ae_live/widgets/home_screen/region_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/sorting_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/wait_time_list_item.dart';
 import 'package:ae_live/widgets/home_screen/wait_time_notice_item.dart';
@@ -45,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String? _searchKeyword;
   late WaitTimeSortType _dataSortType;
   List<int> _dataClusters = <int>[1, 2, 3, 4, 5, 6, 7];
+  List<int> _dataRegions = <int>[1, 2, 3, 4, 5];
 
   void _init() async {
     _preferences = await SharedPreferences.getInstance();
@@ -65,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             keyword: _searchKeyword,
             clusters: _dataClusters,
             sortType: _dataSortType,
+            regions: _dataRegions,
             refreshController: _refreshController,
             onFinished: () {
               setState(() {
@@ -82,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
             name: _searchKeyword,
             sortType: _dataSortType,
             clusters: _dataClusters,
+            regions: _dataRegions,
           ),
         );
   }
@@ -295,6 +299,26 @@ class _HomeScreenState extends State<HomeScreen> {
                             );
                           },
                         ),
+                        FilterSortButton(
+                          icon: Symbols.travel_explore_rounded,
+                          label: t.home.filter.region.title,
+                          enabled: !_isLoading,
+                          onPressed: () {
+                            _showDataFilterSortModal(
+                              context,
+                              child: RegionOptionsModal(
+                                defaultOptions: _dataRegions,
+                                onUpdate: (final List<int> regions) {
+                                  setState(() {
+                                    _dataRegions = regions;
+                                  });
+
+                                  _onUpdateSearchResult(context);
+                                },
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -330,6 +354,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             WaitTimeFetchRequested(
                               keyword: _searchKeyword,
                               clusters: _dataClusters,
+                              regions: _dataRegions,
                               sortType: _dataSortType,
                               refreshController: _refreshController,
                             ),

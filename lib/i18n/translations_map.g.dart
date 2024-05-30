@@ -12,6 +12,77 @@ part of 'translations.g.dart';
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'home.title': return 'A&E Waiting Time';
+			case 'home.actions.filter': return 'Filter';
+			case 'home.actions.refresh': return 'Refresh Data';
+			case 'home.actions.search': return 'Search Hospital';
+			case 'home.badgeText': return 'Priority will be accorded to patients triaged as critical, emergency and urgent.';
+			case 'home.refreshIndicator.pullToRefresh': return 'Pull to Refresh';
+			case 'home.refreshIndicator.releaseToRefresh': return 'Release to Refresh';
+			case 'home.refreshIndicator.refreshing': return 'Refreshing...';
+			case 'home.refreshIndicator.dataUpdated': return 'Data Updated';
+			case 'home.refreshIndicator.failedToRefresh': return 'Failed to Refresh';
+			case 'home.refreshIndicator.lastUpdateAt': return 'Last Update At: %T';
+			case 'home.filter.cluster': return 'Hospital Cluster';
+			case 'home.filter.sorting.title': return 'Sorting';
+			case 'home.filter.sorting.nameInAsd': return 'Hospital Name (A-Z)';
+			case 'home.filter.sorting.nameInDesc': return 'Hospital Name (Z-A)';
+			case 'home.filter.sorting.timeInAsd': return 'Waiting Time (ASD.)';
+			case 'home.filter.sorting.timeInDesc': return 'Waiting Time (DESC.)';
+			case 'home.filter.region.title': return 'Region';
+			case 'home.filter.region.hki': return 'Hong Kong Island';
+			case 'home.filter.region.kln': return 'Kowloon';
+			case 'home.filter.region.nte': return 'New Territories East';
+			case 'home.filter.region.ntw': return 'New Territories West';
+			case 'home.filter.region.isl': return 'Islands';
+			case 'home.filter.submit': return 'Submit';
+			case 'home.prompt.noConnection': return 'No internet connection.';
+			case 'home.prompt.serverError': return 'Something went wrong with the server, please try again later.';
+			case 'home.prompt.noSearchResult': return 'There is no hospital matches your search criteria.';
+			case 'home.prompt.selectItem': return 'Please select a hospital card from the list to view the details of the hospital.';
+			case 'lists.title': return 'Lists';
+			case 'lists.categories.hospital': return 'Hospital/Institution';
+			case 'lists.categories.soc': return 'Specialist Outpatient Clinic';
+			case 'lists.categories.goc': return 'General Outpatient Clinic';
+			case 'lists.categories.cmc': return 'Chinese Medicine Clinics cum Training and Research Centres';
+			case 'lists.hospital.search': return 'Search Hospital/Institution';
+			case 'lists.hospital.cluster': return 'Hospital Cluster';
+			case 'lists.hospital.withAEService': return 'Provides A&E services';
+			case 'lists.hospital.withoutAEService': return 'No A&E services provided';
+			case 'lists.hospital.noSearchResult': return 'There is no hospital/institution matches your search criteria.';
+			case 'lists.soc.search': return 'Search Specialist Outpatient Clinic';
+			case 'lists.soc.cluster': return 'Clinic Cluster';
+			case 'lists.soc.noSearchResult': return 'There is no clinic matches your search criteria.';
+			case 'lists.goc.search': return 'Search General Outpatient Clinic';
+			case 'lists.goc.cluster': return 'Clinic Cluster';
+			case 'lists.goc.noSearchResult': return 'There is no clinic matches your search criteria.';
+			case 'lists.cmc.search': return 'Search Chinese Medicine Clinics cum Training and Research Centres';
+			case 'lists.cmc.noSearchResult': return 'There is no clinic matches your search criteria.';
+			case 'lists.prompt.noConnection': return 'No internet connection.';
+			case 'lists.prompt.serverError': return 'Something went wrong with the server, please try again later.';
+			case 'lists.prompt.selectCategory': return 'Please select a category from the list to view the facility list.';
+			case 'lists.refresh': return 'Refresh';
+			case 'main.app_name': return 'A&E Live';
+			case 'main.tabs.home': return 'Home';
+			case 'main.tabs.lists': return 'Lists';
+			case 'main.tabs.settings': return 'Settings';
+			case 'main.clusters.hke': return 'Hong Kong East Cluster';
+			case 'main.clusters.hkw': return 'Hong Kong West Cluster';
+			case 'main.clusters.klc': return 'Kowloon Central Cluster';
+			case 'main.clusters.kle': return 'Kowloon East Cluster';
+			case 'main.clusters.klw': return 'Kowloon West Cluster';
+			case 'main.clusters.nte': return 'New Territories East Cluster';
+			case 'main.clusters.ntw': return 'New Territories West Cluster';
+			case 'main.dataRemarks.title': return 'Remarks';
+			case 'main.dataRemarks.content': return ({required InlineSpanBuilder tapPCD, required InlineSpanBuilder tapHKD}) => TextSpan(children: [
+				const TextSpan(text: 'The above data is collated from the waiting time in the past few hours. This is for reference only but not the current estimated waiting time.\n\nA&E Departments need to manage sudden arrival of accident victims and severely-ill patients. We apologise for not being able to provide an accurate estimate of waiting time for patients in general. Please be patient while waiting for consultation.\n\nWaiting time display is capped at 8 hours amid a large number of patients waiting for a long time are being treated in the A&E Department. Patients with minor illnesses can consider seeking alternative medical services from private clinics (as listed in '),
+				tapPCD('Primary Care Directory'),
+				const TextSpan(text: ' or '),
+				tapHKD('Hong Kong Doctors Homepage'),
+				const TextSpan(text: ').'),
+			]);
+			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/en';
+			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
 			case 'settings.title': return 'Settings';
 			case 'settings.save': return 'Save Settings';
 			case 'settings.sections.appearance': return 'Appearance';
@@ -48,50 +119,8 @@ extension on Translations {
 			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
 			case 'settings.prompt.selectItem': return 'Please select an item from the list to update the settings of the app.';
 			case 'settings.prompt.settingsReset': return 'All settings have been reset. Please restart the app for the changes to take effect.';
-			case 'home.title': return 'A&E Waiting Time';
-			case 'home.actions.filter': return 'Filter';
-			case 'home.actions.refresh': return 'Refresh Data';
-			case 'home.actions.search': return 'Search Hospital';
-			case 'home.badgeText': return 'Priority will be accorded to patients triaged as critical, emergency and urgent.';
-			case 'home.refreshIndicator.pullToRefresh': return 'Pull to Refresh';
-			case 'home.refreshIndicator.releaseToRefresh': return 'Release to Refresh';
-			case 'home.refreshIndicator.refreshing': return 'Refreshing...';
-			case 'home.refreshIndicator.dataUpdated': return 'Data Updated';
-			case 'home.refreshIndicator.failedToRefresh': return 'Failed to Refresh';
-			case 'home.refreshIndicator.lastUpdateAt': return 'Last Update At: %T';
-			case 'home.filter.cluster': return 'Hospital Cluster';
-			case 'home.filter.sorting.title': return 'Sorting';
-			case 'home.filter.sorting.nameInAsd': return 'Hospital Name (A-Z)';
-			case 'home.filter.sorting.nameInDesc': return 'Hospital Name (Z-A)';
-			case 'home.filter.sorting.timeInAsd': return 'Waiting Time (ASD.)';
-			case 'home.filter.sorting.timeInDesc': return 'Waiting Time (DESC.)';
-			case 'home.filter.submit': return 'Submit';
-			case 'home.prompt.noConnection': return 'No internet connection.';
-			case 'home.prompt.serverError': return 'Something went wrong with the server, please try again later.';
-			case 'home.prompt.noSearchResult': return 'There is no hospital matches your search criteria.';
-			case 'home.prompt.selectItem': return 'Please select a hospital card from the list to view the details of the hospital.';
-			case 'lists.title': return 'Lists';
-			case 'lists.categories.hospital': return 'Hospital/Institution';
-			case 'lists.categories.soc': return 'Specialist Outpatient Clinic';
-			case 'lists.categories.goc': return 'General Outpatient Clinic';
-			case 'lists.categories.cmc': return 'Chinese Medicine Clinics cum Training and Research Centres';
-			case 'lists.hospital.search': return 'Search Hospital/Institution';
-			case 'lists.hospital.cluster': return 'Hospital Cluster';
-			case 'lists.hospital.withAEService': return 'Provides A&E services';
-			case 'lists.hospital.withoutAEService': return 'No A&E services provided';
-			case 'lists.hospital.noSearchResult': return 'There is no hospital/institution matches your search criteria.';
-			case 'lists.soc.search': return 'Search Specialist Outpatient Clinic';
-			case 'lists.soc.cluster': return 'Clinic Cluster';
-			case 'lists.soc.noSearchResult': return 'There is no clinic matches your search criteria.';
-			case 'lists.goc.search': return 'Search General Outpatient Clinic';
-			case 'lists.goc.cluster': return 'Clinic Cluster';
-			case 'lists.goc.noSearchResult': return 'There is no clinic matches your search criteria.';
-			case 'lists.cmc.search': return 'Search Chinese Medicine Clinics cum Training and Research Centres';
-			case 'lists.cmc.noSearchResult': return 'There is no clinic matches your search criteria.';
-			case 'lists.prompt.noConnection': return 'No internet connection.';
-			case 'lists.prompt.serverError': return 'Something went wrong with the server, please try again later.';
-			case 'lists.prompt.selectCategory': return 'Please select a category from the list to view the facility list.';
-			case 'lists.refresh': return 'Refresh';
+			case 'shared.facilityMaps.openMapsApp': return 'Open Maps Application';
+			case 'shared.facilityMaps.closeMapsModal': return 'Close the Maps Viewer';
 			case 'waitTimeDetails.expectedWaitTime': return 'Expected Waiting Time (Non-Emergency)';
 			case 'waitTimeDetails.actions.share': return 'Share Hospital Info';
 			case 'waitTimeDetails.actions.call': return 'Call Hospital';
@@ -108,29 +137,6 @@ extension on Translations {
 			case 'waitTimeDetails.shareContent.faxNo': return ({required Object faxNo}) => '\nFax No.: ${faxNo}';
 			case 'waitTimeDetails.shareContent.emailAddress': return ({required Object emailAddress}) => '\nEmail Address: ${emailAddress}';
 			case 'waitTimeDetails.shareContent.website': return ({required Object website}) => '\nWebsite: ${website}';
-			case 'shared.facilityMaps.openMapsApp': return 'Open Maps Application';
-			case 'shared.facilityMaps.closeMapsModal': return 'Close the Maps Viewer';
-			case 'main.app_name': return 'A&E Live';
-			case 'main.tabs.home': return 'Home';
-			case 'main.tabs.lists': return 'Lists';
-			case 'main.tabs.settings': return 'Settings';
-			case 'main.clusters.hke': return 'Hong Kong East Cluster';
-			case 'main.clusters.hkw': return 'Hong Kong West Cluster';
-			case 'main.clusters.klc': return 'Kowloon Central Cluster';
-			case 'main.clusters.kle': return 'Kowloon East Cluster';
-			case 'main.clusters.klw': return 'Kowloon West Cluster';
-			case 'main.clusters.nte': return 'New Territories East Cluster';
-			case 'main.clusters.ntw': return 'New Territories West Cluster';
-			case 'main.dataRemarks.title': return 'Remarks';
-			case 'main.dataRemarks.content': return ({required InlineSpanBuilder tapPCD, required InlineSpanBuilder tapHKD}) => TextSpan(children: [
-				const TextSpan(text: 'The above data is collated from the waiting time in the past few hours. This is for reference only but not the current estimated waiting time.\n\nA&E Departments need to manage sudden arrival of accident victims and severely-ill patients. We apologise for not being able to provide an accurate estimate of waiting time for patients in general. Please be patient while waiting for consultation.\n\nWaiting time display is capped at 8 hours amid a large number of patients waiting for a long time are being treated in the A&E Department. Patients with minor illnesses can consider seeking alternative medical services from private clinics (as listed in '),
-				tapPCD('Primary Care Directory'),
-				const TextSpan(text: ' or '),
-				tapHKD('Hong Kong Doctors Homepage'),
-				const TextSpan(text: ').'),
-			]);
-			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/en';
-			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
 			default: return null;
 		}
 	}
@@ -139,6 +145,77 @@ extension on Translations {
 extension on _TranslationsZhCn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'home.title': return '急症室等候时间';
+			case 'home.actions.filter': return '筛选医院';
+			case 'home.actions.refresh': return '重新整理';
+			case 'home.actions.search': return '搜寻医院';
+			case 'home.badgeText': return '急症室会优先诊治被分流為危殆、危急和紧急的病人。';
+			case 'home.refreshIndicator.pullToRefresh': return '下拉更新资料';
+			case 'home.refreshIndicator.releaseToRefresh': return '放开即可更新';
+			case 'home.refreshIndicator.refreshing': return '正在更新⋯⋯';
+			case 'home.refreshIndicator.dataUpdated': return '资料已更新';
+			case 'home.refreshIndicator.failedToRefresh': return '资料更新失败';
+			case 'home.refreshIndicator.lastUpdateAt': return '最后更新：%T';
+			case 'home.filter.cluster': return '医院联网';
+			case 'home.filter.sorting.title': return '排序';
+			case 'home.filter.sorting.nameInAsd': return '医院英文名称（A-Z）';
+			case 'home.filter.sorting.nameInDesc': return '医院英文名称（Z-A）';
+			case 'home.filter.sorting.timeInAsd': return '等候时间（由短至长）';
+			case 'home.filter.sorting.timeInDesc': return '等候时间（由长至短）';
+			case 'home.filter.region.title': return '区域';
+			case 'home.filter.region.hki': return '香港岛';
+			case 'home.filter.region.kln': return '九龙';
+			case 'home.filter.region.nte': return '新界东';
+			case 'home.filter.region.ntw': return '新界西';
+			case 'home.filter.region.isl': return '离岛';
+			case 'home.filter.submit': return '提交';
+			case 'home.prompt.noConnection': return '没有网络连线。';
+			case 'home.prompt.serverError': return '服务器发生错误，请稍后再试。';
+			case 'home.prompt.noSearchResult': return '没有符合搜寻条件的医院。';
+			case 'home.prompt.selectItem': return '请在列表中选取一张医院卡片，以查看医院的详情。';
+			case 'lists.title': return '设施目录';
+			case 'lists.categories.hospital': return '医院/机构';
+			case 'lists.categories.soc': return '专科门诊诊所';
+			case 'lists.categories.goc': return '普通科门诊诊所';
+			case 'lists.categories.cmc': return '中医诊所暨教研中心';
+			case 'lists.hospital.search': return '搜寻医院/机构';
+			case 'lists.hospital.cluster': return '医院联网';
+			case 'lists.hospital.withAEService': return '提供急症室服务';
+			case 'lists.hospital.withoutAEService': return '没有急症室服务';
+			case 'lists.hospital.noSearchResult': return '没有符合搜寻条件的医院/机构。';
+			case 'lists.soc.search': return '搜寻专科门诊诊所';
+			case 'lists.soc.cluster': return '诊所联网';
+			case 'lists.soc.noSearchResult': return '没有符合搜寻条件的诊所。';
+			case 'lists.goc.search': return '搜寻普通科门诊诊所';
+			case 'lists.goc.cluster': return '诊所联网';
+			case 'lists.goc.noSearchResult': return '没有符合搜寻条件的诊所。';
+			case 'lists.cmc.search': return '搜寻中医诊所暨教研中心';
+			case 'lists.cmc.noSearchResult': return '没有符合搜寻条件的诊所。';
+			case 'lists.prompt.noConnection': return '没有网络连线。';
+			case 'lists.prompt.serverError': return '服务器发生错误，请稍后再试。';
+			case 'lists.prompt.selectCategory': return '请在列表中选取一个分类以查看设施目录。';
+			case 'lists.refresh': return '重新整理';
+			case 'main.app_name': return '急症室现场';
+			case 'main.tabs.home': return '主页';
+			case 'main.tabs.lists': return '目录';
+			case 'main.tabs.settings': return '设定';
+			case 'main.clusters.hke': return '港岛东医院联网';
+			case 'main.clusters.hkw': return '港岛西医院联网';
+			case 'main.clusters.klc': return '九龙中医院联网';
+			case 'main.clusters.kle': return '九龙东医院联网';
+			case 'main.clusters.klw': return '九龙西医院联网';
+			case 'main.clusters.nte': return '新界东医院联网';
+			case 'main.clusters.ntw': return '新界西医院联网';
+			case 'main.dataRemarks.title': return '注意事项';
+			case 'main.dataRemarks.content': return ({required InlineSpanBuilder tapPCD, required InlineSpanBuilder tapHKD}) => TextSpan(children: [
+				const TextSpan(text: '上述数据是统计过去数小时的最长等候时间，只供参考，并非预计等候时间。\n\n急症室须处理突发意外伤者及危重病人，因此未能准确提供预计等候时间，敬请见谅及耐心等候。\n\n最长等候时间显示上限为 8 小时，表示急症室正处理大量等候已久的病人。病况轻微病人可考虑使用私营医疗服务（'),
+				tapPCD('基层医疗指南'),
+				const TextSpan(text: '或'),
+				tapHKD('香港医生网'),
+				const TextSpan(text: '）。'),
+			]);
+			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/sc';
+			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
 			case 'settings.title': return '设定';
 			case 'settings.save': return '储存设定';
 			case 'settings.sections.appearance': return '外观';
@@ -175,50 +252,8 @@ extension on _TranslationsZhCn {
 			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
 			case 'settings.prompt.selectItem': return '请在列表中选取一个项目来更改应用程序的设定。';
 			case 'settings.prompt.settingsReset': return '所有设定已重设。请重新启动应用程序以使重设生效。';
-			case 'home.title': return '急症室等候时间';
-			case 'home.actions.filter': return '筛选医院';
-			case 'home.actions.refresh': return '重新整理';
-			case 'home.actions.search': return '搜寻医院';
-			case 'home.badgeText': return '急症室会优先诊治被分流為危殆、危急和紧急的病人。';
-			case 'home.refreshIndicator.pullToRefresh': return '下拉更新资料';
-			case 'home.refreshIndicator.releaseToRefresh': return '放开即可更新';
-			case 'home.refreshIndicator.refreshing': return '正在更新⋯⋯';
-			case 'home.refreshIndicator.dataUpdated': return '资料已更新';
-			case 'home.refreshIndicator.failedToRefresh': return '资料更新失败';
-			case 'home.refreshIndicator.lastUpdateAt': return '最后更新：%T';
-			case 'home.filter.cluster': return '医院联网';
-			case 'home.filter.sorting.title': return '排序';
-			case 'home.filter.sorting.nameInAsd': return '医院英文名称（A-Z）';
-			case 'home.filter.sorting.nameInDesc': return '医院英文名称（Z-A）';
-			case 'home.filter.sorting.timeInAsd': return '等候时间（由短至长）';
-			case 'home.filter.sorting.timeInDesc': return '等候时间（由长至短）';
-			case 'home.filter.submit': return '提交';
-			case 'home.prompt.noConnection': return '没有网络连线。';
-			case 'home.prompt.serverError': return '服务器发生错误，请稍后再试。';
-			case 'home.prompt.noSearchResult': return '没有符合搜寻条件的医院。';
-			case 'home.prompt.selectItem': return '请在列表中选取一张医院卡片，以查看医院的详情。';
-			case 'lists.title': return '设施目录';
-			case 'lists.categories.hospital': return '医院/机构';
-			case 'lists.categories.soc': return '专科门诊诊所';
-			case 'lists.categories.goc': return '普通科门诊诊所';
-			case 'lists.categories.cmc': return '中医诊所暨教研中心';
-			case 'lists.hospital.search': return '搜寻医院/机构';
-			case 'lists.hospital.cluster': return '医院联网';
-			case 'lists.hospital.withAEService': return '提供急症室服务';
-			case 'lists.hospital.withoutAEService': return '没有急症室服务';
-			case 'lists.hospital.noSearchResult': return '没有符合搜寻条件的医院/机构。';
-			case 'lists.soc.search': return '搜寻专科门诊诊所';
-			case 'lists.soc.cluster': return '诊所联网';
-			case 'lists.soc.noSearchResult': return '没有符合搜寻条件的诊所。';
-			case 'lists.goc.search': return '搜寻普通科门诊诊所';
-			case 'lists.goc.cluster': return '诊所联网';
-			case 'lists.goc.noSearchResult': return '没有符合搜寻条件的诊所。';
-			case 'lists.cmc.search': return '搜寻中医诊所暨教研中心';
-			case 'lists.cmc.noSearchResult': return '没有符合搜寻条件的诊所。';
-			case 'lists.prompt.noConnection': return '没有网络连线。';
-			case 'lists.prompt.serverError': return '服务器发生错误，请稍后再试。';
-			case 'lists.prompt.selectCategory': return '请在列表中选取一个分类以查看设施目录。';
-			case 'lists.refresh': return '重新整理';
+			case 'shared.facilityMaps.openMapsApp': return '开启地图应用程序';
+			case 'shared.facilityMaps.closeMapsModal': return '关闭地图检视界面';
 			case 'waitTimeDetails.expectedWaitTime': return '预计等候时间（非紧急病人）';
 			case 'waitTimeDetails.actions.share': return '分享医院资讯';
 			case 'waitTimeDetails.actions.call': return '致电医院';
@@ -235,29 +270,6 @@ extension on _TranslationsZhCn {
 			case 'waitTimeDetails.shareContent.faxNo': return ({required Object faxNo}) => '\n传真号码：${faxNo}';
 			case 'waitTimeDetails.shareContent.emailAddress': return ({required Object emailAddress}) => '\n电邮地址：${emailAddress}';
 			case 'waitTimeDetails.shareContent.website': return ({required Object website}) => '\n网址：${website}';
-			case 'shared.facilityMaps.openMapsApp': return '开启地图应用程序';
-			case 'shared.facilityMaps.closeMapsModal': return '关闭地图检视界面';
-			case 'main.app_name': return '急症室现场';
-			case 'main.tabs.home': return '主页';
-			case 'main.tabs.lists': return '目录';
-			case 'main.tabs.settings': return '设定';
-			case 'main.clusters.hke': return '港岛东医院联网';
-			case 'main.clusters.hkw': return '港岛西医院联网';
-			case 'main.clusters.klc': return '九龙中医院联网';
-			case 'main.clusters.kle': return '九龙东医院联网';
-			case 'main.clusters.klw': return '九龙西医院联网';
-			case 'main.clusters.nte': return '新界东医院联网';
-			case 'main.clusters.ntw': return '新界西医院联网';
-			case 'main.dataRemarks.title': return '注意事项';
-			case 'main.dataRemarks.content': return ({required InlineSpanBuilder tapPCD, required InlineSpanBuilder tapHKD}) => TextSpan(children: [
-				const TextSpan(text: '上述数据是统计过去数小时的最长等候时间，只供参考，并非预计等候时间。\n\n急症室须处理突发意外伤者及危重病人，因此未能准确提供预计等候时间，敬请见谅及耐心等候。\n\n最长等候时间显示上限为 8 小时，表示急症室正处理大量等候已久的病人。病况轻微病人可考虑使用私营医疗服务（'),
-				tapPCD('基层医疗指南'),
-				const TextSpan(text: '或'),
-				tapHKD('香港医生网'),
-				const TextSpan(text: '）。'),
-			]);
-			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/sc';
-			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
 			default: return null;
 		}
 	}
@@ -266,6 +278,77 @@ extension on _TranslationsZhCn {
 extension on _TranslationsZhHk {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'home.title': return '急症室等候時間';
+			case 'home.actions.filter': return '篩選醫院';
+			case 'home.actions.refresh': return '重新整理';
+			case 'home.actions.search': return '搜尋醫院';
+			case 'home.badgeText': return '急症室會優先診治被分流為危殆、危急和緊急的病人。';
+			case 'home.refreshIndicator.pullToRefresh': return '下拉更新資料';
+			case 'home.refreshIndicator.releaseToRefresh': return '放開即可更新';
+			case 'home.refreshIndicator.refreshing': return '正在更新⋯⋯';
+			case 'home.refreshIndicator.dataUpdated': return '資料已更新';
+			case 'home.refreshIndicator.failedToRefresh': return '資料更新失敗';
+			case 'home.refreshIndicator.lastUpdateAt': return '最後更新：%T';
+			case 'home.filter.cluster': return '醫院聯網';
+			case 'home.filter.sorting.title': return '排序';
+			case 'home.filter.sorting.nameInAsd': return '醫院英文名稱（A-Z）';
+			case 'home.filter.sorting.nameInDesc': return '醫院英文名稱（Z-A）';
+			case 'home.filter.sorting.timeInAsd': return '等候時間（由短至長）';
+			case 'home.filter.sorting.timeInDesc': return '等候時間（由長至短）';
+			case 'home.filter.region.title': return '區域';
+			case 'home.filter.region.hki': return '香港島';
+			case 'home.filter.region.kln': return '九龍';
+			case 'home.filter.region.nte': return '新界東';
+			case 'home.filter.region.ntw': return '新界西';
+			case 'home.filter.region.isl': return '離島';
+			case 'home.filter.submit': return '提交';
+			case 'home.prompt.noConnection': return '沒有網絡連線。';
+			case 'home.prompt.serverError': return '伺服器發生錯誤，請稍後再試。';
+			case 'home.prompt.noSearchResult': return '沒有符合搜尋條件的醫院。';
+			case 'home.prompt.selectItem': return '請在列表中選取一張醫院卡片，以查看醫院的詳情。';
+			case 'lists.title': return '設施目錄';
+			case 'lists.categories.hospital': return '醫院/機構';
+			case 'lists.categories.soc': return '專科門診診所';
+			case 'lists.categories.goc': return '普通科門診診所';
+			case 'lists.categories.cmc': return '中醫診所暨教研中心';
+			case 'lists.hospital.search': return '搜尋醫院/機構';
+			case 'lists.hospital.cluster': return '醫院聯網';
+			case 'lists.hospital.withAEService': return '提供急症室服務';
+			case 'lists.hospital.withoutAEService': return '沒有急症室服務';
+			case 'lists.hospital.noSearchResult': return '沒有符合搜尋條件的醫院/機構。';
+			case 'lists.soc.search': return '搜尋專科門診診所';
+			case 'lists.soc.cluster': return '診所聯網';
+			case 'lists.soc.noSearchResult': return '沒有符合搜尋條件的診所。';
+			case 'lists.goc.search': return '搜尋普通科門診診所';
+			case 'lists.goc.cluster': return '診所聯網';
+			case 'lists.goc.noSearchResult': return '沒有符合搜尋條件的診所。';
+			case 'lists.cmc.search': return '搜尋中醫診所暨教研中心';
+			case 'lists.cmc.noSearchResult': return '沒有符合搜尋條件的診所。';
+			case 'lists.prompt.noConnection': return '沒有網絡連線。';
+			case 'lists.prompt.serverError': return '伺服器發生錯誤，請稍後再試。';
+			case 'lists.prompt.selectCategory': return '請在列表中選取一個分類以查看設施目錄。';
+			case 'lists.refresh': return '重新整理';
+			case 'main.app_name': return '急症室現場';
+			case 'main.tabs.home': return '主頁';
+			case 'main.tabs.lists': return '目錄';
+			case 'main.tabs.settings': return '設定';
+			case 'main.clusters.hke': return '港島東醫院聯網';
+			case 'main.clusters.hkw': return '港島西醫院聯網';
+			case 'main.clusters.klc': return '九龍中醫院聯網';
+			case 'main.clusters.kle': return '九龍東醫院聯網';
+			case 'main.clusters.klw': return '九龍西醫院聯網';
+			case 'main.clusters.nte': return '新界東醫院聯網';
+			case 'main.clusters.ntw': return '新界西醫院聯網';
+			case 'main.dataRemarks.title': return '注意事項';
+			case 'main.dataRemarks.content': return ({required InlineSpanBuilder tapPCD, required InlineSpanBuilder tapHKD}) => TextSpan(children: [
+				const TextSpan(text: '上述數據是統計過去數小時的最長等候時間，只供參考，並非預計等候時間。\n\n急症室須處理突發意外傷者及危重病人，因此未能準確提供預計等候時間，敬請見諒及耐心等候。\n\n最長等候時間顯示上限為 8 小時，表示急症室正處理大量等候已久的病人。病況輕微病人可考慮使用私營醫療服務（'),
+				tapPCD('基層醫療指南'),
+				const TextSpan(text: '或'),
+				tapHKD('香港醫生網'),
+				const TextSpan(text: '）。'),
+			]);
+			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/tc';
+			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
 			case 'settings.title': return '設定';
 			case 'settings.save': return '儲存設定';
 			case 'settings.sections.appearance': return '外觀';
@@ -302,50 +385,8 @@ extension on _TranslationsZhHk {
 			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
 			case 'settings.prompt.selectItem': return '請在列表中選取一個項目來更改應用程式的設定。';
 			case 'settings.prompt.settingsReset': return '所有設定已重設。請重新啟動應用程式以使重設生效。';
-			case 'home.title': return '急症室等候時間';
-			case 'home.actions.filter': return '篩選醫院';
-			case 'home.actions.refresh': return '重新整理';
-			case 'home.actions.search': return '搜尋醫院';
-			case 'home.badgeText': return '急症室會優先診治被分流為危殆、危急和緊急的病人。';
-			case 'home.refreshIndicator.pullToRefresh': return '下拉更新資料';
-			case 'home.refreshIndicator.releaseToRefresh': return '放開即可更新';
-			case 'home.refreshIndicator.refreshing': return '正在更新⋯⋯';
-			case 'home.refreshIndicator.dataUpdated': return '資料已更新';
-			case 'home.refreshIndicator.failedToRefresh': return '資料更新失敗';
-			case 'home.refreshIndicator.lastUpdateAt': return '最後更新：%T';
-			case 'home.filter.cluster': return '醫院聯網';
-			case 'home.filter.sorting.title': return '排序';
-			case 'home.filter.sorting.nameInAsd': return '醫院英文名稱（A-Z）';
-			case 'home.filter.sorting.nameInDesc': return '醫院英文名稱（Z-A）';
-			case 'home.filter.sorting.timeInAsd': return '等候時間（由短至長）';
-			case 'home.filter.sorting.timeInDesc': return '等候時間（由長至短）';
-			case 'home.filter.submit': return '提交';
-			case 'home.prompt.noConnection': return '沒有網絡連線。';
-			case 'home.prompt.serverError': return '伺服器發生錯誤，請稍後再試。';
-			case 'home.prompt.noSearchResult': return '沒有符合搜尋條件的醫院。';
-			case 'home.prompt.selectItem': return '請在列表中選取一張醫院卡片，以查看醫院的詳情。';
-			case 'lists.title': return '設施目錄';
-			case 'lists.categories.hospital': return '醫院/機構';
-			case 'lists.categories.soc': return '專科門診診所';
-			case 'lists.categories.goc': return '普通科門診診所';
-			case 'lists.categories.cmc': return '中醫診所暨教研中心';
-			case 'lists.hospital.search': return '搜尋醫院/機構';
-			case 'lists.hospital.cluster': return '醫院聯網';
-			case 'lists.hospital.withAEService': return '提供急症室服務';
-			case 'lists.hospital.withoutAEService': return '沒有急症室服務';
-			case 'lists.hospital.noSearchResult': return '沒有符合搜尋條件的醫院/機構。';
-			case 'lists.soc.search': return '搜尋專科門診診所';
-			case 'lists.soc.cluster': return '診所聯網';
-			case 'lists.soc.noSearchResult': return '沒有符合搜尋條件的診所。';
-			case 'lists.goc.search': return '搜尋普通科門診診所';
-			case 'lists.goc.cluster': return '診所聯網';
-			case 'lists.goc.noSearchResult': return '沒有符合搜尋條件的診所。';
-			case 'lists.cmc.search': return '搜尋中醫診所暨教研中心';
-			case 'lists.cmc.noSearchResult': return '沒有符合搜尋條件的診所。';
-			case 'lists.prompt.noConnection': return '沒有網絡連線。';
-			case 'lists.prompt.serverError': return '伺服器發生錯誤，請稍後再試。';
-			case 'lists.prompt.selectCategory': return '請在列表中選取一個分類以查看設施目錄。';
-			case 'lists.refresh': return '重新整理';
+			case 'shared.facilityMaps.openMapsApp': return '開啟地圖應用程式';
+			case 'shared.facilityMaps.closeMapsModal': return '關閉地圖檢視介面';
 			case 'waitTimeDetails.expectedWaitTime': return '預計等候時間（非緊急病人）';
 			case 'waitTimeDetails.actions.share': return '分享醫院資訊';
 			case 'waitTimeDetails.actions.call': return '致電醫院';
@@ -362,29 +403,6 @@ extension on _TranslationsZhHk {
 			case 'waitTimeDetails.shareContent.faxNo': return ({required Object faxNo}) => '\n傳真號碼：${faxNo}';
 			case 'waitTimeDetails.shareContent.emailAddress': return ({required Object emailAddress}) => '\n電郵地址：${emailAddress}';
 			case 'waitTimeDetails.shareContent.website': return ({required Object website}) => '\n網址：${website}';
-			case 'shared.facilityMaps.openMapsApp': return '開啟地圖應用程式';
-			case 'shared.facilityMaps.closeMapsModal': return '關閉地圖檢視介面';
-			case 'main.app_name': return '急症室現場';
-			case 'main.tabs.home': return '主頁';
-			case 'main.tabs.lists': return '目錄';
-			case 'main.tabs.settings': return '設定';
-			case 'main.clusters.hke': return '港島東醫院聯網';
-			case 'main.clusters.hkw': return '港島西醫院聯網';
-			case 'main.clusters.klc': return '九龍中醫院聯網';
-			case 'main.clusters.kle': return '九龍東醫院聯網';
-			case 'main.clusters.klw': return '九龍西醫院聯網';
-			case 'main.clusters.nte': return '新界東醫院聯網';
-			case 'main.clusters.ntw': return '新界西醫院聯網';
-			case 'main.dataRemarks.title': return '注意事項';
-			case 'main.dataRemarks.content': return ({required InlineSpanBuilder tapPCD, required InlineSpanBuilder tapHKD}) => TextSpan(children: [
-				const TextSpan(text: '上述數據是統計過去數小時的最長等候時間，只供參考，並非預計等候時間。\n\n急症室須處理突發意外傷者及危重病人，因此未能準確提供預計等候時間，敬請見諒及耐心等候。\n\n最長等候時間顯示上限為 8 小時，表示急症室正處理大量等候已久的病人。病況輕微病人可考慮使用私營醫療服務（'),
-				tapPCD('基層醫療指南'),
-				const TextSpan(text: '或'),
-				tapHKD('香港醫生網'),
-				const TextSpan(text: '）。'),
-			]);
-			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/tc';
-			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
 			default: return null;
 		}
 	}

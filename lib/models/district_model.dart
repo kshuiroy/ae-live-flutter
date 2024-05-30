@@ -1,72 +1,51 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:ae_live/i18n/translations.g.dart';
 
-class HospitalInfoModel {
-  HospitalInfoModel({
+class DistrictModel {
+  DistrictModel({
     required this.id,
     required this.nameTC,
     required this.nameSC,
     required this.nameEN,
-    required this.contactNo,
-    this.faxNo,
-    this.emailAddress,
-    this.website,
     required this.regionCode,
     required this.districtCode,
   });
 
-  factory HospitalInfoModel.fromMap(Map<String, dynamic> map) {
-    return HospitalInfoModel(
+  factory DistrictModel.fromMap(Map<String, dynamic> map) {
+    return DistrictModel(
       id: map['id'] ?? '',
       nameTC: map['nameTC'] ?? '',
       nameSC: map['nameSC'] ?? '',
       nameEN: map['nameEN'] ?? '',
-      contactNo: map['contactNo'] ?? '',
-      faxNo: map['faxNo'],
-      emailAddress: map['emailAddress'],
-      website: map['website'],
       regionCode: map['regionCode']?.toInt() ?? 0,
       districtCode: map['districtCode']?.toInt() ?? 0,
     );
   }
 
-  factory HospitalInfoModel.fromJson(String source) =>
-      HospitalInfoModel.fromMap(json.decode(source));
+  factory DistrictModel.fromJson(String source) =>
+      DistrictModel.fromMap(json.decode(source));
 
   final String id;
   final String nameTC;
   final String nameSC;
   final String nameEN;
-  final String contactNo;
-  final String? faxNo;
-  final String? emailAddress;
-  final String? website;
   final int regionCode;
   final int districtCode;
 
-  HospitalInfoModel copyWith({
+  DistrictModel copyWith({
     String? id,
     String? nameTC,
     String? nameSC,
     String? nameEN,
-    String? contactNo,
-    ValueGetter<String?>? faxNo,
-    ValueGetter<String?>? emailAddress,
-    ValueGetter<String?>? website,
     int? regionCode,
     int? districtCode,
   }) {
-    return HospitalInfoModel(
+    return DistrictModel(
       id: id ?? this.id,
       nameTC: nameTC ?? this.nameTC,
       nameSC: nameSC ?? this.nameSC,
       nameEN: nameEN ?? this.nameEN,
-      contactNo: contactNo ?? this.contactNo,
-      faxNo: faxNo != null ? faxNo() : this.faxNo,
-      emailAddress: emailAddress != null ? emailAddress() : this.emailAddress,
-      website: website != null ? website() : this.website,
       regionCode: regionCode ?? this.regionCode,
       districtCode: districtCode ?? this.districtCode,
     );
@@ -78,10 +57,6 @@ class HospitalInfoModel {
       'nameTC': nameTC,
       'nameSC': nameSC,
       'nameEN': nameEN,
-      'contactNo': contactNo,
-      'faxNo': faxNo,
-      'emailAddress': emailAddress,
-      'website': website,
       'regionCode': regionCode,
       'districtCode': districtCode,
     };
@@ -91,22 +66,29 @@ class HospitalInfoModel {
 
   @override
   String toString() {
-    return 'HospitalInfoModel(id: $id, nameTC: $nameTC, nameSC: $nameSC, nameEN: $nameEN, contactNo: $contactNo, faxNo: $faxNo, emailAddress: $emailAddress, website: $website, regionCode: $regionCode, districtCode: $districtCode)';
+    return 'DistrictModel(id: $id, nameTC: $nameTC, nameSC: $nameSC, nameEN: $nameEN, regionCode: $regionCode, districtCode: $districtCode)';
+  }
+
+  String get districtName {
+    switch (LocaleSettings.currentLocale) {
+      case AppLocale.zhHk:
+        return nameTC;
+      case AppLocale.zhCn:
+        return nameSC;
+      default:
+        return nameEN;
+    }
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is HospitalInfoModel &&
+    return other is DistrictModel &&
         other.id == id &&
         other.nameTC == nameTC &&
         other.nameSC == nameSC &&
         other.nameEN == nameEN &&
-        other.contactNo == contactNo &&
-        other.faxNo == faxNo &&
-        other.emailAddress == emailAddress &&
-        other.website == website &&
         other.regionCode == regionCode &&
         other.districtCode == districtCode;
   }
@@ -117,10 +99,6 @@ class HospitalInfoModel {
         nameTC.hashCode ^
         nameSC.hashCode ^
         nameEN.hashCode ^
-        contactNo.hashCode ^
-        faxNo.hashCode ^
-        emailAddress.hashCode ^
-        website.hashCode ^
         regionCode.hashCode ^
         districtCode.hashCode;
   }

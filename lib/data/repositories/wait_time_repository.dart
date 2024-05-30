@@ -22,9 +22,7 @@ class WaitTimeRepository {
   /// Get the A&E service waiting time from the API
   Future<List<WaitTimeModel>> getWaitTimeData() async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
-    final String currentLocale = LocaleConverter.getAPILocaleCode(
-        // languageCode: LocaleSettings.currentLocale.languageTag,
-        );
+    final String currentLocale = LocaleConverter.getAPILocaleCode();
 
     try {
       late String waitTimeData;
@@ -104,6 +102,8 @@ class WaitTimeRepository {
             latitude: hospitalInfoItem['latitude'],
             longitude: hospitalInfoItem['longitude'],
             waitTimeHistory: waitTimeHistoryMap[item['hospName']],
+            regionCode: hospitalContactInfoItem.regionCode,
+            districtCode: hospitalContactInfoItem.districtCode,
           ),
         );
       }
@@ -184,6 +184,7 @@ class WaitTimeRepository {
     final String? keyword,
     final List<int>? clusters,
     final WaitTimeSortType sortType = WaitTimeSortType.timeInAsd,
+    final List<int>? regions,
   }) {
     final String searchKeyword = (keyword ?? '').toLowerCase();
     final List<WaitTimeModel> results = data
@@ -213,9 +214,10 @@ class WaitTimeRepository {
                   (element.website != null
                       ? element.website!.toLowerCase().contains(searchKeyword)
                       : false)) &&
-              ((clusters ?? <int>[]).isNotEmpty
-                  ? clusters!.contains(element.clusterCode)
-                  : true),
+              (clusters != null
+                  ? clusters.contains(element.clusterCode)
+                  : true) &&
+              (regions != null ? regions.contains(element.regionCode) : true),
         )
         .toList();
 

@@ -23,9 +23,11 @@ class WaitTimeModel {
     required this.latitude,
     required this.longitude,
     this.waitTimeHistory,
+    required this.regionCode,
+    required this.districtCode,
   });
 
-  factory WaitTimeModel.fromMap(final Map<String, dynamic> map) {
+  factory WaitTimeModel.fromMap(Map<String, dynamic> map) {
     return WaitTimeModel(
       id: map['id'] ?? '',
       institutionNameTC: map['institutionNameTC'] ?? '',
@@ -45,16 +47,16 @@ class WaitTimeModel {
       longitude: map['longitude']?.toDouble() ?? 0.0,
       waitTimeHistory: map['waitTimeHistory'] != null
           ? List<WaitTimeHistoryModel>.from(
-              map['waitTimeHistory']?.map(
-                (final Map<String, dynamic> x) =>
-                    WaitTimeHistoryModel.fromMap(x),
-              ),
+              map['waitTimeHistory']
+                  ?.map((x) => WaitTimeHistoryModel.fromMap(x)),
             )
           : null,
+      regionCode: map['regionCode']?.toInt() ?? 0,
+      districtCode: map['districtCode']?.toInt() ?? 0,
     );
   }
 
-  factory WaitTimeModel.fromJson(final String source) =>
+  factory WaitTimeModel.fromJson(String source) =>
       WaitTimeModel.fromMap(json.decode(source));
 
   final String id;
@@ -74,25 +76,29 @@ class WaitTimeModel {
   final double latitude;
   final double longitude;
   final List<WaitTimeHistoryModel>? waitTimeHistory;
+  final int regionCode;
+  final int districtCode;
 
   WaitTimeModel copyWith({
-    final String? id,
-    final String? institutionNameTC,
-    final String? institutionNameSC,
-    final String? institutionNameEN,
-    final String? addressTC,
-    final String? addressSC,
-    final String? addressEN,
-    final String? contactNo,
-    final ValueGetter<String?>? faxNo,
-    final ValueGetter<String?>? emailAddress,
-    final ValueGetter<String?>? website,
-    final int? clusterCode,
-    final String? waitTimeText,
-    final double? waitTimeValue,
-    final double? latitude,
-    final double? longitude,
-    final ValueGetter<List<WaitTimeHistoryModel>?>? waitTimeHistory,
+    String? id,
+    String? institutionNameTC,
+    String? institutionNameSC,
+    String? institutionNameEN,
+    String? addressTC,
+    String? addressSC,
+    String? addressEN,
+    String? contactNo,
+    ValueGetter<String?>? faxNo,
+    ValueGetter<String?>? emailAddress,
+    ValueGetter<String?>? website,
+    int? clusterCode,
+    String? waitTimeText,
+    double? waitTimeValue,
+    double? latitude,
+    double? longitude,
+    ValueGetter<List<WaitTimeHistoryModel>?>? waitTimeHistory,
+    int? regionCode,
+    int? districtCode,
   }) {
     return WaitTimeModel(
       id: id ?? this.id,
@@ -113,11 +119,13 @@ class WaitTimeModel {
       longitude: longitude ?? this.longitude,
       waitTimeHistory:
           waitTimeHistory != null ? waitTimeHistory() : this.waitTimeHistory,
+      regionCode: regionCode ?? this.regionCode,
+      districtCode: districtCode ?? this.districtCode,
     );
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return {
       'id': id,
       'institutionNameTC': institutionNameTC,
       'institutionNameSC': institutionNameSC,
@@ -134,9 +142,9 @@ class WaitTimeModel {
       'waitTimeValue': waitTimeValue,
       'latitude': latitude,
       'longitude': longitude,
-      'waitTimeHistory': waitTimeHistory
-          ?.map((final WaitTimeHistoryModel x) => x.toMap())
-          .toList(),
+      'waitTimeHistory': waitTimeHistory?.map((x) => x.toMap()).toList(),
+      'regionCode': regionCode,
+      'districtCode': districtCode,
     };
   }
 
@@ -144,18 +152,14 @@ class WaitTimeModel {
 
   @override
   String toString() {
-    return 'WaitTimeModel(id: $id, institutionNameTC: $institutionNameTC, institutionNameSC: $institutionNameSC, institutionNameEN: $institutionNameEN, addressTC: $addressTC, addressSC: $addressSC, addressEN: $addressEN, contactNo: $contactNo, faxNo: $faxNo, emailAddress: $emailAddress, website: $website, clusterCode: $clusterCode, waitTimeText: $waitTimeText, waitTimeValue: $waitTimeValue, latitude: $latitude, longitude: $longitude, waitTimeHistory: $waitTimeHistory)';
+    return 'WaitTimeModel(id: $id, institutionNameTC: $institutionNameTC, institutionNameSC: $institutionNameSC, institutionNameEN: $institutionNameEN, addressTC: $addressTC, addressSC: $addressSC, addressEN: $addressEN, contactNo: $contactNo, faxNo: $faxNo, emailAddress: $emailAddress, website: $website, clusterCode: $clusterCode, waitTimeText: $waitTimeText, waitTimeValue: $waitTimeValue, latitude: $latitude, longitude: $longitude, waitTimeHistory: $waitTimeHistory, regionCode: $regionCode, districtCode: $districtCode)';
   }
 
-  // String toQueryString() {
-  //   return '$institutionNameTC $institutionNameSC $institutionNameEN $addressTC $addressSC $addressEN $contactNo $faxNo $emailAddress $website';
-  // }
-
   String get institutionName {
-    switch (LocaleSettings.currentLocale.languageTag) {
-      case 'zh-HK':
+    switch (LocaleSettings.currentLocale) {
+      case AppLocale.zhHk:
         return institutionNameTC;
-      case 'zh-CN':
+      case AppLocale.zhCn:
         return institutionNameSC;
       default:
         return institutionNameEN;
@@ -163,10 +167,10 @@ class WaitTimeModel {
   }
 
   String get address {
-    switch (LocaleSettings.currentLocale.languageTag) {
-      case 'zh-HK':
+    switch (LocaleSettings.currentLocale) {
+      case AppLocale.zhHk:
         return addressTC;
-      case 'zh-CN':
+      case AppLocale.zhCn:
         return addressSC;
       default:
         return addressEN;
@@ -174,7 +178,7 @@ class WaitTimeModel {
   }
 
   @override
-  bool operator ==(final Object other) {
+  bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
     return other is WaitTimeModel &&
@@ -194,7 +198,9 @@ class WaitTimeModel {
         other.waitTimeValue == waitTimeValue &&
         other.latitude == latitude &&
         other.longitude == longitude &&
-        listEquals(other.waitTimeHistory, waitTimeHistory);
+        listEquals(other.waitTimeHistory, waitTimeHistory) &&
+        other.regionCode == regionCode &&
+        other.districtCode == districtCode;
   }
 
   @override
@@ -215,6 +221,8 @@ class WaitTimeModel {
         waitTimeValue.hashCode ^
         latitude.hashCode ^
         longitude.hashCode ^
-        waitTimeHistory.hashCode;
+        waitTimeHistory.hashCode ^
+        regionCode.hashCode ^
+        districtCode.hashCode;
   }
 }
