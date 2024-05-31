@@ -52,73 +52,75 @@ class _SettingsOptionScreenBaseState<T>
   Widget _buildOptionsList(final BuildContext context) {
     final Translations t = Translations.of(context);
 
-    return ListView.builder(
-      padding: EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top + kToolbarHeight,
-        bottom: MediaQuery.of(context).padding.bottom + 16.0,
-      ),
-      itemBuilder: (final BuildContext context, final int index) {
-        if (index == widget.options.length) {
-          return Padding(
-            padding: const EdgeInsets.only(
-              top: 16.0,
-              right: 16.0,
-              left: 16.0,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: FilledButton.icon(
-                    onPressed: () {
-                      if (widget.onSave != null) {
-                        widget.onSave!(_selectedOption);
-                      }
-                    },
-                    icon: const Icon(
-                      Symbols.save_rounded,
-                      size: 24.0,
-                      fill: 0.0,
-                      weight: 200.0,
-                      opticalSize: 24.0,
-                    ),
-                    label: Text(
-                      t.settings.save,
+    return Scrollbar(
+      child: ListView.builder(
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).padding.top + kToolbarHeight,
+          bottom: MediaQuery.of(context).padding.bottom + 16.0,
+        ),
+        itemBuilder: (final BuildContext context, final int index) {
+          if (index == widget.options.length) {
+            return Padding(
+              padding: const EdgeInsets.only(
+                top: 16.0,
+                right: 16.0,
+                left: 16.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: FilledButton.icon(
+                      onPressed: () {
+                        if (widget.onSave != null) {
+                          widget.onSave!(_selectedOption);
+                        }
+                      },
+                      icon: const Icon(
+                        Symbols.save_rounded,
+                        size: 24.0,
+                        fill: 0.0,
+                        weight: 200.0,
+                        opticalSize: 24.0,
+                      ),
+                      label: Text(
+                        t.settings.save,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            );
+          }
+
+          final SettingsOptionModel<T> option = widget.options[index];
+
+          return ListTile(
+            contentPadding: const EdgeInsets.only(
+              left: 16.0,
+              right: 16.0,
             ),
-          );
-        }
-
-        final SettingsOptionModel<T> option = widget.options[index];
-
-        return ListTile(
-          contentPadding: const EdgeInsets.only(
-            left: 16.0,
-            right: 16.0,
-          ),
-          title: Text(option.title),
-          trailing: Radio(
-            groupValue: _selectedOption,
-            value: option.value,
-            onChanged: (final T? value) {
-              if (value != null) {
-                setState(() {
-                  _selectedOption = value;
-                });
-              }
+            title: Text(option.title),
+            trailing: Radio(
+              groupValue: _selectedOption,
+              value: option.value,
+              onChanged: (final T? value) {
+                if (value != null) {
+                  setState(() {
+                    _selectedOption = value;
+                  });
+                }
+              },
+            ),
+            onTap: () {
+              setState(() {
+                _selectedOption = option.value;
+              });
             },
-          ),
-          onTap: () {
-            setState(() {
-              _selectedOption = option.value;
-            });
-          },
-        );
-      },
-      itemCount: widget.options.length + 1,
+          );
+        },
+        itemCount: widget.options.length + 1,
+      ),
     );
   }
 }

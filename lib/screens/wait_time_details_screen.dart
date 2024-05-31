@@ -194,221 +194,223 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
           ? const Center(
               child: CircularProgressIndicator.adaptive(),
             )
-          : SingleChildScrollView(
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).padding.top + kToolbarHeight,
-                // right: screenPaddingX,
-                bottom: MediaQuery.of(context).padding.bottom + 16.0,
-                // left: screenPaddingX,
-              ),
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: screenPaddingX,
-                      vertical: 16.0,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Expanded(
-                              child: Text(
-                                t.waitTimeDetails.expectedWaitTime,
-                                style: textTheme.bodyLarge?.copyWith(
-                                  color: textTheme.bodyLarge?.color
-                                      ?.withAlpha(160),
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 8.0,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Expanded(
-                              child: Text(
-                                widget.data.waitTimeText,
-                                style: textTheme.headlineMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 16.0,
-                        ),
-                        ConstrainedBox(
-                          constraints: const BoxConstraints(
-                            maxWidth: 560.0,
-                          ),
-                          child: Row(
+          : Scrollbar(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).padding.top + kToolbarHeight,
+                  // right: screenPaddingX,
+                  bottom: MediaQuery.of(context).padding.bottom + 16.0,
+                  // left: screenPaddingX,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: screenPaddingX,
+                        vertical: 16.0,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Expanded(
-                                child: FilledButton.icon(
-                                  onPressed: _isPhoneCallSupported
-                                      ? () async {
-                                          if (_isPhoneCallSupported) {
-                                            await launchUrl(
-                                              Uri(
-                                                scheme: 'tel',
-                                                path: widget.data.contactNo,
-                                              ),
-                                            );
-                                          }
-                                        }
-                                      : null,
-                                  icon: const Icon(
-                                    Symbols.call_rounded,
-                                    fill: 0.0,
-                                    weight: 200.0,
-                                    opticalSize: 24.0,
+                                child: Text(
+                                  t.waitTimeDetails.expectedWaitTime,
+                                  style: textTheme.bodyLarge?.copyWith(
+                                    color: textTheme.bodyLarge?.color
+                                        ?.withAlpha(160),
                                   ),
-                                  label: Text(
-                                    t.waitTimeDetails.actions.call,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 8.0,
-                              ),
-                              Expanded(
-                                child: FilledButton.icon(
-                                  onPressed: () {
-                                    _showHospitalMap(context);
-                                  },
-                                  icon: const Icon(
-                                    Symbols.location_on_rounded,
-                                    fill: 0.0,
-                                    weight: 200.0,
-                                    opticalSize: 24.0,
-                                  ),
-                                  label: Text(
-                                    t.waitTimeDetails.actions.maps,
-                                  ),
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                        const SizedBox(
-                          height: 16.0,
-                        ),
-                        SizedBox(
-                          height:
-                              ResponsiveBreakpoints.of(context).largerOrEqualTo(
-                            Constants.screenSizeKeyMedium,
-                          )
-                                  ? 320.0
-                                  : 280.0,
-                          child: _buildHistoryChart(context),
-                        ),
-                        const SizedBox(
-                          height: 8.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      maxWidth: 608.0,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: screenPaddingX,
+                          const SizedBox(
+                            height: 8.0,
                           ),
-                          child: Text(
-                            t.waitTimeDetails.info.title,
-                            style: textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Expanded(
+                                child: Text(
+                                  widget.data.waitTimeText,
+                                  style: textTheme.headlineMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 16.0,
+                          ),
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxWidth: 560.0,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Expanded(
+                                  child: FilledButton.icon(
+                                    onPressed: _isPhoneCallSupported
+                                        ? () async {
+                                            if (_isPhoneCallSupported) {
+                                              await launchUrl(
+                                                Uri(
+                                                  scheme: 'tel',
+                                                  path: widget.data.contactNo,
+                                                ),
+                                              );
+                                            }
+                                          }
+                                        : null,
+                                    icon: const Icon(
+                                      Symbols.call_rounded,
+                                      fill: 0.0,
+                                      weight: 200.0,
+                                      opticalSize: 24.0,
+                                    ),
+                                    label: Text(
+                                      t.waitTimeDetails.actions.call,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 8.0,
+                                ),
+                                Expanded(
+                                  child: FilledButton.icon(
+                                    onPressed: () {
+                                      _showHospitalMap(context);
+                                    },
+                                    icon: const Icon(
+                                      Symbols.location_on_rounded,
+                                      fill: 0.0,
+                                      weight: 200.0,
+                                      opticalSize: 24.0,
+                                    ),
+                                    label: Text(
+                                      t.waitTimeDetails.actions.maps,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 8.0,
-                        ),
-                        HospitalInfoItem(
-                          title: t.waitTimeDetails.info.address,
-                          value: widget.data.address,
-                          icon: Symbols.location_on_rounded,
-                          onTap: () => _showHospitalMap(context),
-                        ),
-                        HospitalInfoItem(
-                          title: t.waitTimeDetails.info.contactNo,
-                          value: widget.data.contactNo,
-                          icon: Symbols.call_rounded,
-                          onTap: _isPhoneCallSupported
-                              ? () async {
-                                  await launchUrl(
-                                    Uri(
-                                      scheme: 'tel',
-                                      path: widget.data.contactNo
-                                          .replaceAll(' ', ''),
-                                    ),
-                                  );
-                                }
-                              : null,
-                        ),
-                        if (widget.data.faxNo != null)
-                          HospitalInfoItem(
-                            title: t.waitTimeDetails.info.faxNo,
-                            value: widget.data.faxNo!,
-                            icon: Symbols.fax_rounded,
+                          const SizedBox(
+                            height: 16.0,
                           ),
-                        if (widget.data.emailAddress != null)
+                          SizedBox(
+                            height: ResponsiveBreakpoints.of(context)
+                                    .largerOrEqualTo(
+                              Constants.screenSizeKeyMedium,
+                            )
+                                ? 320.0
+                                : 280.0,
+                            child: _buildHistoryChart(context),
+                          ),
+                          const SizedBox(
+                            height: 8.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxWidth: 608.0,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: screenPaddingX,
+                            ),
+                            child: Text(
+                              t.waitTimeDetails.info.title,
+                              style: textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 8.0,
+                          ),
                           HospitalInfoItem(
-                            title: t.waitTimeDetails.info.emailAddress,
-                            value: widget.data.emailAddress!,
-                            icon: Symbols.mail_rounded,
-                            onTap: _isEmailSupported
+                            title: t.waitTimeDetails.info.address,
+                            value: widget.data.address,
+                            icon: Symbols.location_on_rounded,
+                            onTap: () => _showHospitalMap(context),
+                          ),
+                          HospitalInfoItem(
+                            title: t.waitTimeDetails.info.contactNo,
+                            value: widget.data.contactNo,
+                            icon: Symbols.call_rounded,
+                            onTap: _isPhoneCallSupported
                                 ? () async {
                                     await launchUrl(
                                       Uri(
-                                        scheme: 'mailto',
-                                        path: widget.data.emailAddress,
+                                        scheme: 'tel',
+                                        path: widget.data.contactNo
+                                            .replaceAll(' ', ''),
                                       ),
                                     );
                                   }
                                 : null,
                           ),
-                        if (widget.data.website != null)
-                          HospitalInfoItem(
-                            title: t.waitTimeDetails.info.website,
-                            value: widget.data.website!,
-                            icon: Symbols.public_rounded,
-                            onTap: () async {
-                              await launchUrl(
-                                Uri.parse(widget.data.website!),
-                                mode: LaunchMode.inAppBrowserView,
-                              );
-                            },
+                          if (widget.data.faxNo != null)
+                            HospitalInfoItem(
+                              title: t.waitTimeDetails.info.faxNo,
+                              value: widget.data.faxNo!,
+                              icon: Symbols.fax_rounded,
+                            ),
+                          if (widget.data.emailAddress != null)
+                            HospitalInfoItem(
+                              title: t.waitTimeDetails.info.emailAddress,
+                              value: widget.data.emailAddress!,
+                              icon: Symbols.mail_rounded,
+                              onTap: _isEmailSupported
+                                  ? () async {
+                                      await launchUrl(
+                                        Uri(
+                                          scheme: 'mailto',
+                                          path: widget.data.emailAddress,
+                                        ),
+                                      );
+                                    }
+                                  : null,
+                            ),
+                          if (widget.data.website != null)
+                            HospitalInfoItem(
+                              title: t.waitTimeDetails.info.website,
+                              value: widget.data.website!,
+                              icon: Symbols.public_rounded,
+                              onTap: () async {
+                                await launchUrl(
+                                  Uri.parse(widget.data.website!),
+                                  mode: LaunchMode.inAppBrowserView,
+                                );
+                              },
+                            ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                              screenPaddingX,
+                              24.0,
+                              screenPaddingX,
+                              0.0,
+                            ),
+                            child: const WaitTimeDataRemarks(),
                           ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(
-                            screenPaddingX,
-                            24.0,
-                            screenPaddingX,
-                            0.0,
-                          ),
-                          child: const WaitTimeDataRemarks(),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
     );

@@ -232,59 +232,62 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: Text(t.settings.title),
       ),
       extendBodyBehindAppBar: true,
-      body: SingleChildScrollView(
-        padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
-          bottom: MediaQuery.of(context).padding.bottom + 16.0,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: settingsItems
-              .asMap()
-              .entries
-              .map((final MapEntry<int, _SettingsSectionModel> element) {
-                return <Widget>[
-                  if (element.key > 0)
-                    const SizedBox(
-                      height: 24.0,
-                    ),
-                  _getSectionTitleWidget(context, title: element.value.title),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.only(
-                      top: 8.0,
-                    ),
-                    itemBuilder: (final BuildContext context, final int index) {
-                      final _SettingsItemModel item =
-                          element.value.items[index];
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
+            bottom: MediaQuery.of(context).padding.bottom + 16.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: settingsItems
+                .asMap()
+                .entries
+                .map((final MapEntry<int, _SettingsSectionModel> element) {
+                  return <Widget>[
+                    if (element.key > 0)
+                      const SizedBox(
+                        height: 24.0,
+                      ),
+                    _getSectionTitleWidget(context, title: element.value.title),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.only(
+                        top: 8.0,
+                      ),
+                      itemBuilder:
+                          (final BuildContext context, final int index) {
+                        final _SettingsItemModel item =
+                            element.value.items[index];
 
-                      return ListTile(
-                        // dense: true,
-                        leading: Icon(
-                          item.icon,
-                          size: 24.0,
-                          fill: 0.0,
-                          weight: 200.0,
-                          opticalSize: 24.0,
-                        ),
-                        title: Text(
-                          item.title,
-                        ),
-                        subtitle: item.subtitle != null
-                            ? Text(
-                                item.subtitle!,
-                              )
-                            : null,
-                        onTap: item.onTap,
-                      );
-                    },
-                    itemCount: element.value.items.length,
-                  ),
-                ];
-              })
-              .expand((final List<Widget> element) => element)
-              .toList(),
+                        return ListTile(
+                          // dense: true,
+                          leading: Icon(
+                            item.icon,
+                            size: 24.0,
+                            fill: 0.0,
+                            weight: 200.0,
+                            opticalSize: 24.0,
+                          ),
+                          title: Text(
+                            item.title,
+                          ),
+                          subtitle: item.subtitle != null
+                              ? Text(
+                                  item.subtitle!,
+                                )
+                              : null,
+                          onTap: item.onTap,
+                        );
+                      },
+                      itemCount: element.value.items.length,
+                    ),
+                  ];
+                })
+                .expand((final List<Widget> element) => element)
+                .toList(),
+          ),
         ),
       ),
     );

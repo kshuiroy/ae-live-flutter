@@ -234,33 +234,35 @@ class _PackagesViewState extends State<_PackagesView> {
     final _LicenseData data,
     final bool drawSelection,
   ) {
-    return ListView.builder(
-      itemCount: data.packages.length,
-      itemBuilder: (BuildContext context, int index) {
-        // if (index == 0) {
-        //   return widget.about;
-        // }
-        // final int packageIndex = index;
-        final String packageName = data.packages[index];
-        final List<int> bindings = data.packageLicenseBindings[packageName]!;
-        return _PackageListTile(
-          packageName: packageName,
-          index: index,
-          isSelected: drawSelection && index == (selectedId ?? 0),
-          numberLicenses: bindings.length,
-          onTap: () {
-            widget.selectedId.value = index;
-            _MasterDetailFlow.of(context).openDetailPage(
-              _DetailArguments(
-                packageName,
-                bindings
-                    .map((int i) => data.licenses[i])
-                    .toList(growable: false),
-              ),
-            );
-          },
-        );
-      },
+    return Scrollbar(
+      child: ListView.builder(
+        itemCount: data.packages.length,
+        itemBuilder: (BuildContext context, int index) {
+          // if (index == 0) {
+          //   return widget.about;
+          // }
+          // final int packageIndex = index;
+          final String packageName = data.packages[index];
+          final List<int> bindings = data.packageLicenseBindings[packageName]!;
+          return _PackageListTile(
+            packageName: packageName,
+            index: index,
+            isSelected: drawSelection && index == (selectedId ?? 0),
+            numberLicenses: bindings.length,
+            onTap: () {
+              widget.selectedId.value = index;
+              _MasterDetailFlow.of(context).openDetailPage(
+                _DetailArguments(
+                  packageName,
+                  bindings
+                      .map((int i) => data.licenses[i])
+                      .toList(growable: false),
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

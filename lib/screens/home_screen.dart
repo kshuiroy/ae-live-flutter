@@ -11,11 +11,11 @@ import 'package:ae_live/widgets/core/controlled_system_ui_container.dart';
 import 'package:ae_live/widgets/core/frosted_glass_search_header.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/home_screen/cluster_options_modal.dart';
-import 'package:ae_live/widgets/home_screen/filter_sort_button.dart';
 import 'package:ae_live/widgets/home_screen/region_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/sorting_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/wait_time_list_item.dart';
 import 'package:ae_live/widgets/home_screen/wait_time_notice_item.dart';
+import 'package:ae_live/widgets/shared/filter_sort_button.dart';
 import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
 import 'package:ae_live/widgets/shared/search_text_field.dart';
 import 'package:ae_live/widgets/shared/sliver_error_prompt.dart';
@@ -47,6 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
   late WaitTimeSortType _dataSortType;
   List<int> _dataClusters = <int>[1, 2, 3, 4, 5, 6, 7];
   List<int> _dataRegions = <int>[1, 2, 3, 4, 5];
+
+  final ScrollController _waitTimeListController = ScrollController();
 
   void _init() async {
     _preferences = await SharedPreferences.getInstance();
@@ -232,190 +234,196 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       onRefresh: () => _onRefreshWaitTimeData(context),
       childBuilder: (final BuildContext context, final ScrollPhysics physics) {
-        return CustomScrollView(
-          physics: physics,
-          slivers: <Widget>[
-            FrostedGlassSearchHeader(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SearchTextField(
-                    controller: _searchTextController,
-                    hintText: t.home.actions.search,
-                    enabled: !_isLoading,
-                    onChange: (final String value) {
-                      setState(() {
-                        _searchKeyword = value;
-                      });
+        return Scrollbar(
+          controller: _waitTimeListController,
+          child: CustomScrollView(
+            physics: physics,
+            controller: _waitTimeListController,
+            slivers: <Widget>[
+              FrostedGlassSearchHeader(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    SearchTextField(
+                      controller: _searchTextController,
+                      hintText: t.home.actions.search,
+                      enabled: !_isLoading,
+                      onChange: (final String value) {
+                        setState(() {
+                          _searchKeyword = value;
+                        });
 
-                      _onUpdateSearchResult(context);
-                    },
-                  ),
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: <Widget>[
-                        FilterSortButton(
-                          icon: Symbols.swap_vert_rounded,
-                          label: t.shared.filter.sorting.title,
-                          enabled: !_isLoading,
-                          onPressed: () {
-                            _showDataFilterSortModal(
-                              context,
-                              child: SortingOptionsModal(
-                                defaultOption: _dataSortType,
-                                onUpdate: (final WaitTimeSortType sortType) {
-                                  setState(() {
-                                    _dataSortType = sortType;
-                                  });
-
-                                  _onUpdateSearchResult(context);
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                        FilterSortButton(
-                          icon: Symbols.explore_rounded,
-                          label: t.shared.filter.hospitalCluster,
-                          enabled: !_isLoading,
-                          onPressed: () {
-                            _showDataFilterSortModal(
-                              context,
-                              child: ClusterOptionsModal(
-                                defaultOptions: _dataClusters,
-                                onUpdate: (final List<int> clusters) {
-                                  setState(() {
-                                    _dataClusters = clusters;
-                                  });
-
-                                  _onUpdateSearchResult(context);
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                        FilterSortButton(
-                          icon: Symbols.travel_explore_rounded,
-                          label: t.shared.filter.region,
-                          enabled: !_isLoading,
-                          onPressed: () {
-                            _showDataFilterSortModal(
-                              context,
-                              child: RegionOptionsModal(
-                                defaultOptions: _dataRegions,
-                                onUpdate: (final List<int> regions) {
-                                  setState(() {
-                                    _dataRegions = regions;
-                                  });
-
-                                  _onUpdateSearchResult(context);
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                        _onUpdateSearchResult(context);
+                      },
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: <Widget>[
+                          FilterSortButton(
+                            icon: Symbols.swap_vert_rounded,
+                            label: t.shared.filter.sorting.title,
+                            enabled: !_isLoading,
+                            onPressed: () {
+                              _showDataFilterSortModal(
+                                context,
+                                child: SortingOptionsModal(
+                                  defaultOption: _dataSortType,
+                                  onUpdate: (final WaitTimeSortType sortType) {
+                                    setState(() {
+                                      _dataSortType = sortType;
+                                    });
+
+                                    _onUpdateSearchResult(context);
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                          FilterSortButton(
+                            icon: Symbols.explore_rounded,
+                            label: t.shared.filter.hospitalCluster,
+                            enabled: !_isLoading,
+                            onPressed: () {
+                              _showDataFilterSortModal(
+                                context,
+                                child: ClusterOptionsModal(
+                                  defaultOptions: _dataClusters,
+                                  onUpdate: (final List<int> clusters) {
+                                    setState(() {
+                                      _dataClusters = clusters;
+                                    });
+
+                                    _onUpdateSearchResult(context);
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                          FilterSortButton(
+                            icon: Symbols.travel_explore_rounded,
+                            label: t.shared.filter.region,
+                            enabled: !_isLoading,
+                            onPressed: () {
+                              _showDataFilterSortModal(
+                                context,
+                                child: RegionOptionsModal(
+                                  defaultOptions: _dataRegions,
+                                  onUpdate: (final List<int> regions) {
+                                    setState(() {
+                                      _dataRegions = regions;
+                                    });
+
+                                    _onUpdateSearchResult(context);
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const HeaderLocator.sliver(),
-            BlocConsumer<WaitTimeBloc, WaitTimeState>(
-              listener:
-                  (final BuildContext context, final WaitTimeState state) {
-                setState(() {
-                  _isLoading = state is WaitTimeLoading;
-                });
-
-                if (state is WaitTimeLoading) {
+              const HeaderLocator.sliver(),
+              BlocConsumer<WaitTimeBloc, WaitTimeState>(
+                listener:
+                    (final BuildContext context, final WaitTimeState state) {
                   setState(() {
-                    _selectedWaitTime = null;
+                    _isLoading = state is WaitTimeLoading;
                   });
-                }
-              },
-              builder: (final BuildContext context, final WaitTimeState state) {
-                // if (state is WaitTimeInitial) {
-                //   context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
-                // }
 
-                if (state is WaitTimeFailed) {
-                  return SliverErrorPrompt(
-                    promptText: state.errorMessage == '-1001'
-                        ? t.home.prompt.noConnection
-                        : t.home.prompt.serverError,
-                    onPressRefresh: () {
-                      context.read<WaitTimeBloc>().add(
-                            WaitTimeFetchRequested(
-                              keyword: _searchKeyword,
-                              clusters: _dataClusters,
-                              regions: _dataRegions,
-                              sortType: _dataSortType,
-                              refreshController: _refreshController,
-                            ),
-                          );
-                    },
+                  if (state is WaitTimeLoading) {
+                    setState(() {
+                      _selectedWaitTime = null;
+                    });
+                  }
+                },
+                builder:
+                    (final BuildContext context, final WaitTimeState state) {
+                  // if (state is WaitTimeInitial) {
+                  //   context.read<WaitTimeBloc>().add(WaitTimeFetchRequested());
+                  // }
+
+                  if (state is WaitTimeFailed) {
+                    return SliverErrorPrompt(
+                      promptText: state.errorMessage == '-1001'
+                          ? t.home.prompt.noConnection
+                          : t.home.prompt.serverError,
+                      onPressRefresh: () {
+                        context.read<WaitTimeBloc>().add(
+                              WaitTimeFetchRequested(
+                                keyword: _searchKeyword,
+                                clusters: _dataClusters,
+                                regions: _dataRegions,
+                                sortType: _dataSortType,
+                                refreshController: _refreshController,
+                              ),
+                            );
+                      },
+                    );
+                  }
+
+                  if (state is! WaitTimeSuccess) {
+                    return const SliverLoadingIndicator();
+                  }
+
+                  if (state.waitTimeData.isEmpty) {
+                    return SliverNoDataPrompt(
+                      promptText: t.home.prompt.noSearchResult,
+                    );
+                  }
+
+                  final double scrollViewPaddingX =
+                      ResponsiveBreakpoints.of(context)
+                              .largerOrEqualTo(Constants.screenSizeKeyMedium)
+                          ? 24.0
+                          : 16.0;
+
+                  return SliverPadding(
+                    padding: EdgeInsets.only(
+                      // top: 16.0,
+                      right: scrollViewPaddingX,
+                      bottom: MediaQuery.of(context).padding.bottom + 16.0,
+                      left: scrollViewPaddingX,
+                    ),
+                    sliver: SliverList.separated(
+                      itemBuilder:
+                          (final BuildContext context, final int index) {
+                        if (index == 0) {
+                          return const WaitTimeNoticeItem();
+                        }
+
+                        if (index == state.waitTimeData.length + 1) {
+                          return const WaitTimeDataRemarks();
+                        }
+
+                        return WaitTimeListItem(
+                          data: state.waitTimeData[index - 1],
+                          onTapExpanded: (final WaitTimeModel data) {
+                            setState(() {
+                              _selectedWaitTime = data;
+                            });
+                          },
+                        );
+                      },
+                      separatorBuilder: (final _, final __) {
+                        return const SizedBox(
+                          height: 16.0,
+                        );
+                      },
+                      itemCount: state.waitTimeData.length + 2,
+                    ),
                   );
-                }
-
-                if (state is! WaitTimeSuccess) {
-                  return const SliverLoadingIndicator();
-                }
-
-                if (state.waitTimeData.isEmpty) {
-                  return SliverNoDataPrompt(
-                    promptText: t.home.prompt.noSearchResult,
-                  );
-                }
-
-                final double scrollViewPaddingX =
-                    ResponsiveBreakpoints.of(context)
-                            .largerOrEqualTo(Constants.screenSizeKeyMedium)
-                        ? 24.0
-                        : 16.0;
-
-                return SliverPadding(
-                  padding: EdgeInsets.only(
-                    // top: 16.0,
-                    right: scrollViewPaddingX,
-                    bottom: MediaQuery.of(context).padding.bottom + 16.0,
-                    left: scrollViewPaddingX,
-                  ),
-                  sliver: SliverList.separated(
-                    itemBuilder: (final BuildContext context, final int index) {
-                      if (index == 0) {
-                        return const WaitTimeNoticeItem();
-                      }
-
-                      if (index == state.waitTimeData.length + 1) {
-                        return const WaitTimeDataRemarks();
-                      }
-
-                      return WaitTimeListItem(
-                        data: state.waitTimeData[index - 1],
-                        onTapExpanded: (final WaitTimeModel data) {
-                          setState(() {
-                            _selectedWaitTime = data;
-                          });
-                        },
-                      );
-                    },
-                    separatorBuilder: (final _, final __) {
-                      return const SizedBox(
-                        height: 16.0,
-                      );
-                    },
-                    itemCount: state.waitTimeData.length + 2,
-                  ),
-                );
-              },
-            ),
-          ],
+                },
+              ),
+            ],
+          ),
         );
       },
     );

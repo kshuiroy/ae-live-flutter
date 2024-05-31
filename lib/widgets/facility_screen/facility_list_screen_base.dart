@@ -16,15 +16,20 @@ class FacilityListScreenBase extends StatefulWidget {
 }
 
 class _FacilityListScreenBaseState extends State<FacilityListScreenBase> {
+  final ScrollController _facilityListController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return ControlledSystemUIContainer(
       child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            widget.searchFilterHeader,
-            widget.body,
-          ],
+        body: Scrollbar(
+          controller: _facilityListController,
+          child: CustomScrollView(
+            controller: _facilityListController,
+            slivers: [
+              widget.searchFilterHeader,
+              widget.body,
+            ],
+          ),
         ),
       ),
     );

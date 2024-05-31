@@ -136,40 +136,42 @@ class _ListsScreenState extends State<ListsScreen> {
         title: Text(t.lists.title),
       ),
       extendBodyBehindAppBar: true,
-      body: ListView.separated(
-        padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
-          right: isCompactSize ? 16.0 : 24.0,
-          bottom: 16.0,
-          left: isCompactSize ? 16.0 : 24.0,
-        ),
-        itemBuilder: (context, index) {
-          final _CategoryListItem item = categoryList[index];
+      body: Scrollbar(
+        child: ListView.separated(
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
+            right: isCompactSize ? 16.0 : 24.0,
+            bottom: 16.0,
+            left: isCompactSize ? 16.0 : 24.0,
+          ),
+          itemBuilder: (context, index) {
+            final _CategoryListItem item = categoryList[index];
 
-          return Card.filled(
-            margin: EdgeInsets.zero,
-            clipBehavior: Clip.hardEdge,
-            child: ListTile(
-              contentPadding: const EdgeInsets.all(8.0),
-              onTap: item.onTap,
-              leading: Icon(
-                item.icon,
-                size: 48.0,
-                fill: 0.0,
-                weight: 200.0,
-                opticalSize: 48.0,
+            return Card.filled(
+              margin: EdgeInsets.zero,
+              clipBehavior: Clip.hardEdge,
+              child: ListTile(
+                contentPadding: const EdgeInsets.all(8.0),
+                onTap: item.onTap,
+                leading: Icon(
+                  item.icon,
+                  size: 48.0,
+                  fill: 0.0,
+                  weight: 200.0,
+                  opticalSize: 48.0,
+                ),
+                title: Text(
+                  item.title,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
               ),
-              title: Text(
-                item.title,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ),
-          );
-        },
-        separatorBuilder: (context, index) => const SizedBox(
-          height: 16.0,
+            );
+          },
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 16.0,
+          ),
+          itemCount: categoryList.length,
         ),
-        itemCount: categoryList.length,
       ),
     );
   }

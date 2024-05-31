@@ -3,7 +3,7 @@ import 'package:ae_live/utilities/platform_helper.dart';
 import 'package:ae_live/widgets/core/frosted_glass_search_header.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/home_screen/cluster_options_modal.dart';
-import 'package:ae_live/widgets/home_screen/filter_sort_button.dart';
+import 'package:ae_live/widgets/shared/filter_sort_button.dart';
 import 'package:ae_live/widgets/shared/search_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -125,7 +125,7 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
             child: Row(
               children: [
                 FilterSortButton(
-                  icon: Symbols.filter_list_rounded,
+                  icon: Symbols.explore_rounded,
                   label: widget.clusterButtonLabel,
                   enabled: widget.enabled,
                   onPressed: () {

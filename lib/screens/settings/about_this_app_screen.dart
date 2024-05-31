@@ -83,27 +83,29 @@ class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
           ? const Center(
               child: CircularProgressIndicator.adaptive(),
             )
-          : ListView.builder(
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).padding.top + kToolbarHeight,
-                bottom: MediaQuery.of(context).padding.bottom + 16.0,
+          : Scrollbar(
+              child: ListView.builder(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).padding.top + kToolbarHeight,
+                  bottom: MediaQuery.of(context).padding.bottom + 16.0,
+                ),
+                itemBuilder: (context, index) {
+                  final _AboutThisAppTileItem item = items[index];
+                  return ListTile(
+                    leading: Icon(
+                      item.icon,
+                      size: 24.0,
+                      fill: 0.0,
+                      weight: 200.0,
+                      opticalSize: 24.0,
+                    ),
+                    title: Text(item.title),
+                    subtitle: Text(item.value),
+                    onTap: item.onTap,
+                  );
+                },
+                itemCount: items.length,
               ),
-              itemBuilder: (context, index) {
-                final _AboutThisAppTileItem item = items[index];
-                return ListTile(
-                  leading: Icon(
-                    item.icon,
-                    size: 24.0,
-                    fill: 0.0,
-                    weight: 200.0,
-                    opticalSize: 24.0,
-                  ),
-                  title: Text(item.title),
-                  subtitle: Text(item.value),
-                  onTap: item.onTap,
-                );
-              },
-              itemCount: items.length,
             ),
     );
   }
