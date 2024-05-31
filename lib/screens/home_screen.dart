@@ -194,12 +194,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? WaitTimeDetailsScreen(
                       data: _selectedWaitTime!,
                     )
-                  : PromptWithArtwork(
-                      artwork: SelectItemFromList(
-                        height: isMediumSize ? 320.0 : 400.0,
-                        width: isMediumSize ? 320.0 : 400.0,
-                      ),
-                      promptText: t.home.prompt.selectItem,
+                  : CustomScrollView(
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Padding(
+                            padding: const EdgeInsets.all(24.0),
+                            child: PromptWithArtwork(
+                              artwork: SelectItemFromList(
+                                height: isMediumSize ? 320.0 : 400.0,
+                                width: isMediumSize ? 320.0 : 400.0,
+                              ),
+                              promptText: t.home.prompt.selectItem,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
             ),
           ],
