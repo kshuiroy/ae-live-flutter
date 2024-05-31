@@ -1,13 +1,13 @@
 {
     "@@locale": "zh-CN",
     "@@namespace": "waitTimeDetails",
-    "expectedWaitTime": "预计等候时间（非紧急病人）",
+    "expectedWaitTime": "急症室预计等候时间（非紧急病人）",
     "actions": {
         "share": "分享医院资讯",
         "call": "致电医院",
         "maps": "查看地图"
     },
-    "chartTitle": "过去 6 小时的等候时间",
+    "chartTitle": "过去 6 小时的急症室等候时间",
     "hours": "{value} 小时",
     "info": {
         "title": "医院资料",

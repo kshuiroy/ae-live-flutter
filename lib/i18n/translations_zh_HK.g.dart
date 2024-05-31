@@ -122,9 +122,9 @@ class _TranslationsWaitTimeDetailsZhHk extends _TranslationsWaitTimeDetailsEn {
 	@override final _TranslationsZhHk _root; // ignore: unused_field
 
 	// Translations
-	@override String get expectedWaitTime => '預計等候時間（非緊急病人）';
+	@override String get expectedWaitTime => '急症室預計等候時間（非緊急病人）';
 	@override late final _TranslationsWaitTimeDetailsActionsZhHk actions = _TranslationsWaitTimeDetailsActionsZhHk._(_root);
-	@override String get chartTitle => '過去 6 小時的等候時間';
+	@override String get chartTitle => '過去 6 小時的急症室等候時間';
 	@override String get hours => '{value} 小時';
 	@override late final _TranslationsWaitTimeDetailsInfoZhHk info = _TranslationsWaitTimeDetailsInfoZhHk._(_root);
 	@override late final _TranslationsWaitTimeDetailsShareContentZhHk shareContent = _TranslationsWaitTimeDetailsShareContentZhHk._(_root);

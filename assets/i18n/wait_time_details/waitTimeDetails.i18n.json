@@ -1,13 +1,13 @@
 {
     "@@locale": "en",
     "@@namespace": "waitTimeDetails",
-    "expectedWaitTime": "Expected Waiting Time (Non-Emergency)",
+    "expectedWaitTime": "Expected A&E Waiting Time (Non-Urgent)",
     "actions": {
         "share": "Share Hospital Info",
         "call": "Call Hospital",
         "maps": "View Maps"
     },
-    "chartTitle": "Waiting Time of the Past 6 Hours",
+    "chartTitle": "A&E Waiting Time of the Past 6 Hours",
     "hours": "{value}H",
     "info": {
         "title": "Hospital Info",
