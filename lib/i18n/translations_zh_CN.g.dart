@@ -122,7 +122,7 @@ class _TranslationsWaitTimeDetailsZhCn extends _TranslationsWaitTimeDetailsEn {
 	@override final _TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get expectedWaitTime => '急症室预计等候时间（非紧急病人）';
+	@override String get estimatedWaitTime => '急症室预计等候时间（非紧急病人）';
 	@override late final _TranslationsWaitTimeDetailsActionsZhCn actions = _TranslationsWaitTimeDetailsActionsZhCn._(_root);
 	@override String get chartTitle => '过去 6 小时的急症室等候时间';
 	@override String get hours => '{value} 小时';

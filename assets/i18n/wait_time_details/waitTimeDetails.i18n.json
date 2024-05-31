@@ -1,7 +1,7 @@
 {
     "@@locale": "en",
     "@@namespace": "waitTimeDetails",
-    "expectedWaitTime": "Expected A&E Waiting Time (Non-Urgent)",
+    "estimatedWaitTime": "Estimated A&E Waiting Time (Non-Urgent)",
     "actions": {
         "share": "Share Hospital Info",
         "call": "Call Hospital",

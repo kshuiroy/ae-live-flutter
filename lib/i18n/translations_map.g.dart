@@ -118,7 +118,7 @@ extension on Translations {
 			case 'shared.filter.actions.reset': return 'Reset';
 			case 'shared.facilityMaps.openMapsApp': return 'Open Maps Application';
 			case 'shared.facilityMaps.closeMapsModal': return 'Close the Maps Viewer';
-			case 'waitTimeDetails.expectedWaitTime': return 'Expected A&E Waiting Time (Non-Urgent)';
+			case 'waitTimeDetails.estimatedWaitTime': return 'Estimated A&E Waiting Time (Non-Urgent)';
 			case 'waitTimeDetails.actions.share': return 'Share Hospital Info';
 			case 'waitTimeDetails.actions.call': return 'Call Hospital';
 			case 'waitTimeDetails.actions.maps': return 'View Maps';
@@ -248,7 +248,7 @@ extension on _TranslationsZhCn {
 			case 'shared.filter.actions.reset': return '重设';
 			case 'shared.facilityMaps.openMapsApp': return '开启地图应用程序';
 			case 'shared.facilityMaps.closeMapsModal': return '关闭地图检视界面';
-			case 'waitTimeDetails.expectedWaitTime': return '急症室预计等候时间（非紧急病人）';
+			case 'waitTimeDetails.estimatedWaitTime': return '急症室预计等候时间（非紧急病人）';
 			case 'waitTimeDetails.actions.share': return '分享医院资讯';
 			case 'waitTimeDetails.actions.call': return '致电医院';
 			case 'waitTimeDetails.actions.maps': return '查看地图';
@@ -378,7 +378,7 @@ extension on _TranslationsZhHk {
 			case 'shared.filter.actions.reset': return '重設';
 			case 'shared.facilityMaps.openMapsApp': return '開啟地圖應用程式';
 			case 'shared.facilityMaps.closeMapsModal': return '關閉地圖檢視介面';
-			case 'waitTimeDetails.expectedWaitTime': return '急症室預計等候時間（非緊急病人）';
+			case 'waitTimeDetails.estimatedWaitTime': return '急症室預計等候時間（非緊急病人）';
 			case 'waitTimeDetails.actions.share': return '分享醫院資訊';
 			case 'waitTimeDetails.actions.call': return '致電醫院';
 			case 'waitTimeDetails.actions.maps': return '查看地圖';

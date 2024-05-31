@@ -126,7 +126,7 @@ class _TranslationsWaitTimeDetailsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get expectedWaitTime => 'Expected A&E Waiting Time (Non-Urgent)';
+	String get estimatedWaitTime => 'Estimated A&E Waiting Time (Non-Urgent)';
 	late final _TranslationsWaitTimeDetailsActionsEn actions = _TranslationsWaitTimeDetailsActionsEn._(_root);
 	String get chartTitle => 'A&E Waiting Time of the Past 6 Hours';
 	String get hours => '{value}H';

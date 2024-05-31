@@ -1,7 +1,7 @@
 {
     "@@locale": "zh-HK",
     "@@namespace": "waitTimeDetails",
-    "expectedWaitTime": "急症室預計等候時間（非緊急病人）",
+    "estimatedWaitTime": "急症室預計等候時間（非緊急病人）",
     "actions": {
         "share": "分享醫院資訊",
         "call": "致電醫院",
