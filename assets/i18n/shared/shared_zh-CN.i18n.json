@@ -1,6 +1,22 @@
 {
     "@@locale": "zh-CN",
     "@@namespace": "shared",
+    "filter": {
+        "sorting": {
+            "title": "排序",
+            "nameInAsd": "医院英文名称（A-Z）",
+            "nameInDesc": "医院英文名称（Z-A）",
+            "timeInAsd": "等候时间（由短至长）",
+            "timeInDesc": "等候时间（由长至短）"
+        },
+        "hospitalCluster": "医院联网",
+        "clinicCluster": "诊所联网",
+        "region": "区域",
+        "actions": {
+            "apply": "套用",
+            "reset": "重设"
+        }
+    },
     "facilityMaps": {
         "openMapsApp": "开启地图应用程序",
         "closeMapsModal": "关闭地图检视界面"

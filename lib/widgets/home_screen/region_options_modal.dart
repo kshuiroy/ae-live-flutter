@@ -36,7 +36,7 @@ class _RegionOptionsModalState extends State<RegionOptionsModal> {
     final Translations t = Translations.of(context);
 
     return FilterOptionsModalBase<int>(
-      title: widget.title ?? t.home.filter.region.title,
+      title: widget.title ?? t.shared.filter.region,
       options: _regionOptions,
       defaultOptions: widget.defaultOptions,
       onUpdate: widget.onUpdate,

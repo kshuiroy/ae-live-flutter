@@ -16,25 +16,6 @@
         "failedToRefresh": "資料更新失敗",
         "lastUpdateAt": "最後更新：%T"
     },
-    "filter": {
-        "cluster": "醫院聯網",
-        "sorting": {
-            "title": "排序",
-            "nameInAsd": "醫院英文名稱（A-Z）",
-            "nameInDesc": "醫院英文名稱（Z-A）",
-            "timeInAsd": "等候時間（由短至長）",
-            "timeInDesc": "等候時間（由長至短）"
-        },
-        "region": {
-            "title": "區域",
-            "hki": "香港島",
-            "kln": "九龍",
-            "nte": "新界東",
-            "ntw": "新界西",
-            "isl": "離島"
-        },
-        "submit": "提交"
-    },
     "prompt": {
         "noConnection": "沒有網絡連線。",
         "serverError": "伺服器發生錯誤，請稍後再試。",

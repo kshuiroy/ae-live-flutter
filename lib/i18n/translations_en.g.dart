@@ -55,7 +55,6 @@ class _TranslationsHomeEn {
 	late final _TranslationsHomeActionsEn actions = _TranslationsHomeActionsEn._(_root);
 	String get badgeText => 'Priority will be accorded to patients triaged as critical, emergency and urgent.';
 	late final _TranslationsHomeRefreshIndicatorEn refreshIndicator = _TranslationsHomeRefreshIndicatorEn._(_root);
-	late final _TranslationsHomeFilterEn filter = _TranslationsHomeFilterEn._(_root);
 	late final _TranslationsHomePromptEn prompt = _TranslationsHomePromptEn._(_root);
 }
 
@@ -116,6 +115,7 @@ class _TranslationsSharedEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	late final _TranslationsSharedFilterEn filter = _TranslationsSharedFilterEn._(_root);
 	late final _TranslationsSharedFacilityMapsEn facilityMaps = _TranslationsSharedFacilityMapsEn._(_root);
 }
 
@@ -159,19 +159,6 @@ class _TranslationsHomeRefreshIndicatorEn {
 	String get dataUpdated => 'Data Updated';
 	String get failedToRefresh => 'Failed to Refresh';
 	String get lastUpdateAt => 'Last Update At: %T';
-}
-
-// Path: home.filter
-class _TranslationsHomeFilterEn {
-	_TranslationsHomeFilterEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get cluster => 'Hospital Cluster';
-	late final _TranslationsHomeFilterSortingEn sorting = _TranslationsHomeFilterSortingEn._(_root);
-	late final _TranslationsHomeFilterRegionEn region = _TranslationsHomeFilterRegionEn._(_root);
-	String get submit => 'Submit';
 }
 
 // Path: home.prompt
@@ -354,6 +341,20 @@ class _TranslationsSettingsPromptEn {
 	String get settingsReset => 'All settings have been reset. Please restart the app for the changes to take effect.';
 }
 
+// Path: shared.filter
+class _TranslationsSharedFilterEn {
+	_TranslationsSharedFilterEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _TranslationsSharedFilterSortingEn sorting = _TranslationsSharedFilterSortingEn._(_root);
+	String get hospitalCluster => 'Hospital Cluster';
+	String get clinicCluster => 'Clinic Cluster';
+	String get region => 'Region';
+	late final _TranslationsSharedFilterActionsEn actions = _TranslationsSharedFilterActionsEn._(_root);
+}
+
 // Path: shared.facilityMaps
 class _TranslationsSharedFacilityMapsEn {
 	_TranslationsSharedFacilityMapsEn._(this._root);
@@ -403,35 +404,6 @@ class _TranslationsWaitTimeDetailsShareContentEn {
 	String faxNo({required Object faxNo}) => '\nFax No.: ${faxNo}';
 	String emailAddress({required Object emailAddress}) => '\nEmail Address: ${emailAddress}';
 	String website({required Object website}) => '\nWebsite: ${website}';
-}
-
-// Path: home.filter.sorting
-class _TranslationsHomeFilterSortingEn {
-	_TranslationsHomeFilterSortingEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get title => 'Sorting';
-	String get nameInAsd => 'Hospital Name (A-Z)';
-	String get nameInDesc => 'Hospital Name (Z-A)';
-	String get timeInAsd => 'Waiting Time (ASD.)';
-	String get timeInDesc => 'Waiting Time (DESC.)';
-}
-
-// Path: home.filter.region
-class _TranslationsHomeFilterRegionEn {
-	_TranslationsHomeFilterRegionEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get title => 'Region';
-	String get hki => 'Hong Kong Island';
-	String get kln => 'Kowloon';
-	String get nte => 'New Territories East';
-	String get ntw => 'New Territories West';
-	String get isl => 'Islands';
 }
 
 // Path: settings.appearance.theme
@@ -510,6 +482,31 @@ class _TranslationsSettingsMoreAboutEn {
 	// Translations
 	String get title => 'About This App';
 	late final _TranslationsSettingsMoreAboutItemsEn items = _TranslationsSettingsMoreAboutItemsEn._(_root);
+}
+
+// Path: shared.filter.sorting
+class _TranslationsSharedFilterSortingEn {
+	_TranslationsSharedFilterSortingEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Sorting';
+	String get nameInAsd => 'Hospital Name (A-Z)';
+	String get nameInDesc => 'Hospital Name (Z-A)';
+	String get timeInAsd => 'Waiting Time (ASD.)';
+	String get timeInDesc => 'Waiting Time (DESC.)';
+}
+
+// Path: shared.filter.actions
+class _TranslationsSharedFilterActionsEn {
+	_TranslationsSharedFilterActionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get apply => 'Apply';
+	String get reset => 'Reset';
 }
 
 // Path: settings.appearance.theme.options

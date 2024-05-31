@@ -261,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: <Widget>[
                         FilterSortButton(
                           icon: Symbols.swap_vert_rounded,
-                          label: t.home.filter.sorting.title,
+                          label: t.shared.filter.sorting.title,
                           enabled: !_isLoading,
                           onPressed: () {
                             _showDataFilterSortModal(
@@ -281,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         FilterSortButton(
                           icon: Symbols.explore_rounded,
-                          label: t.home.filter.cluster,
+                          label: t.shared.filter.hospitalCluster,
                           enabled: !_isLoading,
                           onPressed: () {
                             _showDataFilterSortModal(
@@ -301,7 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         FilterSortButton(
                           icon: Symbols.travel_explore_rounded,
-                          label: t.home.filter.region.title,
+                          label: t.shared.filter.region,
                           enabled: !_isLoading,
                           onPressed: () {
                             _showDataFilterSortModal(

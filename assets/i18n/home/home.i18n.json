@@ -16,25 +16,6 @@
         "failedToRefresh": "Failed to Refresh",
         "lastUpdateAt": "Last Update At: %T"
     },
-    "filter": {
-        "cluster": "Hospital Cluster",
-        "sorting": {
-            "title": "Sorting",
-            "nameInAsd": "Hospital Name (A-Z)",
-            "nameInDesc": "Hospital Name (Z-A)",
-            "timeInAsd": "Waiting Time (ASD.)",
-            "timeInDesc": "Waiting Time (DESC.)"
-        },
-        "region": {
-            "title": "Region",
-            "hki": "Hong Kong Island",
-            "kln": "Kowloon",
-            "nte": "New Territories East",
-            "ntw": "New Territories West",
-            "isl": "Islands"
-        },
-        "submit": "Submit"
-    },
     "prompt": {
         "noConnection": "No internet connection.",
         "serverError": "Something went wrong with the server, please try again later.",

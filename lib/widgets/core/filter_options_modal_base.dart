@@ -94,6 +94,30 @@ class _FilterOptionsModalBaseState<T> extends State<FilterOptionsModalBase<T>> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      setState(() {
+                        _selectedOptions = widget.options
+                            .map((FilterOptionsModel<T> option) => option.value)
+                            .toList();
+                      });
+                    },
+                    icon: const Icon(
+                      Symbols.close_rounded,
+                      size: 24.0,
+                      fill: 0.0,
+                      weight: 200.0,
+                      opticalSize: 24.0,
+                    ),
+                    label: Text(
+                      t.shared.filter.actions.reset,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 8.0,
+                ),
+                Expanded(
                   child: FilledButton.icon(
                     onPressed: () {
                       if (widget.onUpdate != null) {
@@ -111,7 +135,7 @@ class _FilterOptionsModalBaseState<T> extends State<FilterOptionsModalBase<T>> {
                       opticalSize: 24.0,
                     ),
                     label: Text(
-                      t.home.filter.submit,
+                      t.shared.filter.actions.apply,
                     ),
                   ),
                 ),

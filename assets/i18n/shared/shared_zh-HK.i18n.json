@@ -1,6 +1,22 @@
 {
     "@@locale": "zh-HK",
     "@@namespace": "shared",
+    "filter": {
+        "sorting": {
+            "title": "排序",
+            "nameInAsd": "醫院英文名稱（A-Z）",
+            "nameInDesc": "醫院英文名稱（Z-A）",
+            "timeInAsd": "等候時間（由短至長）",
+            "timeInDesc": "等候時間（由長至短）"
+        },
+        "hospitalCluster": "醫院聯網",
+        "clinicCluster": "診所聯網",
+        "region": "區域",
+        "actions": {
+            "apply": "套用",
+            "reset": "重設"
+        }
+    },
     "facilityMaps": {
         "openMapsApp": "開啟地圖應用程式",
         "closeMapsModal": "關閉地圖檢視介面"

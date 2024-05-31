@@ -16,25 +16,6 @@
         "failedToRefresh": "资料更新失败",
         "lastUpdateAt": "最后更新：%T"
     },
-    "filter": {
-        "cluster": "医院联网",
-        "sorting": {
-            "title": "排序",
-            "nameInAsd": "医院英文名称（A-Z）",
-            "nameInDesc": "医院英文名称（Z-A）",
-            "timeInAsd": "等候时间（由短至长）",
-            "timeInDesc": "等候时间（由长至短）"
-        },
-        "region": {
-            "title": "区域",
-            "hki": "香港岛",
-            "kln": "九龙",
-            "nte": "新界东",
-            "ntw": "新界西",
-            "isl": "离岛"
-        },
-        "submit": "提交"
-    },
     "prompt": {
         "noConnection": "没有网络连线。",
         "serverError": "服务器发生错误，请稍后再试。",

@@ -1,6 +1,22 @@
 {
     "@@locale": "en",
     "@@namespace": "shared",
+    "filter": {
+        "sorting": {
+            "title": "Sorting",
+            "nameInAsd": "Hospital Name (A-Z)",
+            "nameInDesc": "Hospital Name (Z-A)",
+            "timeInAsd": "Waiting Time (ASD.)",
+            "timeInDesc": "Waiting Time (DESC.)"
+        },
+        "hospitalCluster": "Hospital Cluster",
+        "clinicCluster": "Clinic Cluster",
+        "region": "Region",
+        "actions": {
+            "apply": "Apply",
+            "reset": "Reset"
+        }
+    },
     "facilityMaps": {
         "openMapsApp": "Open Maps Application",
         "closeMapsModal": "Close the Maps Viewer"

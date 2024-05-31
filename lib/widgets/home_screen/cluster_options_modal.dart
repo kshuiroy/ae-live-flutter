@@ -36,7 +36,7 @@ class _ClusterOptionsModalState extends State<ClusterOptionsModal> {
   @override
   Widget build(final BuildContext context) {
     return FilterOptionsModalBase(
-      title: widget.title ?? t.home.filter.cluster,
+      title: widget.title ?? t.shared.filter.hospitalCluster,
       options: _clusterOptions,
       defaultOptions: widget.defaultOptions,
       onUpdate: widget.onUpdate,

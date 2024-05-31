@@ -49,7 +49,7 @@ class _SortingOptionsModalState extends State<SortingOptionsModal> {
               children: <Widget>[
                 Expanded(
                   child: Text(
-                    t.home.filter.sorting.title,
+                    t.shared.filter.sorting.title,
                     style: textTheme.titleLarge,
                     textAlign: TextAlign.center,
                   ),
@@ -75,19 +75,19 @@ class _SortingOptionsModalState extends State<SortingOptionsModal> {
     final Translations t = Translations.of(context);
     final List<_SortingOptionModel> options = <_SortingOptionModel>[
       _SortingOptionModel(
-        title: t.home.filter.sorting.timeInAsd,
+        title: t.shared.filter.sorting.timeInAsd,
         value: WaitTimeSortType.timeInAsd,
       ),
       _SortingOptionModel(
-        title: t.home.filter.sorting.timeInDesc,
+        title: t.shared.filter.sorting.timeInDesc,
         value: WaitTimeSortType.timeInDesc,
       ),
       _SortingOptionModel(
-        title: t.home.filter.sorting.nameInAsd,
+        title: t.shared.filter.sorting.nameInAsd,
         value: WaitTimeSortType.nameInAsd,
       ),
       _SortingOptionModel(
-        title: t.home.filter.sorting.nameInDesc,
+        title: t.shared.filter.sorting.nameInDesc,
         value: WaitTimeSortType.nameInDesc,
       ),
     ];
@@ -124,7 +124,7 @@ class _SortingOptionsModalState extends State<SortingOptionsModal> {
                       opticalSize: 24.0,
                     ),
                     label: Text(
-                      t.home.filter.submit,
+                      t.shared.filter.actions.apply,
                     ),
                   ),
                 ),
