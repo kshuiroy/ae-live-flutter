@@ -260,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       children: <Widget>[
                         FilterSortButton(
-                          icon: Symbols.sort_rounded,
+                          icon: Symbols.swap_vert_rounded,
                           label: t.home.filter.sorting.title,
                           enabled: !_isLoading,
                           onPressed: () {
@@ -280,7 +280,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                         FilterSortButton(
-                          icon: Symbols.filter_list_rounded,
+                          icon: Symbols.explore_rounded,
                           label: t.home.filter.cluster,
                           enabled: !_isLoading,
                           onPressed: () {
