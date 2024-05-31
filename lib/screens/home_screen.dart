@@ -15,6 +15,7 @@ import 'package:ae_live/widgets/home_screen/region_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/sorting_options_modal.dart';
 import 'package:ae_live/widgets/home_screen/wait_time_list_item.dart';
 import 'package:ae_live/widgets/home_screen/wait_time_notice_item.dart';
+import 'package:ae_live/widgets/shared/clear_filter_button.dart';
 import 'package:ae_live/widgets/shared/filter_sort_button.dart';
 import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
 import 'package:ae_live/widgets/shared/search_text_field.dart';
@@ -23,6 +24,7 @@ import 'package:ae_live/widgets/shared/sliver_loading_indicator.dart';
 import 'package:ae_live/widgets/shared/sliver_no_data_prompt.dart';
 import 'package:ae_live/widgets/shared/wait_time_data_remarks.dart';
 import 'package:easy_refresh/easy_refresh.dart';
+import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -48,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<int> _dataClusters = <int>[1, 2, 3, 4, 5, 6, 7];
   List<int> _dataRegions = <int>[1, 2, 3, 4, 5];
 
+  final ScrollController _filterOptionsController = ScrollController();
   final ScrollController _waitTimeListController = ScrollController();
 
   void _init() async {
@@ -116,6 +119,18 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     }
+  }
+
+  void _onClearFilter(final BuildContext context) {
+    _searchTextController.clear();
+
+    setState(() {
+      _dataClusters = [1, 2, 3, 4, 5, 6, 7];
+      _dataRegions = [1, 2, 3, 4, 5];
+      _searchKeyword = null;
+    });
+
+    _onUpdateSearchResult(context);
   }
 
   @override
@@ -215,6 +230,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildWaitTimeListPane(final BuildContext context) {
     final Translations t = Translations.of(context);
+    final bool isListFiltered = (_searchKeyword ?? '').isNotEmpty ||
+        _dataClusters.length != 7 ||
+        _dataRegions.length != 5;
 
     return EasyRefresh.builder(
       controller: _refreshController,
@@ -260,72 +278,104 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: 8.0,
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: <Widget>[
-                          FilterSortButton(
-                            icon: Symbols.swap_vert_rounded,
-                            label: t.shared.filter.sorting.title,
-                            enabled: !_isLoading,
-                            onPressed: () {
-                              _showDataFilterSortModal(
-                                context,
-                                child: SortingOptionsModal(
-                                  defaultOption: _dataSortType,
-                                  onUpdate: (final WaitTimeSortType sortType) {
-                                    setState(() {
-                                      _dataSortType = sortType;
-                                    });
+                    Row(
+                      children: [
+                        Expanded(
+                          child: FadingEdgeScrollView.fromSingleChildScrollView(
+                            gradientFractionOnStart: 0.2,
+                            gradientFractionOnEnd: 0.2,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              controller: _filterOptionsController,
+                              padding: isListFiltered
+                                  ? const EdgeInsets.only(
+                                      right: 8.0,
+                                    )
+                                  : null,
+                              child: Row(
+                                children: <Widget>[
+                                  FilterSortButton(
+                                    icon: Symbols.swap_vert_rounded,
+                                    label: t.shared.filter.sorting.title,
+                                    enabled: !_isLoading,
+                                    onPressed: () {
+                                      _showDataFilterSortModal(
+                                        context,
+                                        child: SortingOptionsModal(
+                                          defaultOption: _dataSortType,
+                                          onUpdate: (final WaitTimeSortType
+                                              sortType) {
+                                            setState(() {
+                                              _dataSortType = sortType;
+                                            });
 
-                                    _onUpdateSearchResult(context);
-                                  },
-                                ),
-                              );
-                            },
+                                            _onUpdateSearchResult(context);
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  FilterSortButton(
+                                    icon: Symbols.explore_rounded,
+                                    label: t.shared.filter.hospitalCluster,
+                                    enabled: !_isLoading,
+                                    isHighlighted: _dataClusters.length != 7,
+                                    onPressed: () {
+                                      _showDataFilterSortModal(
+                                        context,
+                                        child: ClusterOptionsModal(
+                                          defaultOptions: _dataClusters,
+                                          onUpdate: (final List<int> clusters) {
+                                            setState(() {
+                                              _dataClusters = clusters;
+                                            });
+
+                                            _onUpdateSearchResult(context);
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  FilterSortButton(
+                                    icon: Symbols.travel_explore_rounded,
+                                    label: t.shared.filter.region,
+                                    enabled: !_isLoading,
+                                    isHighlighted: _dataRegions.length != 5,
+                                    onPressed: () {
+                                      _showDataFilterSortModal(
+                                        context,
+                                        child: RegionOptionsModal(
+                                          defaultOptions: _dataRegions,
+                                          onUpdate: (final List<int> regions) {
+                                            setState(() {
+                                              _dataRegions = regions;
+                                            });
+
+                                            _onUpdateSearchResult(context);
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          FilterSortButton(
-                            icon: Symbols.explore_rounded,
-                            label: t.shared.filter.hospitalCluster,
-                            enabled: !_isLoading,
-                            onPressed: () {
-                              _showDataFilterSortModal(
-                                context,
-                                child: ClusterOptionsModal(
-                                  defaultOptions: _dataClusters,
-                                  onUpdate: (final List<int> clusters) {
-                                    setState(() {
-                                      _dataClusters = clusters;
-                                    });
-
-                                    _onUpdateSearchResult(context);
-                                  },
-                                ),
-                              );
-                            },
+                        ),
+                        if (isListFiltered) ...[
+                          SizedBox(
+                            height: 28.0,
+                            child: VerticalDivider(
+                              thickness: 1.0,
+                              width: 1.0,
+                              color: Theme.of(context).colorScheme.outline,
+                            ),
                           ),
-                          FilterSortButton(
-                            icon: Symbols.travel_explore_rounded,
-                            label: t.shared.filter.region,
-                            enabled: !_isLoading,
-                            onPressed: () {
-                              _showDataFilterSortModal(
-                                context,
-                                child: RegionOptionsModal(
-                                  defaultOptions: _dataRegions,
-                                  onUpdate: (final List<int> regions) {
-                                    setState(() {
-                                      _dataRegions = regions;
-                                    });
-
-                                    _onUpdateSearchResult(context);
-                                  },
-                                ),
-                              );
-                            },
+                          ClearFilterButton(
+                            onPressed: () => _onClearFilter(context),
                           ),
                         ],
-                      ),
+                      ],
                     ),
                   ],
                 ),

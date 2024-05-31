@@ -8,7 +8,9 @@ import 'package:ae_live/widgets/facility_screen/facility_list_screen_base.dart';
 import 'package:ae_live/widgets/facility_screen/facility_search_header.dart';
 import 'package:ae_live/widgets/shared/sliver_loading_indicator.dart';
 import 'package:ae_live/widgets/shared/sliver_no_data_prompt.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -36,6 +38,31 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
             clusters: _searchClusters,
           ),
         );
+  }
+
+  void _onKeywordChange(final BuildContext context, final String keyword) {
+    setState(() {
+      _searchKeyword = keyword;
+    });
+
+    _onUpdateSearchResult(context);
+  }
+
+  void _onClusterChange(final BuildContext context, final List<int> clusters) {
+    setState(() {
+      _searchClusters = clusters;
+    });
+
+    _onUpdateSearchResult(context);
+  }
+
+  void _onClearFilter(final BuildContext context) {
+    setState(() {
+      _searchKeyword = null;
+      _searchClusters = [1, 2, 3, 4, 5, 6, 7];
+    });
+
+    _onUpdateSearchResult(context);
   }
 
   @override
@@ -69,20 +96,12 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
         enabled: !_disableFilter,
         clusterButtonLabel: t.lists.soc.cluster,
         clusterDefaultOptions: _searchClusters,
-        onKeywordChange: (final String keyword) {
-          setState(() {
-            _searchKeyword = keyword;
-          });
-
-          _onUpdateSearchResult(context);
-        },
-        onClusterChange: (final List<int> clusters) {
-          setState(() {
-            _searchClusters = clusters;
-          });
-
-          _onUpdateSearchResult(context);
-        },
+        isClusterButtonHighlighted: _searchClusters.length != 7,
+        onKeywordChange: (final String keyword) =>
+            _onKeywordChange(context, keyword),
+        onClusterChange: (final List<int> clusters) =>
+            _onClusterChange(context, clusters),
+        onClearFilter: () => _onClearFilter(context),
       ),
       body: BlocConsumer<FacilitySocBloc, FacilitySocState>(
         listener: (context, state) {

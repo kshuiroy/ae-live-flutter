@@ -6,21 +6,32 @@ class FilterSortButton extends StatelessWidget {
     required this.icon,
     required this.label,
     this.enabled = true,
+    this.isHighlighted = false,
     this.onPressed,
   });
 
   final IconData icon;
   final String label;
   final bool enabled;
+  final bool isHighlighted;
   final void Function()? onPressed;
 
   @override
   Widget build(final BuildContext context) {
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return TextButton.icon(
       style: ButtonStyle(
         foregroundColor: WidgetStatePropertyAll(
-          Theme.of(context).colorScheme.onSurface,
+          isHighlighted
+              ? colorScheme.onTertiaryContainer
+              : colorScheme.onSurface,
         ),
+        backgroundColor: isHighlighted
+            ? WidgetStatePropertyAll(
+                colorScheme.tertiaryContainer,
+              )
+            : null,
       ),
       onPressed: enabled ? onPressed : null,
       icon: Icon(

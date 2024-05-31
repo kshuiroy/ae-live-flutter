@@ -14,7 +14,8 @@
         "region": "区域",
         "actions": {
             "apply": "套用",
-            "reset": "重设"
+            "reset": "重设",
+            "clear": "清除"
         }
     },
     "facilityMaps": {

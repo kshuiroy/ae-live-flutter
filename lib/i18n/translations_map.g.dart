@@ -116,6 +116,7 @@ extension on Translations {
 			case 'shared.filter.region': return 'Region';
 			case 'shared.filter.actions.apply': return 'Apply';
 			case 'shared.filter.actions.reset': return 'Reset';
+			case 'shared.filter.actions.clear': return 'Clear';
 			case 'shared.facilityMaps.openMapsApp': return 'Open Maps Application';
 			case 'shared.facilityMaps.closeMapsModal': return 'Close the Maps Viewer';
 			case 'waitTimeDetails.estimatedWaitTime': return 'Estimated A&E Waiting Time (Non-Urgent)';
@@ -246,6 +247,7 @@ extension on _TranslationsZhCn {
 			case 'shared.filter.region': return '区域';
 			case 'shared.filter.actions.apply': return '套用';
 			case 'shared.filter.actions.reset': return '重设';
+			case 'shared.filter.actions.clear': return '清除';
 			case 'shared.facilityMaps.openMapsApp': return '开启地图应用程序';
 			case 'shared.facilityMaps.closeMapsModal': return '关闭地图检视界面';
 			case 'waitTimeDetails.estimatedWaitTime': return '急症室预计等候时间（非紧急病人）';
@@ -376,6 +378,7 @@ extension on _TranslationsZhHk {
 			case 'shared.filter.region': return '區域';
 			case 'shared.filter.actions.apply': return '套用';
 			case 'shared.filter.actions.reset': return '重設';
+			case 'shared.filter.actions.clear': return '清除';
 			case 'shared.facilityMaps.openMapsApp': return '開啟地圖應用程式';
 			case 'shared.facilityMaps.closeMapsModal': return '關閉地圖檢視介面';
 			case 'waitTimeDetails.estimatedWaitTime': return '急症室預計等候時間（非緊急病人）';

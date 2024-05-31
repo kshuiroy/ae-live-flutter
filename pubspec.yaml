@@ -57,6 +57,7 @@ dependencies:
     slang_flutter: ^3.31.0
     syncfusion_flutter_charts: ^25.2.6
     url_launcher: ^6.2.6
+    fading_edge_scrollview: ^4.1.1
 
 dev_dependencies:
     flutter_test:

@@ -507,6 +507,7 @@ class _TranslationsSharedFilterActionsEn {
 	// Translations
 	String get apply => 'Apply';
 	String get reset => 'Reset';
+	String get clear => 'Clear';
 }
 
 // Path: settings.appearance.theme.options

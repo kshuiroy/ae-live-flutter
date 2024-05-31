@@ -38,6 +38,31 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
         );
   }
 
+  void _onKeywordChange(final BuildContext context, final String keyword) {
+    setState(() {
+      _searchKeyword = keyword;
+    });
+
+    _onUpdateSearchResult(context);
+  }
+
+  void _onClusterChange(final BuildContext context, final List<int> clusters) {
+    setState(() {
+      _searchClusters = clusters;
+    });
+
+    _onUpdateSearchResult(context);
+  }
+
+  void _onClearFilter(final BuildContext context) {
+    setState(() {
+      _searchKeyword = null;
+      _searchClusters = [1, 2, 3, 4, 5, 6, 7];
+    });
+
+    _onUpdateSearchResult(context);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -71,20 +96,12 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
         enabled: !_disableFilter,
         clusterButtonLabel: t.lists.hospital.cluster,
         clusterDefaultOptions: _searchClusters,
-        onKeywordChange: (final String keyword) {
-          setState(() {
-            _searchKeyword = keyword;
-          });
-
-          _onUpdateSearchResult(context);
-        },
-        onClusterChange: (final List<int> clusters) {
-          setState(() {
-            _searchClusters = clusters;
-          });
-
-          _onUpdateSearchResult(context);
-        },
+        isClusterButtonHighlighted: _searchClusters.length != 7,
+        onKeywordChange: (final String keyword) =>
+            _onKeywordChange(context, keyword),
+        onClusterChange: (final List<int> clusters) =>
+            _onClusterChange(context, clusters),
+        onClearFilter: () => _onClearFilter(context),
       ),
       body: BlocConsumer<FacilityHospitalBloc, FacilityHospitalState>(
         listener: (context, state) {

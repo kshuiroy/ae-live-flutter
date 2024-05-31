@@ -14,7 +14,8 @@
         "region": "Region",
         "actions": {
             "apply": "Apply",
-            "reset": "Reset"
+            "reset": "Reset",
+            "clear": "Clear"
         }
     },
     "facilityMaps": {

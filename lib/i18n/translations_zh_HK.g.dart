@@ -503,6 +503,7 @@ class _TranslationsSharedFilterActionsZhHk extends _TranslationsSharedFilterActi
 	// Translations
 	@override String get apply => '套用';
 	@override String get reset => '重設';
+	@override String get clear => '清除';
 }
 
 // Path: settings.appearance.theme.options
