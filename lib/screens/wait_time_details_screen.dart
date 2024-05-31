@@ -7,6 +7,7 @@ import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/shared/facility_maps_viewer.dart';
+import 'package:ae_live/widgets/shared/wait_time_data_remarks.dart';
 import 'package:ae_live/widgets/wait_time_details/hospital_info_item.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -395,6 +396,15 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                               );
                             },
                           ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(
+                            screenPaddingX,
+                            24.0,
+                            screenPaddingX,
+                            0.0,
+                          ),
+                          child: const WaitTimeDataRemarks(),
+                        ),
                       ],
                     ),
                   ),
