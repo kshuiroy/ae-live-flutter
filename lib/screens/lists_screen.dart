@@ -163,7 +163,7 @@ class _ListsScreenState extends State<ListsScreen> {
               margin: EdgeInsets.zero,
               clipBehavior: Clip.hardEdge,
               child: ListTile(
-                contentPadding: const EdgeInsets.all(8.0),
+                contentPadding: const EdgeInsets.fromLTRB(8.0, 8.0, 16.0, 8.0),
                 onTap: item.onTap,
                 leading: Icon(
                   item.icon,
