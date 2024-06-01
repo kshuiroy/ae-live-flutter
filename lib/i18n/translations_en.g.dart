@@ -233,6 +233,7 @@ class _TranslationsListsCmcEn {
 
 	// Translations
 	String get search => 'Search Chinese Medicine Clinics cum Training and Research Centres';
+	String get region => 'Region';
 	String get noSearchResult => 'There is no clinic matches your search criteria.';
 }
 

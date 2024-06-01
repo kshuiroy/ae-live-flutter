@@ -1,7 +1,7 @@
-import 'package:ae_live/bloc/facility_goc/facility_goc_bloc.dart';
+import 'package:ae_live/bloc/facility_cmc/facility_cmc_bloc.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
-import 'package:ae_live/models/facility_goc_model.dart';
+import 'package:ae_live/models/facility_cmc_model.dart';
 import 'package:ae_live/utilities/filter_buttons.dart';
 import 'package:ae_live/widgets/facility_screen/facility_item_card.dart';
 import 'package:ae_live/widgets/facility_screen/facility_list_error_prompt.dart';
@@ -10,12 +10,11 @@ import 'package:ae_live/widgets/facility_screen/facility_search_header.dart';
 import 'package:ae_live/widgets/shared/sliver_loading_indicator.dart';
 import 'package:ae_live/widgets/shared/sliver_no_data_prompt.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-class FacilityGocScreen extends StatefulWidget {
-  const FacilityGocScreen({
+class FacilityCmcScreen extends StatefulWidget {
+  const FacilityCmcScreen({
     super.key,
     this.showBackButton = true,
   });
@@ -23,21 +22,19 @@ class FacilityGocScreen extends StatefulWidget {
   final bool showBackButton;
 
   @override
-  State<FacilityGocScreen> createState() => _FacilityGocScreenState();
+  State<FacilityCmcScreen> createState() => _FacilityCmcScreenState();
 }
 
-class _FacilityGocScreenState extends State<FacilityGocScreen> {
-  // final TextEditingController _searchTextController = TextEditingController();
-
+class _FacilityCmcScreenState extends State<FacilityCmcScreen> {
   bool _disableFilter = false;
   String? _searchKeyword;
-  List<int> _searchClusters = [1, 2, 3, 4, 5, 6, 7];
+  List<int> _searchRegions = [1, 2, 3, 4, 5];
 
   void _onUpdateSearchResult(final BuildContext context) {
-    context.read<FacilityGocBloc>().add(
-          FacilityGocDataFilter(
+    context.read<FacilityCmcBloc>().add(
+          FacilityCmcDataFilter(
             keyword: _searchKeyword,
-            clusters: _searchClusters,
+            regions: _searchRegions,
           ),
         );
   }
@@ -50,9 +47,9 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
     _onUpdateSearchResult(context);
   }
 
-  void _onClusterChange(final BuildContext context, final List<int> clusters) {
+  void _onClusterChange(final BuildContext context, final List<int> regions) {
     setState(() {
-      _searchClusters = clusters;
+      _searchRegions = regions;
     });
 
     _onUpdateSearchResult(context);
@@ -61,7 +58,7 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
   void _onClearFilter(final BuildContext context) {
     setState(() {
       _searchKeyword = null;
-      _searchClusters = [1, 2, 3, 4, 5, 6, 7];
+      _searchRegions = [1, 2, 3, 4, 5];
     });
 
     _onUpdateSearchResult(context);
@@ -72,16 +69,16 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((final _) {
-      final FacilityGocState blocState = context.read<FacilityGocBloc>().state;
+      final FacilityCmcState blocState = context.read<FacilityCmcBloc>().state;
 
-      if (blocState is FacilityGocInitial || blocState is FacilityGocFailed) {
-        // Fetch wait time data if there is no data stored befored.
-        context.read<FacilityGocBloc>().add(FacilityGocRequested());
-      } else if (blocState is FacilityGocSuccess) {
+      if (blocState is FacilityCmcInitial || blocState is FacilityCmcFailed) {
+        // Fetch data if there is no data stored befored.
+        context.read<FacilityCmcBloc>().add(FacilityCmcRequested());
+      } else if (blocState is FacilityCmcSuccess) {
         // Reset all filters and sorting to default after user go back from
         // other screens.
-        context.read<FacilityGocBloc>().add(
-              FacilityGocDataFilter(),
+        context.read<FacilityCmcBloc>().add(
+              FacilityCmcDataFilter(),
             );
       }
     });
@@ -94,40 +91,40 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
     return FacilityListScreenBase(
       searchFilterHeader: FacilitySearchHeader(
         showBackButton: widget.showBackButton,
-        keywordHintText: t.lists.goc.search,
+        keywordHintText: t.lists.cmc.search,
         enabled: !_disableFilter,
-        filterButtons: const [FilterButtons.clusters],
-        clusterButtonLabel: t.lists.goc.cluster,
-        clusterDefaultOptions: _searchClusters,
-        isClusterButtonHighlighted: _searchClusters.length != 7,
+        filterButtons: const [FilterButtons.regions],
+        regionButtonLabel: t.lists.cmc.region,
+        regionDefaultOptions: _searchRegions,
+        isRegionButtonHighlighted: _searchRegions.length != 5,
         onKeywordChange: (final String keyword) =>
             _onKeywordChange(context, keyword),
-        onClusterChange: (final List<int> clusters) =>
-            _onClusterChange(context, clusters),
+        onRegionChange: (final List<int> regions) =>
+            _onClusterChange(context, regions),
         onClearFilter: () => _onClearFilter(context),
       ),
-      body: BlocConsumer<FacilityGocBloc, FacilityGocState>(
+      body: BlocConsumer<FacilityCmcBloc, FacilityCmcState>(
         listener: (context, state) {
           setState(() {
             _disableFilter =
-                state is FacilityGocLoading || state is FacilityGocFailed;
+                state is FacilityCmcLoading || state is FacilityCmcFailed;
           });
         },
         builder: (context, state) {
-          if (state is FacilityGocFailed) {
+          if (state is FacilityCmcFailed) {
             return FacilityListErrorPrompt(
               errorMessage: state.errorMessage,
               onPressRefresh: () {
-                context.read<FacilityGocBloc>().add(FacilityGocRequested());
+                context.read<FacilityCmcBloc>().add(FacilityCmcRequested());
               },
             );
           }
 
-          if (state is! FacilityGocSuccess) {
+          if (state is! FacilityCmcSuccess) {
             return const SliverLoadingIndicator();
           }
 
-          if (state.facilityGocData.isEmpty) {
+          if (state.facilityCmcData.isEmpty) {
             return SliverNoDataPrompt(
               promptText: t.lists.goc.noSearchResult,
             );
@@ -147,12 +144,12 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
             ),
             sliver: SliverList.separated(
               itemBuilder: (context, index) {
-                final FacilityGocModel item = state.facilityGocData[index];
+                final FacilityCmcModel item = state.facilityCmcData[index];
 
                 return FacilityItemCard(
                   institutionName: item.institutionName,
                   address: item.address,
-                  clusterCode: item.clusterCode,
+                  // clusterCode: item.clusterCode,
                   latitude: item.latitude,
                   longitude: item.longitude,
                 );
@@ -160,7 +157,7 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
               separatorBuilder: (context, index) => const SizedBox(
                 height: 16.0,
               ),
-              itemCount: state.facilityGocData.length,
+              itemCount: state.facilityCmcData.length,
             ),
           );
         },

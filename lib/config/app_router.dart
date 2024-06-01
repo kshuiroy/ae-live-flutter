@@ -1,5 +1,6 @@
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/screens/home_screen.dart';
+import 'package:ae_live/screens/lists/facility_cmc_screen.dart';
 import 'package:ae_live/screens/lists/facility_goc_screen.dart';
 import 'package:ae_live/screens/lists/facility_hospital_screen.dart';
 import 'package:ae_live/screens/lists/facility_soc_screen.dart';
@@ -74,6 +75,13 @@ final GoRouter appRouter = GoRouter(
               builder:
                   (final BuildContext context, final GoRouterState state) =>
                       const FacilityGocScreen(),
+            ),
+            GoRoute(
+              path: 'cmc',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const FacilityCmcScreen(),
             ),
           ],
         ),

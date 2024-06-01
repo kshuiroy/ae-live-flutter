@@ -2,6 +2,7 @@ import 'package:ae_live/bloc/facility_hospital/facility_hospital_bloc.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/facility_hospital_model.dart';
+import 'package:ae_live/utilities/filter_buttons.dart';
 import 'package:ae_live/widgets/facility_screen/facility_item_card.dart';
 import 'package:ae_live/widgets/facility_screen/facility_list_error_prompt.dart';
 import 'package:ae_live/widgets/facility_screen/facility_list_screen_base.dart';
@@ -94,6 +95,7 @@ class _FacilityHospitalScreenState extends State<FacilityHospitalScreen> {
         showBackButton: widget.showBackButton,
         keywordHintText: t.lists.hospital.search,
         enabled: !_disableFilter,
+        filterButtons: const [FilterButtons.clusters],
         clusterButtonLabel: t.lists.hospital.cluster,
         clusterDefaultOptions: _searchClusters,
         isClusterButtonHighlighted: _searchClusters.length != 7,

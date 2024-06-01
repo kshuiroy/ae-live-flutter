@@ -2,6 +2,7 @@ import 'package:ae_live/bloc/facility_soc/facility_soc_bloc.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/facility_soc_model.dart';
+import 'package:ae_live/utilities/filter_buttons.dart';
 import 'package:ae_live/widgets/facility_screen/facility_item_card.dart';
 import 'package:ae_live/widgets/facility_screen/facility_list_error_prompt.dart';
 import 'package:ae_live/widgets/facility_screen/facility_list_screen_base.dart';
@@ -94,6 +95,7 @@ class _FacilitySocScreenState extends State<FacilitySocScreen> {
         showBackButton: widget.showBackButton,
         keywordHintText: t.lists.soc.search,
         enabled: !_disableFilter,
+        filterButtons: const [FilterButtons.clusters],
         clusterButtonLabel: t.lists.soc.cluster,
         clusterDefaultOptions: _searchClusters,
         isClusterButtonHighlighted: _searchClusters.length != 7,

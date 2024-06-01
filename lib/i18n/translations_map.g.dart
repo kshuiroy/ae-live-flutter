@@ -44,6 +44,7 @@ extension on Translations {
 			case 'lists.goc.cluster': return 'Clinic Cluster';
 			case 'lists.goc.noSearchResult': return 'There is no clinic matches your search criteria.';
 			case 'lists.cmc.search': return 'Search Chinese Medicine Clinics cum Training and Research Centres';
+			case 'lists.cmc.region': return 'Region';
 			case 'lists.cmc.noSearchResult': return 'There is no clinic matches your search criteria.';
 			case 'lists.prompt.noConnection': return 'No internet connection.';
 			case 'lists.prompt.serverError': return 'Something went wrong with the server, please try again later.';
@@ -175,6 +176,7 @@ extension on _TranslationsZhCn {
 			case 'lists.goc.cluster': return '诊所联网';
 			case 'lists.goc.noSearchResult': return '没有符合搜寻条件的诊所。';
 			case 'lists.cmc.search': return '搜寻中医诊所暨教研中心';
+			case 'lists.cmc.region': return '区域';
 			case 'lists.cmc.noSearchResult': return '没有符合搜寻条件的诊所。';
 			case 'lists.prompt.noConnection': return '没有网络连线。';
 			case 'lists.prompt.serverError': return '服务器发生错误，请稍后再试。';
@@ -306,6 +308,7 @@ extension on _TranslationsZhHk {
 			case 'lists.goc.cluster': return '診所聯網';
 			case 'lists.goc.noSearchResult': return '沒有符合搜尋條件的診所。';
 			case 'lists.cmc.search': return '搜尋中醫診所暨教研中心';
+			case 'lists.cmc.region': return '區域';
 			case 'lists.cmc.noSearchResult': return '沒有符合搜尋條件的診所。';
 			case 'lists.prompt.noConnection': return '沒有網絡連線。';
 			case 'lists.prompt.serverError': return '伺服器發生錯誤，請稍後再試。';

@@ -27,6 +27,7 @@
     },
     "cmc": {
         "search": "Search Chinese Medicine Clinics cum Training and Research Centres",
+        "region": "Region",
         "noSearchResult": "There is no clinic matches your search criteria."
     },
     "prompt": {

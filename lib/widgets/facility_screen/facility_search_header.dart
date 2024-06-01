@@ -1,8 +1,10 @@
 import 'package:ae_live/config/constants.dart';
+import 'package:ae_live/utilities/filter_buttons.dart';
 import 'package:ae_live/utilities/platform_helper.dart';
 import 'package:ae_live/widgets/core/frosted_glass_search_header.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/home_screen/cluster_options_modal.dart';
+import 'package:ae_live/widgets/home_screen/region_options_modal.dart';
 import 'package:ae_live/widgets/shared/clear_filter_button.dart';
 import 'package:ae_live/widgets/shared/filter_sort_button.dart';
 import 'package:ae_live/widgets/shared/search_text_field.dart';
@@ -12,27 +14,44 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class FacilitySearchHeader extends StatefulWidget {
-  const FacilitySearchHeader({
+  FacilitySearchHeader({
     super.key,
     required this.showBackButton,
     required this.keywordHintText,
     required this.enabled,
     this.onKeywordChange,
-    required this.clusterButtonLabel,
-    required this.clusterDefaultOptions,
+    required this.filterButtons,
+    this.clusterButtonLabel,
+    this.clusterDefaultOptions,
     this.isClusterButtonHighlighted = false,
     this.onClusterChange,
+    this.regionButtonLabel,
+    this.regionDefaultOptions,
+    this.isRegionButtonHighlighted = false,
+    this.onRegionChange,
     this.onClearFilter,
-  });
+  })  : assert(
+          !filterButtons.contains(FilterButtons.clusters) ||
+              (clusterButtonLabel != null && clusterDefaultOptions != null),
+        ),
+        assert(
+          !filterButtons.contains(FilterButtons.regions) ||
+              (regionButtonLabel != null && regionDefaultOptions != null),
+        );
 
   final bool showBackButton;
   final String keywordHintText;
   final bool enabled;
   final void Function(String keyword)? onKeywordChange;
-  final String clusterButtonLabel;
-  final List<int> clusterDefaultOptions;
+  final List<FilterButtons> filterButtons;
+  final String? clusterButtonLabel;
+  final List<int>? clusterDefaultOptions;
   final bool isClusterButtonHighlighted;
   final void Function(List<int> clusters)? onClusterChange;
+  final String? regionButtonLabel;
+  final List<int>? regionDefaultOptions;
+  final bool isRegionButtonHighlighted;
+  final void Function(List<int> regions)? onRegionChange;
   final void Function()? onClearFilter;
 
   @override
@@ -74,7 +93,8 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
     final bool isCompactSize = ResponsiveBreakpoints.of(context)
         .smallerOrEqualTo(Constants.screenSizeKeyCompact);
     final bool isListFiltered = _searchTextController.text.isNotEmpty ||
-        widget.isClusterButtonHighlighted;
+        widget.isClusterButtonHighlighted ||
+        widget.isRegionButtonHighlighted;
 
     return FrostedGlassSearchHeader(
       padding: EdgeInsets.zero,
@@ -142,22 +162,44 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
                       controller: _filterOptionsController,
                       child: Row(
                         children: [
-                          FilterSortButton(
-                            icon: Symbols.explore_rounded,
-                            label: widget.clusterButtonLabel,
-                            enabled: widget.enabled,
-                            isHighlighted: widget.isClusterButtonHighlighted,
-                            onPressed: () {
-                              _showDataFilterSortModal(
-                                context,
-                                child: ClusterOptionsModal(
-                                  defaultOptions: widget.clusterDefaultOptions,
-                                  title: widget.clusterButtonLabel,
-                                  onUpdate: widget.onClusterChange,
-                                ),
-                              );
-                            },
-                          ),
+                          if (widget.filterButtons
+                              .contains(FilterButtons.clusters))
+                            FilterSortButton(
+                              icon: Symbols.explore_rounded,
+                              label: widget.clusterButtonLabel!,
+                              enabled: widget.enabled,
+                              isHighlighted: widget.isClusterButtonHighlighted,
+                              onPressed: () {
+                                _showDataFilterSortModal(
+                                  context,
+                                  child: ClusterOptionsModal(
+                                    defaultOptions:
+                                        widget.clusterDefaultOptions!,
+                                    title: widget.clusterButtonLabel,
+                                    onUpdate: widget.onClusterChange,
+                                  ),
+                                );
+                              },
+                            ),
+                          if (widget.filterButtons
+                              .contains(FilterButtons.regions))
+                            FilterSortButton(
+                              icon: Symbols.travel_explore_rounded,
+                              label: widget.regionButtonLabel!,
+                              enabled: widget.enabled,
+                              isHighlighted: widget.isRegionButtonHighlighted,
+                              onPressed: () {
+                                _showDataFilterSortModal(
+                                  context,
+                                  child: RegionOptionsModal(
+                                    defaultOptions:
+                                        widget.regionDefaultOptions!,
+                                    title: widget.regionButtonLabel,
+                                    onUpdate: widget.onRegionChange,
+                                  ),
+                                );
+                              },
+                            ),
                         ],
                       ),
                     ),

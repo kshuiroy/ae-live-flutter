@@ -27,6 +27,7 @@
     },
     "cmc": {
         "search": "搜寻中医诊所暨教研中心",
+        "region": "区域",
         "noSearchResult": "没有符合搜寻条件的诊所。"
     },
     "prompt": {

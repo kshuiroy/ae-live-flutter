@@ -27,6 +27,7 @@
     },
     "cmc": {
         "search": "搜尋中醫診所暨教研中心",
+        "region": "區域",
         "noSearchResult": "沒有符合搜尋條件的診所。"
     },
     "prompt": {

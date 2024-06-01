@@ -17,6 +17,7 @@ class FacilityListScreenBase extends StatefulWidget {
 
 class _FacilityListScreenBaseState extends State<FacilityListScreenBase> {
   final ScrollController _facilityListController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return ControlledSystemUIContainer(

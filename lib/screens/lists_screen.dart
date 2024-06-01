@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:ae_live/artworks/select_item_from_list.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
+import 'package:ae_live/screens/lists/facility_cmc_screen.dart';
 import 'package:ae_live/screens/lists/facility_goc_screen.dart';
 import 'package:ae_live/screens/lists/facility_hospital_screen.dart';
 import 'package:ae_live/screens/lists/facility_soc_screen.dart';
@@ -125,10 +126,21 @@ class _ListsScreenState extends State<ListsScreen> {
           }
         },
       ),
-      // _CategoryListItem(
-      //   title: t.lists.categories.cmc,
-      //   icon: Symbols.local_hospital_rounded,
-      // ),
+      _CategoryListItem(
+        title: t.lists.categories.cmc,
+        icon: Symbols.local_hospital_rounded,
+        onTap: () {
+          if (isCompactSize) {
+            context.go('/lists/cmc');
+          } else {
+            setState(() {
+              _selectedPane = const FacilityCmcScreen(
+                showBackButton: false,
+              );
+            });
+          }
+        },
+      ),
     ];
 
     return Scaffold(

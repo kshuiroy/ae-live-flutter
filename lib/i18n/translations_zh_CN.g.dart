@@ -229,6 +229,7 @@ class _TranslationsListsCmcZhCn extends _TranslationsListsCmcEn {
 
 	// Translations
 	@override String get search => '搜寻中医诊所暨教研中心';
+	@override String get region => '区域';
 	@override String get noSearchResult => '没有符合搜寻条件的诊所。';
 }
 

@@ -1,3 +1,4 @@
+import 'package:ae_live/bloc/facility_cmc/facility_cmc_bloc.dart';
 import 'package:ae_live/bloc/facility_goc/facility_goc_bloc.dart';
 import 'package:ae_live/bloc/facility_hospital/facility_hospital_bloc.dart';
 import 'package:ae_live/bloc/facility_soc/facility_soc_bloc.dart';
@@ -5,10 +6,12 @@ import 'package:ae_live/bloc/wait_time/wait_time_bloc.dart';
 import 'package:ae_live/config/app_router.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/config/theme_map.dart';
+import 'package:ae_live/data/providers/facility_cmc_provider.dart';
 import 'package:ae_live/data/providers/facility_goc_provider.dart';
 import 'package:ae_live/data/providers/facility_hospital_provider.dart';
 import 'package:ae_live/data/providers/facility_soc_provider.dart';
 import 'package:ae_live/data/providers/wait_time_provider.dart';
+import 'package:ae_live/data/repositories/facility_cmc_repository.dart';
 import 'package:ae_live/data/repositories/facility_goc_repository.dart';
 import 'package:ae_live/data/repositories/facility_hospital_repository.dart';
 import 'package:ae_live/data/repositories/facility_soc_repository.dart';
@@ -144,6 +147,11 @@ class _AELiveAppState extends State<AELiveApp> {
             provider: FacilityGocProvider(),
           ),
         ),
+        RepositoryProvider(
+          create: (final BuildContext context) => FacilityCmcRepository(
+            provider: FacilityCmcProvider(),
+          ),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -165,6 +173,11 @@ class _AELiveAppState extends State<AELiveApp> {
           BlocProvider<FacilityGocBloc>(
             create: (final BuildContext context) => FacilityGocBloc(
               repository: context.read<FacilityGocRepository>(),
+            ),
+          ),
+          BlocProvider<FacilityCmcBloc>(
+            create: (final BuildContext context) => FacilityCmcBloc(
+              repository: context.read<FacilityCmcRepository>(),
             ),
           ),
         ],
