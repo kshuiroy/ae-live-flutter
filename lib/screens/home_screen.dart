@@ -313,8 +313,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         context,
                                         child: SortingOptionsModal(
                                           defaultOption: _dataSortType,
-                                          onUpdate: (final WaitTimeSortType
-                                              sortType) {
+                                          onUpdate: (
+                                            final WaitTimeSortType sortType,
+                                          ) {
                                             setState(() {
                                               _dataSortType = sortType;
                                             });
