@@ -147,6 +147,8 @@ class _PackagesViewState extends State<_PackagesView> {
       )
       .then((_LicenseData licenseData) => licenseData..sortPackages());
 
+  final ScrollController packageListController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<_LicenseData>(
@@ -235,7 +237,9 @@ class _PackagesViewState extends State<_PackagesView> {
     final bool drawSelection,
   ) {
     return Scrollbar(
+      controller: packageListController,
       child: ListView.builder(
+        controller: packageListController,
         itemCount: data.packages.length,
         itemBuilder: (BuildContext context, int index) {
           // if (index == 0) {
