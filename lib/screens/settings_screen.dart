@@ -26,6 +26,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   Widget? _selectedPane;
+  final ScrollController _settingsScreenController = ScrollController();
 
   void _showResponsiveModal(
     final BuildContext context, {
@@ -233,7 +234,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       extendBodyBehindAppBar: true,
       body: Scrollbar(
+        controller: _settingsScreenController,
         child: SingleChildScrollView(
+          controller: _settingsScreenController,
           padding: EdgeInsets.only(
             top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
             bottom: MediaQuery.of(context).padding.bottom + 16.0,

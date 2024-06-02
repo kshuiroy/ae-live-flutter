@@ -30,6 +30,8 @@ class WaitTimeDetailsScreen extends StatefulWidget {
 }
 
 class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
+  final ScrollController _screenController = ScrollController();
+
   bool _isLoading = true;
   bool _isPhoneCallSupported = false;
   bool _isEmailSupported = false;
@@ -195,7 +197,9 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
               child: CircularProgressIndicator.adaptive(),
             )
           : Scrollbar(
+              controller: _screenController,
               child: SingleChildScrollView(
+                controller: _screenController,
                 padding: EdgeInsets.only(
                   top: MediaQuery.of(context).padding.top + kToolbarHeight,
                   // right: screenPaddingX,

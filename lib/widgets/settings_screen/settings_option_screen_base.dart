@@ -25,6 +25,7 @@ class SettingsOptionScreenBase<T> extends StatefulWidget {
 
 class _SettingsOptionScreenBaseState<T>
     extends State<SettingsOptionScreenBase<T>> {
+  final ScrollController _screenController = ScrollController();
   late T _selectedOption;
 
   @override
@@ -53,7 +54,9 @@ class _SettingsOptionScreenBaseState<T>
     final Translations t = Translations.of(context);
 
     return Scrollbar(
+      controller: _screenController,
       child: ListView.builder(
+        controller: _screenController,
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).padding.top + kToolbarHeight,
           bottom: MediaQuery.of(context).padding.bottom + 16.0,

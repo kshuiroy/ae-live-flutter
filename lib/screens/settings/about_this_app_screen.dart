@@ -32,6 +32,7 @@ class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
   @override
   Widget build(BuildContext context) {
     final Translations t = Translations.of(context);
+    final ScrollController _screenController = ScrollController();
 
     final List<_AboutThisAppTileItem> items = [
       _AboutThisAppTileItem(
@@ -84,7 +85,9 @@ class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
               child: CircularProgressIndicator.adaptive(),
             )
           : Scrollbar(
+              controller: _screenController,
               child: ListView.builder(
+                controller: _screenController,
                 padding: EdgeInsets.only(
                   top: MediaQuery.of(context).padding.top + kToolbarHeight,
                   bottom: MediaQuery.of(context).padding.bottom + 16.0,

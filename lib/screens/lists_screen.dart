@@ -23,6 +23,7 @@ class ListsScreen extends StatefulWidget {
 
 class _ListsScreenState extends State<ListsScreen> {
   Widget? _selectedPane;
+  final ScrollController _listsScreenController = ScrollController();
 
   @override
   Widget build(final BuildContext context) {
@@ -149,7 +150,9 @@ class _ListsScreenState extends State<ListsScreen> {
       ),
       extendBodyBehindAppBar: true,
       body: Scrollbar(
+        controller: _listsScreenController,
         child: ListView.separated(
+          controller: _listsScreenController,
           padding: EdgeInsets.only(
             top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
             right: isCompactSize ? 16.0 : 24.0,
