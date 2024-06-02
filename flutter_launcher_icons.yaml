@@ -1,10 +1,11 @@
 flutter_launcher_icons:
-  image_path_ios: "assets/external/ios_app_icon.png"
-  android: false
-  ios: true
-  web:
-    generate: false
-  windows:
-    generate: false
-  macos:
-    generate: false
+    image_path_ios: 'assets/external/ios_app_icon.png'
+    android: false
+    ios: true
+    web:
+        generate: false
+    windows:
+        generate: false
+    macos:
+        generate: true
+        image_path: 'assets/external/macos_app_icon.png'
