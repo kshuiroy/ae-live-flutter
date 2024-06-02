@@ -22,10 +22,6 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
 
   final WaitTimeRepository repository;
 
-  // String? filterKeyword;
-  // List<int> filterClusters = <int>[1, 2, 3, 4, 5, 6, 7];
-  // WaitTimeSortType filterSortType = WaitTimeSortType.timeInAsd;
-
   List<WaitTimeModel>? _data;
 
   void _onWaitTimeFetchRequested(
@@ -39,6 +35,8 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
     if (await isConnectedToInternet()) {
       try {
         _data = await repository.getWaitTimeData();
+        final SharedPreferences preferences =
+            await SharedPreferences.getInstance();
 
         final List<WaitTimeModel> processedData =
             repository.filterAndSortWaitTimeData(
@@ -46,7 +44,10 @@ class WaitTimeBloc extends Bloc<WaitTimeEvent, WaitTimeState> {
           keyword: event.keyword?.trim(),
           clusters: event.clusters,
           regions: event.regions,
-          sortType: event.sortType ?? WaitTimeSortType.timeInAsd,
+          sortType: event.sortType ??
+              toWaitTimeSortType(
+                preferences.getString(Constants.preferenceKeyDefaultSorting),
+              ),
         );
 
         emit(
