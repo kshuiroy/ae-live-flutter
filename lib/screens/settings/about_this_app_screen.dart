@@ -13,6 +13,7 @@ class AboutThisAppScreen extends StatefulWidget {
 }
 
 class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
+  final ScrollController _screenController = ScrollController();
   String? _appVersion;
 
   void _init() async {
@@ -32,7 +33,6 @@ class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
   @override
   Widget build(BuildContext context) {
     final Translations t = Translations.of(context);
-    final ScrollController _screenController = ScrollController();
 
     final List<_AboutThisAppTileItem> items = [
       _AboutThisAppTileItem(
