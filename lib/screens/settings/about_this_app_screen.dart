@@ -1,9 +1,9 @@
 import 'package:ae_live/i18n/translations.g.dart';
+import 'package:ae_live/utilities/launch_in_app_browser.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AboutThisAppScreen extends StatefulWidget {
   const AboutThisAppScreen({super.key});
@@ -45,30 +45,12 @@ class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
         value: t.settings.more.about.items.dataSource.value,
         icon: Symbols.database_rounded,
       ),
-      // _AboutThisAppTileItem(
-      //   title: t.settings.more.about.items.appIconSource.title,
-      //   value: t.settings.more.about.items.appIconSource.value,
-      //   icon: Symbols.widgets_rounded,
-      //   onTap: () async {
-      //     await launchUrl(
-      //       Uri.parse(
-      //         t.settings.more.about.items.appIconSource.url,
-      //       ),
-      //       mode: LaunchMode.inAppBrowserView,
-      //     );
-      //   },
-      // ),
       _AboutThisAppTileItem(
         title: t.settings.more.about.items.imageSource.title,
         value: t.settings.more.about.items.imageSource.value,
         icon: Symbols.style_rounded,
         onTap: () async {
-          await launchUrl(
-            Uri.parse(
-              t.settings.more.about.items.imageSource.url,
-            ),
-            mode: LaunchMode.inAppBrowserView,
-          );
+          await launchInAppBrowser(t.settings.more.about.items.imageSource.url);
         },
       ),
     ];

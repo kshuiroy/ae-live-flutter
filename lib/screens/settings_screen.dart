@@ -8,6 +8,7 @@ import 'package:ae_live/screens/settings/default_sorting_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_locale_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_theme_settings_screen.dart';
 import 'package:ae_live/screens/settings/open_source_licenses_screen.dart';
+import 'package:ae_live/utilities/launch_in_app_browser.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:ae_live/widgets/settings_screen/reset_settings_modal.dart';
 import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
@@ -15,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -192,10 +192,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ? t.settings.more.privacyPolicy.subtitle
                 : null,
             onTap: () async {
-              await launchUrl(
-                Uri.parse(Constants.pagePrivacyPolicy),
-                mode: LaunchMode.inAppBrowserView,
-              );
+              await launchInAppBrowser(Constants.pagePrivacyPolicy);
             },
           ),
           _SettingsItemModel(
@@ -205,10 +202,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ? t.settings.more.termsConditions.subtitle
                 : null,
             onTap: () async {
-              await launchUrl(
-                Uri.parse(Constants.pageTermsAndConditions),
-                mode: LaunchMode.inAppBrowserView,
-              );
+              await launchInAppBrowser(Constants.pageTermsAndConditions);
             },
           ),
           _SettingsItemModel(

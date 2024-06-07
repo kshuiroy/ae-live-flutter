@@ -24,6 +24,8 @@ class Constants {
   static const String apiFacilityCmc =
       'https://www.ha.org.hk/opendata/cmctr/facility-cmctr.json';
 
+  static const String osmCopyright = 'https://openstreetmap.org/copyright';
+
   static const String pagePrivacyPolicy =
       'https://sites.google.com/view/ae-live-privacy-policy/home';
   static const String pageTermsAndConditions =

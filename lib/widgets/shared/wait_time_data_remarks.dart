@@ -1,7 +1,7 @@
 import 'package:ae_live/i18n/translations.g.dart';
+import 'package:ae_live/utilities/launch_in_app_browser.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class WaitTimeDataRemarks extends StatelessWidget {
   const WaitTimeDataRemarks({super.key});
@@ -27,10 +27,7 @@ class WaitTimeDataRemarks extends StatelessWidget {
           style: urlTextStyle,
           recognizer: TapGestureRecognizer()
             ..onTap = () async {
-              await launchUrl(
-                Uri.parse(t.main.dataRemarks.pcdUrl),
-                mode: LaunchMode.inAppBrowserView,
-              );
+              await launchInAppBrowser(t.main.dataRemarks.pcdUrl);
             },
         ),
         tapHKD: (final String text) => TextSpan(
@@ -38,10 +35,7 @@ class WaitTimeDataRemarks extends StatelessWidget {
           style: urlTextStyle,
           recognizer: TapGestureRecognizer()
             ..onTap = () async {
-              await launchUrl(
-                Uri.parse(t.main.dataRemarks.hkdUrl),
-                mode: LaunchMode.inAppBrowserView,
-              );
+              await launchInAppBrowser(t.main.dataRemarks.hkdUrl);
             },
         ),
       ),

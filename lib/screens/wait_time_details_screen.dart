@@ -4,6 +4,7 @@ import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/wait_time_history_model.dart';
 import 'package:ae_live/models/wait_time_model.dart';
+import 'package:ae_live/utilities/launch_in_app_browser.dart';
 import 'package:ae_live/utilities/platform_helper.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
@@ -401,10 +402,7 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                               value: widget.data.website!,
                               icon: Symbols.public_rounded,
                               onTap: () async {
-                                await launchUrl(
-                                  Uri.parse(widget.data.website!),
-                                  mode: LaunchMode.inAppBrowserView,
-                                );
+                                await launchInAppBrowser(widget.data.website!);
                               },
                             ),
                           Padding(

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/config/osm_tile_provider.dart';
 import 'package:ae_live/i18n/translations.g.dart';
+import 'package:ae_live/utilities/launch_in_app_browser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -278,10 +279,7 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
   ) {
     return GestureDetector(
       onTap: () async {
-        launchUrl(
-          Uri.parse('https://openstreetmap.org/copyright'),
-          mode: LaunchMode.inAppBrowserView,
-        );
+        await launchInAppBrowser(Constants.osmCopyright);
       },
       child: Container(
         padding: const EdgeInsets.all(4.0),
