@@ -185,10 +185,10 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
             tooltip: t.waitTimeDetails.actions.share,
             onPressed: () => _shareHospitalInfo(context),
             icon: PlatformHelper.isApplePlatform
-                ? Icon(
+                ? const Icon(
                     CupertinoIcons.share,
                   )
-                : Icon(
+                : const Icon(
                     Symbols.share_rounded,
                     fill: 0.0,
                     weight: 200.0,
