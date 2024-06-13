@@ -1,6 +1,8 @@
-<img src="assets/external/readme_app_icon.png" alt="Logo of A&E Live" style="width: 200px; display: block; margin: 0 auto 16px;" />
+<p align="center">
+    <img src="assets/external/readme_app_icon.png" alt="Logo of A&E Live" style="width: 160px; display: block;" />
+</p>
 
-# A&E Live (急症室現場)
+<h1 align="center">A&E Live (急症室現場)</h1>
 
 This application provides the waiting time of Accident & Emergency service in all public hospitals in Hong Kong.
 
@@ -28,7 +30,7 @@ Patients with minor illnesses can consider seeking alternative medical services 
 
 To start development, please make sure the development machine has the following SDK and IDE installed:
 
--   [Flutter SDK: >= 3.22.1](https://docs.flutter.dev/get-started/install)
+-   [Flutter SDK: >= 3.22.2](https://docs.flutter.dev/get-started/install)
 -   [Visual Studio Code](https://code.visualstudio.com/)
 -   [Android Studio: >= Jellyfish | 2023.3.1](https://developer.android.com/studio)
 -   Install the following SDKs and IDE also if you're using **macOS**:
@@ -47,6 +49,9 @@ dart run slang
 # Update app icon
 dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
 
+# Update splash screen
+dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+
 # Start debugging
 flutter run
 
@@ -64,3 +69,4 @@ This app used the following open data:
 -   [Hospital Authority Hospital/Institution List by Cluster](https://www.ha.org.hk/opendata/facility-hosp.json)
 -   [Hospital Authority Specialist Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-sop.json)
 -   [Hospital Authority General Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-gop.json)
+-   [List of Chinese Medicine Clinics cum Training and Research Centres](https://www.ha.org.hk/opendata/cmctr/facility-cmctr.json)
