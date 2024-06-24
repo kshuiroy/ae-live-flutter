@@ -28,7 +28,7 @@ class _AppScaffoldState extends State<AppScaffold> {
   late StreamSubscription<AppLocale> _localeStream;
 
   void _onDestinationSelected(final BuildContext context, final int index) {
-    context.go(tabItems[index].path);
+    context.go(mainTabItems[index].path);
 
     setState(() {
       _selectedTabIndex = index;

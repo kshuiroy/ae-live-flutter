@@ -83,10 +83,10 @@ class _TranslationsMainEn {
 
 	// Translations
 	String get app_name => 'A&E Live';
-	Map<String, String> get tabs => {
-		'home': 'Home',
-		'lists': 'Lists',
-		'settings': 'Settings',
+	Map<String, dynamic> get tabs => {
+		'home': _TranslationsMainTabsHomeEn._(_root),
+		'lists': _TranslationsMainTabsListsEn._(_root),
+		'settings': _TranslationsMainTabsSettingsEn._(_root),
 	};
 	late final _TranslationsMainClustersEn clusters = _TranslationsMainClustersEn._(_root);
 	late final _TranslationsMainDataRemarksEn dataRemarks = _TranslationsMainDataRemarksEn._(_root);
@@ -247,6 +247,39 @@ class _TranslationsListsPromptEn {
 	String get noConnection => 'No internet connection.';
 	String get serverError => 'Something went wrong with the server, please try again later.';
 	String get selectCategory => 'Please select a category from the list to view the facility list.';
+}
+
+// Path: main.tabs.home
+class _TranslationsMainTabsHomeEn {
+	_TranslationsMainTabsHomeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get displayLabel => 'Home';
+	String get semanticLabel => 'A&E service waiting time';
+}
+
+// Path: main.tabs.lists
+class _TranslationsMainTabsListsEn {
+	_TranslationsMainTabsListsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get displayLabel => 'Lists';
+	String get semanticLabel => 'Facility Lists';
+}
+
+// Path: main.tabs.settings
+class _TranslationsMainTabsSettingsEn {
+	_TranslationsMainTabsSettingsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get displayLabel => 'Settings';
+	String get semanticLabel => 'Settings';
 }
 
 // Path: main.clusters

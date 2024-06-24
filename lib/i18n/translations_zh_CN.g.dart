@@ -79,10 +79,10 @@ class _TranslationsMainZhCn extends _TranslationsMainEn {
 
 	// Translations
 	@override String get app_name => '急症室现场';
-	@override Map<String, String> get tabs => {
-		'home': '主页',
-		'lists': '目录',
-		'settings': '设定',
+	@override Map<String, dynamic> get tabs => {
+		'home': _TranslationsMainTabsHomeZhCn._(_root),
+		'lists': _TranslationsMainTabsListsZhCn._(_root),
+		'settings': _TranslationsMainTabsSettingsZhCn._(_root),
 	};
 	@override late final _TranslationsMainClustersZhCn clusters = _TranslationsMainClustersZhCn._(_root);
 	@override late final _TranslationsMainDataRemarksZhCn dataRemarks = _TranslationsMainDataRemarksZhCn._(_root);
@@ -243,6 +243,39 @@ class _TranslationsListsPromptZhCn extends _TranslationsListsPromptEn {
 	@override String get noConnection => '没有网络连线。';
 	@override String get serverError => '服务器发生错误，请稍后再试。';
 	@override String get selectCategory => '请在列表中选取一个分类以查看设施目录。';
+}
+
+// Path: main.tabs.home
+class _TranslationsMainTabsHomeZhCn extends _TranslationsMainTabsHomeEn {
+	_TranslationsMainTabsHomeZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get displayLabel => '主页';
+	@override String get semanticLabel => '急症室服务等候时间';
+}
+
+// Path: main.tabs.lists
+class _TranslationsMainTabsListsZhCn extends _TranslationsMainTabsListsEn {
+	_TranslationsMainTabsListsZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get displayLabel => '目录';
+	@override String get semanticLabel => '设施目录';
+}
+
+// Path: main.tabs.settings
+class _TranslationsMainTabsSettingsZhCn extends _TranslationsMainTabsSettingsEn {
+	_TranslationsMainTabsSettingsZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get displayLabel => '设定';
+	@override String get semanticLabel => '设定';
 }
 
 // Path: main.clusters

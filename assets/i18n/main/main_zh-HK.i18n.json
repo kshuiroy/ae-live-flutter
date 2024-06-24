@@ -3,9 +3,18 @@
     "@@namespace": "main",
     "app_name": "急症室現場",
     "tabs(map)": {
-        "home": "主頁",
-        "lists": "目錄",
-        "settings": "設定"
+        "home": {
+            "displayLabel": "主頁",
+            "semanticLabel": "急症室服務等候時間"
+        },
+        "lists": {
+            "displayLabel": "目錄",
+            "semanticLabel": "設施目錄"
+        },
+        "settings": {
+            "displayLabel": "設定",
+            "semanticLabel": "設定"
+        }
     },
     "clusters": {
         "hke": "港島東醫院聯網",

@@ -69,26 +69,31 @@ class PhoneNavigation extends StatelessWidget {
           indicatorShape: const CircleBorder(),
           indicatorColor: Colors.transparent,
           height: isMediumSize ? 64.0 : 56.0,
-          destinations: tabItems
+          destinations: mainTabItems
               .map(
-                (final DestinationItem item) => NavigationDestination(
-                  icon: Icon(
-                    item.icon,
-                    size: 28.0,
-                    weight: 200.0,
-                    grade: 0.0,
-                    opticalSize: 28.0,
+                (final DestinationItem item) => Semantics(
+                  enabled: true,
+                  label: t.main.tabs[item.labelKey].semanticLabel,
+                  child: NavigationDestination(
+                    icon: Icon(
+                      item.icon,
+                      size: 28.0,
+                      weight: 200.0,
+                      grade: 0.0,
+                      opticalSize: 28.0,
+                    ),
+                    selectedIcon: Icon(
+                      item.icon,
+                      color: colorScheme.onSurface,
+                      size: 28.0,
+                      fill: 1.0,
+                      weight: 200.0,
+                      grade: 0.0,
+                      opticalSize: 28.0,
+                    ),
+                    label: t.main.tabs[item.labelKey].displayLabel,
+                    tooltip: t.main.tabs[item.labelKey].semanticLabel,
                   ),
-                  selectedIcon: Icon(
-                    item.icon,
-                    color: colorScheme.onSurface,
-                    size: 28.0,
-                    fill: 1.0,
-                    weight: 200.0,
-                    grade: 0.0,
-                    opticalSize: 28.0,
-                  ),
-                  label: t.main.tabs[item.labelKey]!,
                 ),
               )
               .toList(),

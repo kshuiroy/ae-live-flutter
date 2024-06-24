@@ -3,9 +3,18 @@
     "@@namespace": "main",
     "app_name": "急症室现场",
     "tabs(map)": {
-        "home": "主页",
-        "lists": "目录",
-        "settings": "设定"
+        "home": {
+            "displayLabel": "主页",
+            "semanticLabel": "急症室服务等候时间"
+        },
+        "lists": {
+            "displayLabel": "目录",
+            "semanticLabel": "设施目录"
+        },
+        "settings": {
+            "displayLabel": "设定",
+            "semanticLabel": "设定"
+        }
     },
     "clusters": {
         "hke": "港岛东医院联网",

@@ -3,9 +3,18 @@
     "@@namespace": "main",
     "app_name": "A&E Live",
     "tabs(map)": {
-        "home": "Home",
-        "lists": "Lists",
-        "settings": "Settings"
+        "home": {
+            "displayLabel": "Home",
+            "semanticLabel": "A&E service waiting time"
+        },
+        "lists": {
+            "displayLabel": "Lists",
+            "semanticLabel": "Facility Lists"
+        },
+        "settings": {
+            "displayLabel": "Settings",
+            "semanticLabel": "Settings"
+        }
     },
     "clusters": {
         "hke": "Hong Kong East Cluster",

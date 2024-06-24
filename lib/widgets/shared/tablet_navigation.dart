@@ -38,7 +38,7 @@ class TabletNavigation extends StatelessWidget {
         width: 32.0,
         height: 32.0,
       ),
-      destinations: tabItems
+      destinations: mainTabItems
           .map(
             (final DestinationItem item) => NavigationRailDestination(
               icon: Icon(
@@ -57,7 +57,7 @@ class TabletNavigation extends StatelessWidget {
                 opticalSize: 28.0,
               ),
               label: Text(
-                t.main.tabs[item.labelKey]!,
+                t.main.tabs[item.labelKey].displayLabel,
               ),
               padding: const EdgeInsets.symmetric(
                 vertical: 8.0,
