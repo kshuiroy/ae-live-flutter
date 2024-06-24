@@ -177,9 +177,9 @@ class _TranslationsListsCategoriesZhCn extends _TranslationsListsCategoriesEn {
 	@override final _TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get hospital => '医院/机构';
-	@override String get soc => '专科门诊诊所';
-	@override String get goc => '普通科门诊诊所';
+	@override String get hospital => '医院管理局辖下的医院/机构';
+	@override String get soc => '医院管理局辖下的专科门诊诊所';
+	@override String get goc => '医院管理局辖下的普通科门诊诊所';
 	@override String get cmc => '中医诊所暨教研中心';
 }
 

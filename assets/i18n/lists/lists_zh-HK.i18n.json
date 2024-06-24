@@ -3,9 +3,9 @@
     "@@namespace": "lists",
     "title": "設施目錄",
     "categories": {
-        "hospital": "醫院/機構",
-        "soc": "專科門診診所",
-        "goc": "普通科門診診所",
+        "hospital": "醫院管理局轄下的醫院/機構",
+        "soc": "醫院管理局轄下的專科門診診所",
+        "goc": "醫院管理局轄下的普通科門診診所",
         "cmc": "中醫診所暨教研中心"
     },
     "hospital": {

@@ -28,9 +28,9 @@ extension on Translations {
 			case 'home.prompt.noSearchResult': return 'There is no hospital matches your search criteria.';
 			case 'home.prompt.selectItem': return 'Please select a hospital card from the list to view the details of the hospital.';
 			case 'lists.title': return 'Lists';
-			case 'lists.categories.hospital': return 'Hospital/Institution';
-			case 'lists.categories.soc': return 'Specialist Outpatient Clinic';
-			case 'lists.categories.goc': return 'General Outpatient Clinic';
+			case 'lists.categories.hospital': return 'Hospital/Institution under the Hospial Authority';
+			case 'lists.categories.soc': return 'Specialist Outpatient Clinic under the Hospial Authority';
+			case 'lists.categories.goc': return 'General Outpatient Clinic under the Hospial Authority';
 			case 'lists.categories.cmc': return 'Chinese Medicine Clinics cum Training and Research Centres';
 			case 'lists.hospital.search': return 'Search Hospital/Institution';
 			case 'lists.hospital.cluster': return 'Hospital Cluster';
@@ -163,9 +163,9 @@ extension on _TranslationsZhCn {
 			case 'home.prompt.noSearchResult': return '没有符合搜寻条件的医院。';
 			case 'home.prompt.selectItem': return '请在列表中选取一张医院卡片，以查看医院的详情。';
 			case 'lists.title': return '设施目录';
-			case 'lists.categories.hospital': return '医院/机构';
-			case 'lists.categories.soc': return '专科门诊诊所';
-			case 'lists.categories.goc': return '普通科门诊诊所';
+			case 'lists.categories.hospital': return '医院管理局辖下的医院/机构';
+			case 'lists.categories.soc': return '医院管理局辖下的专科门诊诊所';
+			case 'lists.categories.goc': return '医院管理局辖下的普通科门诊诊所';
 			case 'lists.categories.cmc': return '中医诊所暨教研中心';
 			case 'lists.hospital.search': return '搜寻医院/机构';
 			case 'lists.hospital.cluster': return '医院联网';
@@ -298,9 +298,9 @@ extension on _TranslationsZhHk {
 			case 'home.prompt.noSearchResult': return '沒有符合搜尋條件的醫院。';
 			case 'home.prompt.selectItem': return '請在列表中選取一張醫院卡片，以查看醫院的詳情。';
 			case 'lists.title': return '設施目錄';
-			case 'lists.categories.hospital': return '醫院/機構';
-			case 'lists.categories.soc': return '專科門診診所';
-			case 'lists.categories.goc': return '普通科門診診所';
+			case 'lists.categories.hospital': return '醫院管理局轄下的醫院/機構';
+			case 'lists.categories.soc': return '醫院管理局轄下的專科門診診所';
+			case 'lists.categories.goc': return '醫院管理局轄下的普通科門診診所';
 			case 'lists.categories.cmc': return '中醫診所暨教研中心';
 			case 'lists.hospital.search': return '搜尋醫院/機構';
 			case 'lists.hospital.cluster': return '醫院聯網';

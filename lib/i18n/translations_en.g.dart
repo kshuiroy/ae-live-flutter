@@ -181,9 +181,9 @@ class _TranslationsListsCategoriesEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get hospital => 'Hospital/Institution';
-	String get soc => 'Specialist Outpatient Clinic';
-	String get goc => 'General Outpatient Clinic';
+	String get hospital => 'Hospital/Institution under the Hospial Authority';
+	String get soc => 'Specialist Outpatient Clinic under the Hospial Authority';
+	String get goc => 'General Outpatient Clinic under the Hospial Authority';
 	String get cmc => 'Chinese Medicine Clinics cum Training and Research Centres';
 }
 

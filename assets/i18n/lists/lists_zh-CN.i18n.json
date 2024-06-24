@@ -3,9 +3,9 @@
     "@@namespace": "lists",
     "title": "设施目录",
     "categories": {
-        "hospital": "医院/机构",
-        "soc": "专科门诊诊所",
-        "goc": "普通科门诊诊所",
+        "hospital": "医院管理局辖下的医院/机构",
+        "soc": "医院管理局辖下的专科门诊诊所",
+        "goc": "医院管理局辖下的普通科门诊诊所",
         "cmc": "中医诊所暨教研中心"
     },
     "hospital": {

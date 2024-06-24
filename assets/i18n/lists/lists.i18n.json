@@ -3,9 +3,9 @@
     "@@namespace": "lists",
     "title": "Lists",
     "categories": {
-        "hospital": "Hospital/Institution",
-        "soc": "Specialist Outpatient Clinic",
-        "goc": "General Outpatient Clinic",
+        "hospital": "Hospital/Institution under the Hospial Authority",
+        "soc": "Specialist Outpatient Clinic under the Hospial Authority",
+        "goc": "General Outpatient Clinic under the Hospial Authority",
         "cmc": "Chinese Medicine Clinics cum Training and Research Centres"
     },
     "hospital": {
