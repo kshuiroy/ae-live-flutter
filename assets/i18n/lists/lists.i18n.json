@@ -1,7 +1,7 @@
 {
     "@@locale": "en",
     "@@namespace": "lists",
-    "title": "Lists",
+    "title": "Facility Lists",
     "categories": {
         "hospital": "Hospital/Institution under the Hospial Authority",
         "soc": "Specialist Outpatient Clinic under the Hospial Authority",

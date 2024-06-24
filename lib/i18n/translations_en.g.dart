@@ -65,7 +65,7 @@ class _TranslationsListsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Lists';
+	String get title => 'Facility Lists';
 	late final _TranslationsListsCategoriesEn categories = _TranslationsListsCategoriesEn._(_root);
 	late final _TranslationsListsHospitalEn hospital = _TranslationsListsHospitalEn._(_root);
 	late final _TranslationsListsSocEn soc = _TranslationsListsSocEn._(_root);

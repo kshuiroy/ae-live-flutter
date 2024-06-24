@@ -55,7 +55,7 @@ dependencies:
     responsive_framework: ^1.4.0
     share_plus: ^9.0.0
     shared_preferences: ^2.2.3
-    slang: ^3.31.0
+    slang: ^3.31.1
     slang_flutter: ^3.31.0
     syncfusion_flutter_charts: ^26.1.38
     url_launcher: ^6.3.0
