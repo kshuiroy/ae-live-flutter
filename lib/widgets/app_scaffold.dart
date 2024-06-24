@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:ae_live/bloc/wait_time/wait_time_bloc.dart';
 import 'package:ae_live/config/constants.dart';
-import 'package:ae_live/config/tab_items.dart';
+import 'package:ae_live/config/main_tab_items.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/widgets/shared/phone_navigation.dart';
 import 'package:ae_live/widgets/shared/tablet_navigation.dart';

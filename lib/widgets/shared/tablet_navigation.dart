@@ -1,4 +1,4 @@
-import 'package:ae_live/config/tab_items.dart';
+import 'package:ae_live/config/main_tab_items.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/destination_item.dart';
 import 'package:ae_live/widgets/core/app_icon.dart';
