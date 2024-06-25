@@ -1,5 +1,6 @@
 import 'package:ae_live/bloc/facility_goc/facility_goc_bloc.dart';
 import 'package:ae_live/config/constants.dart';
+import 'package:ae_live/config/districts_list.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/facility_goc_model.dart';
 import 'package:ae_live/utilities/filter_buttons.dart';
@@ -32,12 +33,33 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
   bool _disableFilter = false;
   String? _searchKeyword;
   List<int> _searchClusters = [1, 2, 3, 4, 5, 6, 7];
+  List<int> _searchDistricts = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+  ];
 
   void _onUpdateSearchResult(final BuildContext context) {
     context.read<FacilityGocBloc>().add(
           FacilityGocDataFilter(
             keyword: _searchKeyword,
             clusters: _searchClusters,
+            districts: _searchDistricts,
           ),
         );
   }
@@ -58,10 +80,39 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
     _onUpdateSearchResult(context);
   }
 
+  void _onDistrictChange(
+      final BuildContext context, final List<int> districts) {
+    setState(() {
+      _searchDistricts = districts;
+    });
+
+    _onUpdateSearchResult(context);
+  }
+
   void _onClearFilter(final BuildContext context) {
     setState(() {
       _searchKeyword = null;
       _searchClusters = [1, 2, 3, 4, 5, 6, 7];
+      _searchDistricts = [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+      ];
     });
 
     _onUpdateSearchResult(context);
@@ -96,14 +147,19 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
         showBackButton: widget.showBackButton,
         keywordHintText: t.lists.goc.search,
         enabled: !_disableFilter,
-        filterButtons: const [FilterButtons.clusters],
+        filterButtons: const [FilterButtons.clusters, FilterButtons.districts],
         clusterButtonLabel: t.lists.goc.cluster,
         clusterDefaultOptions: _searchClusters,
         isClusterButtonHighlighted: _searchClusters.length != 7,
+        districtButtonLabel: t.shared.filter.district,
+        districtDefaultOptions: _searchDistricts,
+        isDistrictButtonHighlighted:
+            _searchDistricts.length != districtsList.length,
         onKeywordChange: (final String keyword) =>
             _onKeywordChange(context, keyword),
         onClusterChange: (final List<int> clusters) =>
             _onClusterChange(context, clusters),
+        onDistrictChange: (districts) => _onDistrictChange(context, districts),
         onClearFilter: () => _onClearFilter(context),
       ),
       body: BlocConsumer<FacilityGocBloc, FacilityGocState>(
@@ -153,6 +209,7 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
                   institutionName: item.institutionName,
                   address: item.address,
                   clusterCode: item.clusterCode,
+                  consultationSessions: item.consultationSessions,
                   latitude: item.latitude,
                   longitude: item.longitude,
                 );

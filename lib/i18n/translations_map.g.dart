@@ -118,6 +118,7 @@ extension on Translations {
 			case 'shared.filter.hospitalCluster': return 'Hospital Cluster';
 			case 'shared.filter.clinicCluster': return 'Clinic Cluster';
 			case 'shared.filter.region': return 'Region';
+			case 'shared.filter.district': return 'District';
 			case 'shared.filter.actions.apply': return 'Apply';
 			case 'shared.filter.actions.reset': return 'Reset';
 			case 'shared.filter.actions.clear': return 'Clear';
@@ -253,6 +254,7 @@ extension on _TranslationsZhCn {
 			case 'shared.filter.hospitalCluster': return '医院联网';
 			case 'shared.filter.clinicCluster': return '诊所联网';
 			case 'shared.filter.region': return '区域';
+			case 'shared.filter.district': return '地区';
 			case 'shared.filter.actions.apply': return '套用';
 			case 'shared.filter.actions.reset': return '重设';
 			case 'shared.filter.actions.clear': return '清除';
@@ -388,6 +390,7 @@ extension on _TranslationsZhHk {
 			case 'shared.filter.hospitalCluster': return '醫院聯網';
 			case 'shared.filter.clinicCluster': return '診所聯網';
 			case 'shared.filter.region': return '區域';
+			case 'shared.filter.district': return '地區';
 			case 'shared.filter.actions.apply': return '套用';
 			case 'shared.filter.actions.reset': return '重設';
 			case 'shared.filter.actions.clear': return '清除';

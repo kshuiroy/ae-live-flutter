@@ -15,4 +15,18 @@ class FacilityGocProvider {
       throw error.toString();
     }
   }
+
+  Future<List<String>> getGocInfoData() async {
+    try {
+      final List<String> responses = await Future.wait([
+        _apiProvider.fetchAPI(url: Constants.apiGocQuotaTC),
+        _apiProvider.fetchAPI(url: Constants.apiGocQuotaSC),
+        _apiProvider.fetchAPI(url: Constants.apiGocQuotaEN),
+      ]);
+
+      return responses;
+    } catch (error) {
+      throw error.toString();
+    }
+  }
 }

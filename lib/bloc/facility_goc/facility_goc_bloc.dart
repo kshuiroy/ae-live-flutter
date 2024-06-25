@@ -53,6 +53,7 @@ class FacilityGocBloc extends Bloc<FacilityGocEvent, FacilityGocState> {
       _data,
       keyword: event.keyword?.trim(),
       clusters: event.clusters,
+      districts: event.districts,
     );
 
     emit(

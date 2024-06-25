@@ -12,6 +12,7 @@
         "hospitalCluster": "Hospital Cluster",
         "clinicCluster": "Clinic Cluster",
         "region": "Region",
+        "district": "District",
         "actions": {
             "apply": "Apply",
             "reset": "Reset",

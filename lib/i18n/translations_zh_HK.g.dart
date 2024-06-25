@@ -382,6 +382,7 @@ class _TranslationsSharedFilterZhHk extends _TranslationsSharedFilterEn {
 	@override String get hospitalCluster => '醫院聯網';
 	@override String get clinicCluster => '診所聯網';
 	@override String get region => '區域';
+	@override String get district => '地區';
 	@override late final _TranslationsSharedFilterActionsZhHk actions = _TranslationsSharedFilterActionsZhHk._(_root);
 }
 

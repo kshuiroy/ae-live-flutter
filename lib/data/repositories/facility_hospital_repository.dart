@@ -51,8 +51,8 @@ class FacilityHospitalRepository {
                   element.institutionNameTC
                       .toLowerCase()
                       .contains(searchKeyword)) &&
-              ((clusters ?? <int>[]).isNotEmpty
-                  ? clusters!.contains(element.clusterCode)
+              (clusters != null
+                  ? clusters.contains(element.clusterCode)
                   : true),
         )
         .toList();

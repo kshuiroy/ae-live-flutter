@@ -15,6 +15,7 @@ class FacilityListErrorPrompt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Translations t = Translations.of(context);
+    debugPrint('[ERROR]: $errorMessage');
 
     return SliverErrorPrompt(
       promptText: errorMessage == '-1001'

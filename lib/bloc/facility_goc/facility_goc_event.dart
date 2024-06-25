@@ -11,8 +11,10 @@ final class FacilityGocDataFilter extends FacilityGocEvent {
   FacilityGocDataFilter({
     this.keyword,
     this.clusters,
+    this.districts,
   });
 
   final String? keyword;
   final List<int>? clusters;
+  final List<int>? districts;
 }

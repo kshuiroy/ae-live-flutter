@@ -386,6 +386,7 @@ class _TranslationsSharedFilterEn {
 	String get hospitalCluster => 'Hospital Cluster';
 	String get clinicCluster => 'Clinic Cluster';
 	String get region => 'Region';
+	String get district => 'District';
 	late final _TranslationsSharedFilterActionsEn actions = _TranslationsSharedFilterActionsEn._(_root);
 }
 

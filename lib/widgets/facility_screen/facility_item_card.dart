@@ -18,6 +18,7 @@ class FacilityItemCard extends StatelessWidget {
     required this.address,
     this.clusterCode,
     this.withAEService,
+    this.consultationSessions,
     required this.latitude,
     required this.longitude,
   });
@@ -26,6 +27,7 @@ class FacilityItemCard extends StatelessWidget {
   final String address;
   final int? clusterCode;
   final bool? withAEService;
+  final String? consultationSessions;
   final double latitude;
   final double longitude;
 
@@ -210,6 +212,31 @@ class FacilityItemCard extends StatelessWidget {
                                     ? colorScheme.waitQuick
                                     : colorScheme.waitSlowest,
                               ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                    if (consultationSessions != null) ...[
+                      const SizedBox(
+                        height: 4.0,
+                      ),
+                      Row(
+                        children: [
+                          const Icon(
+                            Symbols.stethoscope_rounded,
+                            size: 24.0,
+                            fill: 0.0,
+                            weight: 200.0,
+                            opticalSize: 24.0,
+                          ),
+                          const SizedBox(
+                            width: 8.0,
+                          ),
+                          Expanded(
+                            child: Text(
+                              consultationSessions!,
+                              style: textTheme.bodyMedium,
                             ),
                           ),
                         ],

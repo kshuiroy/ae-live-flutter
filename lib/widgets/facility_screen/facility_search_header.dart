@@ -5,6 +5,7 @@ import 'package:ae_live/widgets/core/frosted_glass_search_header.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/shared/clear_filter_button.dart';
 import 'package:ae_live/widgets/shared/cluster_options_modal.dart';
+import 'package:ae_live/widgets/shared/district_options_modal.dart';
 import 'package:ae_live/widgets/shared/filter_sort_button.dart';
 import 'package:ae_live/widgets/shared/region_options_modal.dart';
 import 'package:ae_live/widgets/shared/search_text_field.dart';
@@ -30,14 +31,24 @@ class FacilitySearchHeader extends StatefulWidget {
     this.regionDefaultOptions,
     this.isRegionButtonHighlighted = false,
     this.onRegionChange,
+    this.districtButtonLabel,
+    this.districtDefaultOptions,
+    this.isDistrictButtonHighlighted = false,
+    this.onDistrictChange,
     this.onClearFilter,
-  })  : assert(
+  })  : assert(!(filterButtons.contains(FilterButtons.districts) &&
+            filterButtons.contains(FilterButtons.regions))),
+        assert(
           !filterButtons.contains(FilterButtons.clusters) ||
               (clusterButtonLabel != null && clusterDefaultOptions != null),
         ),
         assert(
           !filterButtons.contains(FilterButtons.regions) ||
               (regionButtonLabel != null && regionDefaultOptions != null),
+        ),
+        assert(
+          !filterButtons.contains(FilterButtons.districts) ||
+              (districtButtonLabel != null && districtDefaultOptions != null),
         );
 
   final bool showBackButton;
@@ -53,6 +64,10 @@ class FacilitySearchHeader extends StatefulWidget {
   final List<int>? regionDefaultOptions;
   final bool isRegionButtonHighlighted;
   final void Function(List<int> regions)? onRegionChange;
+  final String? districtButtonLabel;
+  final List<int>? districtDefaultOptions;
+  final bool isDistrictButtonHighlighted;
+  final void Function(List<int> districts)? onDistrictChange;
   final void Function()? onClearFilter;
 
   @override
@@ -66,6 +81,7 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
   void _showDataFilterSortModal(
     final BuildContext context, {
     required final Widget child,
+    final bool isScrollControlled = true,
   }) {
     if (ResponsiveBreakpoints.of(context)
         .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
@@ -80,7 +96,7 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
     } else {
       showModalBottomSheet(
         context: context,
-        isScrollControlled: true,
+        isScrollControlled: isScrollControlled,
         useRootNavigator: true,
         builder: (final BuildContext context) {
           return child;
@@ -95,7 +111,8 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
         .smallerOrEqualTo(Constants.screenSizeKeyCompact);
     final bool isListFiltered = _searchTextController.text.isNotEmpty ||
         widget.isClusterButtonHighlighted ||
-        widget.isRegionButtonHighlighted;
+        widget.isRegionButtonHighlighted ||
+        widget.isDistrictButtonHighlighted;
 
     return FrostedGlassSearchHeader(
       padding: EdgeInsets.zero,
@@ -203,6 +220,26 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
                                     title: widget.regionButtonLabel,
                                     onUpdate: widget.onRegionChange,
                                   ),
+                                );
+                              },
+                            ),
+                          if (widget.filterButtons
+                              .contains(FilterButtons.districts))
+                            FilterSortButton(
+                              icon: Symbols.travel_explore_rounded,
+                              label: widget.districtButtonLabel!,
+                              enabled: widget.enabled,
+                              isHighlighted: widget.isDistrictButtonHighlighted,
+                              onPressed: () {
+                                _showDataFilterSortModal(
+                                  context,
+                                  child: DistrictOptionsModal(
+                                    defaultOptions:
+                                        widget.districtDefaultOptions!,
+                                    title: widget.districtButtonLabel,
+                                    onUpdate: widget.onDistrictChange,
+                                  ),
+                                  isScrollControlled: false,
                                 );
                               },
                             ),
