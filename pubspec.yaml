@@ -57,7 +57,7 @@ dependencies:
     shared_preferences: ^2.2.3
     slang: ^3.31.1
     slang_flutter: ^3.31.0
-    syncfusion_flutter_charts: ^26.1.38
+    syncfusion_flutter_charts: ^26.1.39
     url_launcher: ^6.3.0
 
 dev_dependencies:
