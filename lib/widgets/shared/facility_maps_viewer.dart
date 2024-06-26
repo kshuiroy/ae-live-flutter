@@ -4,6 +4,7 @@ import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/config/osm_tile_provider.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/utilities/launch_in_app_browser.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -89,7 +90,7 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
                     width: 48.0,
                     height: 48.0,
                     // alignment: Alignment.center,
-                    child: const Icon(
+                    child: const ThemedIcon(
                       Symbols.location_on,
                       size: 48.0,
                       fill: 1.0,
@@ -174,12 +175,9 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
                   ),
                   Row(
                     children: <Widget>[
-                      const Icon(
+                      const ThemedIcon(
                         Symbols.location_on_rounded,
-                        size: 24.0,
                         fill: 1.0,
-                        weight: 200.0,
-                        opticalSize: 24.0,
                       ),
                       const SizedBox(
                         width: 8.0,
@@ -210,11 +208,8 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
                               mode: LaunchMode.externalApplication,
                             );
                           },
-                          icon: const Icon(
+                          icon: const ThemedIcon(
                             Symbols.map_rounded,
-                            fill: 0.0,
-                            weight: 200.0,
-                            opticalSize: 24.0,
                           ),
                           label: Text(t.shared.facilityMaps.openMapsApp),
                         ),
@@ -229,11 +224,8 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          icon: const Icon(
+                          icon: const ThemedIcon(
                             Symbols.close_rounded,
-                            fill: 0.0,
-                            weight: 200.0,
-                            opticalSize: 24.0,
                           ),
                           label: Text(t.shared.facilityMaps.closeMapsModal),
                           style: ButtonStyle(
@@ -265,10 +257,8 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      icon: const Icon(
+      icon: const ThemedIcon(
         Symbols.close_rounded,
-        weight: 200.0,
-        opticalSize: 24.0,
       ),
     );
   }

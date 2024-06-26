@@ -1,4 +1,5 @@
 import 'package:ae_live/config/constants.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -45,13 +46,8 @@ class HospitalInfoItem extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          Icon(
+          ThemedIcon(
             icon,
-            // color: colorScheme.primary,
-            size: 24.0,
-            fill: 0.0,
-            weight: 200.0,
-            opticalSize: 24.0,
           ),
           const SizedBox(
             width: 16.0,

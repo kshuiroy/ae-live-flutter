@@ -7,6 +7,7 @@ import 'package:ae_live/models/cluster_model.dart';
 import 'package:ae_live/theme/custom_colors.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/shared/facility_maps_viewer.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -139,12 +140,8 @@ class FacilityItemCard extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const Icon(
+                          const ThemedIcon(
                             Symbols.public_rounded,
-                            size: 24.0,
-                            fill: 0.0,
-                            weight: 200.0,
-                            opticalSize: 24.0,
                           ),
                           const SizedBox(
                             width: 8.0,
@@ -163,12 +160,8 @@ class FacilityItemCard extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const Icon(
+                        const ThemedIcon(
                           Symbols.location_on_rounded,
-                          size: 24.0,
-                          fill: 0.0,
-                          weight: 200.0,
-                          opticalSize: 24.0,
                         ),
                         const SizedBox(
                           width: 8.0,
@@ -187,17 +180,13 @@ class FacilityItemCard extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Icon(
+                          ThemedIcon(
                             withAEService!
                                 ? Symbols.check_circle_rounded
                                 : Symbols.cancel_rounded,
                             color: withAEService!
                                 ? colorScheme.waitQuick
                                 : colorScheme.waitSlowest,
-                            size: 24.0,
-                            fill: 0.0,
-                            weight: 200.0,
-                            opticalSize: 24.0,
                           ),
                           const SizedBox(
                             width: 8.0,
@@ -223,12 +212,8 @@ class FacilityItemCard extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const Icon(
+                          const ThemedIcon(
                             Symbols.stethoscope_rounded,
-                            size: 24.0,
-                            fill: 0.0,
-                            weight: 200.0,
-                            opticalSize: 24.0,
                           ),
                           const SizedBox(
                             width: 8.0,
@@ -248,12 +233,8 @@ class FacilityItemCard extends StatelessWidget {
               const SizedBox(
                 width: 16.0,
               ),
-              const Icon(
+              const ThemedIcon(
                 Symbols.chevron_right_rounded,
-                size: 24.0,
-                fill: 0.0,
-                weight: 200.0,
-                opticalSize: 24.0,
               ),
             ],
           ),

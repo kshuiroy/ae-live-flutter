@@ -1,5 +1,6 @@
 import 'package:ae_live/data/enum/wait_time_sort_type.dart';
 import 'package:ae_live/i18n/translations.g.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
@@ -116,12 +117,8 @@ class _SortingOptionsModalState extends State<SortingOptionsModal> {
                       // Dismiss the modal
                       Navigator.of(context).pop();
                     },
-                    icon: const Icon(
+                    icon: const ThemedIcon(
                       Symbols.save_rounded,
-                      size: 24.0,
-                      fill: 0.0,
-                      weight: 200.0,
-                      opticalSize: 24.0,
                     ),
                     label: Text(
                       t.shared.filter.actions.apply,

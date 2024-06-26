@@ -1,6 +1,7 @@
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/settings_option_model.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
@@ -79,12 +80,8 @@ class _SettingsOptionScreenBaseState<T>
                           widget.onSave!(_selectedOption);
                         }
                       },
-                      icon: const Icon(
+                      icon: const ThemedIcon(
                         Symbols.save_rounded,
-                        size: 24.0,
-                        fill: 0.0,
-                        weight: 200.0,
-                        opticalSize: 24.0,
                       ),
                       label: Text(
                         t.settings.save,

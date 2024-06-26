@@ -1,3 +1,4 @@
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
@@ -40,12 +41,8 @@ class _SearchTextFieldState extends State<SearchTextField> {
       enabled: widget.enabled,
       decoration: InputDecoration(
         isDense: true,
-        prefixIcon: const Icon(
+        prefixIcon: const ThemedIcon(
           Symbols.search_rounded,
-          size: 24.0,
-          fill: 0.0,
-          weight: 200.0,
-          opticalSize: 24.0,
         ),
         filled: true,
         border: const OutlineInputBorder(

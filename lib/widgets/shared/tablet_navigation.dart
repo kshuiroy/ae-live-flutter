@@ -2,6 +2,7 @@ import 'package:ae_live/config/main_tab_items.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/destination_item.dart';
 import 'package:ae_live/widgets/core/app_icon.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 
 class TabletNavigation extends StatelessWidget {
@@ -41,18 +42,16 @@ class TabletNavigation extends StatelessWidget {
       destinations: mainTabItems
           .map(
             (final DestinationItem item) => NavigationRailDestination(
-              icon: Icon(
+              icon: ThemedIcon(
                 item.icon,
                 size: 28.0,
-                weight: 200.0,
                 grade: 0.0,
                 opticalSize: 28.0,
               ),
-              selectedIcon: Icon(
+              selectedIcon: ThemedIcon(
                 item.icon,
                 size: 28.0,
                 fill: 1.0,
-                weight: 200.0,
                 grade: 0.0,
                 opticalSize: 28.0,
               ),

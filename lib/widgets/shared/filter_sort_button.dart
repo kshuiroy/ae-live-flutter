@@ -1,3 +1,4 @@
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 
 class FilterSortButton extends StatelessWidget {
@@ -34,11 +35,8 @@ class FilterSortButton extends StatelessWidget {
             : null,
       ),
       onPressed: enabled ? onPressed : null,
-      icon: Icon(
+      icon: ThemedIcon(
         icon,
-        fill: 0.0,
-        weight: 200.0,
-        opticalSize: 24.0,
       ),
       label: Text(label),
     );

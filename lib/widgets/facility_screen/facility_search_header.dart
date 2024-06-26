@@ -9,6 +9,7 @@ import 'package:ae_live/widgets/shared/district_options_modal.dart';
 import 'package:ae_live/widgets/shared/filter_sort_button.dart';
 import 'package:ae_live/widgets/shared/region_options_modal.dart';
 import 'package:ae_live/widgets/shared/search_text_field.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -145,11 +146,8 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
                             CupertinoIcons.back,
                             size: 32.0,
                           )
-                        : const Icon(
+                        : const ThemedIcon(
                             Symbols.arrow_back,
-                            // size: 24.0,
-                            fill: 0.0,
-                            opticalSize: 24.0,
                           ),
                     tooltip:
                         MaterialLocalizations.of(context).backButtonTooltip,

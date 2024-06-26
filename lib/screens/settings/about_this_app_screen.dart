@@ -1,6 +1,7 @@
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/utilities/launch_in_app_browser.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -77,12 +78,8 @@ class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
                 itemBuilder: (context, index) {
                   final _AboutThisAppTileItem item = items[index];
                   return ListTile(
-                    leading: Icon(
+                    leading: ThemedIcon(
                       item.icon,
-                      size: 24.0,
-                      fill: 0.0,
-                      weight: 200.0,
-                      opticalSize: 24.0,
                     ),
                     title: Text(item.title),
                     subtitle: Text(item.value),

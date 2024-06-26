@@ -9,6 +9,7 @@ import 'package:ae_live/screens/lists/facility_hospital_screen.dart';
 import 'package:ae_live/screens/lists/facility_soc_screen.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -168,11 +169,9 @@ class _ListsScreenState extends State<ListsScreen> {
               child: ListTile(
                 contentPadding: const EdgeInsets.fromLTRB(8.0, 8.0, 16.0, 8.0),
                 onTap: item.onTap,
-                leading: Icon(
+                leading: ThemedIcon(
                   item.icon,
                   size: 48.0,
-                  fill: 0.0,
-                  weight: 200.0,
                   opticalSize: 48.0,
                 ),
                 title: Text(

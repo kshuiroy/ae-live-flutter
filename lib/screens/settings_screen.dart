@@ -12,6 +12,7 @@ import 'package:ae_live/utilities/launch_in_app_browser.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:ae_live/widgets/settings_screen/reset_settings_modal.dart';
 import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -260,12 +261,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                         return ListTile(
                           // dense: true,
-                          leading: Icon(
+                          leading: ThemedIcon(
                             item.icon,
-                            size: 24.0,
-                            fill: 0.0,
-                            weight: 200.0,
-                            opticalSize: 24.0,
                           ),
                           title: Text(
                             item.title,

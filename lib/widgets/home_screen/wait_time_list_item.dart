@@ -3,6 +3,7 @@ import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/models/cluster_model.dart';
 import 'package:ae_live/models/wait_time_model.dart';
 import 'package:ae_live/theme/custom_colors.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -92,13 +93,10 @@ class WaitTimeListItem extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Row(
             children: <Widget>[
-              Icon(
+              ThemedIcon(
                 cardConfig.icon,
-                size: 24.0,
                 color: cardConfig.iconColor,
-                fill: 0.0,
                 weight: 400.0,
-                opticalSize: 24.0,
               ),
               const SizedBox(
                 width: 16.0,
@@ -130,12 +128,9 @@ class WaitTimeListItem extends StatelessWidget {
               const SizedBox(
                 width: 16.0,
               ),
-              const Icon(
+              const ThemedIcon(
                 Symbols.chevron_right_rounded,
-                size: 24.0,
-                fill: 0.0,
                 weight: 400.0,
-                opticalSize: 24.0,
               ),
             ],
           ),

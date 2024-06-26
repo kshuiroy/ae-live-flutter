@@ -1,4 +1,5 @@
 import 'package:ae_live/i18n/translations.g.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
@@ -18,13 +19,9 @@ class WaitTimeNoticeItem extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          Icon(
+          ThemedIcon(
             Symbols.info_rounded,
             color: colorScheme.error,
-            size: 24.0,
-            fill: 0.0,
-            weight: 200.0,
-            opticalSize: 24.0,
           ),
           const SizedBox(
             width: 16.0,

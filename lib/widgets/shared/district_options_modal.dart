@@ -2,6 +2,7 @@ import 'package:ae_live/config/districts_list.dart';
 import 'package:ae_live/config/regions_list.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/district_model.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -215,12 +216,8 @@ class _DistrictOptionsModalState extends State<DistrictOptionsModal> {
                       .toList();
                 });
               },
-              icon: const Icon(
+              icon: const ThemedIcon(
                 Symbols.close_rounded,
-                size: 24.0,
-                fill: 0.0,
-                weight: 200.0,
-                opticalSize: 24.0,
               ),
               label: Text(
                 t.shared.filter.actions.reset,
@@ -240,12 +237,8 @@ class _DistrictOptionsModalState extends State<DistrictOptionsModal> {
                 // Dismiss the modal
                 Navigator.of(context).pop();
               },
-              icon: const Icon(
+              icon: const ThemedIcon(
                 Symbols.save_rounded,
-                size: 24.0,
-                fill: 0.0,
-                weight: 200.0,
-                opticalSize: 24.0,
               ),
               label: Text(
                 t.shared.filter.actions.apply,

@@ -9,6 +9,7 @@ import 'package:ae_live/utilities/platform_helper.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/shared/facility_maps_viewer.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:ae_live/widgets/shared/wait_time_data_remarks.dart';
 import 'package:ae_live/widgets/wait_time_details/hospital_info_item.dart';
 import 'package:flutter/cupertino.dart';
@@ -189,11 +190,8 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                 ? const Icon(
                     CupertinoIcons.share,
                   )
-                : const Icon(
+                : const ThemedIcon(
                     Symbols.share_rounded,
-                    fill: 0.0,
-                    weight: 200.0,
-                    opticalSize: 24.0,
                   ),
           ),
         ],
@@ -279,11 +277,8 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                                             }
                                           }
                                         : null,
-                                    icon: const Icon(
+                                    icon: const ThemedIcon(
                                       Symbols.call_rounded,
-                                      fill: 0.0,
-                                      weight: 200.0,
-                                      opticalSize: 24.0,
                                     ),
                                     label: Text(
                                       t.waitTimeDetails.actions.call,
@@ -298,11 +293,8 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                                     onPressed: () {
                                       _showHospitalMap(context);
                                     },
-                                    icon: const Icon(
+                                    icon: const ThemedIcon(
                                       Symbols.location_on_rounded,
-                                      fill: 0.0,
-                                      weight: 200.0,
-                                      opticalSize: 24.0,
                                     ),
                                     label: Text(
                                       t.waitTimeDetails.actions.maps,

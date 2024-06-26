@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/widgets/core/responsive_alert_dialog.dart';
+import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -49,12 +50,8 @@ class ResetSettingsModal extends StatelessWidget {
     if (ResponsiveBreakpoints.of(context)
         .largerOrEqualTo(Constants.screenSizeKeyMedium)) {
       return ResponsiveAlertDialog(
-        icon: const Icon(
+        icon: const ThemedIcon(
           Symbols.restart_alt_rounded,
-          size: 24.0,
-          fill: 0.0,
-          weight: 200.0,
-          opticalSize: 24.0,
         ),
         title: Text(t.settings.data.reset.title),
         content: Text(t.settings.data.reset.message),
