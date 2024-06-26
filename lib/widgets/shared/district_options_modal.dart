@@ -125,19 +125,19 @@ class _DistrictOptionsModalState extends State<DistrictOptionsModal> {
                 tristate: true,
                 onChanged: (final bool? isChecked) {
                   debugPrint('Region isChecked: $isChecked');
-                  if (isChecked == true) {
+                  if (isChecked == null) {
+                    setState(() {
+                      _selectedOptions.removeWhere(
+                        (code) => allDistrictCodes.contains(code),
+                      );
+                    });
+                  } else {
                     final Set<int> updatedSelectedOptions =
                         Set<int>.from(_selectedOptions);
                     updatedSelectedOptions.addAll(allDistrictCodes);
 
                     setState(() {
                       _selectedOptions = updatedSelectedOptions.toList();
-                    });
-                  } else {
-                    setState(() {
-                      _selectedOptions.removeWhere(
-                        (code) => allDistrictCodes.contains(code),
-                      );
                     });
                   }
                 },

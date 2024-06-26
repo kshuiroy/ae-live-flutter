@@ -89,6 +89,7 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
         context: context,
         builder: (final BuildContext context) {
           return ResponsiveDialog(
+            maxHeight: 640.0,
             child: child,
           );
         },

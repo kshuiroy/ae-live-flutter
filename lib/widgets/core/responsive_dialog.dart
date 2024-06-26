@@ -6,6 +6,7 @@ class ResponsiveDialog extends StatelessWidget {
   const ResponsiveDialog({
     super.key,
     this.maxWidth = 560.0,
+    this.maxHeight,
     this.backgroundColor,
     this.elevation,
     this.shadowColor,
@@ -19,6 +20,7 @@ class ResponsiveDialog extends StatelessWidget {
   });
 
   final double maxWidth;
+  final double? maxHeight;
   final Color? backgroundColor;
   final double? elevation;
   final Color? shadowColor;
@@ -34,6 +36,9 @@ class ResponsiveDialog extends StatelessWidget {
   Widget build(final BuildContext context) {
     final double dialogPaddingX =
         max((MediaQuery.of(context).size.width - maxWidth) / 2.0, 40.0);
+    final double dialogPaddingY = maxHeight != null
+        ? max((MediaQuery.of(context).size.height - maxHeight!) / 2.0, 24.0)
+        : 24.0;
 
     return Dialog(
       // key: key,
@@ -45,7 +50,7 @@ class ResponsiveDialog extends StatelessWidget {
       insetAnimationCurve: insetAnimationCurve,
       insetPadding: EdgeInsets.symmetric(
         horizontal: dialogPaddingX,
-        vertical: 24.0,
+        vertical: dialogPaddingY,
       ),
       clipBehavior: clipBehavior,
       shape: shape,
