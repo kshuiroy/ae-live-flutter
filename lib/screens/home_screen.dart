@@ -327,27 +327,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                   ),
                                   FilterSortButton(
-                                    icon: Symbols.explore_rounded,
-                                    label: t.shared.filter.hospitalCluster,
-                                    enabled: !_isLoading,
-                                    isHighlighted: _dataClusters.length != 7,
-                                    onPressed: () {
-                                      _showDataFilterSortModal(
-                                        context,
-                                        child: ClusterOptionsModal(
-                                          defaultOptions: _dataClusters,
-                                          onUpdate: (final List<int> clusters) {
-                                            setState(() {
-                                              _dataClusters = clusters;
-                                            });
-
-                                            _onUpdateSearchResult(context);
-                                          },
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  FilterSortButton(
                                     icon: Symbols.travel_explore_rounded,
                                     label: t.shared.filter.region,
                                     enabled: !_isLoading,
@@ -360,6 +339,27 @@ class _HomeScreenState extends State<HomeScreen> {
                                           onUpdate: (final List<int> regions) {
                                             setState(() {
                                               _dataRegions = regions;
+                                            });
+
+                                            _onUpdateSearchResult(context);
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  FilterSortButton(
+                                    icon: Symbols.explore_rounded,
+                                    label: t.shared.filter.hospitalCluster,
+                                    enabled: !_isLoading,
+                                    isHighlighted: _dataClusters.length != 7,
+                                    onPressed: () {
+                                      _showDataFilterSortModal(
+                                        context,
+                                        child: ClusterOptionsModal(
+                                          defaultOptions: _dataClusters,
+                                          onUpdate: (final List<int> clusters) {
+                                            setState(() {
+                                              _dataClusters = clusters;
                                             });
 
                                             _onUpdateSearchResult(context);

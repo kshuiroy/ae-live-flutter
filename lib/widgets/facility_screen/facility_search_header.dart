@@ -185,25 +185,6 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
                       child: Row(
                         children: [
                           if (widget.filterButtons
-                              .contains(FilterButtons.clusters))
-                            FilterSortButton(
-                              icon: Symbols.explore_rounded,
-                              label: widget.clusterButtonLabel!,
-                              enabled: widget.enabled,
-                              isHighlighted: widget.isClusterButtonHighlighted,
-                              onPressed: () {
-                                _showDataFilterSortModal(
-                                  context,
-                                  child: ClusterOptionsModal(
-                                    defaultOptions:
-                                        widget.clusterDefaultOptions!,
-                                    title: widget.clusterButtonLabel,
-                                    onUpdate: widget.onClusterChange,
-                                  ),
-                                );
-                              },
-                            ),
-                          if (widget.filterButtons
                               .contains(FilterButtons.regions))
                             FilterSortButton(
                               icon: Symbols.travel_explore_rounded,
@@ -239,6 +220,25 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
                                     onUpdate: widget.onDistrictChange,
                                   ),
                                   isScrollControlled: false,
+                                );
+                              },
+                            ),
+                          if (widget.filterButtons
+                              .contains(FilterButtons.clusters))
+                            FilterSortButton(
+                              icon: Symbols.explore_rounded,
+                              label: widget.clusterButtonLabel!,
+                              enabled: widget.enabled,
+                              isHighlighted: widget.isClusterButtonHighlighted,
+                              onPressed: () {
+                                _showDataFilterSortModal(
+                                  context,
+                                  child: ClusterOptionsModal(
+                                    defaultOptions:
+                                        widget.clusterDefaultOptions!,
+                                    title: widget.clusterButtonLabel,
+                                    onUpdate: widget.onClusterChange,
+                                  ),
                                 );
                               },
                             ),
