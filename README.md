@@ -70,3 +70,6 @@ This app used the following open data:
 -   [Hospital Authority Specialist Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-sop.json)
 -   [Hospital Authority General Outpatient Clinic List by Cluster](https://www.ha.org.hk/opendata/facility-gop.json)
 -   [List of Chinese Medicine Clinics cum Training and Research Centres](https://www.ha.org.hk/opendata/cmctr/facility-cmctr.json)
+-   [Average Number of General Outpatient Clinic Quota for the Preceding 4 Weeks for 18 Districts (English)](https://www.ha.org.hk/pas_gopc/pas_gopc_avg_quota_pdf/g0_9uo7a_p-en.json)
+-   [Average Number of General Outpatient Clinic Quota for the Preceding 4 Weeks for 18 Districts (Traditional Chinese)](https://www.ha.org.hk/pas_gopc/pas_gopc_avg_quota_pdf/g0_9uo7a_p-tc.json)
+-   [Average Number of General Outpatient Clinic Quota for the Preceding 4 Weeks for 18 Districts (Simplified Chinese)](https://www.ha.org.hk/pas_gopc/pas_gopc_avg_quota_pdf/g0_9uo7a_p-sc.json)
