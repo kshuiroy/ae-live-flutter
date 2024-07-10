@@ -9,7 +9,6 @@ import 'package:ae_live/widgets/shared/district_options_modal.dart';
 import 'package:ae_live/widgets/shared/filter_sort_button.dart';
 import 'package:ae_live/widgets/shared/region_options_modal.dart';
 import 'package:ae_live/widgets/shared/search_text_field.dart';
-import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -135,7 +134,7 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
             ),
             child: Row(
               children: [
-                if (widget.showBackButton) ...[
+                if (widget.showBackButton)
                   IconButton(
                     padding: PlatformHelper.isApplePlatform
                         ? const EdgeInsets.all(12.0)
@@ -146,16 +145,12 @@ class _FacilitySearchHeaderState extends State<FacilitySearchHeader> {
                             CupertinoIcons.back,
                             size: 32.0,
                           )
-                        : const ThemedIcon(
-                            Symbols.arrow_back,
+                        : const Icon(
+                            Icons.arrow_back,
                           ),
                     tooltip:
                         MaterialLocalizations.of(context).backButtonTooltip,
                   ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                ],
                 Expanded(
                   child: SearchTextField(
                     controller: _searchTextController,
