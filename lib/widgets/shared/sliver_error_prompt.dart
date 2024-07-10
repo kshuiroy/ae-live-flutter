@@ -2,6 +2,7 @@ import 'package:ae_live/artworks/server_error.dart';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/widgets/shared/prompt_with_artwork.dart';
+import 'package:ae_live/widgets/shared/themed_filled_button_icon.dart';
 import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -44,7 +45,7 @@ class SliverErrorPrompt extends StatelessWidget {
               const SizedBox(
                 height: 24.0,
               ),
-              FilledButton.icon(
+              ThemedFilledButtonIcon(
                 onPressed: onPressRefresh,
                 icon: const ThemedIcon(
                   Symbols.refresh_rounded,

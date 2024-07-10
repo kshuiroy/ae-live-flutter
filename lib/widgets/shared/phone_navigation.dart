@@ -69,7 +69,8 @@ class PhoneNavigation extends StatelessWidget {
           elevation: 0.0,
           indicatorShape: const CircleBorder(),
           indicatorColor: Colors.transparent,
-          height: isMediumSize ? 64.0 : 56.0,
+          height: MediaQuery.textScalerOf(context)
+              .scale(isMediumSize ? 64.0 : 56.0),
           destinations: mainTabItems
               .map(
                 (final DestinationItem item) => Semantics(

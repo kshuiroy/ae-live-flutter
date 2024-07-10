@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -43,6 +45,9 @@ class _SearchTextFieldState extends State<SearchTextField> {
         isDense: true,
         prefixIcon: const ThemedIcon(
           Symbols.search_rounded,
+        ),
+        prefixIconConstraints: BoxConstraints(
+          minWidth: min(MediaQuery.textScalerOf(context).scale(52.0), 64.0),
         ),
         filled: true,
         border: const OutlineInputBorder(

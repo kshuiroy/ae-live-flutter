@@ -32,7 +32,7 @@ class ThemedIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Icon(
       icon,
-      size: size,
+      size: size != null ? MediaQuery.textScalerOf(context).scale(size!) : null,
       fill: fill,
       weight: weight,
       grade: grade,

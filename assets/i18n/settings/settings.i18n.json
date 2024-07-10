@@ -20,9 +20,17 @@
         "language": {
             "title": "Display Language",
             "options": {
-                "zhHK": "Traidtional Chinese (繁體中文)",
+                "zhHK": "Traditional Chinese (繁體中文)",
                 "zhCN": "Simplified Chinese (简体中文)",
                 "en": "English"
+            }
+        },
+        "textSize": {
+            "title": "Text Size",
+            "options": {
+                "defaultSize": "Default",
+                "largeSize": "Large",
+                "extraLargeSize": "Extra-Large"
             }
         },
         "sorting": {

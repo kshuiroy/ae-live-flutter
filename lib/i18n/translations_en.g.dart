@@ -338,6 +338,7 @@ class _TranslationsSettingsAppearanceEn {
 	// Translations
 	late final _TranslationsSettingsAppearanceThemeEn theme = _TranslationsSettingsAppearanceThemeEn._(_root);
 	late final _TranslationsSettingsAppearanceLanguageEn language = _TranslationsSettingsAppearanceLanguageEn._(_root);
+	late final _TranslationsSettingsAppearanceTextSizeEn textSize = _TranslationsSettingsAppearanceTextSizeEn._(_root);
 	late final _TranslationsSettingsAppearanceSortingEn sorting = _TranslationsSettingsAppearanceSortingEn._(_root);
 }
 
@@ -463,6 +464,17 @@ class _TranslationsSettingsAppearanceLanguageEn {
 	late final _TranslationsSettingsAppearanceLanguageOptionsEn options = _TranslationsSettingsAppearanceLanguageOptionsEn._(_root);
 }
 
+// Path: settings.appearance.textSize
+class _TranslationsSettingsAppearanceTextSizeEn {
+	_TranslationsSettingsAppearanceTextSizeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Text Size';
+	late final _TranslationsSettingsAppearanceTextSizeOptionsEn options = _TranslationsSettingsAppearanceTextSizeOptionsEn._(_root);
+}
+
 // Path: settings.appearance.sorting
 class _TranslationsSettingsAppearanceSortingEn {
 	_TranslationsSettingsAppearanceSortingEn._(this._root);
@@ -564,9 +576,21 @@ class _TranslationsSettingsAppearanceLanguageOptionsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get zhHK => 'Traidtional Chinese (繁體中文)';
+	String get zhHK => 'Traditional Chinese (繁體中文)';
 	String get zhCN => 'Simplified Chinese (简体中文)';
 	String get en => 'English';
+}
+
+// Path: settings.appearance.textSize.options
+class _TranslationsSettingsAppearanceTextSizeOptionsEn {
+	_TranslationsSettingsAppearanceTextSizeOptionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get defaultSize => 'Default';
+	String get largeSize => 'Large';
+	String get extraLargeSize => 'Extra-Large';
 }
 
 // Path: settings.appearance.sorting.options

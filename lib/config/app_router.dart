@@ -10,6 +10,7 @@ import 'package:ae_live/screens/settings/default_sorting_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_locale_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_theme_settings_screen.dart';
 import 'package:ae_live/screens/settings/open_source_licenses_screen.dart';
+import 'package:ae_live/screens/settings/text_size_settings_screen.dart';
 import 'package:ae_live/screens/settings_screen.dart';
 import 'package:ae_live/screens/wait_time_details_screen.dart';
 import 'package:ae_live/widgets/animations/shared_axis_transition_page_wrapper.dart';
@@ -108,6 +109,13 @@ final GoRouter appRouter = GoRouter(
               builder:
                   (final BuildContext context, final GoRouterState state) =>
                       const DisplayLocaleSettingsScreen(),
+            ),
+            GoRoute(
+              path: 'text-size',
+              parentNavigatorKey: _rootNavigatorKey,
+              builder:
+                  (final BuildContext context, final GoRouterState state) =>
+                      const TextSizeSettingsScreen(),
             ),
             GoRoute(
               path: 'sorting',

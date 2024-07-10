@@ -25,6 +25,14 @@
                 "en": "英文 (English)"
             }
         },
+        "textSize": {
+            "title": "文字大小",
+            "options": {
+                "defaultSize": "默认",
+                "largeSize": "大",
+                "extraLargeSize": "特大"
+            }
+        },
         "sorting": {
             "title": "急症室等候时间默认排序方式",
             "options": {

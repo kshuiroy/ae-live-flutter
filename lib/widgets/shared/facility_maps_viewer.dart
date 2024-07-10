@@ -4,7 +4,9 @@ import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/config/osm_tile_provider.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/utilities/launch_in_app_browser.dart';
+import 'package:ae_live/widgets/shared/themed_filled_button_icon.dart';
 import 'package:ae_live/widgets/shared/themed_icon.dart';
+import 'package:ae_live/widgets/shared/themed_outlined_button_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -33,6 +35,8 @@ class FacilityMapsViewer extends StatefulWidget {
 }
 
 class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
+  final ScrollController _bottomSheetScrollController = ScrollController();
+
   @override
   Widget build(final BuildContext context) {
     final Translations t = Translations.of(context);
@@ -144,102 +148,119 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
             ),
         ],
       ),
-      bottomSheet: BottomSheet(
-        onClosing: () {},
-        enableDrag: false,
-        showDragHandle: false,
-        elevation: 0.0,
-        backgroundColor: colorScheme.secondaryContainer,
-        builder: (final _) {
-          return Padding(
-            padding: EdgeInsets.only(
-              top: 24.0,
-              right: isCompactSize ? 16.0 : 24.0,
-              bottom: isCompactSize
-                  ? MediaQuery.of(context).padding.bottom + 16.0
-                  : 16.0,
-              left: isCompactSize ? 16.0 : 24.0,
+      bottomSheet: LayoutBuilder(
+        builder: (
+          final BuildContext parentContext,
+          final BoxConstraints constraints,
+        ) {
+          return BottomSheet(
+            onClosing: () {},
+            enableDrag: false,
+            showDragHandle: false,
+            elevation: 0.0,
+            backgroundColor: colorScheme.secondaryContainer,
+            constraints: BoxConstraints(
+              maxHeight: constraints.maxHeight * 0.4,
             ),
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text(
-                    widget.institutionName,
-                    style: textTheme.titleLarge,
+            builder: (final _) {
+              return Scrollbar(
+                controller: _bottomSheetScrollController,
+                child: SingleChildScrollView(
+                  controller: _bottomSheetScrollController,
+                  padding: EdgeInsets.only(
+                    top: 24.0,
+                    right: isCompactSize ? 16.0 : 24.0,
+                    bottom: isCompactSize
+                        ? MediaQuery.of(context).padding.bottom + 16.0
+                        : 16.0,
+                    left: isCompactSize ? 16.0 : 24.0,
                   ),
-                  const SizedBox(
-                    height: 16.0,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      const ThemedIcon(
-                        Symbols.location_on_rounded,
-                        fill: 1.0,
-                      ),
-                      const SizedBox(
-                        width: 8.0,
-                      ),
-                      Expanded(
-                        child: Text(
-                          widget.address,
-                          style: textTheme.bodyLarge,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(
+                          widget.institutionName,
+                          style: textTheme.titleLarge,
+                          // maxLines: 3,
+                          // overflow: TextOverflow.ellipsis,
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 24.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Expanded(
-                        child: FilledButton.icon(
-                          onPressed: () async {
-                            await launchUrl(
-                              MapsLauncher.createCoordinatesUri(
-                                widget.latitude,
-                                widget.longitude,
-                                widget.institutionName,
-                              ),
-                              mode: LaunchMode.externalApplication,
-                            );
-                          },
-                          icon: const ThemedIcon(
-                            Symbols.map_rounded,
-                          ),
-                          label: Text(t.shared.facilityMaps.openMapsApp),
+                        const SizedBox(
+                          height: 16.0,
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Expanded(
-                        child: OutlinedButton.icon(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          icon: const ThemedIcon(
-                            Symbols.close_rounded,
-                          ),
-                          label: Text(t.shared.facilityMaps.closeMapsModal),
-                          style: ButtonStyle(
-                            foregroundColor: WidgetStatePropertyAll(
-                              colorScheme.onSecondaryContainer,
+                        Row(
+                          children: <Widget>[
+                            const ThemedIcon(
+                              Symbols.location_on_rounded,
+                              fill: 1.0,
                             ),
-                          ),
+                            const SizedBox(
+                              width: 8.0,
+                            ),
+                            Expanded(
+                              child: Text(
+                                widget.address,
+                                style: textTheme.bodyLarge,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 24.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Expanded(
+                              child: ThemedFilledButtonIcon(
+                                onPressed: () async {
+                                  await launchUrl(
+                                    MapsLauncher.createCoordinatesUri(
+                                      widget.latitude,
+                                      widget.longitude,
+                                      widget.institutionName,
+                                    ),
+                                    mode: LaunchMode.externalApplication,
+                                  );
+                                },
+                                icon: const ThemedIcon(
+                                  Symbols.map_rounded,
+                                ),
+                                label: Text(t.shared.facilityMaps.openMapsApp),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Expanded(
+                              child: ThemedOutlinedButtonIcon(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                icon: const ThemedIcon(
+                                  Symbols.close_rounded,
+                                ),
+                                label:
+                                    Text(t.shared.facilityMaps.closeMapsModal),
+                                style: ButtonStyle(
+                                  foregroundColor: WidgetStatePropertyAll(
+                                    colorScheme.onSecondaryContainer,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           );
         },
       ),

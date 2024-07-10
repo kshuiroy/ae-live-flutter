@@ -157,7 +157,7 @@ class _ListsScreenState extends State<ListsScreen> {
           padding: EdgeInsets.only(
             top: MediaQuery.of(context).padding.top + kToolbarHeight + 16.0,
             right: isCompactSize ? 16.0 : 24.0,
-            bottom: 16.0,
+            bottom: MediaQuery.of(context).padding.bottom + 16.0,
             left: isCompactSize ? 16.0 : 24.0,
           ),
           itemBuilder: (context, index) {

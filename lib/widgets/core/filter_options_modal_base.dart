@@ -1,6 +1,8 @@
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/models/filter_options_model.dart';
+import 'package:ae_live/widgets/shared/themed_filled_button_icon.dart';
 import 'package:ae_live/widgets/shared/themed_icon.dart';
+import 'package:ae_live/widgets/shared/themed_outlined_button_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
@@ -95,7 +97,7 @@ class _FilterOptionsModalBaseState<T> extends State<FilterOptionsModalBase<T>> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Expanded(
-                  child: OutlinedButton.icon(
+                  child: ThemedOutlinedButtonIcon(
                     onPressed: () {
                       setState(() {
                         _selectedOptions = widget.options
@@ -115,7 +117,7 @@ class _FilterOptionsModalBaseState<T> extends State<FilterOptionsModalBase<T>> {
                   width: 8.0,
                 ),
                 Expanded(
-                  child: FilledButton.icon(
+                  child: ThemedFilledButtonIcon(
                     onPressed: () {
                       if (widget.onUpdate != null) {
                         widget.onUpdate!(_selectedOptions);

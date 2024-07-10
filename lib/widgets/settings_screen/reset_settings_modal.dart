@@ -3,7 +3,10 @@ import 'dart:math';
 import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/widgets/core/responsive_alert_dialog.dart';
+import 'package:ae_live/widgets/shared/themed_filled_button_icon.dart';
 import 'package:ae_live/widgets/shared/themed_icon.dart';
+import 'package:ae_live/widgets/shared/themed_outlined_button_icon.dart';
+import 'package:ae_live/widgets/shared/themed_text_button_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -56,16 +59,16 @@ class ResetSettingsModal extends StatelessWidget {
         title: Text(t.settings.data.reset.title),
         content: Text(t.settings.data.reset.message),
         actions: <Widget>[
-          TextButton(
+          ThemedTextButtonIcon(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text(t.settings.data.reset.buttons.cancel),
+            label: Text(t.settings.data.reset.buttons.cancel),
           ),
-          TextButton(
+          ThemedTextButtonIcon(
             onPressed: () => _onResetSettings(
               context,
               t.settings.prompt.settingsReset,
             ),
-            child: Text(t.settings.data.reset.buttons.reset),
+            label: Text(t.settings.data.reset.buttons.reset),
           ),
         ],
       );
@@ -115,11 +118,11 @@ class ResetSettingsModal extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                child: OutlinedButton(
+                child: ThemedOutlinedButtonIcon(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(t.settings.data.reset.buttons.cancel),
+                  label: Text(t.settings.data.reset.buttons.cancel),
                 ),
               ),
             ],
@@ -128,12 +131,12 @@ class ResetSettingsModal extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                child: FilledButton(
+                child: ThemedFilledButtonIcon(
                   onPressed: () => _onResetSettings(
                     context,
                     t.settings.prompt.settingsReset,
                   ),
-                  child: Text(t.settings.data.reset.buttons.reset),
+                  label: Text(t.settings.data.reset.buttons.reset),
                 ),
               ),
             ],

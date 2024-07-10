@@ -84,9 +84,13 @@ extension on Translations {
 			case 'settings.appearance.theme.options.dark': return 'Dark Theme';
 			case 'settings.appearance.theme.options.system': return 'Follow System';
 			case 'settings.appearance.language.title': return 'Display Language';
-			case 'settings.appearance.language.options.zhHK': return 'Traidtional Chinese (繁體中文)';
+			case 'settings.appearance.language.options.zhHK': return 'Traditional Chinese (繁體中文)';
 			case 'settings.appearance.language.options.zhCN': return 'Simplified Chinese (简体中文)';
 			case 'settings.appearance.language.options.en': return 'English';
+			case 'settings.appearance.textSize.title': return 'Text Size';
+			case 'settings.appearance.textSize.options.defaultSize': return 'Default';
+			case 'settings.appearance.textSize.options.largeSize': return 'Large';
+			case 'settings.appearance.textSize.options.extraLargeSize': return 'Extra-Large';
 			case 'settings.appearance.sorting.title': return 'Default Sorting of A&E Waiting Time';
 			case 'settings.appearance.sorting.options.nameInAsd': return 'Hospital Name (A-Z)';
 			case 'settings.appearance.sorting.options.nameInDesc': return 'Hospital Name (Z-A)';
@@ -223,6 +227,10 @@ extension on _TranslationsZhCn {
 			case 'settings.appearance.language.options.zhHK': return '繁体中文 (繁體中文)';
 			case 'settings.appearance.language.options.zhCN': return '简体中文';
 			case 'settings.appearance.language.options.en': return '英文 (English)';
+			case 'settings.appearance.textSize.title': return '文字大小';
+			case 'settings.appearance.textSize.options.defaultSize': return '默认';
+			case 'settings.appearance.textSize.options.largeSize': return '大';
+			case 'settings.appearance.textSize.options.extraLargeSize': return '特大';
 			case 'settings.appearance.sorting.title': return '急症室等候时间默认排序方式';
 			case 'settings.appearance.sorting.options.nameInAsd': return '医院英文名称（A-Z）';
 			case 'settings.appearance.sorting.options.nameInDesc': return '医院英文名称（Z-A）';
@@ -359,6 +367,10 @@ extension on _TranslationsZhHk {
 			case 'settings.appearance.language.options.zhHK': return '繁體中文';
 			case 'settings.appearance.language.options.zhCN': return '簡體中文 (简体中文)';
 			case 'settings.appearance.language.options.en': return '英文 (English)';
+			case 'settings.appearance.textSize.title': return '文字大小';
+			case 'settings.appearance.textSize.options.defaultSize': return '預設';
+			case 'settings.appearance.textSize.options.largeSize': return '大';
+			case 'settings.appearance.textSize.options.extraLargeSize': return '特大';
 			case 'settings.appearance.sorting.title': return '急症室等候時間預設排序方式';
 			case 'settings.appearance.sorting.options.nameInAsd': return '醫院英文名稱（A-Z）';
 			case 'settings.appearance.sorting.options.nameInDesc': return '醫院英文名稱（Z-A）';

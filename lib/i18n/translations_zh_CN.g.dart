@@ -334,6 +334,7 @@ class _TranslationsSettingsAppearanceZhCn extends _TranslationsSettingsAppearanc
 	// Translations
 	@override late final _TranslationsSettingsAppearanceThemeZhCn theme = _TranslationsSettingsAppearanceThemeZhCn._(_root);
 	@override late final _TranslationsSettingsAppearanceLanguageZhCn language = _TranslationsSettingsAppearanceLanguageZhCn._(_root);
+	@override late final _TranslationsSettingsAppearanceTextSizeZhCn textSize = _TranslationsSettingsAppearanceTextSizeZhCn._(_root);
 	@override late final _TranslationsSettingsAppearanceSortingZhCn sorting = _TranslationsSettingsAppearanceSortingZhCn._(_root);
 }
 
@@ -459,6 +460,17 @@ class _TranslationsSettingsAppearanceLanguageZhCn extends _TranslationsSettingsA
 	@override late final _TranslationsSettingsAppearanceLanguageOptionsZhCn options = _TranslationsSettingsAppearanceLanguageOptionsZhCn._(_root);
 }
 
+// Path: settings.appearance.textSize
+class _TranslationsSettingsAppearanceTextSizeZhCn extends _TranslationsSettingsAppearanceTextSizeEn {
+	_TranslationsSettingsAppearanceTextSizeZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '文字大小';
+	@override late final _TranslationsSettingsAppearanceTextSizeOptionsZhCn options = _TranslationsSettingsAppearanceTextSizeOptionsZhCn._(_root);
+}
+
 // Path: settings.appearance.sorting
 class _TranslationsSettingsAppearanceSortingZhCn extends _TranslationsSettingsAppearanceSortingEn {
 	_TranslationsSettingsAppearanceSortingZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
@@ -563,6 +575,18 @@ class _TranslationsSettingsAppearanceLanguageOptionsZhCn extends _TranslationsSe
 	@override String get zhHK => '繁体中文 (繁體中文)';
 	@override String get zhCN => '简体中文';
 	@override String get en => '英文 (English)';
+}
+
+// Path: settings.appearance.textSize.options
+class _TranslationsSettingsAppearanceTextSizeOptionsZhCn extends _TranslationsSettingsAppearanceTextSizeOptionsEn {
+	_TranslationsSettingsAppearanceTextSizeOptionsZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get defaultSize => '默认';
+	@override String get largeSize => '大';
+	@override String get extraLargeSize => '特大';
 }
 
 // Path: settings.appearance.sorting.options

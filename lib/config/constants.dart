@@ -10,6 +10,10 @@ class Constants {
   /// waiting time list in the Shared Preference.
   static const String preferenceKeyDefaultSorting = 'default_sorting';
 
+  /// The key name for storing the display text scale of the app in the Shared
+  /// Preference.
+  static const String preferenceKeyTextScale = 'text_scale';
+
   //////////////////////////////////////////////////////////////////////////////
 
   /// The key name of the compact-size screen (width < 600px).

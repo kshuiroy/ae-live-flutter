@@ -8,6 +8,7 @@ import 'package:ae_live/screens/settings/default_sorting_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_locale_settings_screen.dart';
 import 'package:ae_live/screens/settings/display_theme_settings_screen.dart';
 import 'package:ae_live/screens/settings/open_source_licenses_screen.dart';
+import 'package:ae_live/screens/settings/text_size_settings_screen.dart';
 import 'package:ae_live/utilities/launch_in_app_browser.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:ae_live/widgets/settings_screen/reset_settings_modal.dart';
@@ -43,6 +44,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       showModalBottomSheet(
         context: context,
         useRootNavigator: true,
+        isScrollControlled: true,
         builder: (final _) => child,
       );
     }
@@ -132,6 +134,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
               } else {
                 setState(() {
                   _selectedPane = const DisplayLocaleSettingsScreen(
+                    disableAutoGoBack: true,
+                  );
+                });
+              }
+            },
+          ),
+          _SettingsItemModel(
+            icon: Symbols.format_size_rounded,
+            title: t.settings.appearance.textSize.title,
+            onTap: () {
+              if (isCompactSize) {
+                context.go('/settings/text-size');
+              } else {
+                setState(() {
+                  _selectedPane = const TextSizeSettingsScreen(
                     disableAutoGoBack: true,
                   );
                 });

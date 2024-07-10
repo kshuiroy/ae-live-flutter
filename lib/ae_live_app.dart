@@ -41,6 +41,7 @@ class AELiveApp extends StatefulWidget {
 class _AELiveAppState extends State<AELiveApp> {
   ThemeMode _themeMode = ThemeMode.system;
   bool _localeInitialized = false;
+  double _textScale = 1.0;
   late SharedPreferences _preferences;
 
   void _init() async {
@@ -85,17 +86,30 @@ class _AELiveAppState extends State<AELiveApp> {
         _preferences.getString(Constants.preferenceKeyAppTheme);
 
     if (themePreference == null) {
-      setState(() {
-        _themeMode = ThemeMode.system;
-      });
+      // setState(() {
+      //   _themeMode = ThemeMode.system;
+      // });
       await _preferences.setString(Constants.preferenceKeyAppTheme, 'system');
     } else {
       setState(() {
         _themeMode = themeMap[themePreference] ?? ThemeMode.system;
       });
     }
+
+    // Setting text size
+    final double? textScalePreference =
+        _preferences.getDouble(Constants.preferenceKeyTextScale);
+
+    if (textScalePreference == null) {
+      await _preferences.setDouble(Constants.preferenceKeyTextScale, 1.0);
+    } else {
+      setState(() {
+        _textScale = textScalePreference;
+      });
+    }
   }
 
+  /// Update the display theme of the app.
   void updateTheme(final ThemeMode mode) async {
     if (await _preferences.setString(
       Constants.preferenceKeyAppTheme,
@@ -103,6 +117,18 @@ class _AELiveAppState extends State<AELiveApp> {
     )) {
       setState(() {
         _themeMode = mode;
+      });
+    }
+  }
+
+  /// Update the text scale of the app.
+  void updateTextScale(final double textScale) async {
+    if (await _preferences.setDouble(
+      Constants.preferenceKeyTextScale,
+      textScale,
+    )) {
+      setState(() {
+        _textScale = textScale;
       });
     }
   }
@@ -181,49 +207,54 @@ class _AELiveAppState extends State<AELiveApp> {
             ),
           ),
         ],
-        child: MaterialApp.router(
-          title: t.main.app_name,
-          theme: const MaterialTheme(customTextTheme).light(),
-          darkTheme: const MaterialTheme(customTextTheme).dark(),
-          highContrastTheme:
-              const MaterialTheme(customTextTheme).lightHighContrast(),
-          highContrastDarkTheme:
-              const MaterialTheme(customTextTheme).darkHighContrast(),
-          themeMode: _themeMode,
-          routerConfig: appRouter,
-          locale: TranslationProvider.of(context).flutterLocale,
-          supportedLocales: AppLocaleUtils.supportedLocales,
-          localizationsDelegates: GlobalMaterialLocalizations.delegates,
-          builder: (final BuildContext context, final Widget? child) =>
-              ResponsiveBreakpoints.builder(
-            child: _localeInitialized ? child! : const SizedBox(),
-            breakpoints: <Breakpoint>[
-              const Breakpoint(
-                start: 0.0,
-                end: 599.0,
-                name: Constants.screenSizeKeyCompact,
-              ),
-              const Breakpoint(
-                start: 600.0,
-                end: 839.0,
-                name: Constants.screenSizeKeyMedium,
-              ),
-              const Breakpoint(
-                start: 840.0,
-                end: 1199.0,
-                name: Constants.screenSizeKeyExpanded,
-              ),
-              const Breakpoint(
-                start: 1200.0,
-                end: 1599.0,
-                name: Constants.screenSizeKeyLarge,
-              ),
-              const Breakpoint(
-                start: 1600.0,
-                end: double.infinity,
-                name: Constants.screenSizeKeyExtraLarge,
-              ),
-            ],
+        child: MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: TextScaler.linear(_textScale),
+          ),
+          child: MaterialApp.router(
+            title: t.main.app_name,
+            theme: const MaterialTheme(customTextTheme).light(),
+            darkTheme: const MaterialTheme(customTextTheme).dark(),
+            highContrastTheme:
+                const MaterialTheme(customTextTheme).lightHighContrast(),
+            highContrastDarkTheme:
+                const MaterialTheme(customTextTheme).darkHighContrast(),
+            themeMode: _themeMode,
+            routerConfig: appRouter,
+            locale: TranslationProvider.of(context).flutterLocale,
+            supportedLocales: AppLocaleUtils.supportedLocales,
+            localizationsDelegates: GlobalMaterialLocalizations.delegates,
+            builder: (final BuildContext context, final Widget? child) =>
+                ResponsiveBreakpoints.builder(
+              child: _localeInitialized ? child! : const SizedBox(),
+              breakpoints: <Breakpoint>[
+                const Breakpoint(
+                  start: 0.0,
+                  end: 599.0,
+                  name: Constants.screenSizeKeyCompact,
+                ),
+                const Breakpoint(
+                  start: 600.0,
+                  end: 839.0,
+                  name: Constants.screenSizeKeyMedium,
+                ),
+                const Breakpoint(
+                  start: 840.0,
+                  end: 1199.0,
+                  name: Constants.screenSizeKeyExpanded,
+                ),
+                const Breakpoint(
+                  start: 1200.0,
+                  end: 1599.0,
+                  name: Constants.screenSizeKeyLarge,
+                ),
+                const Breakpoint(
+                  start: 1600.0,
+                  end: double.infinity,
+                  name: Constants.screenSizeKeyExtraLarge,
+                ),
+              ],
+            ),
           ),
         ),
       ),

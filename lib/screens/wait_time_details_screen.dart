@@ -9,6 +9,7 @@ import 'package:ae_live/utilities/platform_helper.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
 import 'package:ae_live/widgets/core/responsive_dialog.dart';
 import 'package:ae_live/widgets/shared/facility_maps_viewer.dart';
+import 'package:ae_live/widgets/shared/themed_filled_button_icon.dart';
 import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:ae_live/widgets/shared/wait_time_data_remarks.dart';
 import 'package:ae_live/widgets/wait_time_details/hospital_info_item.dart';
@@ -264,7 +265,7 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Expanded(
-                                  child: FilledButton.icon(
+                                  child: ThemedFilledButtonIcon(
                                     onPressed: _isPhoneCallSupported
                                         ? () async {
                                             if (_isPhoneCallSupported) {
@@ -289,7 +290,7 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                                   width: 8.0,
                                 ),
                                 Expanded(
-                                  child: FilledButton.icon(
+                                  child: ThemedFilledButtonIcon(
                                     onPressed: () {
                                       _showHospitalMap(context);
                                     },
@@ -508,8 +509,8 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Container(
-      width: 176.0,
-      height: 80.0,
+      width: MediaQuery.textScalerOf(context).scale(176.0),
+      // height: 80.0 * 1.25,
       decoration: BoxDecoration(
         color: colorScheme.primaryContainer,
         borderRadius: const BorderRadius.all(
@@ -529,6 +530,7 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
             style: textTheme.bodyMedium?.copyWith(
               color: colorScheme.onPrimaryContainer,
             ),
+            textAlign: TextAlign.center,
           ),
           Divider(
             color: colorScheme.outline,
@@ -538,6 +540,7 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
             style: textTheme.bodyMedium?.copyWith(
               color: colorScheme.onPrimaryContainer,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
