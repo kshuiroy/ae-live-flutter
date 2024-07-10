@@ -100,7 +100,7 @@ class _ListsScreenState extends State<ListsScreen> {
       ),
       _CategoryListItem(
         title: t.lists.categories.soc,
-        icon: Symbols.local_hospital_rounded,
+        icon: Symbols.outpatient_med_rounded,
         onTap: () {
           if (isCompactSize) {
             context.go('/lists/soc');
@@ -115,7 +115,7 @@ class _ListsScreenState extends State<ListsScreen> {
       ),
       _CategoryListItem(
         title: t.lists.categories.goc,
-        icon: Symbols.local_hospital_rounded,
+        icon: Symbols.outpatient_med_rounded,
         onTap: () {
           if (isCompactSize) {
             context.go('/lists/goc');
@@ -130,7 +130,7 @@ class _ListsScreenState extends State<ListsScreen> {
       ),
       _CategoryListItem(
         title: t.lists.categories.cmc,
-        icon: Symbols.local_hospital_rounded,
+        icon: Symbols.psychiatry_rounded,
         onTap: () {
           if (isCompactSize) {
             context.go('/lists/cmc');
