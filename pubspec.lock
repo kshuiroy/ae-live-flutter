@@ -263,10 +263,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_map
-      sha256: cc102fe5eeab1a740c321e1982706061e46259cd75115b3b3779195f21d57cc3
+      sha256: "2ecb34619a4be19df6f40c2f8dce1591675b4eff7a6857bd8f533706977385da"
       url: "https://pub.dev"
     source: hosted
-    version: "7.0.1"
+    version: "7.0.2"
   flutter_map_cancellable_tile_provider:
     dependency: "direct main"
     description:
@@ -457,10 +457,10 @@ packages:
     dependency: "direct main"
     description:
       name: material_symbols_icons
-      sha256: a2c78726048c755f0f90fd2b7c8799cd94338e2e9b7ab6498ae56503262c14bc
+      sha256: "6102193e0c451426e9bb5e6cbc8533609e464bb2afa7fce42d9d79790e012beb"
       url: "https://pub.dev"
     source: hosted
-    version: "4.2762.0"
+    version: "4.2768.0"
   meta:
     dependency: transitive
     description:
@@ -782,18 +782,18 @@ packages:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_charts
-      sha256: cae165bc489d3b77fb095ab974c75fce5ea19aaedf392bb1ba85be1f1c7adc3d
+      sha256: "712a32f528ec0f695254966d4fdaf0d333c393963bc412fa1164dda503d643ac"
       url: "https://pub.dev"
     source: hosted
-    version: "26.1.39"
+    version: "26.1.41+1"
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "963e414e06abe520c9d0e039738bc6cbcf8eabf8c5964eb2181a76da1274a942"
+      sha256: "78681c79fe14c338b2985c67ab2863df7cf11541fd6d347be3ba37bb0bcd7d81"
       url: "https://pub.dev"
     source: hosted
-    version: "26.1.39"
+    version: "26.1.41"
   term_glyph:
     dependency: transitive
     description:
