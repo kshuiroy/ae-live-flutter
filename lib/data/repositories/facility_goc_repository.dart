@@ -73,19 +73,21 @@ class FacilityGocRepository {
                       ? quotaItem['Clinic'] == 'TIN SHUI WAI HEALTH CENTRE'
                       : (quotaItem['Clinic'] as String)
                               .replaceAll(
-                                  RegExp(
-                                    ' (GOP(C|D)|COMMUNITY HEALTH CENTRE?)',
-                                    caseSensitive: false,
-                                  ),
-                                  '')
+                                RegExp(
+                                  ' (GOP(C|D)|COMMUNITY HEALTH CENTRE?)',
+                                  caseSensitive: false,
+                                ),
+                                '',
+                              )
                               .toLowerCase() ==
                           (item['institution_eng'] as String)
                               .replaceAll(
-                                  RegExp(
-                                    ' (GOP(C|D)|General Out-patient (Clinic|Department)|Community Health Centre)',
-                                    caseSensitive: false,
-                                  ),
-                                  '')
+                                RegExp(
+                                  ' (GOP(C|D)|General Out-patient (Clinic|Department)|Community Health Centre)',
+                                  caseSensitive: false,
+                                ),
+                                '',
+                              )
                               .toLowerCase(),
         );
 

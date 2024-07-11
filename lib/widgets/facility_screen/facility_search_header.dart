@@ -36,8 +36,10 @@ class FacilitySearchHeader extends StatefulWidget {
     this.isDistrictButtonHighlighted = false,
     this.onDistrictChange,
     this.onClearFilter,
-  })  : assert(!(filterButtons.contains(FilterButtons.districts) &&
-            filterButtons.contains(FilterButtons.regions))),
+  })  : assert(
+          !(filterButtons.contains(FilterButtons.districts) &&
+              filterButtons.contains(FilterButtons.regions)),
+        ),
         assert(
           !filterButtons.contains(FilterButtons.clusters) ||
               (clusterButtonLabel != null && clusterDefaultOptions != null),

@@ -44,30 +44,30 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "ae_live"
+            "value" : "A&E Live"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : ""
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : ""
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : ""
           }
         },
         "zh-HK" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : ""
           }
         }

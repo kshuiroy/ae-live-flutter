@@ -81,7 +81,9 @@ class _FacilityGocScreenState extends State<FacilityGocScreen> {
   }
 
   void _onDistrictChange(
-      final BuildContext context, final List<int> districts) {
+    final BuildContext context,
+    final List<int> districts,
+  ) {
     setState(() {
       _searchDistricts = districts;
     });
