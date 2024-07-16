@@ -6,6 +6,13 @@
 
 This application provides the waiting time of Accident & Emergency service in all public hospitals in Hong Kong.
 
+<div align="center">
+
+![License](https://img.shields.io/github/license/kshuiroy/ae-live-flutter)
+[![Google Play Download](https://PlayBadges.pavi2410.me/badge/downloads?id=dev.kshrsoftware.aelive&pretty)](https://play.google.com/store/apps/details?id=dev.kshrsoftware.aelive)
+
+</div>
+
 ## 注意事項 Caution
 
 急症室會優先診治被分流為危殆、危急和緊急的病人。
@@ -32,7 +39,7 @@ To start development, please make sure the development machine has the following
 
 -   [Flutter SDK: >= 3.22.2](https://docs.flutter.dev/get-started/install)
 -   [Visual Studio Code](https://code.visualstudio.com/)
--   [Android Studio: >= Jellyfish | 2023.3.1](https://developer.android.com/studio)
+-   [Android Studio: >= Koala | 2024.1.1](https://developer.android.com/studio)
 -   Install the following SDKs and IDE also if you're using **macOS**:
     -   Xcode: >= 15.0
     -   Ruby: >= 3.3.0
