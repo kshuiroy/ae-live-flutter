@@ -9,7 +9,16 @@ This application provides the waiting time of Accident & Emergency service in al
 <div align="center">
 
 ![License](https://img.shields.io/github/license/kshuiroy/ae-live-flutter)
-[![Google Play Download](https://PlayBadges.pavi2410.me/badge/downloads?id=dev.kshrsoftware.aelive&pretty)](https://play.google.com/store/apps/details?id=dev.kshrsoftware.aelive)
+
+</div>
+
+<h2 align="center">Download the App</h2>
+
+<div align="center">
+
+<a href="https://play.google.com/store/apps/details?id=dev.kshrsoftware.aelive" target="_blank">
+    <img src="assets/external/readme_google_play_badge.png" alt="Get It On Google Play" style="width: 180px;" />
+</a>
 
 </div>
 
