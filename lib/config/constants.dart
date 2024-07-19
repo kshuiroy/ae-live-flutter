@@ -79,6 +79,10 @@ class Constants {
 
   //////////////////////////////////////////////////////////////////////////////
 
+  /// The URL of the GitHub repository page.
+  static const String pageGitHubRepository =
+      'https://github.com/kshuiroy/ae-live-flutter';
+
   /// The URL of the privacy policy page.
   static const String pagePrivacyPolicy =
       'https://sites.google.com/view/ae-live-privacy-policy/home';

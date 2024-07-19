@@ -107,6 +107,8 @@ extension on Translations {
 			case 'settings.more.termsConditions.subtitle': return '';
 			case 'settings.more.about.title': return 'About This App';
 			case 'settings.more.about.items.version': return 'App Version';
+			case 'settings.more.about.items.github.title': return 'GitHub Repository';
+			case 'settings.more.about.items.github.value': return 'Licensed under the GPL-3.0 license.';
 			case 'settings.more.about.items.dataSource.title': return 'Data Source';
 			case 'settings.more.about.items.dataSource.value': return 'DATA.GOV.HK and Hospital Authority';
 			case 'settings.more.about.items.imageSource.title': return 'Image Source';
@@ -247,6 +249,8 @@ extension on _TranslationsZhCn {
 			case 'settings.more.termsConditions.subtitle': return '只提供英文版本';
 			case 'settings.more.about.title': return '关于本应用程序';
 			case 'settings.more.about.items.version': return '应用程序版本';
+			case 'settings.more.about.items.github.title': return 'GitHub 储存库';
+			case 'settings.more.about.items.github.value': return '根据 GPL-3.0 许可证授权。';
 			case 'settings.more.about.items.dataSource.title': return '资料来源';
 			case 'settings.more.about.items.dataSource.value': return '资料一线通、医院管理局';
 			case 'settings.more.about.items.imageSource.title': return '插图来源';
@@ -387,6 +391,8 @@ extension on _TranslationsZhHk {
 			case 'settings.more.termsConditions.subtitle': return '只提供英文版本';
 			case 'settings.more.about.title': return '關於本應用程式';
 			case 'settings.more.about.items.version': return '應用程式版本';
+			case 'settings.more.about.items.github.title': return 'GitHub 儲存庫';
+			case 'settings.more.about.items.github.value': return '根據 GPL-3.0 許可證授權。';
 			case 'settings.more.about.items.dataSource.title': return '資料來源';
 			case 'settings.more.about.items.dataSource.value': return '資料一線通、醫院管理局';
 			case 'settings.more.about.items.imageSource.title': return '插圖來源';

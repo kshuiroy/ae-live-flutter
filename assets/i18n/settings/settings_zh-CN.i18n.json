@@ -67,6 +67,10 @@
             "title": "关于本应用程序",
             "items": {
                 "version": "应用程序版本",
+                "github": {
+                    "title": "GitHub 储存库",
+                    "value": "根据 GPL-3.0 许可证授权。"
+                },
                 "dataSource": {
                     "title": "资料来源",
                     "value": "资料一线通、医院管理局"

@@ -67,6 +67,10 @@
             "title": "About This App",
             "items": {
                 "version": "App Version",
+                "github": {
+                    "title": "GitHub Repository",
+                    "value": "Licensed under the GPL-3.0 license."
+                },
                 "dataSource": {
                     "title": "Data Source",
                     "value": "DATA.GOV.HK and Hospital Authority"

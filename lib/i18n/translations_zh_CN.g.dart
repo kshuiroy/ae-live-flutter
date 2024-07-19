@@ -621,8 +621,20 @@ class _TranslationsSettingsMoreAboutItemsZhCn extends _TranslationsSettingsMoreA
 
 	// Translations
 	@override String get version => '应用程序版本';
+	@override late final _TranslationsSettingsMoreAboutItemsGithubZhCn github = _TranslationsSettingsMoreAboutItemsGithubZhCn._(_root);
 	@override late final _TranslationsSettingsMoreAboutItemsDataSourceZhCn dataSource = _TranslationsSettingsMoreAboutItemsDataSourceZhCn._(_root);
 	@override late final _TranslationsSettingsMoreAboutItemsImageSourceZhCn imageSource = _TranslationsSettingsMoreAboutItemsImageSourceZhCn._(_root);
+}
+
+// Path: settings.more.about.items.github
+class _TranslationsSettingsMoreAboutItemsGithubZhCn extends _TranslationsSettingsMoreAboutItemsGithubEn {
+	_TranslationsSettingsMoreAboutItemsGithubZhCn._(_TranslationsZhCn root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'GitHub 储存库';
+	@override String get value => '根据 GPL-3.0 许可证授权。';
 }
 
 // Path: settings.more.about.items.dataSource

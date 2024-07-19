@@ -1,6 +1,8 @@
+import 'package:ae_live/config/constants.dart';
 import 'package:ae_live/i18n/translations.g.dart';
 import 'package:ae_live/utilities/launch_in_app_browser.dart';
 import 'package:ae_live/widgets/core/frosted_glass_app_bar.dart';
+import 'package:ae_live/widgets/core/github_icon.dart';
 import 'package:ae_live/widgets/shared/themed_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
@@ -42,6 +44,16 @@ class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
         icon: Symbols.sdk_rounded,
       ),
       _AboutThisAppTileItem(
+        title: t.settings.more.about.items.github.title,
+        value: t.settings.more.about.items.github.value,
+        icon: GithubIcon(
+          width: MediaQuery.textScalerOf(context).scale(24.0),
+        ),
+        onTap: () async {
+          await launchInAppBrowser(Constants.pageGitHubRepository);
+        },
+      ),
+      _AboutThisAppTileItem(
         title: t.settings.more.about.items.dataSource.title,
         value: t.settings.more.about.items.dataSource.value,
         icon: Symbols.database_rounded,
@@ -77,10 +89,13 @@ class _AboutThisAppScreenState extends State<AboutThisAppScreen> {
                 ),
                 itemBuilder: (context, index) {
                   final _AboutThisAppTileItem item = items[index];
+
                   return ListTile(
-                    leading: ThemedIcon(
-                      item.icon,
-                    ),
+                    leading: item.icon is IconData
+                        ? ThemedIcon(
+                            item.icon,
+                          )
+                        : item.icon,
                     title: Text(item.title),
                     subtitle: Text(item.value),
                     onTap: item.onTap,
@@ -103,6 +118,6 @@ class _AboutThisAppTileItem {
 
   final String title;
   final String value;
-  final IconData icon;
+  final dynamic icon;
   final void Function()? onTap;
 }

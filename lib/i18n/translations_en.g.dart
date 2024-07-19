@@ -625,8 +625,20 @@ class _TranslationsSettingsMoreAboutItemsEn {
 
 	// Translations
 	String get version => 'App Version';
+	late final _TranslationsSettingsMoreAboutItemsGithubEn github = _TranslationsSettingsMoreAboutItemsGithubEn._(_root);
 	late final _TranslationsSettingsMoreAboutItemsDataSourceEn dataSource = _TranslationsSettingsMoreAboutItemsDataSourceEn._(_root);
 	late final _TranslationsSettingsMoreAboutItemsImageSourceEn imageSource = _TranslationsSettingsMoreAboutItemsImageSourceEn._(_root);
+}
+
+// Path: settings.more.about.items.github
+class _TranslationsSettingsMoreAboutItemsGithubEn {
+	_TranslationsSettingsMoreAboutItemsGithubEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'GitHub Repository';
+	String get value => 'Licensed under the GPL-3.0 license.';
 }
 
 // Path: settings.more.about.items.dataSource

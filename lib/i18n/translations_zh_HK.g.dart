@@ -621,8 +621,20 @@ class _TranslationsSettingsMoreAboutItemsZhHk extends _TranslationsSettingsMoreA
 
 	// Translations
 	@override String get version => '應用程式版本';
+	@override late final _TranslationsSettingsMoreAboutItemsGithubZhHk github = _TranslationsSettingsMoreAboutItemsGithubZhHk._(_root);
 	@override late final _TranslationsSettingsMoreAboutItemsDataSourceZhHk dataSource = _TranslationsSettingsMoreAboutItemsDataSourceZhHk._(_root);
 	@override late final _TranslationsSettingsMoreAboutItemsImageSourceZhHk imageSource = _TranslationsSettingsMoreAboutItemsImageSourceZhHk._(_root);
+}
+
+// Path: settings.more.about.items.github
+class _TranslationsSettingsMoreAboutItemsGithubZhHk extends _TranslationsSettingsMoreAboutItemsGithubEn {
+	_TranslationsSettingsMoreAboutItemsGithubZhHk._(_TranslationsZhHk root) : this._root = root, super._(root);
+
+	@override final _TranslationsZhHk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'GitHub 儲存庫';
+	@override String get value => '根據 GPL-3.0 許可證授權。';
 }
 
 // Path: settings.more.about.items.dataSource

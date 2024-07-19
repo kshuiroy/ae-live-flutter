@@ -67,6 +67,10 @@
             "title": "關於本應用程式",
             "items": {
                 "version": "應用程式版本",
+                "github": {
+                    "title": "GitHub 儲存庫",
+                    "value": "根據 GPL-3.0 許可證授權。"
+                },
                 "dataSource": {
                     "title": "資料來源",
                     "value": "資料一線通、醫院管理局"
