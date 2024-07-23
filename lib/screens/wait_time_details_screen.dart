@@ -160,7 +160,15 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
       );
     }
 
-    Share.share(content);
+    Share.share(
+      content,
+      sharePositionOrigin: Rect.fromLTWH(
+        MediaQuery.of(context).size.width - 40.0,
+        24.0,
+        40.0,
+        48.0,
+      ),
+    );
   }
 
   @override
