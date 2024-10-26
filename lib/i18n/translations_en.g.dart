@@ -2,11 +2,12 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
 part of 'translations.g.dart';
 
 // Path: <root>
+typedef TranslationsEn = Translations; // ignore: unused_element
 class Translations implements BaseTranslations<AppLocale, Translations> {
 	/// Returns the current translations of the given [context].
 	///
@@ -16,7 +17,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	Translations.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.en,
@@ -36,107 +37,107 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsHomeEn home = _TranslationsHomeEn._(_root);
-	late final _TranslationsListsEn lists = _TranslationsListsEn._(_root);
-	late final _TranslationsMainEn main = _TranslationsMainEn._(_root);
-	late final _TranslationsSettingsEn settings = _TranslationsSettingsEn._(_root);
-	late final _TranslationsSharedEn shared = _TranslationsSharedEn._(_root);
-	late final _TranslationsWaitTimeDetailsEn waitTimeDetails = _TranslationsWaitTimeDetailsEn._(_root);
+	late final TranslationsHomeEn home = TranslationsHomeEn.internal(_root);
+	late final TranslationsListsEn lists = TranslationsListsEn.internal(_root);
+	late final TranslationsMainEn main = TranslationsMainEn.internal(_root);
+	late final TranslationsSettingsEn settings = TranslationsSettingsEn.internal(_root);
+	late final TranslationsSharedEn shared = TranslationsSharedEn.internal(_root);
+	late final TranslationsWaitTimeDetailsEn waitTimeDetails = TranslationsWaitTimeDetailsEn.internal(_root);
 }
 
 // Path: home
-class _TranslationsHomeEn {
-	_TranslationsHomeEn._(this._root);
+class TranslationsHomeEn {
+	TranslationsHomeEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'A&E Waiting Time';
-	late final _TranslationsHomeActionsEn actions = _TranslationsHomeActionsEn._(_root);
+	late final TranslationsHomeActionsEn actions = TranslationsHomeActionsEn.internal(_root);
 	String get badgeText => 'Priority will be accorded to patients triaged as critical, emergency and urgent.';
-	late final _TranslationsHomeRefreshIndicatorEn refreshIndicator = _TranslationsHomeRefreshIndicatorEn._(_root);
-	late final _TranslationsHomePromptEn prompt = _TranslationsHomePromptEn._(_root);
+	late final TranslationsHomeRefreshIndicatorEn refreshIndicator = TranslationsHomeRefreshIndicatorEn.internal(_root);
+	late final TranslationsHomePromptEn prompt = TranslationsHomePromptEn.internal(_root);
 }
 
 // Path: lists
-class _TranslationsListsEn {
-	_TranslationsListsEn._(this._root);
+class TranslationsListsEn {
+	TranslationsListsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Facility Lists';
-	late final _TranslationsListsCategoriesEn categories = _TranslationsListsCategoriesEn._(_root);
-	late final _TranslationsListsHospitalEn hospital = _TranslationsListsHospitalEn._(_root);
-	late final _TranslationsListsSocEn soc = _TranslationsListsSocEn._(_root);
-	late final _TranslationsListsGocEn goc = _TranslationsListsGocEn._(_root);
-	late final _TranslationsListsCmcEn cmc = _TranslationsListsCmcEn._(_root);
-	late final _TranslationsListsPromptEn prompt = _TranslationsListsPromptEn._(_root);
+	late final TranslationsListsCategoriesEn categories = TranslationsListsCategoriesEn.internal(_root);
+	late final TranslationsListsHospitalEn hospital = TranslationsListsHospitalEn.internal(_root);
+	late final TranslationsListsSocEn soc = TranslationsListsSocEn.internal(_root);
+	late final TranslationsListsGocEn goc = TranslationsListsGocEn.internal(_root);
+	late final TranslationsListsCmcEn cmc = TranslationsListsCmcEn.internal(_root);
+	late final TranslationsListsPromptEn prompt = TranslationsListsPromptEn.internal(_root);
 	String get refresh => 'Refresh';
 }
 
 // Path: main
-class _TranslationsMainEn {
-	_TranslationsMainEn._(this._root);
+class TranslationsMainEn {
+	TranslationsMainEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get app_name => 'A&E Live';
 	Map<String, dynamic> get tabs => {
-		'home': _TranslationsMainTabsHomeEn._(_root),
-		'lists': _TranslationsMainTabsListsEn._(_root),
-		'settings': _TranslationsMainTabsSettingsEn._(_root),
+		'home': TranslationsMainTabsHomeEn.internal(_root),
+		'lists': TranslationsMainTabsListsEn.internal(_root),
+		'settings': TranslationsMainTabsSettingsEn.internal(_root),
 	};
-	late final _TranslationsMainClustersEn clusters = _TranslationsMainClustersEn._(_root);
-	late final _TranslationsMainDataRemarksEn dataRemarks = _TranslationsMainDataRemarksEn._(_root);
+	late final TranslationsMainClustersEn clusters = TranslationsMainClustersEn.internal(_root);
+	late final TranslationsMainDataRemarksEn dataRemarks = TranslationsMainDataRemarksEn.internal(_root);
 }
 
 // Path: settings
-class _TranslationsSettingsEn {
-	_TranslationsSettingsEn._(this._root);
+class TranslationsSettingsEn {
+	TranslationsSettingsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Settings';
 	String get save => 'Save Settings';
-	late final _TranslationsSettingsSectionsEn sections = _TranslationsSettingsSectionsEn._(_root);
-	late final _TranslationsSettingsAppearanceEn appearance = _TranslationsSettingsAppearanceEn._(_root);
-	late final _TranslationsSettingsDataEn data = _TranslationsSettingsDataEn._(_root);
-	late final _TranslationsSettingsMoreEn more = _TranslationsSettingsMoreEn._(_root);
-	late final _TranslationsSettingsPromptEn prompt = _TranslationsSettingsPromptEn._(_root);
+	late final TranslationsSettingsSectionsEn sections = TranslationsSettingsSectionsEn.internal(_root);
+	late final TranslationsSettingsAppearanceEn appearance = TranslationsSettingsAppearanceEn.internal(_root);
+	late final TranslationsSettingsDataEn data = TranslationsSettingsDataEn.internal(_root);
+	late final TranslationsSettingsMoreEn more = TranslationsSettingsMoreEn.internal(_root);
+	late final TranslationsSettingsPromptEn prompt = TranslationsSettingsPromptEn.internal(_root);
 }
 
 // Path: shared
-class _TranslationsSharedEn {
-	_TranslationsSharedEn._(this._root);
+class TranslationsSharedEn {
+	TranslationsSharedEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsSharedFilterEn filter = _TranslationsSharedFilterEn._(_root);
-	late final _TranslationsSharedFacilityMapsEn facilityMaps = _TranslationsSharedFacilityMapsEn._(_root);
+	late final TranslationsSharedFilterEn filter = TranslationsSharedFilterEn.internal(_root);
+	late final TranslationsSharedFacilityMapsEn facilityMaps = TranslationsSharedFacilityMapsEn.internal(_root);
 }
 
 // Path: waitTimeDetails
-class _TranslationsWaitTimeDetailsEn {
-	_TranslationsWaitTimeDetailsEn._(this._root);
+class TranslationsWaitTimeDetailsEn {
+	TranslationsWaitTimeDetailsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get estimatedWaitTime => 'Estimated A&E Waiting Time (Non-Urgent)';
-	late final _TranslationsWaitTimeDetailsActionsEn actions = _TranslationsWaitTimeDetailsActionsEn._(_root);
+	late final TranslationsWaitTimeDetailsActionsEn actions = TranslationsWaitTimeDetailsActionsEn.internal(_root);
 	String get chartTitle => 'A&E Waiting Time of the Past 6 Hours';
 	String get hours => '{value}H';
-	late final _TranslationsWaitTimeDetailsInfoEn info = _TranslationsWaitTimeDetailsInfoEn._(_root);
-	late final _TranslationsWaitTimeDetailsShareContentEn shareContent = _TranslationsWaitTimeDetailsShareContentEn._(_root);
+	late final TranslationsWaitTimeDetailsInfoEn info = TranslationsWaitTimeDetailsInfoEn.internal(_root);
+	late final TranslationsWaitTimeDetailsShareContentEn shareContent = TranslationsWaitTimeDetailsShareContentEn.internal(_root);
 }
 
 // Path: home.actions
-class _TranslationsHomeActionsEn {
-	_TranslationsHomeActionsEn._(this._root);
+class TranslationsHomeActionsEn {
+	TranslationsHomeActionsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -147,8 +148,8 @@ class _TranslationsHomeActionsEn {
 }
 
 // Path: home.refreshIndicator
-class _TranslationsHomeRefreshIndicatorEn {
-	_TranslationsHomeRefreshIndicatorEn._(this._root);
+class TranslationsHomeRefreshIndicatorEn {
+	TranslationsHomeRefreshIndicatorEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -162,8 +163,8 @@ class _TranslationsHomeRefreshIndicatorEn {
 }
 
 // Path: home.prompt
-class _TranslationsHomePromptEn {
-	_TranslationsHomePromptEn._(this._root);
+class TranslationsHomePromptEn {
+	TranslationsHomePromptEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -175,8 +176,8 @@ class _TranslationsHomePromptEn {
 }
 
 // Path: lists.categories
-class _TranslationsListsCategoriesEn {
-	_TranslationsListsCategoriesEn._(this._root);
+class TranslationsListsCategoriesEn {
+	TranslationsListsCategoriesEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -188,8 +189,8 @@ class _TranslationsListsCategoriesEn {
 }
 
 // Path: lists.hospital
-class _TranslationsListsHospitalEn {
-	_TranslationsListsHospitalEn._(this._root);
+class TranslationsListsHospitalEn {
+	TranslationsListsHospitalEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -202,8 +203,8 @@ class _TranslationsListsHospitalEn {
 }
 
 // Path: lists.soc
-class _TranslationsListsSocEn {
-	_TranslationsListsSocEn._(this._root);
+class TranslationsListsSocEn {
+	TranslationsListsSocEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -214,8 +215,8 @@ class _TranslationsListsSocEn {
 }
 
 // Path: lists.goc
-class _TranslationsListsGocEn {
-	_TranslationsListsGocEn._(this._root);
+class TranslationsListsGocEn {
+	TranslationsListsGocEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -226,8 +227,8 @@ class _TranslationsListsGocEn {
 }
 
 // Path: lists.cmc
-class _TranslationsListsCmcEn {
-	_TranslationsListsCmcEn._(this._root);
+class TranslationsListsCmcEn {
+	TranslationsListsCmcEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -238,8 +239,8 @@ class _TranslationsListsCmcEn {
 }
 
 // Path: lists.prompt
-class _TranslationsListsPromptEn {
-	_TranslationsListsPromptEn._(this._root);
+class TranslationsListsPromptEn {
+	TranslationsListsPromptEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -250,8 +251,8 @@ class _TranslationsListsPromptEn {
 }
 
 // Path: main.tabs.home
-class _TranslationsMainTabsHomeEn {
-	_TranslationsMainTabsHomeEn._(this._root);
+class TranslationsMainTabsHomeEn {
+	TranslationsMainTabsHomeEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -261,8 +262,8 @@ class _TranslationsMainTabsHomeEn {
 }
 
 // Path: main.tabs.lists
-class _TranslationsMainTabsListsEn {
-	_TranslationsMainTabsListsEn._(this._root);
+class TranslationsMainTabsListsEn {
+	TranslationsMainTabsListsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -272,8 +273,8 @@ class _TranslationsMainTabsListsEn {
 }
 
 // Path: main.tabs.settings
-class _TranslationsMainTabsSettingsEn {
-	_TranslationsMainTabsSettingsEn._(this._root);
+class TranslationsMainTabsSettingsEn {
+	TranslationsMainTabsSettingsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -283,8 +284,8 @@ class _TranslationsMainTabsSettingsEn {
 }
 
 // Path: main.clusters
-class _TranslationsMainClustersEn {
-	_TranslationsMainClustersEn._(this._root);
+class TranslationsMainClustersEn {
+	TranslationsMainClustersEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -299,8 +300,8 @@ class _TranslationsMainClustersEn {
 }
 
 // Path: main.dataRemarks
-class _TranslationsMainDataRemarksEn {
-	_TranslationsMainDataRemarksEn._(this._root);
+class TranslationsMainDataRemarksEn {
+	TranslationsMainDataRemarksEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -318,8 +319,8 @@ class _TranslationsMainDataRemarksEn {
 }
 
 // Path: settings.sections
-class _TranslationsSettingsSectionsEn {
-	_TranslationsSettingsSectionsEn._(this._root);
+class TranslationsSettingsSectionsEn {
+	TranslationsSettingsSectionsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -330,44 +331,44 @@ class _TranslationsSettingsSectionsEn {
 }
 
 // Path: settings.appearance
-class _TranslationsSettingsAppearanceEn {
-	_TranslationsSettingsAppearanceEn._(this._root);
+class TranslationsSettingsAppearanceEn {
+	TranslationsSettingsAppearanceEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsSettingsAppearanceThemeEn theme = _TranslationsSettingsAppearanceThemeEn._(_root);
-	late final _TranslationsSettingsAppearanceLanguageEn language = _TranslationsSettingsAppearanceLanguageEn._(_root);
-	late final _TranslationsSettingsAppearanceTextSizeEn textSize = _TranslationsSettingsAppearanceTextSizeEn._(_root);
-	late final _TranslationsSettingsAppearanceSortingEn sorting = _TranslationsSettingsAppearanceSortingEn._(_root);
+	late final TranslationsSettingsAppearanceThemeEn theme = TranslationsSettingsAppearanceThemeEn.internal(_root);
+	late final TranslationsSettingsAppearanceLanguageEn language = TranslationsSettingsAppearanceLanguageEn.internal(_root);
+	late final TranslationsSettingsAppearanceTextSizeEn textSize = TranslationsSettingsAppearanceTextSizeEn.internal(_root);
+	late final TranslationsSettingsAppearanceSortingEn sorting = TranslationsSettingsAppearanceSortingEn.internal(_root);
 }
 
 // Path: settings.data
-class _TranslationsSettingsDataEn {
-	_TranslationsSettingsDataEn._(this._root);
+class TranslationsSettingsDataEn {
+	TranslationsSettingsDataEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsSettingsDataResetEn reset = _TranslationsSettingsDataResetEn._(_root);
+	late final TranslationsSettingsDataResetEn reset = TranslationsSettingsDataResetEn.internal(_root);
 }
 
 // Path: settings.more
-class _TranslationsSettingsMoreEn {
-	_TranslationsSettingsMoreEn._(this._root);
+class TranslationsSettingsMoreEn {
+	TranslationsSettingsMoreEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get license => 'Open Source Licenses';
-	late final _TranslationsSettingsMorePrivacyPolicyEn privacyPolicy = _TranslationsSettingsMorePrivacyPolicyEn._(_root);
-	late final _TranslationsSettingsMoreTermsConditionsEn termsConditions = _TranslationsSettingsMoreTermsConditionsEn._(_root);
-	late final _TranslationsSettingsMoreAboutEn about = _TranslationsSettingsMoreAboutEn._(_root);
+	late final TranslationsSettingsMorePrivacyPolicyEn privacyPolicy = TranslationsSettingsMorePrivacyPolicyEn.internal(_root);
+	late final TranslationsSettingsMoreTermsConditionsEn termsConditions = TranslationsSettingsMoreTermsConditionsEn.internal(_root);
+	late final TranslationsSettingsMoreAboutEn about = TranslationsSettingsMoreAboutEn.internal(_root);
 }
 
 // Path: settings.prompt
-class _TranslationsSettingsPromptEn {
-	_TranslationsSettingsPromptEn._(this._root);
+class TranslationsSettingsPromptEn {
+	TranslationsSettingsPromptEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -377,23 +378,23 @@ class _TranslationsSettingsPromptEn {
 }
 
 // Path: shared.filter
-class _TranslationsSharedFilterEn {
-	_TranslationsSharedFilterEn._(this._root);
+class TranslationsSharedFilterEn {
+	TranslationsSharedFilterEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _TranslationsSharedFilterSortingEn sorting = _TranslationsSharedFilterSortingEn._(_root);
+	late final TranslationsSharedFilterSortingEn sorting = TranslationsSharedFilterSortingEn.internal(_root);
 	String get hospitalCluster => 'Hospital Cluster';
 	String get clinicCluster => 'Clinic Cluster';
 	String get region => 'Region';
 	String get district => 'District';
-	late final _TranslationsSharedFilterActionsEn actions = _TranslationsSharedFilterActionsEn._(_root);
+	late final TranslationsSharedFilterActionsEn actions = TranslationsSharedFilterActionsEn.internal(_root);
 }
 
 // Path: shared.facilityMaps
-class _TranslationsSharedFacilityMapsEn {
-	_TranslationsSharedFacilityMapsEn._(this._root);
+class TranslationsSharedFacilityMapsEn {
+	TranslationsSharedFacilityMapsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -403,8 +404,8 @@ class _TranslationsSharedFacilityMapsEn {
 }
 
 // Path: waitTimeDetails.actions
-class _TranslationsWaitTimeDetailsActionsEn {
-	_TranslationsWaitTimeDetailsActionsEn._(this._root);
+class TranslationsWaitTimeDetailsActionsEn {
+	TranslationsWaitTimeDetailsActionsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -415,8 +416,8 @@ class _TranslationsWaitTimeDetailsActionsEn {
 }
 
 // Path: waitTimeDetails.info
-class _TranslationsWaitTimeDetailsInfoEn {
-	_TranslationsWaitTimeDetailsInfoEn._(this._root);
+class TranslationsWaitTimeDetailsInfoEn {
+	TranslationsWaitTimeDetailsInfoEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -430,8 +431,8 @@ class _TranslationsWaitTimeDetailsInfoEn {
 }
 
 // Path: waitTimeDetails.shareContent
-class _TranslationsWaitTimeDetailsShareContentEn {
-	_TranslationsWaitTimeDetailsShareContentEn._(this._root);
+class TranslationsWaitTimeDetailsShareContentEn {
+	TranslationsWaitTimeDetailsShareContentEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -443,64 +444,64 @@ class _TranslationsWaitTimeDetailsShareContentEn {
 }
 
 // Path: settings.appearance.theme
-class _TranslationsSettingsAppearanceThemeEn {
-	_TranslationsSettingsAppearanceThemeEn._(this._root);
+class TranslationsSettingsAppearanceThemeEn {
+	TranslationsSettingsAppearanceThemeEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Display Theme';
-	late final _TranslationsSettingsAppearanceThemeOptionsEn options = _TranslationsSettingsAppearanceThemeOptionsEn._(_root);
+	late final TranslationsSettingsAppearanceThemeOptionsEn options = TranslationsSettingsAppearanceThemeOptionsEn.internal(_root);
 }
 
 // Path: settings.appearance.language
-class _TranslationsSettingsAppearanceLanguageEn {
-	_TranslationsSettingsAppearanceLanguageEn._(this._root);
+class TranslationsSettingsAppearanceLanguageEn {
+	TranslationsSettingsAppearanceLanguageEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Display Language';
-	late final _TranslationsSettingsAppearanceLanguageOptionsEn options = _TranslationsSettingsAppearanceLanguageOptionsEn._(_root);
+	late final TranslationsSettingsAppearanceLanguageOptionsEn options = TranslationsSettingsAppearanceLanguageOptionsEn.internal(_root);
 }
 
 // Path: settings.appearance.textSize
-class _TranslationsSettingsAppearanceTextSizeEn {
-	_TranslationsSettingsAppearanceTextSizeEn._(this._root);
+class TranslationsSettingsAppearanceTextSizeEn {
+	TranslationsSettingsAppearanceTextSizeEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Text Size';
-	late final _TranslationsSettingsAppearanceTextSizeOptionsEn options = _TranslationsSettingsAppearanceTextSizeOptionsEn._(_root);
+	late final TranslationsSettingsAppearanceTextSizeOptionsEn options = TranslationsSettingsAppearanceTextSizeOptionsEn.internal(_root);
 }
 
 // Path: settings.appearance.sorting
-class _TranslationsSettingsAppearanceSortingEn {
-	_TranslationsSettingsAppearanceSortingEn._(this._root);
+class TranslationsSettingsAppearanceSortingEn {
+	TranslationsSettingsAppearanceSortingEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Default Sorting of A&E Waiting Time';
-	late final _TranslationsSettingsAppearanceSortingOptionsEn options = _TranslationsSettingsAppearanceSortingOptionsEn._(_root);
+	late final TranslationsSettingsAppearanceSortingOptionsEn options = TranslationsSettingsAppearanceSortingOptionsEn.internal(_root);
 }
 
 // Path: settings.data.reset
-class _TranslationsSettingsDataResetEn {
-	_TranslationsSettingsDataResetEn._(this._root);
+class TranslationsSettingsDataResetEn {
+	TranslationsSettingsDataResetEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Reset All Settings';
 	String get message => 'If you\'ve experienced any difficulties while using this app, consider resetting all settings to restore its functionality. Please note that this action will take effect once the app has been restarted.';
-	late final _TranslationsSettingsDataResetButtonsEn buttons = _TranslationsSettingsDataResetButtonsEn._(_root);
+	late final TranslationsSettingsDataResetButtonsEn buttons = TranslationsSettingsDataResetButtonsEn.internal(_root);
 }
 
 // Path: settings.more.privacyPolicy
-class _TranslationsSettingsMorePrivacyPolicyEn {
-	_TranslationsSettingsMorePrivacyPolicyEn._(this._root);
+class TranslationsSettingsMorePrivacyPolicyEn {
+	TranslationsSettingsMorePrivacyPolicyEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -510,8 +511,8 @@ class _TranslationsSettingsMorePrivacyPolicyEn {
 }
 
 // Path: settings.more.termsConditions
-class _TranslationsSettingsMoreTermsConditionsEn {
-	_TranslationsSettingsMoreTermsConditionsEn._(this._root);
+class TranslationsSettingsMoreTermsConditionsEn {
+	TranslationsSettingsMoreTermsConditionsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -521,19 +522,19 @@ class _TranslationsSettingsMoreTermsConditionsEn {
 }
 
 // Path: settings.more.about
-class _TranslationsSettingsMoreAboutEn {
-	_TranslationsSettingsMoreAboutEn._(this._root);
+class TranslationsSettingsMoreAboutEn {
+	TranslationsSettingsMoreAboutEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'About This App';
-	late final _TranslationsSettingsMoreAboutItemsEn items = _TranslationsSettingsMoreAboutItemsEn._(_root);
+	late final TranslationsSettingsMoreAboutItemsEn items = TranslationsSettingsMoreAboutItemsEn.internal(_root);
 }
 
 // Path: shared.filter.sorting
-class _TranslationsSharedFilterSortingEn {
-	_TranslationsSharedFilterSortingEn._(this._root);
+class TranslationsSharedFilterSortingEn {
+	TranslationsSharedFilterSortingEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -546,8 +547,8 @@ class _TranslationsSharedFilterSortingEn {
 }
 
 // Path: shared.filter.actions
-class _TranslationsSharedFilterActionsEn {
-	_TranslationsSharedFilterActionsEn._(this._root);
+class TranslationsSharedFilterActionsEn {
+	TranslationsSharedFilterActionsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -558,8 +559,8 @@ class _TranslationsSharedFilterActionsEn {
 }
 
 // Path: settings.appearance.theme.options
-class _TranslationsSettingsAppearanceThemeOptionsEn {
-	_TranslationsSettingsAppearanceThemeOptionsEn._(this._root);
+class TranslationsSettingsAppearanceThemeOptionsEn {
+	TranslationsSettingsAppearanceThemeOptionsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -570,8 +571,8 @@ class _TranslationsSettingsAppearanceThemeOptionsEn {
 }
 
 // Path: settings.appearance.language.options
-class _TranslationsSettingsAppearanceLanguageOptionsEn {
-	_TranslationsSettingsAppearanceLanguageOptionsEn._(this._root);
+class TranslationsSettingsAppearanceLanguageOptionsEn {
+	TranslationsSettingsAppearanceLanguageOptionsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -582,8 +583,8 @@ class _TranslationsSettingsAppearanceLanguageOptionsEn {
 }
 
 // Path: settings.appearance.textSize.options
-class _TranslationsSettingsAppearanceTextSizeOptionsEn {
-	_TranslationsSettingsAppearanceTextSizeOptionsEn._(this._root);
+class TranslationsSettingsAppearanceTextSizeOptionsEn {
+	TranslationsSettingsAppearanceTextSizeOptionsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -594,8 +595,8 @@ class _TranslationsSettingsAppearanceTextSizeOptionsEn {
 }
 
 // Path: settings.appearance.sorting.options
-class _TranslationsSettingsAppearanceSortingOptionsEn {
-	_TranslationsSettingsAppearanceSortingOptionsEn._(this._root);
+class TranslationsSettingsAppearanceSortingOptionsEn {
+	TranslationsSettingsAppearanceSortingOptionsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -607,8 +608,8 @@ class _TranslationsSettingsAppearanceSortingOptionsEn {
 }
 
 // Path: settings.data.reset.buttons
-class _TranslationsSettingsDataResetButtonsEn {
-	_TranslationsSettingsDataResetButtonsEn._(this._root);
+class TranslationsSettingsDataResetButtonsEn {
+	TranslationsSettingsDataResetButtonsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -618,21 +619,21 @@ class _TranslationsSettingsDataResetButtonsEn {
 }
 
 // Path: settings.more.about.items
-class _TranslationsSettingsMoreAboutItemsEn {
-	_TranslationsSettingsMoreAboutItemsEn._(this._root);
+class TranslationsSettingsMoreAboutItemsEn {
+	TranslationsSettingsMoreAboutItemsEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get version => 'App Version';
-	late final _TranslationsSettingsMoreAboutItemsGithubEn github = _TranslationsSettingsMoreAboutItemsGithubEn._(_root);
-	late final _TranslationsSettingsMoreAboutItemsDataSourceEn dataSource = _TranslationsSettingsMoreAboutItemsDataSourceEn._(_root);
-	late final _TranslationsSettingsMoreAboutItemsImageSourceEn imageSource = _TranslationsSettingsMoreAboutItemsImageSourceEn._(_root);
+	late final TranslationsSettingsMoreAboutItemsGithubEn github = TranslationsSettingsMoreAboutItemsGithubEn.internal(_root);
+	late final TranslationsSettingsMoreAboutItemsDataSourceEn dataSource = TranslationsSettingsMoreAboutItemsDataSourceEn.internal(_root);
+	late final TranslationsSettingsMoreAboutItemsImageSourceEn imageSource = TranslationsSettingsMoreAboutItemsImageSourceEn.internal(_root);
 }
 
 // Path: settings.more.about.items.github
-class _TranslationsSettingsMoreAboutItemsGithubEn {
-	_TranslationsSettingsMoreAboutItemsGithubEn._(this._root);
+class TranslationsSettingsMoreAboutItemsGithubEn {
+	TranslationsSettingsMoreAboutItemsGithubEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -642,8 +643,8 @@ class _TranslationsSettingsMoreAboutItemsGithubEn {
 }
 
 // Path: settings.more.about.items.dataSource
-class _TranslationsSettingsMoreAboutItemsDataSourceEn {
-	_TranslationsSettingsMoreAboutItemsDataSourceEn._(this._root);
+class TranslationsSettingsMoreAboutItemsDataSourceEn {
+	TranslationsSettingsMoreAboutItemsDataSourceEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -653,8 +654,8 @@ class _TranslationsSettingsMoreAboutItemsDataSourceEn {
 }
 
 // Path: settings.more.about.items.imageSource
-class _TranslationsSettingsMoreAboutItemsImageSourceEn {
-	_TranslationsSettingsMoreAboutItemsImageSourceEn._(this._root);
+class TranslationsSettingsMoreAboutItemsImageSourceEn {
+	TranslationsSettingsMoreAboutItemsImageSourceEn.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -663,3 +664,148 @@ class _TranslationsSettingsMoreAboutItemsImageSourceEn {
 	String get value => 'unDraw';
 	String get url => 'https://undraw.co/license';
 }
+
+/// Flat map(s) containing all translations.
+/// Only for edge cases! For simple maps, use the map function of this library.
+extension on Translations {
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'home.title': return 'A&E Waiting Time';
+			case 'home.actions.filter': return 'Filter';
+			case 'home.actions.refresh': return 'Refresh Data';
+			case 'home.actions.search': return 'Search Hospital';
+			case 'home.badgeText': return 'Priority will be accorded to patients triaged as critical, emergency and urgent.';
+			case 'home.refreshIndicator.pullToRefresh': return 'Pull to Refresh';
+			case 'home.refreshIndicator.releaseToRefresh': return 'Release to Refresh';
+			case 'home.refreshIndicator.refreshing': return 'Refreshing...';
+			case 'home.refreshIndicator.dataUpdated': return 'Data Updated';
+			case 'home.refreshIndicator.failedToRefresh': return 'Failed to Refresh';
+			case 'home.refreshIndicator.lastUpdateAt': return 'Last Update At: %T';
+			case 'home.prompt.noConnection': return 'No internet connection.';
+			case 'home.prompt.serverError': return 'Something went wrong with the server, please try again later.';
+			case 'home.prompt.noSearchResult': return 'There is no hospital matches your search criteria.';
+			case 'home.prompt.selectItem': return 'Please select a hospital card from the list to view the details of the hospital.';
+			case 'lists.title': return 'Facility Lists';
+			case 'lists.categories.hospital': return 'Hospital/Institution under the Hospial Authority';
+			case 'lists.categories.soc': return 'Specialist Outpatient Clinic under the Hospial Authority';
+			case 'lists.categories.goc': return 'General Outpatient Clinic under the Hospial Authority';
+			case 'lists.categories.cmc': return 'Chinese Medicine Clinics cum Training and Research Centres';
+			case 'lists.hospital.search': return 'Search Hospital/Institution';
+			case 'lists.hospital.cluster': return 'Hospital Cluster';
+			case 'lists.hospital.withAEService': return 'Provides A&E services';
+			case 'lists.hospital.withoutAEService': return 'No A&E services provided';
+			case 'lists.hospital.noSearchResult': return 'There is no hospital/institution matches your search criteria.';
+			case 'lists.soc.search': return 'Search Specialist Outpatient Clinic';
+			case 'lists.soc.cluster': return 'Clinic Cluster';
+			case 'lists.soc.noSearchResult': return 'There is no clinic matches your search criteria.';
+			case 'lists.goc.search': return 'Search General Outpatient Clinic';
+			case 'lists.goc.cluster': return 'Clinic Cluster';
+			case 'lists.goc.noSearchResult': return 'There is no clinic matches your search criteria.';
+			case 'lists.cmc.search': return 'Search Chinese Medicine Clinics cum Training and Research Centres';
+			case 'lists.cmc.region': return 'Region';
+			case 'lists.cmc.noSearchResult': return 'There is no clinic matches your search criteria.';
+			case 'lists.prompt.noConnection': return 'No internet connection.';
+			case 'lists.prompt.serverError': return 'Something went wrong with the server, please try again later.';
+			case 'lists.prompt.selectCategory': return 'Please select a category from the list to view the facility list.';
+			case 'lists.refresh': return 'Refresh';
+			case 'main.app_name': return 'A&E Live';
+			case 'main.tabs.home.displayLabel': return 'Home';
+			case 'main.tabs.home.semanticLabel': return 'A&E service waiting time';
+			case 'main.tabs.lists.displayLabel': return 'Lists';
+			case 'main.tabs.lists.semanticLabel': return 'Facility Lists';
+			case 'main.tabs.settings.displayLabel': return 'Settings';
+			case 'main.tabs.settings.semanticLabel': return 'Settings';
+			case 'main.clusters.hke': return 'Hong Kong East Cluster';
+			case 'main.clusters.hkw': return 'Hong Kong West Cluster';
+			case 'main.clusters.klc': return 'Kowloon Central Cluster';
+			case 'main.clusters.kle': return 'Kowloon East Cluster';
+			case 'main.clusters.klw': return 'Kowloon West Cluster';
+			case 'main.clusters.nte': return 'New Territories East Cluster';
+			case 'main.clusters.ntw': return 'New Territories West Cluster';
+			case 'main.dataRemarks.title': return 'Remarks';
+			case 'main.dataRemarks.content': return ({required InlineSpanBuilder tapPCD, required InlineSpanBuilder tapHKD}) => TextSpan(children: [
+				const TextSpan(text: 'The above data is collated from the waiting time in the past few hours. This is for reference only but not the current estimated waiting time.\n\nA&E Departments need to manage sudden arrival of accident victims and severely-ill patients. We apologise for not being able to provide an accurate estimate of waiting time for patients in general. Please be patient while waiting for consultation.\n\nWaiting time display is capped at 8 hours amid a large number of patients waiting for a long time are being treated in the A&E Department. Patients with minor illnesses can consider seeking alternative medical services from private clinics (as listed in '),
+				tapPCD('Primary Care Directory'),
+				const TextSpan(text: ' or '),
+				tapHKD('Hong Kong Doctors Homepage'),
+				const TextSpan(text: ').'),
+			]);
+			case 'main.dataRemarks.pcdUrl': return 'https://apps.pcdirectory.gov.hk/mobile/en';
+			case 'main.dataRemarks.hkdUrl': return 'http://www.thkma.org/our_works/hong_kong_doctors/';
+			case 'settings.title': return 'Settings';
+			case 'settings.save': return 'Save Settings';
+			case 'settings.sections.appearance': return 'Appearance';
+			case 'settings.sections.data': return 'Data Management';
+			case 'settings.sections.more': return 'More';
+			case 'settings.appearance.theme.title': return 'Display Theme';
+			case 'settings.appearance.theme.options.light': return 'Light Theme';
+			case 'settings.appearance.theme.options.dark': return 'Dark Theme';
+			case 'settings.appearance.theme.options.system': return 'Follow System';
+			case 'settings.appearance.language.title': return 'Display Language';
+			case 'settings.appearance.language.options.zhHK': return 'Traditional Chinese (繁體中文)';
+			case 'settings.appearance.language.options.zhCN': return 'Simplified Chinese (简体中文)';
+			case 'settings.appearance.language.options.en': return 'English';
+			case 'settings.appearance.textSize.title': return 'Text Size';
+			case 'settings.appearance.textSize.options.defaultSize': return 'Default';
+			case 'settings.appearance.textSize.options.largeSize': return 'Large';
+			case 'settings.appearance.textSize.options.extraLargeSize': return 'Extra-Large';
+			case 'settings.appearance.sorting.title': return 'Default Sorting of A&E Waiting Time';
+			case 'settings.appearance.sorting.options.nameInAsd': return 'Hospital Name (A-Z)';
+			case 'settings.appearance.sorting.options.nameInDesc': return 'Hospital Name (Z-A)';
+			case 'settings.appearance.sorting.options.timeInAsd': return 'Waiting Time (ASD.)';
+			case 'settings.appearance.sorting.options.timeInDesc': return 'Waiting Time (DESC.)';
+			case 'settings.data.reset.title': return 'Reset All Settings';
+			case 'settings.data.reset.message': return 'If you\'ve experienced any difficulties while using this app, consider resetting all settings to restore its functionality. Please note that this action will take effect once the app has been restarted.';
+			case 'settings.data.reset.buttons.cancel': return 'Cancel';
+			case 'settings.data.reset.buttons.reset': return 'Reset';
+			case 'settings.more.license': return 'Open Source Licenses';
+			case 'settings.more.privacyPolicy.title': return 'Privacy Policy';
+			case 'settings.more.privacyPolicy.subtitle': return '';
+			case 'settings.more.termsConditions.title': return 'Terms and Conditions';
+			case 'settings.more.termsConditions.subtitle': return '';
+			case 'settings.more.about.title': return 'About This App';
+			case 'settings.more.about.items.version': return 'App Version';
+			case 'settings.more.about.items.github.title': return 'GitHub Repository';
+			case 'settings.more.about.items.github.value': return 'Licensed under the GPL-3.0 license.';
+			case 'settings.more.about.items.dataSource.title': return 'Data Source';
+			case 'settings.more.about.items.dataSource.value': return 'DATA.GOV.HK and Hospital Authority';
+			case 'settings.more.about.items.imageSource.title': return 'Image Source';
+			case 'settings.more.about.items.imageSource.value': return 'unDraw';
+			case 'settings.more.about.items.imageSource.url': return 'https://undraw.co/license';
+			case 'settings.prompt.selectItem': return 'Please select an item from the list to update the settings of the app.';
+			case 'settings.prompt.settingsReset': return 'All settings have been reset. Please restart the app for the changes to take effect.';
+			case 'shared.filter.sorting.title': return 'Sorting';
+			case 'shared.filter.sorting.nameInAsd': return 'Hospital Name (A-Z)';
+			case 'shared.filter.sorting.nameInDesc': return 'Hospital Name (Z-A)';
+			case 'shared.filter.sorting.timeInAsd': return 'Waiting Time (ASD.)';
+			case 'shared.filter.sorting.timeInDesc': return 'Waiting Time (DESC.)';
+			case 'shared.filter.hospitalCluster': return 'Hospital Cluster';
+			case 'shared.filter.clinicCluster': return 'Clinic Cluster';
+			case 'shared.filter.region': return 'Region';
+			case 'shared.filter.district': return 'District';
+			case 'shared.filter.actions.apply': return 'Apply';
+			case 'shared.filter.actions.reset': return 'Reset';
+			case 'shared.filter.actions.clear': return 'Clear';
+			case 'shared.facilityMaps.openMapsApp': return 'Open Maps Application';
+			case 'shared.facilityMaps.closeMapsModal': return 'Close the Maps Viewer';
+			case 'waitTimeDetails.estimatedWaitTime': return 'Estimated A&E Waiting Time (Non-Urgent)';
+			case 'waitTimeDetails.actions.share': return 'Share Hospital Info';
+			case 'waitTimeDetails.actions.call': return 'Call Hospital';
+			case 'waitTimeDetails.actions.maps': return 'View Maps';
+			case 'waitTimeDetails.chartTitle': return 'A&E Waiting Time of the Past 6 Hours';
+			case 'waitTimeDetails.hours': return '{value}H';
+			case 'waitTimeDetails.info.title': return 'Hospital Info';
+			case 'waitTimeDetails.info.address': return 'Address';
+			case 'waitTimeDetails.info.contactNo': return 'Contact No.';
+			case 'waitTimeDetails.info.faxNo': return 'Fax No.';
+			case 'waitTimeDetails.info.emailAddress': return 'Email Address';
+			case 'waitTimeDetails.info.website': return 'Website';
+			case 'waitTimeDetails.shareContent.base': return ({required Object hospitalName, required Object waitingTime, required Object address, required Object contactNo}) => '${hospitalName}\nA&E Waiting Time: ${waitingTime}\n--------\nAddress: ${address}\nContact No.: ${contactNo}';
+			case 'waitTimeDetails.shareContent.faxNo': return ({required Object faxNo}) => '\nFax No.: ${faxNo}';
+			case 'waitTimeDetails.shareContent.emailAddress': return ({required Object emailAddress}) => '\nEmail Address: ${emailAddress}';
+			case 'waitTimeDetails.shareContent.website': return ({required Object website}) => '\nWebsite: ${website}';
+			default: return null;
+		}
+	}
+}
+

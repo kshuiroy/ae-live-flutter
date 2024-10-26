@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:ae_live/config/constants.dart';
@@ -11,10 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:maps_launcher/maps_launcher.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class FacilityMapsViewer extends StatefulWidget {
   const FacilityMapsViewer({
@@ -36,6 +36,40 @@ class FacilityMapsViewer extends StatefulWidget {
 
 class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
   final ScrollController _bottomSheetScrollController = ScrollController();
+
+  Future<void> _onOpenMapsButtonPressed() async {
+    final List<AvailableMap> installedMaps = await MapLauncher.installedMaps;
+
+    if (Platform.isIOS) {
+      await MapLauncher.showMarker(
+        mapType: MapType.apple,
+        coords: Coords(
+          widget.latitude,
+          widget.longitude,
+        ),
+        title: widget.institutionName,
+      );
+    } else {
+      if (await MapLauncher.isMapAvailable(MapType.google) ?? false) {
+        await MapLauncher.showMarker(
+          mapType: MapType.google,
+          coords: Coords(
+            widget.latitude,
+            widget.longitude,
+          ),
+          title: widget.institutionName,
+        );
+      } else {
+        await installedMaps.first.showMarker(
+          coords: Coords(
+            widget.latitude,
+            widget.longitude,
+          ),
+          title: widget.institutionName,
+        );
+      }
+    }
+  }
 
   @override
   Widget build(final BuildContext context) {
@@ -215,15 +249,18 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
                           children: <Widget>[
                             Expanded(
                               child: ThemedFilledButtonIcon(
+                                // onPressed: () async {
+                                //   await launchUrl(
+                                //     MapsLauncher.createCoordinatesUri(
+                                //       widget.latitude,
+                                //       widget.longitude,
+                                //       widget.institutionName,
+                                //     ),
+                                //     mode: LaunchMode.externalApplication,
+                                //   );
+                                // },
                                 onPressed: () async {
-                                  await launchUrl(
-                                    MapsLauncher.createCoordinatesUri(
-                                      widget.latitude,
-                                      widget.longitude,
-                                      widget.institutionName,
-                                    ),
-                                    mode: LaunchMode.externalApplication,
-                                  );
+                                  await _onOpenMapsButtonPressed();
                                 },
                                 icon: const ThemedIcon(
                                   Symbols.map_rounded,
