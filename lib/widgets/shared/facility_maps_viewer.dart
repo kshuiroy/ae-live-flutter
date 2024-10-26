@@ -37,10 +37,28 @@ class FacilityMapsViewer extends StatefulWidget {
 class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
   final ScrollController _bottomSheetScrollController = ScrollController();
 
-  Future<void> _onOpenMapsButtonPressed() async {
+  List<AvailableMap> _installedMaps = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _checkInstalledMaps();
+  }
+
+  void _checkInstalledMaps() async {
     final List<AvailableMap> installedMaps = await MapLauncher.installedMaps;
 
-    if (Platform.isIOS) {
+    setState(() {
+      _installedMaps = installedMaps;
+    });
+  }
+
+  Future<void> _onOpenMapsButtonPressed() async {
+    /// Open Apple Maps on Apple Platforms.
+    ///
+    /// For other platforms, open Google Maps if available.
+    /// Else, open the first detected installed maps app.
+    if (Platform.isIOS || Platform.isMacOS) {
       await MapLauncher.showMarker(
         mapType: MapType.apple,
         coords: Coords(
@@ -49,25 +67,23 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
         ),
         title: widget.institutionName,
       );
-    } else {
-      if (await MapLauncher.isMapAvailable(MapType.google) ?? false) {
-        await MapLauncher.showMarker(
-          mapType: MapType.google,
-          coords: Coords(
-            widget.latitude,
-            widget.longitude,
-          ),
-          title: widget.institutionName,
-        );
-      } else {
-        await installedMaps.first.showMarker(
-          coords: Coords(
-            widget.latitude,
-            widget.longitude,
-          ),
-          title: widget.institutionName,
-        );
-      }
+    } else if (await MapLauncher.isMapAvailable(MapType.google) ?? false) {
+      await MapLauncher.showMarker(
+        mapType: MapType.google,
+        coords: Coords(
+          widget.latitude,
+          widget.longitude,
+        ),
+        title: widget.institutionName,
+      );
+    } else if (_installedMaps.isNotEmpty) {
+      await _installedMaps.first.showMarker(
+        coords: Coords(
+          widget.latitude,
+          widget.longitude,
+        ),
+        title: widget.institutionName,
+      );
     }
   }
 
@@ -259,9 +275,11 @@ class _FacilityMapsViewerState extends State<FacilityMapsViewer> {
                                 //     mode: LaunchMode.externalApplication,
                                 //   );
                                 // },
-                                onPressed: () async {
-                                  await _onOpenMapsButtonPressed();
-                                },
+                                onPressed: _installedMaps.isNotEmpty
+                                    ? () async {
+                                        await _onOpenMapsButtonPressed();
+                                      }
+                                    : null,
                                 icon: const ThemedIcon(
                                   Symbols.map_rounded,
                                 ),
