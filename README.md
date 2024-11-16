@@ -46,13 +46,13 @@ Patients with minor illnesses can consider seeking alternative medical services 
 
 To start development, please make sure the development machine has the following SDK and IDE installed:
 
--   [Flutter SDK: >= 3.22.2](https://docs.flutter.dev/get-started/install)
+-   [Flutter SDK: >= 3.24.5](https://docs.flutter.dev/get-started/install)
 -   [Visual Studio Code](https://code.visualstudio.com/)
 -   [Android Studio: >= Koala | 2024.1.1](https://developer.android.com/studio)
 -   Install the following SDKs and IDE also if you're using **macOS**:
     -   Xcode: >= 15.0
     -   Ruby: >= 3.3.0
-    -   CocoaPods: >= 1.15.2
+    -   CocoaPods: >= 1.16.2
 
 ## Useful Commands
 
