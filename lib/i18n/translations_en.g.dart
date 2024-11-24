@@ -127,7 +127,7 @@ class TranslationsWaitTimeDetailsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get estimatedWaitTime => 'Estimated A&E Waiting Time (Non-Urgent)';
+	String get referencedWaitTime => 'Referenced A&E Waiting Time (Non-Urgent)';
 	late final TranslationsWaitTimeDetailsActionsEn actions = TranslationsWaitTimeDetailsActionsEn.internal(_root);
 	String get chartTitle => 'A&E Waiting Time of the Past 6 Hours';
 	String get hours => '{value}H';
@@ -788,7 +788,7 @@ extension on Translations {
 			case 'shared.filter.actions.clear': return 'Clear';
 			case 'shared.facilityMaps.openMapsApp': return 'Open Maps Application';
 			case 'shared.facilityMaps.closeMapsModal': return 'Close the Maps Viewer';
-			case 'waitTimeDetails.estimatedWaitTime': return 'Estimated A&E Waiting Time (Non-Urgent)';
+			case 'waitTimeDetails.referencedWaitTime': return 'Referenced A&E Waiting Time (Non-Urgent)';
 			case 'waitTimeDetails.actions.share': return 'Share Hospital Info';
 			case 'waitTimeDetails.actions.call': return 'Call Hospital';
 			case 'waitTimeDetails.actions.maps': return 'View Maps';

@@ -235,7 +235,7 @@ class _WaitTimeDetailsScreenState extends State<WaitTimeDetailsScreen> {
                             children: <Widget>[
                               Expanded(
                                 child: Text(
-                                  t.waitTimeDetails.estimatedWaitTime,
+                                  t.waitTimeDetails.referencedWaitTime,
                                   style: textTheme.bodyLarge?.copyWith(
                                     color: textTheme.bodyLarge?.color
                                         ?.withAlpha(160),

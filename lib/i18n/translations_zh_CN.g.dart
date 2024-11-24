@@ -125,7 +125,7 @@ class _TranslationsWaitTimeDetailsZhCn extends TranslationsWaitTimeDetailsEn {
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get estimatedWaitTime => '急症室预计等候时间（非紧急病人）';
+	@override String get referencedWaitTime => '急症室参考等候时间（非紧急病人）';
 	@override late final _TranslationsWaitTimeDetailsActionsZhCn actions = _TranslationsWaitTimeDetailsActionsZhCn._(_root);
 	@override String get chartTitle => '过去 6 小时的急症室等候时间';
 	@override String get hours => '{value} 小时';
@@ -786,7 +786,7 @@ extension on TranslationsZhCn {
 			case 'shared.filter.actions.clear': return '清除';
 			case 'shared.facilityMaps.openMapsApp': return '开启地图应用程序';
 			case 'shared.facilityMaps.closeMapsModal': return '关闭地图检视界面';
-			case 'waitTimeDetails.estimatedWaitTime': return '急症室预计等候时间（非紧急病人）';
+			case 'waitTimeDetails.referencedWaitTime': return '急症室参考等候时间（非紧急病人）';
 			case 'waitTimeDetails.actions.share': return '分享医院资讯';
 			case 'waitTimeDetails.actions.call': return '致电医院';
 			case 'waitTimeDetails.actions.maps': return '查看地图';
