@@ -883,7 +883,7 @@ class _MasterDetailFlowState extends State<_MasterDetailFlow>
     return MaterialPageRoute<dynamic>(
       builder: (BuildContext context) {
         return PopScope(
-          onPopInvoked: (bool didPop) {
+          onPopInvokedWithResult: (_, __) {
             // No need for setState() as rebuild happens on navigation pop.
             focus = _Focus.master;
           },
